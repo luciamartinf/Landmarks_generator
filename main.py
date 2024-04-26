@@ -89,6 +89,6 @@ print(dat)
 # ### TEST MODEL ###
 # ##################
 
-# # Compute training and test MSE errors of the model
-# measure_model_error(dat, train_xml) # aqui usar train + val
-# measure_model_error(dat, test_xml) # aqui usar solo test
+# Compute training and test MSE errors of the model
+measure_model_error(dat, train_xml) # aqui usar train + val
+measure_model_error(dat, test_xml) # aqui usar solo test
