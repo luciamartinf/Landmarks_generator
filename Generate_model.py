@@ -117,7 +117,7 @@ def find_best_params(train_set, temp_dat):
 
     
     # delete the temporary model file
-    os.remove(config.TEMP_MODEL_PATH)
+    os.remove(temp_dat)
     
     # print(bestParams)
     return bestParams
