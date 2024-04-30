@@ -2,6 +2,7 @@
 
 from arg_parse import check_arg
 from Generate_model import find_best_params, train_model, measure_model_error
+from utils import check_dir
 from Landmarks_module import Landmarks
 import os
 import multiprocessing
@@ -33,11 +34,16 @@ if main_dir.startswith('.'):
     main_dir = os.path.abspath(main_dir)
 
 
-data_dir = os.path.join(main_dir, 'data') # esto tambien puede ser un argumento
+if arguments.data_dir:
+    data_dir = arguments.data_dir
+else:
+    data_dir = os.path.join(main_dir, 'data') # esto tambien puede ser un argumento
+
+check_dir(data_dir)
 
 # Initialize class variables. Indicate directories we are going to work in
 Landmarks.data_dir = data_dir
-Landmarks.create_flipdir()
+Landmarks.create_flipdir() # Only creates flip_dir if it doesn't exist already
 
 
 
@@ -52,7 +58,6 @@ landmarks_file = 'Carabus_pronotumLANDMARKS.TXT' # esto deberia ser otro argumen
 lm_path = os.path.join(main_dir, landmarks_file)
 
 input_data = Landmarks(lm_path)
-
 
 train_xml, test_xml, train_list = input_data.split_data()
 print("Creating train and test xml files")
@@ -76,7 +81,6 @@ temp = os.path.join(main_dir, 'temp.dat')
 
 # Find best parameters
 # aqui usar train para entrenar y val para testear
-
 best_params = find_best_params(train_set, temp)
 
 # Train model
@@ -92,3 +96,6 @@ print(dat)
 # Compute training and test MSE errors of the model
 measure_model_error(dat, train_xml) # aqui usar train + val
 measure_model_error(dat, test_xml) # aqui usar solo test
+
+dat = '/Users/luciamf/Desktop/Landmarks_generator/model_2604.dat'
+input_data.check_for_negatives(dat)

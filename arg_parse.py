@@ -23,6 +23,8 @@ def check_arg():
     
     add('--version', action='version', version='%(prog)s 0.0.1')
 
+    add('--data_dir', '-d', help='Preprocess data and create flip_images')
+    
     add('--preprocess', '-p', action='store_true',
         help='Preprocessing data and create train and test sets')
 

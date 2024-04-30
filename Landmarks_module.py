@@ -3,6 +3,8 @@
 from typing import Dict, List, Any
 import os
 from PIL import Image # type: ignore
+import numpy as np # type: ignore
+import dlib  # type: ignore
 
 from utils import check_make_dir, start_xml_file, end_xml_file, append_to_xml_file, what_file_type
 import random
@@ -71,10 +73,11 @@ class Landmarks:
         """
         Initializes the flip directory and creates it if it does not exist
         """
-
+        
         flip_dir = os.path.join(Landmarks.data_dir, 'flip_images')
         check_make_dir(flip_dir)
         Landmarks.flip_dir = flip_dir
+
 
     @staticmethod
     def check_id_img(
@@ -260,6 +263,7 @@ class Landmarks:
         """
         Splits data into 2 new xml files 
         """
+
         train_list = []
         test_list = []
 
@@ -297,8 +301,229 @@ class Landmarks:
         end_xml_file(train_xml)
         end_xml_file(test_xml)
 
-        print('another split')
+        print(f'Another split')
+
         return train_xml, test_xml, train_list
 
+    # def predict_landmarks(main_dir, test_folder, model_path, scale_path, generate_images = True):
+        
+    #     image_extensions = ['.jpg', '.jpeg', '.png', '.bmp'] 
+    #     imgs_list = [filename for filename in os.listdir(test_folder) if os.path.splitext(filename)[-1] in image_extensions]
 
+    #     scale_dict = get_scale_dict(scale_path)
+
+    #     model_file = os.path.basename(model_path)
+    #     model_name = model_file[:model_file.rindex('.')]
+
+    #     landmarks_folder = os.path.join(main_dir, f'{model_name}_landmarks')
+        
+    #     if not os.path.exists(landmarks_folder):
+    #         os.makedirs(landmarks_folder)
+    
+    #     outfile = f'{model_name}_landmarks.txt'
+
+    #     outpath = os.path.join(landmarks_folder, outfile)
+
+
+    #     for img in imgs_list:
+    #         # img es del tipo flip_ind2784.jpg
+    #         img_name = img.split('_')[1] # nos quedamos con ind429348.jpg
+    #         id = img_name.split('.')[0].upper() # nos quedamos con IND2934584
+
+    #         image_path = os.path.join(test_folder, img)
+
+    #         image = Image.open(image_path)
+    #         np_image = np.array(image)
+    #         width, height = image.size
+                
+    #         full_rect = dlib.rectangle(left=0, top=0, right=width, bottom=height)
+    #         predictor = dlib.shape_predictor(model_path)
+
+
+    #         shape = predictor(np_image, full_rect)
+    #         lm_list = []
+
+    #         for i in range(shape.num_parts):
+    #             p = shape.part(i)
+    #             if float(p.x) < 0 :
+    #                 print(f"WARNING: Image {img_name} may be cropped and negative landmarks are being generated. Changing {p.x} coordinate to 0")
+    #                 p.x = 0
+    #             if float(p.y) < 0 :
+    #                 print(f"WARNING: Image {img_name} may be cropped and negative landmarks are being generated. Setting {p.y} coordinate to 0")
+    #                 p.y = 0
+    #             lm_list.append([p.x, p.y])
+
+    #         # Sort landmarks 
+    #         lm_list.sort()
+
+    #         if generate_images:
+    #             plt.figure()
+    #             plt.ylim(0, height)
+    #             plt.xlim(0, width)
+    #             plt.imshow(image)
+
+    #             # for lm in lm_list:
+    #             #     plt.plot(lm[0], lm[1], '.', color='red')
+                
+    #             for i, lm in enumerate(lm_list):
+    #                 plt.scatter(lm[0], lm[1], marker="$"+str(i)+"$")
+                
+    #             lm_img_path = os.path.join(landmarks_folder, f'lm_{img_name}')
+    #             plt.savefig(lm_img_path)
+    #             plt.close()
+
+    #         with open(outpath, 'a') as f:
+                
+    #             f.write(f'LM={int(len(lm_list))}\n')
+                
+    #             for lm in lm_list:
+    #                 f.write(f'{lm[0]:.4f} {lm[1]:.4f}\n')
+                
+    #             f.write(f'IMAGE={img_name}\n')
+    #             f.write(f'ID={id}\n')
+    #             f.write(f'{scale_dict[id]}\n')
+
+    #     return outpath
+
+
+    # def only_predict_landmarks(main_dir, test_folder, model_path, scale_path):
+        
+    #     image_extensions = ['.jpg', '.jpeg', '.png', '.bmp'] 
+    #     imgs_list = [filename for filename in os.listdir(test_folder) if os.path.splitext(filename)[-1] in image_extensions]
+
+    #     scale_dict = get_scale_dict(scale_path)
+
+    #     model_file = os.path.basename(model_path)
+    #     model_name = model_file[:model_file.rindex('.')]
+
+    #     landmarks_folder = os.path.join(main_dir, f'{model_name}_landmarks')
+        
+    #     if not os.path.exists(landmarks_folder):
+    #         os.makedirs(landmarks_folder)
+
+    #     outfile = f'{model_name}_landmarks.txt'
+
+    #     outpath = os.path.join(landmarks_folder, outfile)
+
+
+    #     for img in imgs_list:
+    #         # img es del tipo flip_ind2784.jpg
+    #         img_name = img.split('_')[1] # nos quedamos con ind429348.jpg
+    #         id = img_name.split('.')[0].upper() # nos quedamos con IND2934584
+
+    #         image_path = os.path.join(test_folder, img)
+
+    #         image = Image.open(image_path)
+    #         np_image = np.array(image)
+    #         width, height = image.size
+                
+    #         full_rect = dlib.rectangle(left=0, top=0, right=width, bottom=height)
+    #         predictor = dlib.shape_predictor(model_path)
+    #         shape = predictor(np_image, full_rect)
+    #         lm_list = []
+
+    #         for i in range(shape.num_parts):
+    #             p = shape.part(i)
+    #             if float(p.x) < 0 :
+    #                 print(f"WARNING: Image {img_name} may be cropped and negative landmarks are being generated. Changing {p.x} coordinate to 0")
+    #                 p.x = 0
+    #             if float(p.y) < 0 :
+    #                 print(f"WARNING: Image {img_name} may be cropped and negative landmarks are being generated. Setting {p.y} coordinate to 0")
+    #                 p.y = 0
+    #             lm_list.append([p.x, p.y])
+
+    #         lm_list.sort()
+
+    #         with open(outpath, 'a') as f:
+                
+    #             f.write(f'LM={int(len(lm_list))}\n')
+                
+    #             for lm in lm_list:
+    #                 f.write(f'{lm[0]:.4f} {lm[1]:.4f}\n')
+                
+    #             f.write(f'IMAGE={img_name}\n')
+    #             f.write(f'ID={id}\n')
+    #             f.write(f'{scale_dict[id]}\n')  
+
+    #     return outpath
+
+
+    # def plot_landmarks(main_dir, img_folder, landmarks_file, out_folder, flip = False):
+
+    #     image_extensions = ['.jpg', '.jpeg', '.png', '.bmp'] 
+    #     imgs_list = [filename for filename in os.listdir(img_folder) if os.path.splitext(filename)[-1] in image_extensions]
+
+    #     lm_dict = read_lm_file(landmarks_file)
+
+    #     out_path = os.path.join(main_dir, out_folder)
+
+    #     if not os.path.exists(out_path):
+    #         os.makedirs(out_path)
+        
+    #     for img in imgs_list:
+    #         image_path = os.path.join(img_folder, img)
+    #         image = Image.open(image_path)
+    #         img_name = img.split('_')[1] # nos quedamos con ind429348.jpg
+
+    #         if flip:
+    #             image = image.transpose(method=Image.FLIP_TOP_BOTTOM)
+    #         width, height = image.size
+            
+    #         plt.figure()
+    #         plt.ylim(0, height)
+    #         plt.xlim(0, width)
+    #         plt.imshow(image)
+
+    #         lm_list = sorted(lm_dict[img_name]) # sort landmarks
+
+    #         # for lm in lm_dict[img]:
+    #         #     plt.plot(lm[0], lm[1], '.', color='red')
+            
+    #         for i, lm in enumerate(lm_list):
+    #                 plt.scatter(lm[0], lm[1], marker="$"+str(i)+"$") # plot them with numbers to check that its okay
+            
+    #         lm_img_path = os.path.join(out_folder, f'lm_{img}')
+    #         plt.savefig(lm_img_path)
+    #         plt.close()
+
+    
+    def check_for_negatives(self, model_path):
+
+        """"
+        Check for cropped images in the training set
+        """
+        
+        total = len(self.img_list)
+        per_10 = int(0.1 * total)
+
+        for img in self.img_list:
+
+            img_name = img.split('_')[1] # nos quedamos con ind429348.jpg
+
+            image_path = os.path.join(self.data_dir, f'flip_images/{img}')
+
+            image = Image.open(image_path)
+            np_image = np.array(image)
+            width, height = image.size
+                
+            full_rect = dlib.rectangle(left=0, top=0, right=width, bottom=height)
+            predictor = dlib.shape_predictor(model_path)
+            shape = predictor(np_image, full_rect)
+            count = 0
+
+            for i in range(shape.num_parts):
+                p = shape.part(i)
+                if float(p.x) < 0 :
+                    print(f"WARNING: Image {img_name} may be cropped and negative landmarks are being generated. Excluding this picture from the training set")
+                    # os.remove(image_path)
+                    count +=1
+                    break
+                if float(p.y) < 0 :
+                    print(f"WARNING: Image {img_name} may be cropped and negative landmarks are being generated. Setting {p.y} coordinate to 0")
+                    # os.remove(image_path)
+                    count +=1
+                    break
+            
+            if count >= per_10:
+                print("WARNING: More than the 10 percent of the images used in the training where cropped. Please try training the model again with the command: COMMAND")
 

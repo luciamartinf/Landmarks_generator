@@ -6,6 +6,7 @@ import os
 # import shutil
 # import rembg
 from PIL import Image
+import sys
 # import cv2
 
 
@@ -20,6 +21,19 @@ def check_make_dir(folder_path):
 
         # Create the folder if it doesn't exist
         os.makedirs(folder_path)
+
+def check_dir(folder_path):
+
+    """
+    Check if a directory exists and creates it if it doesn't
+    """
+
+    # Check if the folder exists
+    if not os.path.exists(folder_path):
+
+        # Create the folder if it doesn't exist
+        print(f"ERROR: We could not find {folder_path}") # Make this error message better
+        sys.exit()
 
 
 
