@@ -21,6 +21,7 @@ def test_shape_predictor_params(
         # oversamplingTransJitter, padding, lambdaParam, 
         train_set, temp_dat):
     
+   
     # https://pyimagesearch.com/2020/01/13/optimizing-dlib-shape-predictor-accuracy-with-find_min_global/
 
     # Split train into train and val
@@ -61,6 +62,7 @@ def test_shape_predictor_params(
     testingError = dlib.test_shape_predictor(
         val_xml, temp_dat)
     
+    
 	# display the training and testing errors for the current trial
     print("[INFO] Train error (MAE): {}".format(trainingError))
     print("[INFO] Validation error (MAE): {}".format(testingError))
@@ -79,6 +81,7 @@ def find_best_params(train_set, temp_dat):
     # hyperparameter name and the value is a 3-tuple consisting of the
     # lower range, upper range, and is/is not integer boolean,
     # respectively
+
     params = OrderedDict([
        ("tree_depth", (3, 8, True)),
         ("nu", (0.001, 0.2, False)),
