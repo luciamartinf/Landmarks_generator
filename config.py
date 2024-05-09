@@ -13,4 +13,4 @@ import os
 PROCS = -1 # Investigar esto un poco mas antes de activarlo. Si esta como -1 significa que vamos a usar todos los cores de la maquina
 
 # Maximum number of trials we'll be performing when tuning our shape predictor hyperparameters
-MAX_FUNC_CALLS = 100
+MAX_FUNC_CALLS = 50

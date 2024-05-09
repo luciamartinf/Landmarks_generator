@@ -36,7 +36,9 @@ def check_dir(folder_path):
         sys.exit()
 
 
+# def check_image(image_path):
 
+#     if not os.path.exists(image_path)
                 
 
 
@@ -94,3 +96,13 @@ def end_xml_file(file):
         f.write(f"</images>\n")
         f.write(f"</dataset>\n")
 
+def which(line):
+        
+    """
+    Defines type of line in a tps file
+    """
+
+    token = str(line.strip().split("=")[0])
+    value = line.strip().split("=")[1]
+
+    return token, value
