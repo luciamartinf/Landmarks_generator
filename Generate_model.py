@@ -23,7 +23,7 @@ def test_shape_predictor_params(
     # https://pyimagesearch.com/2020/01/13/optimizing-dlib-shape-predictor-accuracy-with-find_min_global/
 
     # Create a new val-train split
-    train_xml, val_xml = train_set.split_data(tag = ['train_val', 'validation'])
+    train_xml, val_xml = train_set.split_data(tag = ['trn_val', 'validation'])
 
     # Define options that we are going to tune
     options = dlib.shape_predictor_training_options()

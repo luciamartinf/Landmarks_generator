@@ -49,7 +49,7 @@ lm_path = os.path.join(work_dir, landmarks_file)
 
 
 # Initialize class variables. Indicate directories we are going to work in
-Landmarks.data_dir = image_dir
+Landmarks.data_dir = os.path.abspath(image_dir)
 Landmarks.create_flipdir() # Only creates work_dir if it doesn't exist already
 
 # Creates Landmarks object with input data
@@ -63,16 +63,18 @@ input_data = Landmarks(lm_path)
 
 work_data = os.path.join(image_dir, 'work_data/')
 
+# FOR AVOIDING EXTRA PROCESSING
+# xml_files = check_for_xml_files(work_data)
 
-xml_files = check_for_xml_files(work_data)
+# if len(xml_files) > 0 :
+    
+#     train_xml = [file for file in xml_files if 'train' in file]
+#     test_xml = [file for file in xml_files if 'test' in file]
+    
+# else:
+#     train_xml, test_xml = input_data.split_data()
 
-if len(xml_files) > 0 :
-    
-    train_xml = [file for file in xml_files if 'train' in file]
-    test_xml = [file for file in xml_files if 'test' in file]
-    
-else:
-    train_xml, test_xml = input_data.split_data()
+train_xml, test_xml = input_data.split_data()
 
 train_set = Landmarks(train_xml)
 
