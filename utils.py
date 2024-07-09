@@ -1,13 +1,9 @@
 # !/usr/bin/python3
 
-# import json
 import os
-# import random
-# import shutil
-# import rembg
 from PIL import Image
 import sys
-# import cv2
+# import xml.etree.ElementTree as ET
 
 
 def check_make_dir(folder_path):
@@ -25,21 +21,15 @@ def check_make_dir(folder_path):
 def check_dir(folder_path):
 
     """
-    Check if a directory exists and creates it if it doesn't
+    Just checks if a directory exists
     """
 
     # Check if the folder exists
     if not os.path.exists(folder_path):
 
-        # Create the folder if it doesn't exist
+        # Print error message
         print(f"ERROR: We could not find {folder_path}") # Make this error message better
         sys.exit()
-
-
-# def check_image(image_path):
-
-#     if not os.path.exists(image_path)
-                
 
 
 def what_file_type(file):
@@ -57,23 +47,23 @@ def what_file_type(file):
 
     return extension
 
-def start_xml_file(file, name):
+def start_xml_file(file, name, item='Carabus pronotum'): # Tengo que quitar este default
 
     """
-    Start xml file
+    Start xml file for the project 
     """
 
     with open(file, 'w') as f:
         f.write(f"<?xml version='1.0' encoding='ISO-8859-1'?>\n")
         f.write(f"<?xml-stylesheet type='text/xsl' href='image_metadata_stylesheet.xsl'?>\n")
         f.write(f"<dataset>\n")
-        f.write(f"<name>Carabus pronotum {name}</name>\n")
+        f.write(f"<name>{item} {name}</name>\n")
         f.write(f"<images>\n")
 
 def append_to_xml_file(file, img, my_dict, folder):
 
     """
-    Add image to xml file
+    Add image code to xml file
     """
 
     with open(file, 'a') as f:
@@ -91,6 +81,10 @@ def append_to_xml_file(file, img, my_dict, folder):
   
 
 def end_xml_file(file):
+    
+    """
+    Close xml file
+    """
 
     with open(file, 'a') as f:
         f.write(f"</images>\n")
@@ -106,3 +100,29 @@ def which(line):
     value = line.strip().split("=")[1]
 
     return token, value
+
+
+
+def check_for_xml_files(folder_path):
+    # Get the list of all files in the specified folder
+    files_in_folder = os.listdir(folder_path)
+    
+    # Check if any file ends with .xml
+    xml_files = [file for file in files_in_folder if file.endswith('.xml')]
+    
+    # Return True if there are any .xml files, False otherwise
+    return xml_files
+
+
+
+
+# def extract_image_list_from_xml(xml_file_path):
+#     # Parse the XML file
+#     tree = ET.parse(xml_file_path)
+#     root = tree.getroot()
+    
+#     # Find all image elements and extract the file attribute
+#     images = root.findall('.//image')
+#     image_list = [image.get('file') for image in images]
+    
+#     return image_list

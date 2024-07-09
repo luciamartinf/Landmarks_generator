@@ -1,4 +1,4 @@
-# !/usr/bin/python3
+#!/usr/bin/env python3
 
 from typing import Dict, List, Any
 import os
@@ -6,6 +6,7 @@ from PIL import Image # type: ignore
 import numpy as np # type: ignore
 import dlib  # type: ignore
 import matplotlib.pyplot as plt # type: ignore
+import xml.etree.ElementTree as ET
 
 from utils import check_make_dir, start_xml_file, end_xml_file, append_to_xml_file, what_file_type, which
 import random
@@ -13,9 +14,9 @@ import random
 class Landmarks:
 
     data_dir: str = None
-    flip_dir: str = None
-    nested_dict: Dict[str, Dict[str, Any]] = {} 
-    # main_dir
+    flip_dir: str = None # directory with images and files that we are going to use
+    nested_dict: Dict[str, Dict[str, Any]] = {} # Image, landmarks and scale
+    # input_dir
 
     """
     Class for managing landmarks
@@ -35,11 +36,12 @@ class Landmarks:
 
         # En lugar de hacer esto podemos hacer una funcion tambien que sea what_type
         ext = what_file_type(file)
-        print(ext)
 
         if ext == '.xml':
 
             self.xmlfile = file
+            self.img_list = Landmarks.extract_image_list_from_xml(file)
+            # Initialize nested_dict de alguna forma 
 
             # read xml file
             print("WARNING: Initializing from xml file. Some attributes may be missing")
@@ -75,8 +77,7 @@ class Landmarks:
         """
         Initializes the flip directory and creates it if it does not exist
         """
-        
-        flip_dir = os.path.join(Landmarks.data_dir, 'flip_images')
+        flip_dir = os.path.join(Landmarks.data_dir, 'work_data')
         check_make_dir(flip_dir)
         Landmarks.flip_dir = flip_dir
 
@@ -114,8 +115,18 @@ class Landmarks:
                         return False
                     else:
                         return True
-
-    
+    @staticmethod
+    def extract_image_list_from_xml(xml_file_path):
+        # Parse the XML file
+        tree = ET.parse(xml_file_path)
+        root = tree.getroot()
+        
+        # Find all image elements and extract the file attribute
+        images = root.findall('.//image')
+        image_list = [os.path.basename(image.get('file')) for image in images]
+        
+        return image_list
+        
     def readtxt_lmfile(
             self):
         
@@ -224,6 +235,7 @@ class Landmarks:
         """
         Write xml file from image and landmarks dictionary
         """
+        
         self.xmlfile = file
 
         with open(self.xmlfile, 'w') as f:
@@ -256,6 +268,14 @@ class Landmarks:
 
     def flip_image(
             self, img):
+        
+        """_summary_ Flip images because landmarks' coordinates are flipped
+
+        Returns:
+            _type_ str: _description_ new flipped image name
+        
+        Generates: new image flipped vertically in a new folder
+        """
 
         # Read original image
         img_path = os.path.join(Landmarks.data_dir, img)
@@ -272,8 +292,10 @@ class Landmarks:
     
     def split_data(self, tag = ['train', 'test'], split_size = [0.7, 0.3]):
 
-        """
-        Splits data into 2 new xml files 
+        """_summary_ Splits data in two sets 
+
+        Returns:
+            _type_: _description_
         """
 
         train_list = []
@@ -315,9 +337,16 @@ class Landmarks:
 
         print(f'Another split')
 
-        return train_xml, test_xml, train_list
+        return train_xml, test_xml
+    
 
     def predict_landmarks(self, model_path, generate_images = True):
+        
+        """_summary_ Predict new landmarks based on a model
+
+        Returns:
+            _type_: _description_
+        """
 
         model_file = os.path.basename(model_path)
         model_name = model_file[:model_file.rindex('.')]
@@ -391,6 +420,8 @@ class Landmarks:
 
 
     def only_predict_landmarks(main_dir, test_folder, model_path, scale_path):
+        
+        # Esta funcion creo que no la estoy usando ahora
         
         image_extensions = ['.jpg', '.jpeg', '.png', '.bmp'] 
         imgs_list = [filename for filename in os.listdir(test_folder) if os.path.splitext(filename)[-1] in image_extensions]
