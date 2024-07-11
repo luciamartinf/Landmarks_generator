@@ -4,6 +4,10 @@ import argparse
 import os
 
 def write_tpsfile(folder, output, scale):
+    
+    """
+    Write TPS like file to serve as input for predicting landmarks
+    """
 
     image_extensions = ['.jpg', '.jpeg', '.png', '.bmp'] 
 
@@ -22,13 +26,13 @@ def main():
 
     add = parser.add_argument
 
-    add('--image_dir', '-img', required=True, help='Directory containing images')
+    add('-i','--image_dir', required=True, help='Directory containing images')
     add('--scale', required=True, help='Scale of all the images, all images must have the same scale')
-    add('--output', '-o', help="Name of the output file. Recommended extensions are .tps or .txt")
+    add('-o', '--output',  help="Name of the output file. Recommended extensions are .tps or .txt")
 
     args = parser.parse_args()
 
-    folder = args.image_dir
+    folder = os.path.abspath(args.image_dir)
     scale = args.scale
     if args.output:
         output = args.output
