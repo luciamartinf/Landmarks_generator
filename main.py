@@ -6,7 +6,6 @@ from utils import check_dir, check_for_xml_files
 from Landmarks_module import Landmarks
 import os
 import multiprocessing
-import preprocess
 
 import config
 
@@ -22,17 +21,19 @@ import config
 
 args = arg_parse.parse_args()
 
-work_dir = args.work_dir
-# Get full directory name if we are refering as a relative path
-if work_dir.startswith('.'):
-    work_dir = os.path.abspath(work_dir) 
+if not args.work_dir:
+    work_dir = os.getcwd()
+else:
+    work_dir = os.path.abspath(args.work_dir)
+    
+
     
 model_name = args.model_name
 # check if dat file exists or if just model name
 dat = os.path.join(work_dir, f'{model_name}.dat')
 # model_version = arguments.model_version
 
-image_dir = args.image_dir
+image_dir = os.path.abspath(args.image_dir)
 # else:
 #     image_dir = os.path.join(work_dir, 'data') # esto tambien puede ser un argumento
 # check_dir(image_dir)
@@ -49,7 +50,7 @@ lm_path = os.path.join(work_dir, landmarks_file)
 
 
 # Initialize class variables. Indicate directories we are going to work in
-Landmarks.data_dir = os.path.abspath(image_dir)
+Landmarks.data_dir = image_dir
 Landmarks.create_flipdir() # Only creates work_dir if it doesn't exist already
 
 # Creates Landmarks object with input data
@@ -93,10 +94,12 @@ procs = config.PROCS if config.PROCS > 0 else procs
 temp = os.path.join(work_dir, 'temp.dat')
 # Find best parameters
 # aqui usar train para entrenar y val para testear
-best_params = find_best_params(train_set, temp)
+# best_params = find_best_params(train_set, temp)
 # Train model
 
-train_model(dat, train_xml, best_params)
+# train_model(dat, train_xml, best_params)
+
+
 print(dat)
 # ##################
 # ### TEST MODEL ###
