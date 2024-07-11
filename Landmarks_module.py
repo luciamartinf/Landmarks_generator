@@ -31,7 +31,6 @@ class Landmarks:
         self.lm_dict: Dict[str, List] = lm_dict
         self.img_list: List[List[float, float]] = img_list
         
-        
         # Landmarks.nested_dict: Dict[str, Dict[str, Any]] = {} 
 
         # En lugar de hacer esto podemos hacer una funcion tambien que sea what_type
