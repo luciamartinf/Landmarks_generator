@@ -1,0 +1,1557 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<?xml-stylesheet type='text/xsl' href='image_metadata_stylesheet.xsl'?>
+<dataset>
+<name>Carabus pronotum test</name>
+<images>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1103ind15.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1468' y='2055'/> 
+			<part name='1' x='2014' y='1942'/> 
+			<part name='2' x='2624' y='2067'/> 
+			<part name='3' x='2842' y='493'/> 
+			<part name='4' x='1250' y='468'/> 
+			<part name='5' x='1651' y='697'/> 
+			<part name='6' x='2466' y='697'/> 
+			<part name='7' x='1092' y='1703'/> 
+			<part name='8' x='3023' y='1689'/> 
+			<part name='9' x='1025' y='852'/> 
+			<part name='10' x='2995' y='808'/> 
+			<part name='11' x='2021' y='681'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1916ind13.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='807' y='2148'/> 
+			<part name='1' x='1595' y='2058'/> 
+			<part name='2' x='2483' y='2109'/> 
+			<part name='3' x='2726' y='16'/> 
+			<part name='4' x='582' y='34'/> 
+			<part name='5' x='1076' y='396'/> 
+			<part name='6' x='2218' y='363'/> 
+			<part name='7' x='272' y='1735'/> 
+			<part name='8' x='3020' y='1664'/> 
+			<part name='9' x='304' y='523'/> 
+			<part name='10' x='2962' y='456'/> 
+			<part name='11' x='1632' y='396'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1103ind12.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1199' y='1571'/> 
+			<part name='1' x='1822' y='1557'/> 
+			<part name='2' x='2466' y='1580'/> 
+			<part name='3' x='2682' y='106'/> 
+			<part name='4' x='948' y='104'/> 
+			<part name='5' x='1403' y='324'/> 
+			<part name='6' x='2258' y='322'/> 
+			<part name='7' x='835' y='1232'/> 
+			<part name='8' x='2842' y='1258'/> 
+			<part name='9' x='775' y='438'/> 
+			<part name='10' x='2849' y='433'/> 
+			<part name='11' x='1806' y='340'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc19142ind6p.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='798' y='2148'/> 
+			<part name='1' x='1535' y='1979'/> 
+			<part name='2' x='2362' y='2125'/> 
+			<part name='3' x='2582' y='159'/> 
+			<part name='4' x='501' y='217'/> 
+			<part name='5' x='1002' y='458'/> 
+			<part name='6' x='2056' y='454'/> 
+			<part name='7' x='330' y='1717'/> 
+			<part name='8' x='2763' y='1715'/> 
+			<part name='9' x='313' y='616'/> 
+			<part name='10' x='2714' y='528'/> 
+			<part name='11' x='1523' y='361'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1063ind1.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1379' y='2002'/> 
+			<part name='1' x='1917' y='1976'/> 
+			<part name='2' x='2522' y='1974'/> 
+			<part name='3' x='2619' y='530'/> 
+			<part name='4' x='1094' y='597'/> 
+			<part name='5' x='1444' y='787'/> 
+			<part name='6' x='2313' y='746'/> 
+			<part name='7' x='999' y='1698'/> 
+			<part name='8' x='2821' y='1657'/> 
+			<part name='9' x='939' y='922'/> 
+			<part name='10' x='2809' y='829'/> 
+			<part name='11' x='1878' y='818'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc342ind2.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='914' y='2102'/> 
+			<part name='1' x='1702' y='2025'/> 
+			<part name='2' x='2534' y='2099'/> 
+			<part name='3' x='2863' y='44'/> 
+			<part name='4' x='580' y='67'/> 
+			<part name='5' x='1141' y='331'/> 
+			<part name='6' x='2281' y='298'/> 
+			<part name='7' x='364' y='1664'/> 
+			<part name='8' x='3067' y='1712'/> 
+			<part name='9' x='323' y='470'/> 
+			<part name='10' x='3053' y='433'/> 
+			<part name='11' x='1711' y='308'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc682ind6.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1081' y='2060'/> 
+			<part name='1' x='1736' y='1967'/> 
+			<part name='2' x='2559' y='2016'/> 
+			<part name='3' x='2670' y='95'/> 
+			<part name='4' x='779' y='176'/> 
+			<part name='5' x='1254' y='405'/> 
+			<part name='6' x='2170' y='368'/> 
+			<part name='7' x='594' y='1636'/> 
+			<part name='8' x='2907' y='1687'/> 
+			<part name='9' x='545' y='651'/> 
+			<part name='10' x='2895' y='567'/> 
+			<part name='11' x='1725' y='387'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1916ind1.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1009' y='2013'/> 
+			<part name='1' x='1709' y='1997'/> 
+			<part name='2' x='2499' y='1993'/> 
+			<part name='3' x='2710' y='139'/> 
+			<part name='4' x='622' y='183'/> 
+			<part name='5' x='1090' y='421'/> 
+			<part name='6' x='2281' y='389'/> 
+			<part name='7' x='543' y='1740'/> 
+			<part name='8' x='2921' y='1694'/> 
+			<part name='9' x='411' y='602'/> 
+			<part name='10' x='2921' y='519'/> 
+			<part name='11' x='1658' y='421'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1809ind1.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1400' y='1733'/> 
+			<part name='1' x='1908' y='1689'/> 
+			<part name='2' x='2478' y='1710'/> 
+			<part name='3' x='2643' y='312'/> 
+			<part name='4' x='1176' y='336'/> 
+			<part name='5' x='1525' y='549'/> 
+			<part name='6' x='2269' y='521'/> 
+			<part name='7' x='1030' y='1443'/> 
+			<part name='8' x='2823' y='1383'/> 
+			<part name='9' x='967' y='697'/> 
+			<part name='10' x='2789' y='609'/> 
+			<part name='11' x='1896' y='542'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1536ind3.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1127' y='2034'/> 
+			<part name='1' x='1811' y='1898'/> 
+			<part name='2' x='2629' y='1988'/> 
+			<part name='3' x='2802' y='88'/> 
+			<part name='4' x='758' y='148'/> 
+			<part name='5' x='1236' y='347'/> 
+			<part name='6' x='2376' y='303'/> 
+			<part name='7' x='680' y='1684'/> 
+			<part name='8' x='3025' y='1650'/> 
+			<part name='9' x='573' y='600'/> 
+			<part name='10' x='2988' y='484'/> 
+			<part name='11' x='1767' y='352'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc328ind5.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1057' y='1877'/> 
+			<part name='1' x='1560' y='1828'/> 
+			<part name='2' x='2174' y='1865'/> 
+			<part name='3' x='2327' y='421'/> 
+			<part name='4' x='835' y='426'/> 
+			<part name='5' x='1178' y='651'/> 
+			<part name='6' x='1933' y='644'/> 
+			<part name='7' x='700' y='1555'/> 
+			<part name='8' x='2480' y='1555'/> 
+			<part name='9' x='647' y='725'/> 
+			<part name='10' x='2457' y='730'/> 
+			<part name='11' x='1528' y='660'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1063ind4.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1486' y='1617'/> 
+			<part name='1' x='2028' y='1555'/> 
+			<part name='2' x='2601' y='1582'/> 
+			<part name='3' x='2786' y='139'/> 
+			<part name='4' x='1252' y='183'/> 
+			<part name='5' x='1595' y='384'/> 
+			<part name='6' x='2408' y='356'/> 
+			<part name='7' x='1118' y='1302'/> 
+			<part name='8' x='2958' y='1256'/> 
+			<part name='9' x='1046' y='595'/> 
+			<part name='10' x='3002' y='509'/> 
+			<part name='11' x='2014' y='373'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc682ind1.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='851' y='1810'/> 
+			<part name='1' x='1556' y='1770'/> 
+			<part name='2' x='2311' y='1775'/> 
+			<part name='3' x='2376' y='34'/> 
+			<part name='4' x='598' y='113'/> 
+			<part name='5' x='1002' y='354'/> 
+			<part name='6' x='1931' y='322'/> 
+			<part name='7' x='385' y='1439'/> 
+			<part name='8' x='2712' y='1439'/> 
+			<part name='9' x='339' y='558'/> 
+			<part name='10' x='2677' y='479'/> 
+			<part name='11' x='1505' y='373'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc682ind19.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1305' y='1912'/> 
+			<part name='1' x='2130' y='1895'/> 
+			<part name='2' x='2909' y='1884'/> 
+			<part name='3' x='3083' y='69'/> 
+			<part name='4' x='1217' y='76'/> 
+			<part name='5' x='1627' y='398'/> 
+			<part name='6' x='2624' y='363'/> 
+			<part name='7' x='826' y='1413'/> 
+			<part name='8' x='3345' y='1467'/> 
+			<part name='9' x='937' y='507'/> 
+			<part name='10' x='3317' y='463'/> 
+			<part name='11' x='2142' y='407'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc226ind17.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='872' y='2141'/> 
+			<part name='1' x='1702' y='2109'/> 
+			<part name='2' x='2668' y='2078'/> 
+			<part name='3' x='2772' y='27'/> 
+			<part name='4' x='550' y='64'/> 
+			<part name='5' x='1041' y='331'/> 
+			<part name='6' x='2269' y='303'/> 
+			<part name='7' x='311' y='1689'/> 
+			<part name='8' x='3132' y='1640'/> 
+			<part name='9' x='251' y='519'/> 
+			<part name='10' x='3069' y='486'/> 
+			<part name='11' x='1662' y='340'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc764ind9.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1090' y='2007'/> 
+			<part name='1' x='1653' y='1928'/> 
+			<part name='2' x='2198' y='1956'/> 
+			<part name='3' x='2353' y='526'/> 
+			<part name='4' x='893' y='577'/> 
+			<part name='5' x='1199' y='797'/> 
+			<part name='6' x='1989' y='764'/> 
+			<part name='7' x='754' y='1791'/> 
+			<part name='8' x='728' y='903'/> 
+			<part name='9' x='2517' y='866'/> 
+			<part name='10' x='1614' y='783'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc764ind18.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1192' y='2102'/> 
+			<part name='1' x='1748' y='2134'/> 
+			<part name='2' x='2411' y='2088'/> 
+			<part name='3' x='2436' y='639'/> 
+			<part name='4' x='941' y='683'/> 
+			<part name='5' x='1282' y='880'/> 
+			<part name='6' x='2079' y='862'/> 
+			<part name='7' x='791' y='1763'/> 
+			<part name='8' x='2735' y='1754'/> 
+			<part name='9' x='793' y='987'/> 
+			<part name='10' x='2592' y='940'/> 
+			<part name='11' x='1692' y='883'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1058ind16.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1104' y='2039'/> 
+			<part name='1' x='1850' y='1983'/> 
+			<part name='2' x='2684' y='2011'/> 
+			<part name='3' x='2796' y='6'/> 
+			<part name='4' x='816' y='76'/> 
+			<part name='5' x='1220' y='349'/> 
+			<part name='6' x='2450' y='301'/> 
+			<part name='7' x='541' y='1527'/> 
+			<part name='8' x='3183' y='1497'/> 
+			<part name='9' x='561' y='551'/> 
+			<part name='10' x='3120' y='489'/> 
+			<part name='11' x='1824' y='324'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc226ind16.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='819' y='2160'/> 
+			<part name='1' x='1665' y='2048'/> 
+			<part name='2' x='2501' y='2155'/> 
+			<part name='3' x='2805' y='9'/> 
+			<part name='4' x='582' y='16'/> 
+			<part name='5' x='1069' y='338'/> 
+			<part name='6' x='2272' y='319'/> 
+			<part name='7' x='344' y='1789'/> 
+			<part name='8' x='2953' y='1805'/> 
+			<part name='9' x='288' y='444'/> 
+			<part name='10' x='3053' y='384'/> 
+			<part name='11' x='1722' y='356'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1063ind7.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1243' y='1483'/> 
+			<part name='1' x='1834' y='1455'/> 
+			<part name='2' x='2413' y='1476'/> 
+			<part name='3' x='2571' y='120'/> 
+			<part name='4' x='1113' y='106'/> 
+			<part name='5' x='1419' y='294'/> 
+			<part name='6' x='2260' y='285'/> 
+			<part name='7' x='928' y='1191'/> 
+			<part name='8' x='2719' y='1214'/> 
+			<part name='9' x='934' y='456'/> 
+			<part name='10' x='2721' y='412'/> 
+			<part name='11' x='1843' y='317'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1045ind5.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='958' y='1930'/> 
+			<part name='1' x='1535' y='1840'/> 
+			<part name='2' x='2228' y='1858'/> 
+			<part name='3' x='2346' y='354'/> 
+			<part name='4' x='747' y='361'/> 
+			<part name='5' x='1131' y='611'/> 
+			<part name='6' x='1970' y='567'/> 
+			<part name='7' x='550' y='1589'/> 
+			<part name='8' x='2594' y='1485'/> 
+			<part name='9' x='452' y='873'/> 
+			<part name='10' x='2608' y='794'/> 
+			<part name='11' x='1523' y='621'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc226ind12.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='965' y='2064'/> 
+			<part name='1' x='1769' y='2004'/> 
+			<part name='2' x='2564' y='2062'/> 
+			<part name='3' x='2777' y='13'/> 
+			<part name='4' x='812' y='11'/> 
+			<part name='5' x='1222' y='345'/> 
+			<part name='6' x='2344' y='322'/> 
+			<part name='7' x='508' y='1696'/> 
+			<part name='8' x='3094' y='1610'/> 
+			<part name='9' x='487' y='465'/> 
+			<part name='10' x='3083' y='354'/> 
+			<part name='11' x='1824' y='370'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1536ind4.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1016' y='2109'/> 
+			<part name='1' x='1699' y='1972'/> 
+			<part name='2' x='2543' y='2102'/> 
+			<part name='3' x='2740' y='132'/> 
+			<part name='4' x='719' y='141'/> 
+			<part name='5' x='1157' y='366'/> 
+			<part name='6' x='2272' y='356'/> 
+			<part name='7' x='496' y='1666'/> 
+			<part name='8' x='3025' y='1633'/> 
+			<part name='9' x='496' y='593'/> 
+			<part name='10' x='2918' y='544'/> 
+			<part name='11' x='1713' y='433'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc682ind2.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='830' y='2027'/> 
+			<part name='1' x='1570' y='1925'/> 
+			<part name='2' x='2376' y='1997'/> 
+			<part name='3' x='2534' y='199'/> 
+			<part name='4' x='543' y='250'/> 
+			<part name='5' x='1048' y='479'/> 
+			<part name='6' x='2047' y='447'/> 
+			<part name='7' x='357' y='1543'/> 
+			<part name='8' x='2805' y='1599'/> 
+			<part name='9' x='369' y='655'/> 
+			<part name='10' x='2719' y='551'/> 
+			<part name='11' x='1549' y='491'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc226ind15.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='958' y='2136'/> 
+			<part name='1' x='1729' y='2122'/> 
+			<part name='2' x='2589' y='2088'/> 
+			<part name='3' x='2770' y='83'/> 
+			<part name='4' x='622' y='152'/> 
+			<part name='5' x='1131' y='479'/> 
+			<part name='6' x='2311' y='428'/> 
+			<part name='7' x='464' y='1796'/> 
+			<part name='8' x='3041' y='1761'/> 
+			<part name='9' x='362' y='593'/> 
+			<part name='10' x='3057' y='507'/> 
+			<part name='11' x='1706' y='454'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1103ind16.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1284' y='1805'/> 
+			<part name='1' x='1871' y='1789'/> 
+			<part name='2' x='2395' y='1803'/> 
+			<part name='3' x='2633' y='426'/> 
+			<part name='4' x='1141' y='447'/> 
+			<part name='5' x='1479' y='621'/> 
+			<part name='6' x='2274' y='628'/> 
+			<part name='7' x='988' y='1569'/> 
+			<part name='8' x='2745' y='1520'/> 
+			<part name='9' x='928' y='855'/> 
+			<part name='10' x='2828' y='822'/> 
+			<part name='11' x='1892' y='658'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1058ind8.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1113' y='2109'/> 
+			<part name='1' x='1776' y='2000'/> 
+			<part name='2' x='2508' y='2071'/> 
+			<part name='3' x='2710' y='196'/> 
+			<part name='4' x='784' y='234'/> 
+			<part name='5' x='1192' y='500'/> 
+			<part name='6' x='2253' y='470'/> 
+			<part name='7' x='638' y='1626'/> 
+			<part name='8' x='2909' y='1596'/> 
+			<part name='9' x='589' y='686'/> 
+			<part name='10' x='2851' y='588'/> 
+			<part name='11' x='1713' y='509'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc342ind11.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='925' y='2109'/> 
+			<part name='1' x='1790' y='2092'/> 
+			<part name='2' x='2687' y='2104'/> 
+			<part name='3' x='2867' y='62'/> 
+			<part name='4' x='594' y='76'/> 
+			<part name='5' x='1099' y='417'/> 
+			<part name='6' x='2362' y='380'/> 
+			<part name='7' x='244' y='1633'/> 
+			<part name='8' x='3308' y='1617'/> 
+			<part name='9' x='244' y='523'/> 
+			<part name='10' x='3180' y='486'/> 
+			<part name='11' x='1690' y='470'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc11489ind4.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1053' y='1944'/> 
+			<part name='1' x='1607' y='1738'/> 
+			<part name='2' x='2251' y='1840'/> 
+			<part name='3' x='2344' y='336'/> 
+			<part name='4' x='703' y='486'/> 
+			<part name='5' x='1122' y='646'/> 
+			<part name='6' x='1980' y='574'/> 
+			<part name='7' x='652' y='1596'/> 
+			<part name='8' x='2557' y='1571'/> 
+			<part name='9' x='566' y='815'/> 
+			<part name='10' x='2499' y='667'/> 
+			<part name='11' x='1532' y='600'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1809ind2.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1025' y='1844'/> 
+			<part name='1' x='1523' y='1791'/> 
+			<part name='2' x='2075' y='1823'/> 
+			<part name='3' x='2179' y='435'/> 
+			<part name='4' x='814' y='449'/> 
+			<part name='5' x='1106' y='648'/> 
+			<part name='6' x='1887' y='614'/> 
+			<part name='7' x='677' y='1552'/> 
+			<part name='8' x='2406' y='1524'/> 
+			<part name='9' x='640' y='776'/> 
+			<part name='10' x='2337' y='743'/> 
+			<part name='11' x='1500' y='651'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1536ind18.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='981' y='1986'/> 
+			<part name='1' x='1762' y='1914'/> 
+			<part name='2' x='2647' y='1951'/> 
+			<part name='3' x='2761' y='18'/> 
+			<part name='4' x='680' y='78'/> 
+			<part name='5' x='1201' y='340'/> 
+			<part name='6' x='2325' y='298'/> 
+			<part name='7' x='522' y='1645'/> 
+			<part name='8' x='3046' y='1650'/> 
+			<part name='9' x='432' y='542'/> 
+			<part name='10' x='3039' y='514'/> 
+			<part name='11' x='1727' y='347'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1916ind10.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1020' y='2122'/> 
+			<part name='1' x='1773' y='2000'/> 
+			<part name='2' x='2652' y='2078'/> 
+			<part name='3' x='2805' y='92'/> 
+			<part name='4' x='670' y='148'/> 
+			<part name='5' x='1187' y='380'/> 
+			<part name='6' x='2313' y='329'/> 
+			<part name='7' x='538' y='1749'/> 
+			<part name='8' x='3106' y='1615'/> 
+			<part name='9' x='436' y='600'/> 
+			<part name='10' x='3027' y='523'/> 
+			<part name='11' x='1764' y='393'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc764ind3.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1155' y='1615'/> 
+			<part name='1' x='1709' y='1545'/> 
+			<part name='2' x='2327' y='1569'/> 
+			<part name='3' x='2425' y='134'/> 
+			<part name='4' x='955' y='206'/> 
+			<part name='5' x='1257' y='382'/> 
+			<part name='6' x='2100' y='356'/> 
+			<part name='7' x='754' y='1244'/> 
+			<part name='8' x='2638' y='1263'/> 
+			<part name='9' x='768' y='516'/> 
+			<part name='10' x='2592' y='456'/> 
+			<part name='11' x='1697' y='375'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc764ind8.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1428' y='1851'/> 
+			<part name='1' x='1936' y='1805'/> 
+			<part name='2' x='2559' y='1830'/> 
+			<part name='3' x='2659' y='359'/> 
+			<part name='4' x='1176' y='396'/> 
+			<part name='5' x='1495' y='611'/> 
+			<part name='6' x='2332' y='602'/> 
+			<part name='7' x='1036' y='1529'/> 
+			<part name='8' x='2921' y='1504'/> 
+			<part name='9' x='997' y='757'/> 
+			<part name='10' x='2826' y='713'/> 
+			<part name='11' x='1940' y='597'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1103ind10.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1081' y='1856'/> 
+			<part name='1' x='1734' y='1837'/> 
+			<part name='2' x='2378' y='1844'/> 
+			<part name='3' x='2575' y='273'/> 
+			<part name='4' x='870' y='308'/> 
+			<part name='5' x='1294' y='553'/> 
+			<part name='6' x='2154' y='516'/> 
+			<part name='7' x='663' y='1506'/> 
+			<part name='8' x='2782' y='1436'/> 
+			<part name='9' x='642' y='739'/> 
+			<part name='10' x='2805' y='672'/> 
+			<part name='11' x='1716' y='519'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1536ind1.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='911' y='2007'/> 
+			<part name='1' x='1655' y='1946'/> 
+			<part name='2' x='2455' y='1969'/> 
+			<part name='3' x='2534' y='76'/> 
+			<part name='4' x='680' y='136'/> 
+			<part name='5' x='1097' y='382'/> 
+			<part name='6' x='2163' y='349'/> 
+			<part name='7' x='420' y='1587'/> 
+			<part name='8' x='2867' y='1624'/> 
+			<part name='9' x='432' y='644'/> 
+			<part name='10' x='2802' y='553'/> 
+			<part name='11' x='1618' y='414'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc342ind12.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1101' y='2160'/> 
+			<part name='1' x='1940' y='2146'/> 
+			<part name='2' x='2953' y='2155'/> 
+			<part name='3' x='3108' y='39'/> 
+			<part name='4' x='756' y='37'/> 
+			<part name='5' x='1282' y='324'/> 
+			<part name='6' x='2543' y='301'/> 
+			<part name='7' x='434' y='1731'/> 
+			<part name='8' x='3502' y='1708'/> 
+			<part name='9' x='411' y='433'/> 
+			<part name='10' x='3345' y='370'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc682ind10.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1308' y='2090'/> 
+			<part name='1' x='2070' y='1944'/> 
+			<part name='2' x='2835' y='2025'/> 
+			<part name='3' x='2939' y='108'/> 
+			<part name='4' x='1016' y='201'/> 
+			<part name='5' x='1396' y='449'/> 
+			<part name='6' x='2529' y='391'/> 
+			<part name='7' x='819' y='1691'/> 
+			<part name='8' x='3261' y='1629'/> 
+			<part name='9' x='784' y='590'/> 
+			<part name='10' x='3190' y='544'/> 
+			<part name='11' x='1968' y='477'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1058ind4.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1067' y='2150'/> 
+			<part name='1' x='1773' y='2048'/> 
+			<part name='2' x='2541' y='2109'/> 
+			<part name='3' x='2724' y='108'/> 
+			<part name='4' x='751' y='164'/> 
+			<part name='5' x='1240' y='454'/> 
+			<part name='6' x='2276' y='412'/> 
+			<part name='7' x='573' y='1754'/> 
+			<part name='8' x='2974' y='1724'/> 
+			<part name='9' x='522' y='616'/> 
+			<part name='10' x='2951' y='572'/> 
+			<part name='11' x='1739' y='396'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc764ind6.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1389' y='1696'/> 
+			<part name='1' x='1943' y='1647'/> 
+			<part name='2' x='2529' y='1659'/> 
+			<part name='3' x='2629' y='220'/> 
+			<part name='4' x='1166' y='280'/> 
+			<part name='5' x='1495' y='489'/> 
+			<part name='6' x='2272' y='456'/> 
+			<part name='7' x='1039' y='1450'/> 
+			<part name='8' x='2823' y='1478'/> 
+			<part name='9' x='960' y='639'/> 
+			<part name='10' x='2837' y='549'/> 
+			<part name='11' x='1887' y='493'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1045ind16.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='642' y='2058'/> 
+			<part name='1' x='1266' y='1974'/> 
+			<part name='2' x='1936' y='2051'/> 
+			<part name='3' x='2059' y='477'/> 
+			<part name='4' x='427' y='491'/> 
+			<part name='5' x='802' y='727'/> 
+			<part name='6' x='1662' y='697'/> 
+			<part name='7' x='304' y='1814'/> 
+			<part name='8' x='2258' y='1772'/> 
+			<part name='9' x='179' y='952'/> 
+			<part name='10' x='2325' y='931'/> 
+			<part name='11' x='1240' y='720'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc990ind4.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='923' y='1963'/> 
+			<part name='1' x='1674' y='1895'/> 
+			<part name='2' x='2422' y='1918'/> 
+			<part name='3' x='2668' y='34'/> 
+			<part name='4' x='619' y='92'/> 
+			<part name='5' x='1030' y='303'/> 
+			<part name='6' x='2214' y='282'/> 
+			<part name='7' x='464' y='1615'/> 
+			<part name='8' x='2828' y='1596'/> 
+			<part name='9' x='441' y='482'/> 
+			<part name='10' x='2830' y='428'/> 
+			<part name='11' x='1625' y='333'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc764ind1.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1352' y='2023'/> 
+			<part name='1' x='1991' y='2018'/> 
+			<part name='2' x='2645' y='2013'/> 
+			<part name='3' x='2765' y='595'/> 
+			<part name='4' x='1227' y='641'/> 
+			<part name='5' x='1542' y='801'/> 
+			<part name='6' x='2381' y='771'/> 
+			<part name='7' x='1009' y='1687'/> 
+			<part name='8' x='2953' y='1698'/> 
+			<part name='9' x='1006' y='945'/> 
+			<part name='10' x='2918' y='883'/> 
+			<part name='11' x='1952' y='794'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1046ind14.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='928' y='2037'/> 
+			<part name='1' x='1706' y='1974'/> 
+			<part name='2' x='2524' y='1993'/> 
+			<part name='3' x='2763' y='57'/> 
+			<part name='4' x='666' y='118'/> 
+			<part name='5' x='1101' y='391'/> 
+			<part name='6' x='2258' y='356'/> 
+			<part name='7' x='401' y='1626'/> 
+			<part name='8' x='3050' y='1564'/> 
+			<part name='9' x='404' y='604'/> 
+			<part name='10' x='3011' y='509'/> 
+			<part name='11' x='1685' y='380'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1058ind7.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='934' y='1963'/> 
+			<part name='1' x='1653' y='1893'/> 
+			<part name='2' x='2369' y='1930'/> 
+			<part name='3' x='2571' y='81'/> 
+			<part name='4' x='707' y='113'/> 
+			<part name='5' x='1120' y='442'/> 
+			<part name='6' x='2209' y='366'/> 
+			<part name='7' x='464' y='1606'/> 
+			<part name='8' x='2798' y='1633'/> 
+			<part name='9' x='445' y='570'/> 
+			<part name='10' x='2807' y='468'/> 
+			<part name='11' x='1621' y='410'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1046ind16.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='904' y='2122'/> 
+			<part name='1' x='1655' y='2032'/> 
+			<part name='2' x='2575' y='2088'/> 
+			<part name='3' x='2742' y='78'/> 
+			<part name='4' x='545' y='118'/> 
+			<part name='5' x='1050' y='361'/> 
+			<part name='6' x='2214' y='322'/> 
+			<part name='7' x='325' y='1664'/> 
+			<part name='8' x='3041' y='1666'/> 
+			<part name='9' x='276' y='604'/> 
+			<part name='10' x='2976' y='507'/> 
+			<part name='11' x='1595' y='324'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc342ind9.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='904' y='2132'/> 
+			<part name='1' x='1727' y='2074'/> 
+			<part name='2' x='2557' y='2132'/> 
+			<part name='3' x='2877' y='32'/> 
+			<part name='4' x='659' y='48'/> 
+			<part name='5' x='1173' y='336'/> 
+			<part name='6' x='2318' y='292'/> 
+			<part name='7' x='323' y='1601'/> 
+			<part name='8' x='3190' y='1534'/> 
+			<part name='9' x='406' y='428'/> 
+			<part name='10' x='3090' y='396'/> 
+			<part name='11' x='1734' y='343'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc328ind8.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1245' y='1935'/> 
+			<part name='1' x='1764' y='1854'/> 
+			<part name='2' x='2323' y='1907'/> 
+			<part name='3' x='2455' y='458'/> 
+			<part name='4' x='1081' y='491'/> 
+			<part name='5' x='1386' y='739'/> 
+			<part name='6' x='2112' y='713'/> 
+			<part name='7' x='879' y='1573'/> 
+			<part name='8' x='2689' y='1548'/> 
+			<part name='9' x='851' y='878'/> 
+			<part name='10' x='2645' y='806'/> 
+			<part name='11' x='1755' y='716'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1046ind11.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1120' y='2157'/> 
+			<part name='1' x='1915' y='2048'/> 
+			<part name='2' x='2751' y='2150'/> 
+			<part name='3' x='2983' y='44'/> 
+			<part name='4' x='837' y='44'/> 
+			<part name='5' x='1379' y='398'/> 
+			<part name='6' x='2464' y='347'/> 
+			<part name='7' x='517' y='1689'/> 
+			<part name='8' x='3324' y='1666'/> 
+			<part name='9' x='522' y='609'/> 
+			<part name='10' x='3259' y='556'/> 
+			<part name='11' x='1887' y='336'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1063ind8.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1067' y='1916'/> 
+			<part name='1' x='1658' y='1833'/> 
+			<part name='2' x='2149' y='1909'/> 
+			<part name='3' x='2362' y='470'/> 
+			<part name='4' x='925' y='463'/> 
+			<part name='5' x='1280' y='672'/> 
+			<part name='6' x='2005' y='658'/> 
+			<part name='7' x='772' y='1594'/> 
+			<part name='8' x='2485' y='1566'/> 
+			<part name='9' x='800' y='836'/> 
+			<part name='10' x='2510' y='790'/> 
+			<part name='11' x='1646' y='676'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1809ind14.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1440' y='1830'/> 
+			<part name='1' x='1947' y='1770'/> 
+			<part name='2' x='2538' y='1796'/> 
+			<part name='3' x='2589' y='389'/> 
+			<part name='4' x='1217' y='428'/> 
+			<part name='5' x='1579' y='688'/> 
+			<part name='6' x='2276' y='644'/> 
+			<part name='7' x='1101' y='1603'/> 
+			<part name='8' x='2847' y='1543'/> 
+			<part name='9' x='1041' y='767'/> 
+			<part name='10' x='2749' y='692'/> 
+			<part name='11' x='1910' y='686'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc357ind4.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1377' y='2088'/> 
+			<part name='1' x='1889' y='1983'/> 
+			<part name='2' x='2446' y='2044'/> 
+			<part name='3' x='2571' y='609'/> 
+			<part name='4' x='1125' y='676'/> 
+			<part name='5' x='1454' y='869'/> 
+			<part name='6' x='2260' y='834'/> 
+			<part name='7' x='1006' y='1807'/> 
+			<part name='8' x='2751' y='1775'/> 
+			<part name='9' x='951' y='924'/> 
+			<part name='10' x='2751' y='880'/> 
+			<part name='11' x='1859' y='841'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1046ind3.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='768' y='2122'/> 
+			<part name='1' x='1546' y='2000'/> 
+			<part name='2' x='2357' y='2090'/> 
+			<part name='3' x='2575' y='108'/> 
+			<part name='4' x='464' y='152'/> 
+			<part name='5' x='911' y='424'/> 
+			<part name='6' x='2126' y='370'/> 
+			<part name='7' x='274' y='1728'/> 
+			<part name='8' x='2816' y='1717'/> 
+			<part name='9' x='218' y='593'/> 
+			<part name='10' x='2800' y='537'/> 
+			<part name='11' x='1477' y='403'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc2289ind8.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1458' y='2095'/> 
+			<part name='1' x='2126' y='2092'/> 
+			<part name='2' x='2777' y='2081'/> 
+			<part name='3' x='2983' y='484'/> 
+			<part name='4' x='1266' y='498'/> 
+			<part name='5' x='1662' y='769'/> 
+			<part name='6' x='2578' y='762'/> 
+			<part name='7' x='1085' y='1782'/> 
+			<part name='8' x='3159' y='1738'/> 
+			<part name='9' x='1060' y='887'/> 
+			<part name='10' x='3199' y='848'/> 
+			<part name='11' x='2140' y='755'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc2290ind15.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1317' y='1747'/> 
+			<part name='1' x='1880' y='1687'/> 
+			<part name='2' x='2443' y='1721'/> 
+			<part name='3' x='2578' y='213'/> 
+			<part name='4' x='1104' y='259'/> 
+			<part name='5' x='1419' y='456'/> 
+			<part name='6' x='2246' y='438'/> 
+			<part name='7' x='916' y='1429'/> 
+			<part name='8' x='2809' y='1395'/> 
+			<part name='9' x='888' y='602'/> 
+			<part name='10' x='2802' y='544'/> 
+			<part name='11' x='1829' y='482'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc8480ind10.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='946' y='1851'/> 
+			<part name='1' x='1456' y='1833'/> 
+			<part name='2' x='1975' y='1867'/> 
+			<part name='3' x='2232' y='440'/> 
+			<part name='4' x='726' y='417'/> 
+			<part name='5' x='1046' y='676'/> 
+			<part name='6' x='1866' y='653'/> 
+			<part name='7' x='529' y='1564'/> 
+			<part name='8' x='2367' y='1633'/> 
+			<part name='9' x='557' y='720'/> 
+			<part name='10' x='2378' y='736'/> 
+			<part name='11' x='1440' y='658'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc2290ind9.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1078' y='1766'/> 
+			<part name='1' x='1660' y='1691'/> 
+			<part name='2' x='2464' y='1717'/> 
+			<part name='3' x='2497' y='146'/> 
+			<part name='4' x='782' y='199'/> 
+			<part name='5' x='1178' y='433'/> 
+			<part name='6' x='2035' y='410'/> 
+			<part name='7' x='645' y='1402'/> 
+			<part name='8' x='2763' y='1399'/> 
+			<part name='9' x='585' y='535'/> 
+			<part name='10' x='2650' y='465'/> 
+			<part name='11' x='1614' y='419'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1045ind14.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='948' y='1886'/> 
+			<part name='1' x='1565' y='1842'/> 
+			<part name='2' x='2267' y='1844'/> 
+			<part name='3' x='2344' y='280'/> 
+			<part name='4' x='696' y='322'/> 
+			<part name='5' x='1131' y='565'/> 
+			<part name='6' x='1947' y='528'/> 
+			<part name='7' x='589' y='1626'/> 
+			<part name='8' x='2610' y='1552'/> 
+			<part name='9' x='432' y='887'/> 
+			<part name='10' x='2647' y='843'/> 
+			<part name='11' x='1553' y='553'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1536ind10.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1053' y='2039'/> 
+			<part name='1' x='1797' y='1928'/> 
+			<part name='2' x='2643' y='1997'/> 
+			<part name='3' x='2768' y='85'/> 
+			<part name='4' x='731' y='155'/> 
+			<part name='5' x='1229' y='393'/> 
+			<part name='6' x='2297' y='366'/> 
+			<part name='7' x='580' y='1673'/> 
+			<part name='8' x='3055' y='1643'/> 
+			<part name='9' x='522' y='588'/> 
+			<part name='10' x='2960' y='516'/> 
+			<part name='11' x='1734' y='412'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc764ind14.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1495' y='1677'/> 
+			<part name='1' x='2135' y='1689'/> 
+			<part name='2' x='2768' y='1657'/> 
+			<part name='3' x='2986' y='245'/> 
+			<part name='4' x='1298' y='280'/> 
+			<part name='5' x='1697' y='479'/> 
+			<part name='6' x='2564' y='458'/> 
+			<part name='7' x='1113' y='1376'/> 
+			<part name='8' x='3145' y='1362'/> 
+			<part name='9' x='1122' y='621'/> 
+			<part name='10' x='3120' y='556'/> 
+			<part name='11' x='2133' y='486'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc357ind16.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1502' y='1622'/> 
+			<part name='1' x='2098' y='1566'/> 
+			<part name='2' x='2775' y='1575'/> 
+			<part name='3' x='2858' y='55'/> 
+			<part name='4' x='1224' y='122'/> 
+			<part name='5' x='1579' y='336'/> 
+			<part name='6' x='2483' y='303'/> 
+			<part name='7' x='1113' y='1272'/> 
+			<part name='8' x='3076' y='1251'/> 
+			<part name='9' x='1090' y='389'/> 
+			<part name='10' x='2999' y='289'/> 
+			<part name='11' x='2049' y='322'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1809ind12.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1634' y='1740'/> 
+			<part name='1' x='2116' y='1708'/> 
+			<part name='2' x='2738' y='1708'/> 
+			<part name='3' x='2886' y='298'/> 
+			<part name='4' x='1338' y='324'/> 
+			<part name='5' x='1683' y='553'/> 
+			<part name='6' x='2513' y='526'/> 
+			<part name='7' x='1185' y='1420'/> 
+			<part name='8' x='3067' y='1467'/> 
+			<part name='9' x='1157' y='665'/> 
+			<part name='10' x='3050' y='637'/> 
+			<part name='11' x='2100' y='544'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1045ind4.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1036' y='1763'/> 
+			<part name='1' x='1621' y='1749'/> 
+			<part name='2' x='2286' y='1745'/> 
+			<part name='3' x='2450' y='322'/> 
+			<part name='4' x='793' y='324'/> 
+			<part name='5' x='1176' y='546'/> 
+			<part name='6' x='2086' y='507'/> 
+			<part name='7' x='714' y='1508'/> 
+			<part name='8' x='2587' y='1480'/> 
+			<part name='9' x='578' y='755'/> 
+			<part name='10' x='2636' y='686'/> 
+			<part name='11' x='1602' y='542'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc328ind15.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1268' y='1844'/> 
+			<part name='1' x='1852' y='1805'/> 
+			<part name='2' x='2487' y='1791'/> 
+			<part name='3' x='2529' y='317'/> 
+			<part name='4' x='1090' y='356'/> 
+			<part name='5' x='1426' y='651'/> 
+			<part name='6' x='2214' y='625'/> 
+			<part name='7' x='895' y='1548'/> 
+			<part name='8' x='2772' y='1545'/> 
+			<part name='9' x='851' y='704'/> 
+			<part name='10' x='2775' y='637'/> 
+			<part name='11' x='1811' y='644'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc226ind20.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='921' y='2058'/> 
+			<part name='1' x='1632' y='2099'/> 
+			<part name='2' x='2480' y='2055'/> 
+			<part name='3' x='2624' y='118'/> 
+			<part name='4' x='610' y='132'/> 
+			<part name='5' x='1050' y='472'/> 
+			<part name='6' x='2119' y='461'/> 
+			<part name='7' x='422' y='1740'/> 
+			<part name='8' x='2900' y='1740'/> 
+			<part name='9' x='281' y='632'/> 
+			<part name='10' x='2870' y='570'/> 
+			<part name='11' x='1567' y='479'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc682ind3.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1050' y='2069'/> 
+			<part name='1' x='1804' y='1967'/> 
+			<part name='2' x='2582' y='2004'/> 
+			<part name='3' x='2694' y='57'/> 
+			<part name='4' x='733' y='150'/> 
+			<part name='5' x='1224' y='461'/> 
+			<part name='6' x='2223' y='428'/> 
+			<part name='7' x='501' y='1592'/> 
+			<part name='8' x='3081' y='1520'/> 
+			<part name='9' x='534' y='577'/> 
+			<part name='10' x='2923' y='475'/> 
+			<part name='11' x='1741' y='456'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc2290ind13.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1030' y='1610'/> 
+			<part name='1' x='1565' y='1550'/> 
+			<part name='2' x='2235' y='1571'/> 
+			<part name='3' x='2323' y='85'/> 
+			<part name='4' x='754' y='125'/> 
+			<part name='5' x='1122' y='312'/> 
+			<part name='6' x='1940' y='273'/> 
+			<part name='7' x='594' y='1290'/> 
+			<part name='8' x='2548' y='1279'/> 
+			<part name='9' x='501' y='442'/> 
+			<part name='10' x='2504' y='377'/> 
+			<part name='11' x='1493' y='329'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_FC8480ind4.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1379' y='1816'/> 
+			<part name='1' x='1926' y='1613'/> 
+			<part name='2' x='2534' y='1756'/> 
+			<part name='3' x='2728' y='210'/> 
+			<part name='4' x='1016' y='264'/> 
+			<part name='5' x='1454' y='424'/> 
+			<part name='6' x='2311' y='410'/> 
+			<part name='7' x='985' y='1534'/> 
+			<part name='8' x='2879' y='1494'/> 
+			<part name='9' x='872' y='563'/> 
+			<part name='10' x='2877' y='491'/> 
+			<part name='11' x='1885' y='384'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1809ind16.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='990' y='2013'/> 
+			<part name='1' x='1528' y='1969'/> 
+			<part name='2' x='2163' y='2000'/> 
+			<part name='3' x='2286' y='558'/> 
+			<part name='4' x='710' y='567'/> 
+			<part name='5' x='1081' y='778'/> 
+			<part name='6' x='1924' y='757'/> 
+			<part name='7' x='652' y='1768'/> 
+			<part name='8' x='2494' y='1721'/> 
+			<part name='9' x='541' y='894'/> 
+			<part name='10' x='2411' y='857'/> 
+			<part name='11' x='1477' y='781'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc342ind4.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='879' y='2023'/> 
+			<part name='1' x='1713' y='2032'/> 
+			<part name='2' x='2605' y='2011'/> 
+			<part name='3' x='2828' y='50'/> 
+			<part name='4' x='615' y='104'/> 
+			<part name='5' x='1131' y='356'/> 
+			<part name='6' x='2281' y='308'/> 
+			<part name='7' x='401' y='1622'/> 
+			<part name='8' x='3129' y='1608'/> 
+			<part name='9' x='390' y='539'/> 
+			<part name='10' x='3048' y='461'/> 
+			<part name='11' x='1722' y='343'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc2290ind12.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='921' y='1793'/> 
+			<part name='1' x='1481' y='1777'/> 
+			<part name='2' x='2045' y='1772'/> 
+			<part name='3' x='2174' y='435'/> 
+			<part name='4' x='770' y='454'/> 
+			<part name='5' x='1081' y='688'/> 
+			<part name='6' x='1862' y='674'/> 
+			<part name='7' x='550' y='1464'/> 
+			<part name='8' x='2422' y='1416'/> 
+			<part name='9' x='594' y='713'/> 
+			<part name='10' x='2332' y='676'/> 
+			<part name='11' x='1451' y='686'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1046ind10.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1071' y='2092'/> 
+			<part name='1' x='1780' y='2030'/> 
+			<part name='2' x='2564' y='2076'/> 
+			<part name='3' x='2777' y='236'/> 
+			<part name='4' x='784' y='264'/> 
+			<part name='5' x='1250' y='516'/> 
+			<part name='6' x='2286' y='472'/> 
+			<part name='7' x='626' y='1710'/> 
+			<part name='8' x='2916' y='1752'/> 
+			<part name='9' x='561' y='720'/> 
+			<part name='10' x='2951' y='637'/> 
+			<part name='11' x='1725' y='489'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1103ind14.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1746' y='2000'/> 
+			<part name='1' x='2274' y='1958'/> 
+			<part name='2' x='2881' y='1972'/> 
+			<part name='3' x='3023' y='523'/> 
+			<part name='4' x='1468' y='574'/> 
+			<part name='5' x='1873' y='778'/> 
+			<part name='6' x='2645' y='739'/> 
+			<part name='7' x='1291' y='1696'/> 
+			<part name='8' x='3266' y='1694'/> 
+			<part name='9' x='1231' y='915'/> 
+			<part name='10' x='3275' y='876'/> 
+			<part name='11' x='2232' y='741'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc328ind1.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1166' y='1761'/> 
+			<part name='1' x='1685' y='1740'/> 
+			<part name='2' x='2302' y='1687'/> 
+			<part name='3' x='2339' y='308'/> 
+			<part name='4' x='828' y='407'/> 
+			<part name='5' x='1231' y='635'/> 
+			<part name='6' x='1994' y='563'/> 
+			<part name='7' x='733' y='1420'/> 
+			<part name='8' x='2612' y='1337'/> 
+			<part name='9' x='677' y='732'/> 
+			<part name='10' x='2531' y='628'/> 
+			<part name='11' x='1602' y='621'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc764ind19.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='809' y='1863'/> 
+			<part name='1' x='1419' y='1821'/> 
+			<part name='2' x='2061' y='1842'/> 
+			<part name='3' x='2235' y='356'/> 
+			<part name='4' x='619' y='410'/> 
+			<part name='5' x='953' y='586'/> 
+			<part name='6' x='1845' y='565'/> 
+			<part name='7' x='408' y='1469'/> 
+			<part name='8' x='2462' y='1462'/> 
+			<part name='9' x='394' y='676'/> 
+			<part name='10' x='2415' y='630'/> 
+			<part name='11' x='1421' y='600'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1536ind2.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1180' y='2020'/> 
+			<part name='1' x='1984' y='1951'/> 
+			<part name='2' x='2856' y='2020'/> 
+			<part name='3' x='3011' y='83'/> 
+			<part name='4' x='1034' y='81'/> 
+			<part name='5' x='1495' y='285'/> 
+			<part name='6' x='2499' y='275'/> 
+			<part name='7' x='744' y='1624'/> 
+			<part name='8' x='3285' y='1603'/> 
+			<part name='9' x='772' y='533'/> 
+			<part name='10' x='3217' y='484'/> 
+			<part name='11' x='2003' y='310'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1809ind15.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1018' y='1935'/> 
+			<part name='1' x='1560' y='1895'/> 
+			<part name='2' x='2221' y='1914'/> 
+			<part name='3' x='2302' y='479'/> 
+			<part name='4' x='756' y='505'/> 
+			<part name='5' x='1127' y='720'/> 
+			<part name='6' x='1917' y='704'/> 
+			<part name='7' x='670' y='1668'/> 
+			<part name='8' x='2510' y='1647'/> 
+			<part name='9' x='591' y='818'/> 
+			<part name='10' x='2459' y='781'/> 
+			<part name='11' x='1509' y='711'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc19142ind7p.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='779' y='2153'/> 
+			<part name='1' x='1621' y='2048'/> 
+			<part name='2' x='2478' y='2157'/> 
+			<part name='3' x='2742' y='185'/> 
+			<part name='4' x='566' y='148'/> 
+			<part name='5' x='1064' y='331'/> 
+			<part name='6' x='2281' y='340'/> 
+			<part name='7' x='337' y='1763'/> 
+			<part name='8' x='2944' y='1726'/> 
+			<part name='9' x='320' y='609'/> 
+			<part name='10' x='2960' y='563'/> 
+			<part name='11' x='1674' y='278'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc328ind10.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1440' y='1953'/> 
+			<part name='1' x='1996' y='1944'/> 
+			<part name='2' x='2561' y='1932'/> 
+			<part name='3' x='2721' y='489'/> 
+			<part name='4' x='1233' y='502'/> 
+			<part name='5' x='1565' y='771'/> 
+			<part name='6' x='2388' y='764'/> 
+			<part name='7' x='990' y='1594'/> 
+			<part name='8' x='2997' y='1580'/> 
+			<part name='9' x='997' y='852'/> 
+			<part name='10' x='2930' y='808'/> 
+			<part name='11' x='1975' y='776'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc682ind15.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='992' y='2055'/> 
+			<part name='1' x='1829' y='1974'/> 
+			<part name='2' x='2654' y='2027'/> 
+			<part name='3' x='2925' y='34'/> 
+			<part name='4' x='828' y='30'/> 
+			<part name='5' x='1250' y='326'/> 
+			<part name='6' x='2464' y='303'/> 
+			<part name='7' x='459' y='1687'/> 
+			<part name='8' x='3194' y='1629'/> 
+			<part name='9' x='503' y='489'/> 
+			<part name='10' x='3231' y='484'/> 
+			<part name='11' x='1873' y='329'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc2289ind10.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1576' y='2051'/> 
+			<part name='1' x='2198' y='2025'/> 
+			<part name='2' x='2772' y='2009'/> 
+			<part name='3' x='2993' y='632'/> 
+			<part name='4' x='1407' y='676'/> 
+			<part name='5' x='1769' y='917'/> 
+			<part name='6' x='2619' y='885'/> 
+			<part name='7' x='1176' y='1728'/> 
+			<part name='8' x='3169' y='1694'/> 
+			<part name='9' x='1231' y='984'/> 
+			<part name='10' x='3141' y='894'/> 
+			<part name='11' x='2218' y='903'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1536ind14.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='914' y='2136'/> 
+			<part name='1' x='1711' y='2016'/> 
+			<part name='2' x='2652' y='2113'/> 
+			<part name='3' x='2860' y='101'/> 
+			<part name='4' x='640' y='106'/> 
+			<part name='5' x='1127' y='333'/> 
+			<part name='6' x='2260' y='303'/> 
+			<part name='7' x='439' y='1735'/> 
+			<part name='8' x='3050' y='1726'/> 
+			<part name='9' x='339' y='611'/> 
+			<part name='10' x='3041' y='558'/> 
+			<part name='11' x='1623' y='312'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc19142ind3p.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='839' y='2125'/> 
+			<part name='1' x='1544' y='2004'/> 
+			<part name='2' x='2258' y='2109'/> 
+			<part name='3' x='2487' y='308'/> 
+			<part name='4' x='585' y='336'/> 
+			<part name='5' x='1013' y='565'/> 
+			<part name='6' x='2061' y='539'/> 
+			<part name='7' x='434' y='1786'/> 
+			<part name='8' x='2666' y='1735'/> 
+			<part name='9' x='371' y='801'/> 
+			<part name='10' x='2694' y='750'/> 
+			<part name='11' x='1556' y='551'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc342ind1.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1099' y='1995'/> 
+			<part name='1' x='1901' y='1928'/> 
+			<part name='2' x='2738' y='1976'/> 
+			<part name='3' x='3027' y='9'/> 
+			<part name='4' x='768' y='48'/> 
+			<part name='5' x='1340' y='333'/> 
+			<part name='6' x='2492' y='282'/> 
+			<part name='7' x='575' y='1643'/> 
+			<part name='8' x='3291' y='1613'/> 
+			<part name='9' x='522' y='396'/> 
+			<part name='10' x='3285' y='382'/> 
+			<part name='11' x='1887' y='317'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc11489ind6.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1368' y='1511'/> 
+			<part name='1' x='1954' y='1480'/> 
+			<part name='2' x='2536' y='1471'/> 
+			<part name='3' x='2680' y='34'/> 
+			<part name='4' x='1145' y='76'/> 
+			<part name='5' x='1519' y='278'/> 
+			<part name='6' x='2295' y='257'/> 
+			<part name='7' x='999' y='1179'/> 
+			<part name='8' x='2830' y='1158'/> 
+			<part name='9' x='988' y='424'/> 
+			<part name='10' x='2849' y='391'/> 
+			<part name='11' x='1899' y='278'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1058ind14.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1233' y='2143'/> 
+			<part name='1' x='1982' y='2041'/> 
+			<part name='2' x='2870' y='2095'/> 
+			<part name='3' x='3006' y='106'/> 
+			<part name='4' x='879' y='176'/> 
+			<part name='5' x='1291' y='431'/> 
+			<part name='6' x='2587' y='382'/> 
+			<part name='7' x='733' y='1726'/> 
+			<part name='8' x='3261' y='1754'/> 
+			<part name='9' x='666' y='621'/> 
+			<part name='10' x='3213' y='489'/> 
+			<part name='11' x='1957' y='428'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1058ind1.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1011' y='2078'/> 
+			<part name='1' x='1683' y='1912'/> 
+			<part name='2' x='2494' y='2034'/> 
+			<part name='3' x='2587' y='136'/> 
+			<part name='4' x='726' y='236'/> 
+			<part name='5' x='1094' y='495'/> 
+			<part name='6' x='2186' y='468'/> 
+			<part name='7' x='573' y='1694'/> 
+			<part name='8' x='2909' y='1633'/> 
+			<part name='9' x='513' y='686'/> 
+			<part name='10' x='2823' y='590'/> 
+			<part name='11' x='1667' y='512'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc11489ind1.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1535' y='1942'/> 
+			<part name='1' x='2063' y='1918'/> 
+			<part name='2' x='2659' y='1928'/> 
+			<part name='3' x='2837' y='523'/> 
+			<part name='4' x='1291' y='523'/> 
+			<part name='5' x='1632' y='753'/> 
+			<part name='6' x='2478' y='736'/> 
+			<part name='7' x='1129' y='1603'/> 
+			<part name='8' x='3020' y='1617'/> 
+			<part name='9' x='1115' y='852'/> 
+			<part name='10' x='2999' y='857'/> 
+			<part name='11' x='2068' y='757'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc990ind2.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='826' y='2141'/> 
+			<part name='1' x='1604' y='2095'/> 
+			<part name='2' x='2504' y='2139'/> 
+			<part name='3' x='2673' y='285'/> 
+			<part name='4' x='547' y='285'/> 
+			<part name='5' x='1053' y='581'/> 
+			<part name='6' x='2144' y='567'/> 
+			<part name='7' x='374' y='1847'/> 
+			<part name='8' x='2914' y='1840'/> 
+			<part name='9' x='272' y='697'/> 
+			<part name='10' x='2928' y='681'/> 
+			<part name='11' x='1593' y='563'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc2290ind14.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1101' y='1798'/> 
+			<part name='1' x='1699' y='1749'/> 
+			<part name='2' x='2337' y='1768'/> 
+			<part name='3' x='2490' y='257'/> 
+			<part name='4' x='953' y='250'/> 
+			<part name='5' x='1259' y='505'/> 
+			<part name='6' x='2149' y='489'/> 
+			<part name='7' x='659' y='1374'/> 
+			<part name='8' x='2754' y='1365'/> 
+			<part name='9' x='703' y='581'/> 
+			<part name='10' x='2682' y='535'/> 
+			<part name='11' x='1690' y='495'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc357ind11.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1544' y='1555'/> 
+			<part name='1' x='2014' y='1455'/> 
+			<part name='2' x='2585' y='1478'/> 
+			<part name='3' x='2619' y='173'/> 
+			<part name='4' x='1294' y='243'/> 
+			<part name='5' x='1553' y='403'/> 
+			<part name='6' x='2313' y='366'/> 
+			<part name='7' x='1213' y='1251'/> 
+			<part name='8' x='2823' y='1219'/> 
+			<part name='9' x='1129' y='581'/> 
+			<part name='10' x='2758' y='475'/> 
+			<part name='11' x='1936' y='405'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1103ind1.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1442' y='1735'/> 
+			<part name='1' x='1966' y='1668'/> 
+			<part name='2' x='2561' y='1705'/> 
+			<part name='3' x='2659' y='298'/> 
+			<part name='4' x='1187' y='352'/> 
+			<part name='5' x='1556' y='546'/> 
+			<part name='6' x='2330' y='516'/> 
+			<part name='7' x='1048' y='1404'/> 
+			<part name='8' x='2928' y='1385'/> 
+			<part name='9' x='979' y='674'/> 
+			<part name='10' x='2881' y='655'/> 
+			<part name='11' x='1938' y='519'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc11489ind11.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1563' y='1900'/> 
+			<part name='1' x='2230' y='1833'/> 
+			<part name='2' x='2821' y='1877'/> 
+			<part name='3' x='3013' y='257'/> 
+			<part name='4' x='1407' y='324'/> 
+			<part name='5' x='1808' y='553'/> 
+			<part name='6' x='2652' y='495'/> 
+			<part name='7' x='1155' y='1562'/> 
+			<part name='8' x='3245' y='1524'/> 
+			<part name='9' x='1173' y='718'/> 
+			<part name='10' x='3278' y='648'/> 
+			<part name='11' x='2242' y='526'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1045ind18.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1370' y='1912'/> 
+			<part name='1' x='1931' y='1884'/> 
+			<part name='2' x='2582' y='1907'/> 
+			<part name='3' x='2738' y='382'/> 
+			<part name='4' x='1162' y='403'/> 
+			<part name='5' x='1563' y='639'/> 
+			<part name='6' x='2360' y='625'/> 
+			<part name='7' x='990' y='1640'/> 
+			<part name='8' x='2979' y='1555'/> 
+			<part name='9' x='934' y='848'/> 
+			<part name='10' x='2990' y='838'/> 
+			<part name='11' x='1952' y='646'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1046ind20.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1078' y='2122'/> 
+			<part name='1' x='1859' y='2023'/> 
+			<part name='2' x='2765' y='2120'/> 
+			<part name='3' x='2953' y='9'/> 
+			<part name='4' x='816' y='6'/> 
+			<part name='5' x='1266' y='259'/> 
+			<part name='6' x='2478' y='238'/> 
+			<part name='7' x='566' y='1703'/> 
+			<part name='8' x='3282' y='1647'/> 
+			<part name='9' x='480' y='470'/> 
+			<part name='10' x='3234' y='410'/> 
+			<part name='11' x='1878' y='278'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc357ind7.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='997' y='1772'/> 
+			<part name='1' x='1607' y='1691'/> 
+			<part name='2' x='2262' y='1715'/> 
+			<part name='3' x='2429' y='203'/> 
+			<part name='4' x='696' y='259'/> 
+			<part name='5' x='1076' y='468'/> 
+			<part name='6' x='2040' y='424'/> 
+			<part name='7' x='596' y='1476'/> 
+			<part name='8' x='2610' y='1434'/> 
+			<part name='9' x='529' y='542'/> 
+			<part name='10' x='2594' y='468'/> 
+			<part name='11' x='1558' y='447'/> 
+		</box>
+	</image>
+	<image file='/Users/luciamf/Desktop/Landmarks_generator/data/work_data/flip_Fc1063ind2.jpg' width='3840' height='2160'>
+		<box top='1' left='1' width='3838' height='2158'>
+			<part name='0' x='1104' y='1624'/> 
+			<part name='1' x='1681' y='1531'/> 
+			<part name='2' x='2218' y='1559'/> 
+			<part name='3' x='2413' y='83'/> 
+			<part name='4' x='786' y='185'/> 
+			<part name='5' x='1176' y='349'/> 
+			<part name='6' x='2082' y='289'/> 
+			<part name='7' x='703' y='1332'/> 
+			<part name='8' x='2578' y='1300'/> 
+			<part name='9' x='666' y='489'/> 
+			<part name='10' x='2601' y='361'/> 
+			<part name='11' x='1618' y='324'/> 
+		</box>
+	</image>
+</images>
+</dataset>

@@ -3,7 +3,7 @@
 from typing import Dict, List, Any
 import os
 from PIL import Image # type: ignore
-import numpy as np # type: ignore
+import numpy as np # numpy==1.26.4 porque la version 2 hace una cosa rara que no funciona 
 import dlib  # type: ignore
 import matplotlib.pyplot as plt # type: ignore
 import xml.etree.ElementTree as ET
@@ -535,7 +535,7 @@ class Landmarks:
 
             img_name = img.split('_')[1] # nos quedamos con ind429348.jpg
 
-            image_path = os.path.join(self.data_dir, f'flip_images/{img}')
+            image_path = os.path.join(self.flip_dir, img)
 
             image = Image.open(image_path)
             np_image = np.array(image)
