@@ -63,9 +63,11 @@ input_data = Landmarks(lm_path)
 # Getting annotated file
 
 
-work_data = os.path.join(image_dir, 'work_data/')
+
 
 # FOR AVOIDING EXTRA PROCESSING
+# work_data = os.path.join(image_dir, 'work_data/')
+# work_data = Landmarls.flip_dir
 # xml_files = check_for_xml_files(work_data)
 
 # if len(xml_files) > 0 :
