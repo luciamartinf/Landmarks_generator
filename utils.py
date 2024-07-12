@@ -126,3 +126,21 @@ def check_for_xml_files(folder_path):
 #     image_list = [image.get('file') for image in images]
     
 #     return image_list
+
+def check_file(file):
+
+    """
+    Just checks if a directory exists
+    """
+
+    # Check if the folder exists
+    if os.path.exists(file):
+
+        # Print error message
+        print(f"WARNING: There is an existing model with this name. What do you want to do about it?") # Make this error message better
+        
+        # OPTIONS
+        # 1. Override
+        # 2. New version
+        # 3. Exit, just predict
+        sys.exit()
