@@ -7,6 +7,7 @@ import numpy as np # numpy==1.26.4 porque la version 2 hace una cosa rara que no
 import dlib  # type: ignore
 import matplotlib.pyplot as plt # type: ignore
 import xml.etree.ElementTree as ET
+import time
 
 from utils import check_make_dir, start_xml_file, end_xml_file, append_to_xml_file, what_file_type, which
 import random
@@ -310,11 +311,12 @@ class Landmarks:
         # # Define a list of image extensions
         # image_extensions = ['.jpg', '.jpeg', '.png', '.bmp'] 
         # imgs_list = [filename for filename in os.listdir(train_folder) if os.path.splitext(filename)[-1] in image_extensions]
+        # Changing seed for every split, maybe this is already done by default
 
-        random.shuffle(self.img_list) # comprobar seed
+        random.shuffle(self.img_list)
 
         train_size = int(len(self.img_list) * split_size[0])
-        print(train_size)
+        print(f'train size is {train_size}')
 
         # Copy image files to each list
         # and append image to xml file

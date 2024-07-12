@@ -8,8 +8,9 @@ import os
 import multiprocessing
 
 import config
+import random
 
-
+random.seed(5399) # Always same splits 
 
 #######################
 ### PARSE ARGUMENTS ###
@@ -90,12 +91,12 @@ train_set = Landmarks(train_xml)
 procs = multiprocessing.cpu_count()
 procs = config.PROCS if config.PROCS > 0 else procs 
 
-# temp model
-temp = os.path.join(work_dir, 'temp.dat')
-# Find best parameters
-# aqui usar train para entrenar y val para testear
+# # temp model
+# temp = os.path.join(work_dir, 'temp.dat')
+# # Find best parameters
+# # aqui usar train para entrenar y val para testear
 # best_params = find_best_params(train_set, temp)
-# Train model
+# # Train model
 
 # train_model(dat, train_xml, best_params)
 
