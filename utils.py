@@ -126,21 +126,30 @@ def check_for_xml_files(folder_path):
 #     image_list = [image.get('file') for image in images]
     
 #     return image_list
-
-def check_file(file):
-
+    
+def check_file(model_name, work_dir, model_version):
+    
     """
-    Just checks if a directory exists
+    Checks if a file exists and creates new version if it does. 
     """
+    # A lo mejor puedo quitar 
 
-    # Check if the folder exists
-    if os.path.exists(file):
-
-        # Print error message
-        print(f"WARNING: There is an existing model with this name. What do you want to do about it?") # Make this error message better
+    # Check if the file exists
+    if model_version != 0:
+        file = os.path.join(work_dir, f'{model_name}_{model_version}.dat')
+    else:
+        file = os.path.join(work_dir, f'{model_name}.dat')
+    while os.path.isfile(file):
+        model_version += 1
+        # Enhanced error message
+        print(f"WARNING: The file '{os.path.basename(file)}' already exists.")
+        # Generate a new filename
+        filename = model_name + f"_{model_version}.dat"
+        print(f"Creating a new version of the model '{filename}'...")
+        # Optionally create the new file or handle accordingly
+        file = os.path.join(work_dir, filename)
         
-        # OPTIONS
-        # 1. Override
-        # 2. New version
-        # 3. Exit, just predict
-        sys.exit()
+    else:
+        open(file, 'a').close()
+        print(f"Proceeding with training. Generating {os.path.basename(file)} model. ")
+    return file

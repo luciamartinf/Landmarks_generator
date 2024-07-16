@@ -16,22 +16,22 @@ def get_parser():
     # add('--mode', type=str, choices=['train', 'predict'], default='train',
     #     help = "Mode of using")
 
+    add('-img', '--image_dir', required=True, help='Directory containing the images')
+    
+    add('-m', '--model_name', required=True,  # Deberia ser true para todos pero no para preprocess
+        help='Model name')
+        
+    add( '-f', '--file',
+        help = 'Tps or txt file with image scale and landmarks')
+    
     add('--work_dir','-w', default='./', # podria ser './' por defecto
         help='Working directory')
     
-    add('--file', '-f',
-        help = 'Tps or txt file with image scale and landmarks')
-    
-    add('--model_name', '-m', required=False,  # Deberia ser true para todos pero no para preprocess
-        help='Model name')
-    
-    # add('--model_version', '-mv', required=True, 
-    #     help='Model version')
+    add('--model_version', '-mv', required=False, 
+        help='Model version')
     
     
-    add('--version', action='version', version='%(prog)s 0.0.1')
-
-    add('--image_dir', '-img', required=True, help='Directory containing the images')
+    # add('--version', action='version', version='%(prog)s 0.0.1')
 
     add('--preprocess', '-p', action='store_true',
         help='Preprocessing data and create train and test sets')

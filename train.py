@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
 
 import argparse
-from Generate_model import find_best_params, train_model, measure_model_error
-from utils import check_dir, check_for_xml_files
+from Generate_model import find_best_params, train_model
 from Landmarks_module import Landmarks
 import os
 import multiprocessing
-import utils
 import generate_tps
-
 import config
 from preprocess import preprocessing
 
 
 def train(model, image_dir, train_xml): # train_set is an object of Landmarks
+    
+    procs = multiprocessing.cpu_count()
+    procs = config.PROCS if config.PROCS > 0 else procs 
     
     Landmarks.data_dir = image_dir
     Landmarks.create_flipdir()
@@ -31,6 +31,8 @@ def train(model, image_dir, train_xml): # train_set is an object of Landmarks
     # Check for file 
     # utils.check_file(dat)
     train_model(dat, train_xml, best_params)
+    
+    
     
     return dat
     
@@ -59,9 +61,6 @@ def main():
 
     args = parser.parse_args()
 
-    
-    procs = multiprocessing.cpu_count()
-    procs = config.PROCS if config.PROCS > 0 else procs 
     
     image_dir = os.path.abspath(args.image_dir)
     lm_file = os.path.abspath(args.file)
