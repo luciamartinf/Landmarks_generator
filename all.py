@@ -16,7 +16,8 @@ import random
 import sys
 
 
-random.seed(5399) # Always same splits 
+random.seed(5399) # Always same splits
+# With the same number of max_func_calls deberia de obtener el mismo resultado no? 
 
 #######################
 ### PARSE ARGUMENTS ###

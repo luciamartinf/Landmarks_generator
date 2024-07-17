@@ -136,45 +136,50 @@ class Landmarks:
 
         with open(self.txt_lmfile, 'r') as file:
             for line in file:
+                # Process expected line, "LANDMARKS" 
                 if line.startswith("LM"):
                     lm_list = []
                     n_lm = int(line.strip().split('=')[1])
-
+                    
                     if n_lm == 0:
                         print(f"WARNING: No landmarks annotated for this image")
                         # HACER ALGO AL RESPECTO
+                        # Hacer un count y si mas de x imagenes o porcentaje de imagenes no estan anotadas terminar el script
+                        # Añadir esta imagen a la lista de predecir
 
+                    # Read all the landmarks
                     i = 0
                     while i < n_lm:
-                        for line in file: # read all the landmarks
-                            lm = line.strip().split()
-                            lm_list.append([float(lm[0]), float(lm[1])])
-                            break
+                        landmark_line = next(file).strip().split() 
+                        lm_list.append([float(landmark_line[0]), float(landmark_line[1])])
                         i+=1
 
-                    # REMEMBER: Change these ifs to  try
+                    # Process the next expected line, "IMAGE"
                     next_line = file.readline()
                     if next_line.startswith("IMAGE"):
                         image_name = str(next_line.strip().split('=')[1])
                         try:
                             image = self.flip_image(image_name) # we are flipping the image and saving it in the dictionary we are going to work with  
-                        except:
-                            break
+                        except Exception as e:
+                            print(f"Error flipping image: {e}")
+                            # Discard this image
+                            continue
                         
                         self.lm_dict[image] = lm_list
                         self.img_list.append(image)
 
                         # A LO MEJOR EN EL NESTED DICTIONARY TIENE MAS SENTIDO TENER EL NOMBRE ORIGINAL QUE ES EL QUE VAMOS A USAR DESPUES
-                        self.nested_dict[image_name] = {}
-                        self.nested_dict[image_name]["LM"] = lm_list
+                        self.nested_dict[image_name] = {"LM": lm_list}
                         # self.nested_dict[image]["n_LM"] = n_lm # Creo que esto no lo necesito
-
+                    
+                    # Process the next expected line, "ID"
                     next_line = file.readline()
                     if next_line.startswith("ID"):
                         real_id = str(next_line.strip().split('=')[1])
                         img_id = Landmarks.check_id_img(real_id, image_name)
                         self.nested_dict[image_name]["ID"] = img_id
                     
+                    # Process the next expected line, "SCALE"
                     next_line = file.readline()
                     if next_line.startswith("SCALE"):
                         scale = next_line.strip()
