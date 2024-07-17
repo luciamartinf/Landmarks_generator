@@ -22,10 +22,8 @@ random.seed(5399) # Always same splits
 
 args = arg_parse.parse_args()
 
-if not args.work_dir:
-    work_dir = os.getcwd()
-else:
-    work_dir = os.path.abspath(args.work_dir)
+
+work_dir = os.path.abspath(args.work_dir)
     
 
     

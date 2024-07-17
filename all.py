@@ -12,22 +12,116 @@ import config
 from preprocess import preprocessing
 from train import train
 import arg_parse
+import random
+import sys
 
 
-args = arg_parse.parse_args()
+random.seed(5399) # Always same splits 
 
-if not args.work_dir:
-    work_dir = os.getcwd()
-else:
-    work_dir = os.path.abspath(args.work_dir)
-    
+#######################
+### PARSE ARGUMENTS ###
+#######################
 
-    
+
+parser = arg_parse.get_parser()
+args = parser.parse_args()
+# args = arg_parse.parse_args()
+
+work_dir = os.path.abspath(args.work_dir)
+
+image_dir = os.path.abspath(args.image_dir)
+
 model_name = args.model_name
 if args.model_version:
     model_version = int(args.model_version)
 else:
     model_version = 0
-print(f'version is: {model_version}')
-# check if dat file already exists and create the appropiate version
-dat = utils.check_file(model_name, work_dir, model_version)
+
+
+
+
+if args.mode == 'train':
+    
+    if not args.xml: # en lugar de esto puede ser --file 
+        # Another check trying to look for xml file
+        print("WARNING: No xml file found")
+        if args.file:
+            # mode = 'protrain'
+            # Check that is landmarks file
+            landmarks_file = args.file
+            print("TPS file detected, using protrain mode =  preprocessing + training ")
+            lm_path = os.path.join(work_dir, landmarks_file) # check that this is the correct way of doing this
+            train_xml, test_xml = preprocessing(lm_path, image_dir)
+        else:
+            print("INSTRUCTION: Try using the -xml XML_FILE or --file TPS_FILE to enter preprocessing mode with a tps file")
+            sys.exit()
+        
+    else:
+        xml_file = args.xml
+        # Warning sobre si este xml es solo train o es todo el xml file
+        # Puedo hacer una funcion para MERGE dos xml files que sean iguales
+        # split xml file into train and test
+        pre_data = Landmarks(xml_file)
+        train_xml, test_xml = pre_data.split_data()
+        
+    dat = train(model_name, image_dir, train_xml, work_dir, model_version)
+    
+    # MEASURE ERROR OF MODEL
+    
+elif args.mode == 'protrain':
+    
+    print('preprocess and train')
+    
+    # Check that this file tiene landmarks
+    
+    landmarks_file = args.file
+    lm_path = os.path.join(work_dir, landmarks_file) # check that this is the correct way of doing this
+    train_xml, test_xml = preprocessing(lm_path, image_dir)
+        
+    dat = train(model_name, image_dir, train_xml, work_dir, model_version)
+    
+    # MEASURE ERROR OF MODEL
+    
+    
+elif args.mode == 'predict':
+    
+    
+    # Check that the model exist
+    dat = utils.check_predmodel(model_name, work_dir, model_version)
+    
+    # Check that we can create a new tps file
+    if not args.scale:
+        print("ERROR: Please introduce scale")
+    
+    generate_tps.write_tpsfile(image_dir, 'input.tps', scale = args.scale)
+    
+    print('predicting')
+    
+else:
+    parser.print_help()
+    
+
+## MEASURE ERROR
+
+if 'train' in args.mode:
+    print(args.mode)
+    
+    # Compute training and test MSE errors of the model
+    measure_model_error(dat, train_xml) # aqui usar train + val
+    measure_model_error(dat, test_xml) # aqui usar solo test
+    
+    # input_data.check_for_negatives(dat)
+    
+   
+    
+    
+
+
+
+
+
+
+
+
+
+
