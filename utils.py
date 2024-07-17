@@ -127,12 +127,13 @@ def check_for_xml_files(folder_path):
     
 #     return image_list
     
-def check_file(model_name, work_dir, model_version):
+def check_trainmodel(model_name, work_dir, model_version):
     
     """
     Checks if a file exists and creates new version if it does. 
     """
-    # A lo mejor puedo quitar 
+    # A lo mejor puedo quitar algunos mensajes
+    # A lo mejor puedo añadir esta funcion a la clase de Landmarks 
 
     # Check if the file exists
     if model_version != 0:
@@ -150,6 +151,26 @@ def check_file(model_name, work_dir, model_version):
         file = os.path.join(work_dir, filename)
         
     else:
-        open(file, 'a').close()
+        # open(file, 'a').close()
         print(f"Proceeding with training. Generating {os.path.basename(file)} model. ")
     return file
+
+def check_predmodel(model_name, work_dir, model_version):
+    
+    """
+    Checks if a file exists and creates new version if it does. 
+    """
+
+    # Check if the file exists
+    if model_version != 0:
+        file = os.path.join(work_dir, f'{model_name}_{model_version}.dat')
+    else:
+        file = os.path.join(work_dir, f'{model_name}.dat')
+        
+    if os.path.isfile(file):
+        print("Proceeding with predicting Landmarks")
+        return file
+    else: 
+        print(f"ERROR: Model '{os.path.basename(file)}' does not exist. Unable to predict landmarks with this model")
+        print(f"Try using another model or training a new model")
+        sys.exit()

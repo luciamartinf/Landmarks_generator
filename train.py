@@ -8,28 +8,32 @@ import multiprocessing
 import generate_tps
 import config
 from preprocess import preprocessing
+import utils
 
 
-def train(model, image_dir, train_xml): # train_set is an object of Landmarks
+def train(model_name, image_dir, train_xml, work_dir, model_version): # train_set is an object of Landmarks
     
     procs = multiprocessing.cpu_count()
     procs = config.PROCS if config.PROCS > 0 else procs 
     
-    Landmarks.data_dir = image_dir
-    Landmarks.create_flipdir()
-    work_dir = Landmarks.flip_dir
+    # check if dat file already exists and create the appropiate version
+    dat = utils.check_trainmodel(model_name, work_dir, model_version)
+    
+    if not Landmarks.data_dir :
+        Landmarks.data_dir = image_dir
+        
+    Landmarks.create_flipdir() # Only creates flip_dir if it doesn't exist 
+    
+    work_data = Landmarks.flip_dir
     train_set = Landmarks(train_xml) # Check if i need something else here and if this works 
     
     # temp model
-    temp = os.path.join(work_dir, 'temp.dat')
-    # Find best parameters
-    # aqui usar train para entrenar y val para testear
-    best_params = find_best_params(train_set, temp)
-    # Train model
+    temp = os.path.join(work_data, 'temp.dat')
     
-    dat = os.path.join(work_dir, f'{model}.dat')
-    # Check for file 
-    # utils.check_file(dat)
+    # Find best parameters
+    best_params = find_best_params(train_set, temp)
+    
+    # Train model
     train_model(dat, train_xml, best_params)
     
     
@@ -40,6 +44,8 @@ def train(model, image_dir, train_xml): # train_set is an object of Landmarks
 
 def main():
     
+    # Este main lo tengo que modificar
+    
     parser = argparse.ArgumentParser(prog = '', formatter_class=argparse.RawDescriptionHelpFormatter, description= '')
 
     add = parser.add_argument
@@ -47,11 +53,11 @@ def main():
     add('-i','--image_dir', required=True, 
         help='Directory containing images')
     add('-o', '--model_name', required=True, 
-        help = "Model name")
+        help="Model name")
     add('-f', '--file', 
-        help = 'Tps or txt file with image scale and landmarks.') # If not file as input, we need an scale
-    add('--scale',
-        help='Scale of all the images, all images must have the same scale')
+        help = 'Tps or txt file with image scale and landmarks.') # Para entrenar necesito si o si las landmarks
+    # add('--scale',
+    #     help='Scale of all the images, all images must have the same scale')
     
     add('--preprocess', '-p', action='store_true',
         help='Preprocessing data and create train and test sets') # Change this help message
