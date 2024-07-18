@@ -70,7 +70,7 @@ def get_parser():
     
     # All mode
 
-    return parser
+    return parser, train_parser, predict_parser, protrain_parser
 
 def parse_args():
     parser = get_parser()

@@ -24,7 +24,7 @@ random.seed(5399) # Always same splits
 #######################
 
 
-parser = arg_parse.get_parser()
+parser, train_parser, predict_parser, protrain_parser = arg_parse.get_parser()
 args = parser.parse_args()
 # args = arg_parse.parse_args()
 
@@ -38,38 +38,60 @@ if args.model_version:
 else:
     model_version = 0
 
-
+mode = args.mode
 
 
 if args.mode == 'train':
     
     if not args.xml: # en lugar de esto puede ser --file 
+        
         # Another check trying to look for xml file
         print("WARNING: No xml file found")
         if args.file:
-            # mode = 'protrain'
-            # Check that is landmarks file
-            landmarks_file = args.file
-            print("TPS file detected, using protrain mode =  preprocessing + training ")
-            lm_path = os.path.join(work_dir, landmarks_file) # check that this is the correct way of doing this
-            train_xml, test_xml = preprocessing(lm_path, image_dir)
+            lm_file = args.file
+            if utils.what_file_type(lm_file) in ['.txt','.tps']:
+                
+                if Landmarks.check_forlm(args.file):
+                    # protrain mode
+                    print("TPS file detected, using protrain mode =  preprocessing + training ")
+                    mode = 'protrain'
+                    # lm_path = os.path.join(work_dir, lm_file) # check that this is the correct way of doing this
+                    # train_xml, test_xml = preprocessing(lm_path, image_dir)
+                    # dat = train(model_name, image_dir, train_xml, work_dir, model_version)
+                    
+                    
+                else: 
+                    print("WARNING: TPS file detected without landmarks. Trying predicting mode...")
+                    dat = utils.check_predmodel(model_name, work_dir, model_version) 
+                    mode = 'predict'
+                    
+            else:
+                print("INSTRUCTION: Try using the -xml XML_FILE or --file TPS_FILE to enter preprocessing mode with a tps file")
+                train_parser.print_help()
+                sys.exit(1)
         else:
             print("INSTRUCTION: Try using the -xml XML_FILE or --file TPS_FILE to enter preprocessing mode with a tps file")
-            sys.exit()
+            parser.print_help()
+            sys.exit(1)
+            
         
     else:
         xml_file = args.xml
-        # Warning sobre si este xml es solo train o es todo el xml file
-        # Puedo hacer una funcion para MERGE dos xml files que sean iguales
-        # split xml file into train and test
-        pre_data = Landmarks(xml_file)
-        train_xml, test_xml = pre_data.split_data()
-        
-    dat = train(model_name, image_dir, train_xml, work_dir, model_version)
-    
-    # MEASURE ERROR OF MODEL
-    
-elif args.mode == 'protrain':
+        print(utils.what_file_type(xml_file))
+        if utils.what_file_type(xml_file) == '.xml':
+            # Warning sobre si este xml es solo train o es todo el xml file
+            # Puedo hacer una funcion para MERGE dos xml files que sean iguales
+            # split xml file into train and test
+            train_xml, test_xml = preprocessing(os.path.abspath(xml_file), image_dir)
+            dat = train(model_name, image_dir, train_xml, work_dir, model_version)
+        else:
+            print(f"ERROR: Unable to train model with file {xml_file}")
+            sys.exit(1)
+
+
+# MEASURE ERROR OF MODEL
+
+if mode == 'protrain':
     
     print('preprocess and train')
     
@@ -84,7 +106,7 @@ elif args.mode == 'protrain':
     # MEASURE ERROR OF MODEL
     
     
-elif args.mode == 'predict':
+if mode == 'predict':
     
     
     # Check that the model exist
@@ -98,20 +120,19 @@ elif args.mode == 'predict':
     
     print('predicting')
     
-else:
-    parser.print_help()
+
     
 
 ## MEASURE ERROR
 
-if 'train' in args.mode:
-    print(args.mode)
+# if mode == 'train':
+#     print(args.mode)
     
-    # Compute training and test MSE errors of the model
-    measure_model_error(dat, train_xml) # aqui usar train + val
-    measure_model_error(dat, test_xml) # aqui usar solo test
+#     # Compute training and test MSE errors of the model
+#     measure_model_error(dat, train_xml) # aqui usar train + val
+#     measure_model_error(dat, test_xml) # aqui usar solo test
     
-    # input_data.check_for_negatives(dat)
+#     # input_data.check_for_negatives(dat)
     
    
     
