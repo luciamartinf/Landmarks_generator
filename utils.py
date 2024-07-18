@@ -45,7 +45,7 @@ def what_file_type(file):
     """
     _, extension = os.path.splitext(file)
 
-    return extension
+    return extension.lower()
 
 def start_xml_file(file, name, item='Carabus pronotum'): # Tengo que quitar este default
 
@@ -158,7 +158,7 @@ def check_trainmodel(model_name, work_dir, model_version):
 def check_predmodel(model_name, work_dir, model_version):
     
     """
-    Checks if a file exists and creates new version if it does. 
+    Checks if a file exists for predicting
     """
 
     # Check if the file exists
@@ -173,4 +173,4 @@ def check_predmodel(model_name, work_dir, model_version):
     else: 
         print(f"ERROR: Model '{os.path.basename(file)}' does not exist. Unable to predict landmarks with this model")
         print(f"Try using another model or training a new model")
-        sys.exit()
+        sys.exit(1)
