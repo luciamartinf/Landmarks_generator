@@ -8,6 +8,8 @@ import dlib  # type: ignore
 import matplotlib.pyplot as plt # type: ignore
 import xml.etree.ElementTree as ET
 import time
+import sys
+# from all import parser
 
 from utils import check_make_dir, start_xml_file, end_xml_file, append_to_xml_file, what_file_type, which
 import random
@@ -16,7 +18,6 @@ class Landmarks:
 
     data_dir: str = None
     flip_dir: str = None # directory with images and files that we are going to use
-    nested_dict: Dict[str, Dict[str, Any]] = {} # Image, landmarks and scale
     # input_dir
 
     """
@@ -32,42 +33,46 @@ class Landmarks:
         self.lm_dict: Dict[str, List] = lm_dict
         self.img_list: List[List[float, float]] = img_list
         
-        # Landmarks.nested_dict: Dict[str, Dict[str, Any]] = {} 
+        
+        # self.nested_dict: Dict[str, Dict[str, Any]] = {} # Image, landmarks and scale
+        # Landmarks.nested_dict: Dict[str, Dict[str, Any]] = {} 
 
-        # En lugar de hacer esto podemos hacer una funcion tambien que sea what_type
+
         ext = what_file_type(file)
 
-        if ext == '.xml':
+        if ext == '.xml': # train from xml mode
 
             self.xmlfile = file
-            self.img_list = Landmarks.extract_image_list_from_xml(file)
-            # Initialize nested_dict de alguna forma 
+            
+            self.lm_dict, self.img_list = self.read_xmlfile()
+            
+            # Initialize nested_dict y lm_dict de alguna forma 
 
             # read xml file
             print("WARNING: Initializing from xml file. Some attributes may be missing")
 
-        else:
-
-            if Landmarks.check_forlm(file):
-
-                self.txt_lmfile: str = file  # complete filepath
-
-                self.lm_dict, self.img_list, Landmarks.nested_dict = self.readtxt_lmfile()
+        elif ext in ['.tps', '.txt']:
             
-            else: # The input txt file does not contain the landmarks yet
+            if Landmarks.check_forlm(file):
+            
+                # protrain from tps landmarks file 
+
+                self.txt_lmfile: str = file 
+                self.lm_dict, self.img_list, self.nested_dict = self.readtxt_lmfile()
+                
+            else: 
+            
+                # predict with tps without landmarks
+                # The input txt file does not contain the landmarks yet
 
                 self.txt_imgfile: str = file
 
-                self.lm_dict, self.img_list, Landmarks.nested_dict = self.readtxt_imgfile()
-
-        # Esta variable de clase se inicializa con el primer documento que leemos. 
-        # Revisar esto porque si lo iniciamos con el que no tiene las landmarks no tiene sentido. 
-        # Tengo que hacer mas funciones para inicializar cada uno de los atributos y variables de manera independiente
-        if len(Landmarks.nested_dict) == 0:
-            Landmarks.nested_dict = nested_dict
+                self.lm_dict, self.img_list, self.nested_dict = self.readtxt_imgfile()
+                
+        
+        else:
+            sys.exit(2)
             
-        ## Necesito algo para inicializar sin ningun archivo. 
-        ## Inicializar desde folder con imagenes y una escala determinada
 
 
     @classmethod
@@ -115,17 +120,17 @@ class Landmarks:
                         return False
                     else:
                         return True
-    @staticmethod
-    def extract_image_list_from_xml(xml_file_path):
-        # Parse the XML file
-        tree = ET.parse(xml_file_path)
-        root = tree.getroot()
+    # @staticmethod
+    # def extract_image_list_from_xml(xml_file_path):
+    #     # Parse the XML file
+    #     tree = ET.parse(xml_file_path)
+    #     root = tree.getroot()
         
-        # Find all image elements and extract the file attribute
-        images = root.findall('.//image')
-        image_list = [os.path.basename(image.get('file')) for image in images]
+    #     # Find all image elements and extract the file attribute
+    #     images = root.findall('.//image')
+    #     image_list = [os.path.basename(image.get('file')) for image in images]
         
-        return image_list
+    #     return image_list
         
     def readtxt_lmfile(
             self):
@@ -170,8 +175,7 @@ class Landmarks:
 
                         # A LO MEJOR EN EL NESTED DICTIONARY TIENE MAS SENTIDO TENER EL NOMBRE ORIGINAL QUE ES EL QUE VAMOS A USAR DESPUES
                         self.nested_dict[image_name] = {"LM": lm_list}
-                        # self.nested_dict[image]["n_LM"] = n_lm # Creo que esto no lo necesito
-                    
+                                            
                     # Process the next expected line, "ID"
                     next_line = file.readline()
                     if next_line.startswith("ID"):
@@ -186,7 +190,6 @@ class Landmarks:
                         self.nested_dict[image_name]["SCALE"] = scale
 
         return self.lm_dict, self.img_list, self.nested_dict
-
 
 
     def readtxt_imgfile(
@@ -218,7 +221,6 @@ class Landmarks:
                         self.img_list.append(image)
                         self.nested_dict[image] = {}
                         self.nested_dict[image]["LM"] = []
-                        # self.nested_dict[image]["n_LM"] = n_lm # Creo que esto no lo necesito
 
                     next_line = file.readline()
                     if next_line.startswith("ID"):
@@ -233,6 +235,35 @@ class Landmarks:
 
 
         return self.lm_dict, self.img_list, self.nested_dict
+    
+    
+    def read_xmlfile(
+            self):
+        
+        """Parse images and ladmarks from xml file
+
+        Returns:
+            Dict: Dictionary that contains flip_images (basename) as keys and landmarks as values
+            List: List of flip_images (basename)
+        """
+    
+        tree = ET.parse(self.xmlfile)
+        root = tree.getroot()
+
+        for image in root.findall('.//image'):
+            image_path = image.get('file')
+            image_name = os.path.basename(image_path)
+            self.img_list.append(image_name)
+            self.lm_dict[image_name] = []
+            for part in image.findall('.//part'):
+                part_name = part.get('name')
+                x = float(part.get('x'))
+                y = float(part.get('y'))
+                self.lm_dict[image_name].append([x,y])
+
+        return self.lm_dict, self.img_list
+    
+    
     
     def write_xml(
             self, file, folder, name):
@@ -258,7 +289,7 @@ class Landmarks:
                 f.write(f"\t\t<box top='1' left='1' width='{int(width-2)}' height='{int(height-2)}'>\n")
                 
                 i = 0
-                for lm in Landmarks.nested_dict[img]["LM"]:
+                for lm in self.lm_dict[img]:
                     f.write(f"\t\t\t<part name='{i}' x='{int(lm[0])}' y='{int(lm[1])}'/> \n")
                     i+=1
                 f.write(f"\t\t</box>\n")

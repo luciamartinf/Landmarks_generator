@@ -113,19 +113,6 @@ def check_for_xml_files(folder_path):
     # Return True if there are any .xml files, False otherwise
     return xml_files
 
-
-
-
-# def extract_image_list_from_xml(xml_file_path):
-#     # Parse the XML file
-#     tree = ET.parse(xml_file_path)
-#     root = tree.getroot()
-    
-#     # Find all image elements and extract the file attribute
-#     images = root.findall('.//image')
-#     image_list = [image.get('file') for image in images]
-    
-#     return image_list
     
 def check_trainmodel(model_name, work_dir, model_version):
     
@@ -155,7 +142,7 @@ def check_trainmodel(model_name, work_dir, model_version):
         print(f"Proceeding with training. Generating {os.path.basename(file)} model. ")
     return file
 
-def check_predmodel(model_name, work_dir, model_version):
+def check_predmodel(model_name, work_dir, model_version, parser):
     
     """
     Checks if a file exists for predicting
@@ -171,6 +158,7 @@ def check_predmodel(model_name, work_dir, model_version):
         print("Proceeding with predicting Landmarks")
         return file
     else: 
-        print(f"ERROR: Model '{os.path.basename(file)}' does not exist. Unable to predict landmarks with this model")
-        print(f"Try using another model or training a new model")
-        sys.exit(1)
+        sys.stderr.write(f"\nERROR: Model '{os.path.basename(file)}' does not exist. Unable to predict landmarks with this model")
+        sys.stderr.write(f"\nTry using another model or training a new model")
+        parser.print_help()
+        sys.exit(2)
