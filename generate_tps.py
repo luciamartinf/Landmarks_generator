@@ -20,6 +20,8 @@ def write_tpsfile(folder, output, scale):
                 f.write(f'IMAGE={basename}\n')
                 f.write(f'ID={image_id}\n')
                 f.write(f'SCALE={scale}\n')
+
+    return output
     
                 
 def main():
