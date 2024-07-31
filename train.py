@@ -11,7 +11,7 @@ from preprocess import preprocessing
 import utils
 
 
-def train(model_name, image_dir, train_xml, work_dir, model_version): # train_set is an object of Landmarks
+def train(model_name, image_dir, train_xml, work_dir, model_version, params = False, save_params = False): # train_set is an object of Landmarks
     
     procs = multiprocessing.cpu_count()
     procs = config.PROCS if config.PROCS > 0 else procs 
@@ -30,8 +30,18 @@ def train(model_name, image_dir, train_xml, work_dir, model_version): # train_se
     # temp model
     temp = os.path.join(work_data, 'temp.dat')
     
-    # Find best parameters
-    best_params = find_best_params(train_set, temp)
+    
+    if params:
+        # Get parameters from file
+        best_params = params
+    else:
+        # Find best parameters
+        best_params = find_best_params(train_set, temp)
+        
+    if save_params:
+        params_file = f"params_{model_name}.txt"
+        utils.write_list_to_file(best_params, params_file)
+        print(f"Saving best parameters to {params_file}")
     
     # Train model
     train_model(dat, train_xml, best_params)
