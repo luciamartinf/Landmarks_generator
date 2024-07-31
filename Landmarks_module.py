@@ -18,7 +18,7 @@ class Landmarks:
 
     data_dir: str = None
     flip_dir: str = None # directory with images and files that we are going to use
-    nested_dict = None
+    nested_dict: Dict[str, Dict[str, Any]] = {} 
     # input_dir
 
     """
@@ -33,6 +33,7 @@ class Landmarks:
 
         self.lm_dict: Dict[str, List] = lm_dict
         self.img_list: List[List[float, float]] = img_list
+        
         
         if len(Landmarks.nested_dict) < 0:
             Landmarks.nested_dict: Dict[str, Dict[str, Any]] = nested_dict # Image, landmarks and scale
