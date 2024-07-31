@@ -154,7 +154,7 @@ def check_predmodel(model_name, work_dir, model_version, parser):
     else:
         file = os.path.join(work_dir, f'{model_name}.dat')
         
-    if os.path.isfile(file):
+    if (os.path.isfile(file)) and (os.path.getsize(file) > 0):
         print("Proceeding with predicting Landmarks")
         return file
     else: 
@@ -162,3 +162,15 @@ def check_predmodel(model_name, work_dir, model_version, parser):
         sys.stderr.write(f"\nTry using another model or training a new model")
         parser.print_help()
         sys.exit(2)
+        
+def write_list_to_file(mylist, myfile):
+    with open(myfile, 'w') as file:
+        for item in mylist:
+            file.write(f"{item}\n")
+
+
+def read_list_from_file(myfile):
+    with open(myfile, 'r') as file:
+        data = file.readlines()
+        data = [line.strip() for line in data]
+    return data

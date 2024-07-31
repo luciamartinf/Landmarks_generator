@@ -18,6 +18,7 @@ class Landmarks:
 
     data_dir: str = None
     flip_dir: str = None # directory with images and files that we are going to use
+    nested_dict = None
     # input_dir
 
     """
@@ -33,11 +34,9 @@ class Landmarks:
         self.lm_dict: Dict[str, List] = lm_dict
         self.img_list: List[List[float, float]] = img_list
         
+        if len(Landmarks.nested_dict) < 0:
+            Landmarks.nested_dict: Dict[str, Dict[str, Any]] = nested_dict # Image, landmarks and scale
         
-        # self.nested_dict: Dict[str, Dict[str, Any]] = {} # Image, landmarks and scale
-        # Landmarks.nested_dict: Dict[str, Dict[str, Any]] = {} 
-
-
         ext = what_file_type(file)
 
         if ext == '.xml': # train from xml mode
@@ -58,7 +57,7 @@ class Landmarks:
                 # protrain from tps landmarks file 
 
                 self.txt_lmfile: str = file 
-                self.lm_dict, self.img_list, self.nested_dict = self.readtxt_lmfile()
+                self.lm_dict, self.img_list, Landmarks.nested_dict = self.readtxt_lmfile()
                 
             else: 
             
@@ -67,7 +66,7 @@ class Landmarks:
 
                 self.txt_imgfile: str = file
 
-                self.lm_dict, self.img_list, self.nested_dict = self.readtxt_imgfile()
+                self.lm_dict, self.img_list, Landmarks.nested_dict = self.readtxt_imgfile()
                 
         
         else:
@@ -174,22 +173,22 @@ class Landmarks:
                         self.img_list.append(image)
 
                         # A LO MEJOR EN EL NESTED DICTIONARY TIENE MAS SENTIDO TENER EL NOMBRE ORIGINAL QUE ES EL QUE VAMOS A USAR DESPUES
-                        self.nested_dict[image_name] = {"LM": lm_list}
+                        Landmarks.nested_dict[image_name] = {"LM": lm_list}
                                             
                     # Process the next expected line, "ID"
                     next_line = file.readline()
                     if next_line.startswith("ID"):
                         real_id = str(next_line.strip().split('=')[1])
                         img_id = Landmarks.check_id_img(real_id, image_name)
-                        self.nested_dict[image_name]["ID"] = img_id
+                        Landmarks.nested_dict[image_name]["ID"] = img_id
                     
                     # Process the next expected line, "SCALE"
                     next_line = file.readline()
                     if next_line.startswith("SCALE"):
                         scale = next_line.strip()
-                        self.nested_dict[image_name]["SCALE"] = scale
+                        Landmarks.nested_dict[image_name]["SCALE"] = scale
 
-        return self.lm_dict, self.img_list, self.nested_dict
+        return self.lm_dict, self.img_list, Landmarks.nested_dict
 
 
     def readtxt_imgfile(
@@ -219,22 +218,22 @@ class Landmarks:
                             break
                         self.lm_dict[image] = []
                         self.img_list.append(image)
-                        self.nested_dict[image] = {}
-                        self.nested_dict[image]["LM"] = []
+                        Landmarks.nested_dict[image] = {}
+                        Landmarks.nested_dict[image]["LM"] = []
 
                     next_line = file.readline()
                     if next_line.startswith("ID"):
                         real_id = str(next_line.strip().split('=')[1])
                         img_id = Landmarks.check_id_img(real_id, image)
-                        self.nested_dict[image]["ID"] = img_id
+                        Landmarks.nested_dict[image]["ID"] = img_id
                     
                     next_line = file.readline()
                     if next_line.startswith("SCALE"):
                         scale = next_line.strip()
-                        self.nested_dict[image]["SCALE"] = scale
+                        Landmarks.nested_dict[image]["SCALE"] = scale
 
 
-        return self.lm_dict, self.img_list, self.nested_dict
+        return self.lm_dict, self.img_list, Landmarks.nested_dict
     
     
     def read_xmlfile(
@@ -450,8 +449,8 @@ class Landmarks:
                     f.write(f'{lm[0]:.4f} {lm[1]:.4f}\n')
                 
                 f.write(f'IMAGE={img}\n')
-                f.write(f'ID={self.nested_dict[img]["ID"]}\n')
-                f.write(f'SCALE={self.nested_dict[img]["SCALE"]}\n')
+                f.write(f'ID={Landmarks.nested_dict[img]["ID"]}\n')
+                f.write(f'SCALE={Landmarks.nested_dict[img]["SCALE"]}\n')
 
         return outpath
 
