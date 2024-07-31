@@ -172,5 +172,6 @@ def write_list_to_file(mylist, myfile):
 def read_list_from_file(myfile):
     with open(myfile, 'r') as file:
         data = file.readlines()
-        data = [line.strip() for line in data]
+        data = [float(line.strip()) for line in data]
+        
     return data
