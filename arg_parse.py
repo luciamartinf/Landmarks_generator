@@ -72,23 +72,27 @@ def get_parser():
                                 help = 'Tps or txt file with image scale')
     predict_parser.add_argument('-s', '--scale', 
                                 help = 'Scale of all the images, all images must have the same scale')
+    predict_parser.add_argument('--output', '-o', default="prediction.tps",
+                                help = "Output tps file that contains landmarks")
+    predict_parser.add_argument('--plot', action='store_true', 
+                              help = "Plot images with landmarks")
 
     
     # All modes
     return parser, train_parser, predict_parser
 
-def parsemyargs():
+# def parsemyargs():
     
-    parser, train_parser, predict_parser = get_parser()
-    args = parser.parse_args()
-    if args.mode == 'train':
-        return train_parser.parse_args()
+#     parser, train_parser, predict_parser = get_parser()
+#     args = parser.parse_args()
+#     if args.mode == 'train':
+#         return train_parser.parse_args()
     
-    # ....
-    return parser.parse_args()
+#     # ....
+#     return parser.parse_args()
     
-def parse_args():
+# def parse_args():
     
-    ###  Esta ya no la usamos
-    parser = get_parser()
-    return parser.parse_args()
+#     ###  Esta ya no la usamos
+#     parser = get_parser()
+#     return parser.parse_args()

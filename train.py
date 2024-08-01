@@ -7,9 +7,16 @@ import os
 import multiprocessing
 import generate_tps
 import config
-from preprocess import preprocessing
 import utils
 
+def preprocessing(lmfile, image_dir):
+    
+    Landmarks.data_dir = os.path.abspath(image_dir)
+    Landmarks.create_flipdir()
+    input_data = Landmarks(lmfile)
+    train_xml, test_xml = input_data.split_data()
+    
+    return train_xml, test_xml
 
 def train(model_name, image_dir, train_xml, work_dir, model_version, params = False, save_params = False): # train_set is an object of Landmarks
     
