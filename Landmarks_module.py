@@ -18,6 +18,7 @@ class Landmarks:
 
     data_dir: str = None
     flip_dir: str = None # directory with images and files that we are going to use
+    work_dir: str = None # Working directory
     nested_dict: Dict[str, Dict[str, Any]] = {} 
     # input_dir
 
@@ -62,7 +63,7 @@ class Landmarks:
 
                 self.txt_imgfile: str = file
 
-                self.lm_dict, self.img_list, Landmarks.nested_dict = self.readtxt_imgfile()
+                self.img_list, Landmarks.nested_dict = self.readtxt_imgfile()
                 
         
         else:
@@ -159,7 +160,7 @@ class Landmarks:
                     if next_line.startswith("IMAGE"):
                         image_name = str(next_line.strip().split('=')[1])
                         try:
-                            image = self.flip_image(image_name) # we are flipping the image and saving it in the dictionary we are going to work with  
+                            image, image_path = self.flip_image(image_name) # we are flipping the image and saving it in the dictionary we are going to work with  
                         except Exception as e:
                             print(f"Error flipping image: {e}")
                             # Discard this image
@@ -201,35 +202,35 @@ class Landmarks:
 
                     if n_lm > 0:
                         print(f"WARNING: There are some Landmarks already annotated for this image")
-                        # HACER ALGO AL RESPECTO
+                        # TODO HACER ALGO AL RESPECTO
 
 
-                    # REMEMBER: Change these ifs to  try
+                    # TODO REMEMBER: Change these ifs to  try
                     next_line = file.readline()
                     if next_line.startswith("IMAGE"):
                         image_name = str(next_line.strip().split('=')[1])
                         try:
-                            image = self.flip_image(image_name) # we are flipping the image and saving it in the dictionary we are going to work with  
+                            image, image_path = self.flip_image(image_name) # we are flipping the image and saving it in the dictionary we are going to work with  
                         except:
                             break
-                        self.lm_dict[image] = []
-                        self.img_list.append(image)
-                        Landmarks.nested_dict[image] = {}
-                        Landmarks.nested_dict[image]["LM"] = []
+                        # self.lm_dict[image] = [] # Here we save the flip image because we need to annotate over this
+                        self.img_list.append(image_name)
+                        Landmarks.nested_dict[image_name] = {}
+                        Landmarks.nested_dict[image_name]["LM"] = []
 
                     next_line = file.readline()
                     if next_line.startswith("ID"):
                         real_id = str(next_line.strip().split('=')[1])
-                        img_id = Landmarks.check_id_img(real_id, image)
-                        Landmarks.nested_dict[image]["ID"] = img_id
+                        img_id = Landmarks.check_id_img(real_id, image_name)
+                        Landmarks.nested_dict[image_name]["ID"] = img_id
                     
                     next_line = file.readline()
                     if next_line.startswith("SCALE"):
                         scale = next_line.strip()
-                        Landmarks.nested_dict[image]["SCALE"] = scale
+                        Landmarks.nested_dict[image_name]["SCALE"] = scale
 
 
-        return self.lm_dict, self.img_list, Landmarks.nested_dict
+        return self.img_list, Landmarks.nested_dict
     
     
     def read_xmlfile(
@@ -319,7 +320,7 @@ class Landmarks:
 
         vertical.save(new_imgpath)
 
-        return new_image
+        return new_image, new_imgpath
     
     def split_data(self, tag = ['train', 'test'], split_size = [0.7, 0.3]):
 
@@ -372,7 +373,7 @@ class Landmarks:
         return train_xml, test_xml
     
 
-    def predict_landmarks(self, model_path, generate_images = True):
+    def predict_landmarks(self, model_path, outfile, generate_images = True):
         
         """_summary_ Predict new landmarks based on a model
 
@@ -383,11 +384,11 @@ class Landmarks:
         model_file = os.path.basename(model_path)
         model_name = model_file[:model_file.rindex('.')]
 
-        landmarks_folder = os.path.join(Landmarks.data_dir, f'{model_name}_landmarks') # CHANGE TO MAIN DIR
+        landmarks_folder = os.path.join(Landmarks.work_dir, f'{model_name}_landmarks')
         
         check_make_dir(landmarks_folder)
-    
-        outfile = f'{model_name}_landmarks.txt'
+
+        
         outpath = os.path.join(landmarks_folder, outfile)
 
 
@@ -395,7 +396,7 @@ class Landmarks:
 
             # image_name = img.split('-')[1]
    
-            image_path = os.path.join(Landmarks.flip_dir, f'{img}')
+            image_path = os.path.join(Landmarks.flip_dir, f'flip_{img}')
             
             image = Image.open(image_path)
             np_image = np.array(image)

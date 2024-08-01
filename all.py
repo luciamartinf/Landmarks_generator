@@ -9,8 +9,8 @@ import utils
 import generate_tps
 import config
 
-from preprocess import preprocessing
-from train import train
+from train import train, preprocessing
+from predict import predict
 import arg_parse
 import random
 import sys
@@ -31,7 +31,7 @@ args = parser.parse_args()
 
 image_dir = os.path.abspath(args.image_dir)
 work_dir = os.path.abspath(args.work_dir)
-
+Landmarks.work_dir = work_dir
 
 
 model_name = args.model_name
@@ -144,11 +144,20 @@ if mode == 'predict':
         tpsfile = generate_tps.write_tpsfile(image_dir, 'input_images.tps', scale = args.scale)
     
     else:
-        sys.stderr.print("\nERROR: No input file and no scale specified. Unable to proceed in predict mode\n")
+        sys.stderr.write("\nERROR: No input file and no scale specified. Unable to proceed in predict mode\n")
         predict_parser.print_help()
         sys.exit(2)
     
-    ## TODO: Call predict functions
+    
+    if args.output:
+        output = args.output
+    else:
+        output = f'{model_name}_landmarks.txt'
+        
+    ## Call predict functions
+    predict(image_dir, tpsfile, dat, output, args.plot)
+
+    
 
     
 
