@@ -112,6 +112,9 @@ def main():
     
     model = train(model_name, image_dir, train_xml)
     
+    print(f"COMPLETE: {model} has been generated") # lo de complete no me gusta
+
+
 if __name__ == "__main__":
     main()          
             
