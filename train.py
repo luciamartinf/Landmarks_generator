@@ -33,6 +33,7 @@ def train(model_name, image_dir, train_xml, work_dir, model_version, params = Fa
     
     if params:
         # Get parameters from file
+        print(f"Using parameters from file {params}")
         best_params = params
     else:
         # Find best parameters

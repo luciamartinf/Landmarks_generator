@@ -40,22 +40,17 @@ class Landmarks:
         
         ext = what_file_type(file)
 
-        if ext == '.xml': # train from xml mode
+        if ext == '.xml':
 
             self.xmlfile = file
             
             self.lm_dict, self.img_list = self.read_xmlfile()
             
-            # Initialize nested_dict y lm_dict de alguna forma 
-
-            # read xml file
-            print("WARNING: Initializing from xml file. Some attributes may be missing")
 
         elif ext in ['.tps', '.txt']:
             
             if Landmarks.check_forlm(file):
             
-                # protrain from tps landmarks file 
 
                 self.txt_lmfile: str = file 
                 self.lm_dict, self.img_list, Landmarks.nested_dict = self.readtxt_lmfile()
