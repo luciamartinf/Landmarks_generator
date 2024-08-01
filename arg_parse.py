@@ -72,7 +72,7 @@ def get_parser():
                                 help = 'Tps or txt file with image scale')
     predict_parser.add_argument('-s', '--scale', 
                                 help = 'Scale of all the images, all images must have the same scale')
-    predict_parser.add_argument('--output', '-o', default="prediction.tps",
+    predict_parser.add_argument('--output', '-o',
                                 help = "Output tps file that contains landmarks")
     predict_parser.add_argument('--plot', action='store_true', 
                               help = "Plot images with landmarks")
