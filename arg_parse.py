@@ -72,3 +72,79 @@ def get_parser():
     # Return all modes
     
     return parser, train_parser, predict_parser
+
+def get_train_parser():
+    
+    """Parser for train"""
+    
+    parser = argparse.ArgumentParser(prog = '', formatter_class=argparse.RawDescriptionHelpFormatter,
+                                     description= '')
+    
+    add = parser.add_argument
+    
+    add('--version', action='version', version='%(prog)s 0.0.1')
+    
+    add('--verbose', action='store_true', help='Enable verbose mode')
+
+    add('-img', '--image_dir', required=True, 
+        help='Directory containing the images')
+    
+    add('-m', '--model_name', required=True,
+        help='Model name')
+    
+    add('--model_version', '-mv', required=False, type=int,
+        help='Model version')
+    
+    add('--work_dir','-w', default='./', 
+        help='Working directory')
+    
+    add( '-f', '--file', required = True,
+        help = 'Tps, txt or xml file with image scale and landmarks')
+    
+    add('--params', help = 'Params for training model')
+    
+    add('--save_params', '-s', action='store_true', 
+        help = "Save training params in a new file")
+    
+    return parser
+
+
+    
+def get_predict_parser():
+    
+    """"Parser for prediction"""
+    
+    parser = argparse.ArgumentParser(prog = '', formatter_class=argparse.RawDescriptionHelpFormatter,
+                                     description= '')
+    
+    add = parser.add_argument
+    
+    add('--version', action='version', version='%(prog)s 0.0.1')
+    
+    add('--verbose', action='store_true', help='Enable verbose mode')
+
+    add('-img', '--image_dir', required=True, 
+        help='Directory containing the images')
+    
+    add('-m', '--model_name', required=True,
+        help='Model name')
+    
+    add('--model_version', '-mv', required=False, type=int,
+        help='Model version')
+    
+    add('--work_dir','-w', default='./', 
+        help='Working directory')
+    
+    add( '-f', '--file',
+        help = 'Tps or txt file with image scale')
+    
+    add('-s', '--scale', 
+        help = 'Scale of all the images, all images must have the same scale')
+    
+    add('--output', '-o',
+        help = "Output tps file that contains landmarks")
+    
+    add('--plot', action='store_true', 
+        help = "Plot images with landmarks")
+    
+    return parser

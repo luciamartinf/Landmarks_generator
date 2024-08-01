@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 
-import argparse
-from Generate_model import find_best_params, train_model
-from Landmarks_module import Landmarks
-import os
-import multiprocessing
-import generate_tps
 import config
 import utils
+import sys
+import os
+import multiprocessing
+import arg_parse
+from Landmarks_module import Landmarks
+from train import train, preprocessing
+from Generate_model import find_best_params, train_model, measure_model_error
+
 
 def preprocessing(lmfile, image_dir):
     
@@ -74,66 +76,69 @@ def train(
 
 def main():
     
-    # Este main lo tengo que modificar
+    parser = arg_parse.get_train_parser()
     
-    parser = argparse.ArgumentParser(prog = '', formatter_class=argparse.RawDescriptionHelpFormatter, description= '')
-
-    add = parser.add_argument
-
-    add('-i','--image_dir', required=True, 
-        help='Directory containing images')
-    add('-o', '--model_name', required=True, 
-        help="Model name")
-    add('-f', '--file', 
-        help = 'Tps or txt file with image scale and landmarks.') # Para entrenar necesito si o si las landmarks
-    # add('--scale',
-    #     help='Scale of all the images, all images must have the same scale')
-    
-    add('--preprocess', '-p', action='store_true',
-        help='Preprocessing data and create train and test sets') # Change this help message
-    add('--xml',
-        help = "Required if preprocess flag is on. Xml file for training the model")
-    
-
+    # Reading arguments
     args = parser.parse_args()
 
-    
     image_dir = os.path.abspath(args.image_dir)
-    lm_file = os.path.abspath(args.file)
+    work_dir = os.path.abspath(args.work_dir)
+    Landmarks.work_dir = work_dir
+
     model_name = args.model_name
-    
-    if args.preprocess:
-        train_xml = args.xml
-        
+
+    if args.model_version:
+        model_version = int(args.model_version)
     else:
-        if args.file:
-            print("TRUE")
-            lm_file = os.path.abspath(args.file)
-        else:
-            lm_file = 'tps_file.txt'
-            try:
-                scale = args.scale
-            except: 
-                # Print introduce scale
-                scale = str(0) # Default scale
-            
-            generate_tps.write_tpsfile(image_dir, lm_file, scale)
+        model_version = 0
     
+    input_file = args.file
     
-        train_xml, test_xml = preprocessing(image_dir, lm_file)
+    ext = utils.what_file_type(input_file)
     
-    model = train(model_name, image_dir, train_xml)
+    if ext in ['.tps', '.txt']:
+        
+        if Landmarks.check_forlm(input_file):
+                print(".TPS file with landmarks detected.")
+                
+        else: 
+            sys.stderr.write("\nERROR: TPS file detected without landmarks. Unable to proceed with training\n")
+            parser.print_help()
+            sys.exit(2)
+                
+    elif ext == '.xml':
+        
+        print(".xml file detected")
+   
+    else:
+        
+        sys.stderr.write("\nERROR: No input file found. Unable to proceed with training\n")
+        parser.print_help()
+        sys.exit(2)
     
-    print(f"COMPLETE: {model} has been generated") # lo de complete no me gusta
 
-
+    if args.params:
+        params = utils.read_list_from_file(args.params)
+    else:
+        params = False
+  
+    try: 
+        
+        train_xml, test_xml = preprocessing(input_file, image_dir)
+        dat = train(model_name, image_dir, train_xml, work_dir, model_version, params=params, save_params=args.save_params) 
+    
+    except:
+        
+        sys.stderr.write(f"\nERROR: Unable to train model with file {input_file}\n")
+        parser.print_help()
+        sys.exit(2)
+    
+    # Compute training and test MSE errors of the model
+    print("Calculating MSE error of the model")
+    measure_model_error(dat, train_xml) # aqui usar train + val
+    measure_model_error(dat, test_xml) # aqui usar solo test
+    
+    print("Done!")
+        
 if __name__ == "__main__":
-    main()          
-            
-    
-    
-    
-    
-    
-    
-    
+    main()  
