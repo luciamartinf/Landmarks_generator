@@ -2,23 +2,6 @@
 
 import argparse
 
-# def add_common_arguments(subparser):
-    
-#     add = subparser.add_argument
-    
-#     add('-img', '--image_dir', required=True, 
-#         help='Directory containing the images')
-    
-#     add('-m', '--model_name', required=True,  # Deberia ser true para todos pero no para preprocess
-#         help='Model name')
-    
-#     add('--model_version', '-mv', required=False, type=int,
-#         help='Model version')
-    
-#     add('--work_dir','-w', default='./', # podria ser './' por defecto
-#         help='Working directory')
-    
-
 
 def get_parser():
 
@@ -80,19 +63,3 @@ def get_parser():
     
     # All modes
     return parser, train_parser, predict_parser
-
-# def parsemyargs():
-    
-#     parser, train_parser, predict_parser = get_parser()
-#     args = parser.parse_args()
-#     if args.mode == 'train':
-#         return train_parser.parse_args()
-    
-#     # ....
-#     return parser.parse_args()
-    
-# def parse_args():
-    
-#     ###  Esta ya no la usamos
-#     parser = get_parser()
-#     return parser.parse_args()

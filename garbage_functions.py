@@ -98,6 +98,60 @@ def rewrite_file(txt_lmfile):
                     
             i += 1
 
+
+   # @staticmethod
+    # def extract_image_list_from_xml(xml_file_path):
+    #     # Parse the XML file
+    #     tree = ET.parse(xml_file_path)
+    #     root = tree.getroot()
+        
+    #     # Find all image elements and extract the file attribute
+    #     images = root.findall('.//image')
+    #     image_list = [os.path.basename(image.get('file')) for image in images]
+        
+    #     return image_list
+    
+    def check_for_negatives(self, model_path):
+
+        """"
+        Check for cropped images in the training set
+        """
+        
+        total = len(self.img_list)
+        per_10 = int(0.1 * total)
+
+        for img in self.img_list:
+
+            img_name = img.split('_')[1] # nos quedamos con ind429348.jpg
+
+            image_path = os.path.join(self.flip_dir, img)
+
+            image = Image.open(image_path)
+            np_image = np.array(image)
+            width, height = image.size
+                
+            full_rect = dlib.rectangle(left=0, top=0, right=width, bottom=height)
+            predictor = dlib.shape_predictor(model_path)
+            shape = predictor(np_image, full_rect)
+            count = 0
+
+            for i in range(shape.num_parts):
+                p = shape.part(i)
+                if float(p.x) < 0 :
+                    print(f"WARNING: Image {img_name} may be cropped and negative landmarks are being generated. Excluding this picture from the training set")
+                    # os.remove(image_path)
+                    count +=1
+                    break
+                if float(p.y) < 0 :
+                    print(f"WARNING: Image {img_name} may be cropped and negative landmarks are being generated. Setting {p.y} coordinate to 0")
+                    # os.remove(image_path)
+                    count +=1
+                    break
+            
+            if count >= per_10:
+                print("WARNING: More than the 10 percent of the images used in the training where cropped. Please try training the model again with the command: COMMAND")
+
 if __name__ == "__main__":       
     
     rewrite_file('/Users/luciamf/Desktop/Landmarks_generator/Carabus_pronotumLANDMARKS.TXT')
+    
