@@ -13,21 +13,18 @@ from utils import check_make_dir, start_xml_file, end_xml_file, append_to_xml_fi
 
 
 class Landmarks:
+    
+    """A class use to process Landmarks"""
 
     data_dir: str = None
     flip_dir: str = None # directory with images and files that we are going to use
     work_dir: str = None # Working directory
     nested_dict: Dict[str, Dict[str, Any]] = {} 
 
-    """
-    Class for managing landmarks
-    """
-
-    def __init__(self, file: str, img_list: List = [], lm_dict: Dict = {}, nested_dict = {}) -> None:
-
-        """
-        Initializes Landmark object with a txtfile.
-        """
+    def __init__(self, 
+                 file: str, img_list: List = [], lm_dict: Dict = {}, nested_dict = {}) -> None:
+        
+        """Constructs all necessary instance attributes"""
 
         self.lm_dict: Dict[str, List] = lm_dict
         self.img_list: List[List[float, float]] = img_list
@@ -41,7 +38,6 @@ class Landmarks:
         if ext == '.xml':
 
             self.xmlfile = file
-            
             self.lm_dict, self.img_list = self.read_xmlfile()
             
 
@@ -49,7 +45,6 @@ class Landmarks:
             
             if Landmarks.check_forlm(file):
             
-
                 self.txt_lmfile: str = file 
                 self.lm_dict, self.img_list, Landmarks.nested_dict = self.readtxt_lmfile()
                 
@@ -57,24 +52,19 @@ class Landmarks:
             
                 # predict with tps without landmarks
                 # The input txt file does not contain the landmarks yet
-
                 self.txt_imgfile: str = file
-
                 self.img_list, Landmarks.nested_dict = self.readtxt_imgfile()
                 
-        
         else:
+            
             sys.exit(2)
             
 
-
     @classmethod
-    def create_flipdir(
-            cls):
+    def create_flipdir(cls):
 
-        """
-        Initializes the flip directory and creates it if it does not exist
-        """
+        """Initializes flip_dir attribute and creates the directory it if it does not exist"""
+        
         flip_dir = os.path.join(Landmarks.data_dir, 'work_data')
         check_make_dir(flip_dir)
         Landmarks.flip_dir = flip_dir
@@ -83,27 +73,27 @@ class Landmarks:
     @staticmethod
     def check_id_img(
         real_id, img_name):
+        
+        """Check that img_name and annotated id are the same
 
+        Returns:
+            img_id (str): Correct id for the image
         """
-        Check that img_name and annotated id are the same
-        """
+
         # img_name es del tipo ind2784.jpg
-        img_id = img_name.split('.')[0].upper() # nos quedamos con IND2934584
+        img_id = img_name.split('.')[0].upper() # The ID is like IND2934584
 
         if real_id != img_id:
-
             print(f"WARNING: ID={real_id} doesn't correspond to IMAGE={img_name}. Forcing ID to {img_id}")
 
         return img_id
 
+
     @staticmethod
     def check_forlm(
-        file_name
-            ):
+        file_name):
 
-        """
-        Checks if the txt files already contains the landmarks
-        """
+        """Checks if the txt files already contains the landmarks"""
 
         with open(file_name, 'r') as file:
             for line in file:
@@ -115,15 +105,20 @@ class Landmarks:
                         return True
  
         
-    def readtxt_lmfile(
-            self):
+    def readtxt_lmfile(self):
         
-        """
-        Read Landmarks text file 
+        """Parse tps or txt file that contains landmarks
+        
+        Returns:
+            self.lm_dict (Dict): Dictionary that contains flip_images (basename) as keys and landmarks as values
+            self.img_list (List): List of flip_images (basename)
+            Landmarks.nested_dict (Dict): Nested Dictionary with ID, SCALE and LM for every image (og_name)
         """
 
         with open(self.txt_lmfile, 'r') as file:
+      
             for line in file:
+                
                 # Process expected line, "LANDMARKS" 
                 if line.startswith("LM"):
                     lm_list = []
@@ -131,36 +126,39 @@ class Landmarks:
                     
                     if n_lm == 0:
                         print(f"WARNING: No landmarks annotated for this image")
+                        # TODO
                         # HACER ALGO AL RESPECTO
                         # Hacer un count y si mas de x imagenes o porcentaje de imagenes no estan anotadas terminar el script
-                        # Añadir esta imagen a la lista de predecir
 
                     # Read all the landmarks
-                    i = 0
-                    while i < n_lm:
-                        landmark_line = next(file).strip().split() 
-                        lm_list.append([float(landmark_line[0]), float(landmark_line[1])])
-                        i+=1
+                    else: 
+                        i = 0
+                        while i < n_lm:
+                            landmark_line = next(file).strip().split() 
+                            lm_list.append([float(landmark_line[0]), float(landmark_line[1])])
+                            i+=1
 
                     # Process the next expected line, "IMAGE"
                     next_line = file.readline()
+                    
                     if next_line.startswith("IMAGE"):
                         image_name = str(next_line.strip().split('=')[1])
+                        
                         try:
-                            image, image_path = self.flip_image(image_name) # we are flipping the image and saving it in the dictionary we are going to work with  
+                            # we are flipping the image and saving it in the dictionary we are going to work with  
+                            image, image_path = self.flip_image(image_name) 
                         except Exception as e:
                             print(f"Error flipping image: {e}")
-                            # Discard this image
-                            continue
+                            continue # Discard this image
                         
                         self.lm_dict[image] = lm_list
                         self.img_list.append(image)
 
-                        # A LO MEJOR EN EL NESTED DICTIONARY TIENE MAS SENTIDO TENER EL NOMBRE ORIGINAL QUE ES EL QUE VAMOS A USAR DESPUES
                         Landmarks.nested_dict[image_name] = {"LM": lm_list}
                                             
                     # Process the next expected line, "ID"
                     next_line = file.readline()
+                    
                     if next_line.startswith("ID"):
                         real_id = str(next_line.strip().split('=')[1])
                         img_id = Landmarks.check_id_img(real_id, image_name)
@@ -168,6 +166,7 @@ class Landmarks:
                     
                     # Process the next expected line, "SCALE"
                     next_line = file.readline()
+                    
                     if next_line.startswith("SCALE"):
                         scale = next_line.strip()
                         Landmarks.nested_dict[image_name]["SCALE"] = scale
@@ -175,15 +174,20 @@ class Landmarks:
         return self.lm_dict, self.img_list, Landmarks.nested_dict
 
 
-    def readtxt_imgfile(
-            self):
+    def readtxt_imgfile(self):
         
+        """Parse tps or txt file without landmarks
+        
+        Returns:
+            self.img_list (List): List of flip_images (basename)
+            Landmarks.nested_dict (Dict): Nested Dictionary with ID, SCALE and LM for every image (og_name)
         """
-        Read text file 
-        """
-
+        
         with open(self.txt_imgfile, 'r') as file:
+            
             for line in file:
+                
+                # Process expected line, "LM"
                 if line.startswith("LM"):
                     n_lm = int(line.strip().split('=')[1])
 
@@ -191,27 +195,32 @@ class Landmarks:
                         print(f"WARNING: There are some Landmarks already annotated for this image")
                         # TODO HACER ALGO AL RESPECTO
 
-
-                    # TODO REMEMBER: Change these ifs to  try
+                    # Process the next expected line, "IMAGE"
                     next_line = file.readline()
+                    
                     if next_line.startswith("IMAGE"):
                         image_name = str(next_line.strip().split('=')[1])
+                        
                         try:
                             image, image_path = self.flip_image(image_name) # we are flipping the image and saving it in the dictionary we are going to work with  
                         except:
                             break
-                        # self.lm_dict[image] = [] # Here we save the flip image because we need to annotate over this
+                        
                         self.img_list.append(image_name)
                         Landmarks.nested_dict[image_name] = {}
                         Landmarks.nested_dict[image_name]["LM"] = []
 
+                    # Process the next expected line, "ID"
                     next_line = file.readline()
+                    
                     if next_line.startswith("ID"):
                         real_id = str(next_line.strip().split('=')[1])
                         img_id = Landmarks.check_id_img(real_id, image_name)
                         Landmarks.nested_dict[image_name]["ID"] = img_id
                     
+                    # Process the next expected line, "SCALE"
                     next_line = file.readline()
+                    
                     if next_line.startswith("SCALE"):
                         scale = next_line.strip()
                         Landmarks.nested_dict[image_name]["SCALE"] = scale
@@ -220,44 +229,43 @@ class Landmarks:
         return self.img_list, Landmarks.nested_dict
     
     
-    def read_xmlfile(
-            self):
+    def read_xmlfile(self):
         
         """Parse images and ladmarks from xml file
 
         Returns:
-            Dict: Dictionary that contains flip_images (basename) as keys and landmarks as values
-            List: List of flip_images (basename)
+            self.lm_dict (Dict): Dictionary that contains flip_images (basename) as keys and landmarks as values
+            self.img_list (List): List of flip_images (basename)
         """
     
         tree = ET.parse(self.xmlfile)
         root = tree.getroot()
 
         for image in root.findall('.//image'):
+            
             image_path = image.get('file')
             image_name = os.path.basename(image_path)
             self.img_list.append(image_name)
             self.lm_dict[image_name] = []
+            
             for part in image.findall('.//part'):
-                part_name = part.get('name')
                 x = float(part.get('x'))
                 y = float(part.get('y'))
+                
                 self.lm_dict[image_name].append([x,y])
 
         return self.lm_dict, self.img_list
     
     
-    
-    def write_xml(
-            self, file, folder, name):
+    def write_xml(self, 
+                  file, folder, name):
 
-        """
-        Write xml file from image and landmarks dictionary
-        """
+        """Write xml file from image and landmarks dictionary"""
         
         self.xmlfile = file
 
         with open(self.xmlfile, 'w') as f:
+            
             f.write(f"<?xml version='1.0' encoding='ISO-8859-1'?>\n")
             f.write(f"<?xml-stylesheet type='text/xsl' href='image_metadata_stylesheet.xsl'?>\n")
             f.write(f"<dataset>\n")
@@ -265,16 +273,20 @@ class Landmarks:
             f.write(f"<images>\n")
 
             for img in self.img_list:
+                
                 image_path = os.path.join(folder, img)
                 im = Image.open(image_path)
                 width, height = im.size
+                
                 f.write(f"\t<image file='{image_path}' width='{int(width)}' height='{int(height)}'>\n")
                 f.write(f"\t\t<box top='1' left='1' width='{int(width-2)}' height='{int(height-2)}'>\n")
                 
                 i = 0
                 for lm in self.lm_dict[img]:
+                    
                     f.write(f"\t\t\t<part name='{i}' x='{int(lm[0])}' y='{int(lm[1])}'/> \n")
                     i+=1
+                    
                 f.write(f"\t\t</box>\n")
                 f.write(f"\t</image>\n")
 
@@ -284,17 +296,10 @@ class Landmarks:
         return self.xmlfile
 
 
-
-    def flip_image(
-            self, img):
+    def flip_image(self, 
+                   img):
         
-        """_summary_ Flip images because landmarks' coordinates are flipped
-
-        Returns:
-            _type_ str: _description_ new flipped image name
-        
-        Generates: new image flipped vertically in a new folder
-        """
+        """Flip images because landmarks' coordinates are flipped"""
 
         # Read original image
         img_path = os.path.join(Landmarks.data_dir, img)
@@ -309,38 +314,28 @@ class Landmarks:
 
         return new_image, new_imgpath
     
-    def split_data(self, tag = ['train', 'test'], split_size = [0.7, 0.3]):
+    
+    def split_data(self, 
+                   tag = ['train', 'test'], split_size = [0.7, 0.3]):
 
-        """_summary_ Splits data in two sets 
-
-        Returns:
-            _type_: _description_
-        """
+        """Splits data in two sets"""
 
         train_list = []
         test_list = []
 
-        # We are not using folders
         train_xml = os.path.join(Landmarks.flip_dir, f'{tag[0]}.xml')
         test_xml = os.path.join(Landmarks.flip_dir, f'{tag[-1]}.xml')
 
         start_xml_file(train_xml, tag[0])
         start_xml_file(test_xml, tag[-1])
 
-        # # Define a list of image extensions
-        # image_extensions = ['.jpg', '.jpeg', '.png', '.bmp'] 
-        # imgs_list = [filename for filename in os.listdir(train_folder) if os.path.splitext(filename)[-1] in image_extensions]
-        # Changing seed for every split, maybe this is already done by default
-
         random.shuffle(self.img_list)
 
         train_size = int(len(self.img_list) * split_size[0])
         print(f'train size is {train_size}')
 
-        # Copy image files to each list
-        # and append image to xml file
+        # Add images to each list
         for i, img in enumerate(self.img_list):
-            # print(i)
             if i < train_size:
                 file = train_xml
                 train_list.append(img)
@@ -348,25 +343,19 @@ class Landmarks:
                 file = test_xml
                 test_list.append(img)
             
-            # append to xml file
+            # append image to corresponding xml file
             append_to_xml_file(file, img, self.lm_dict, Landmarks.flip_dir)
 
-        
         end_xml_file(train_xml)
         end_xml_file(test_xml)
-
-        print(f'Another split')
 
         return train_xml, test_xml
     
 
-    def predict_landmarks(self, model_path, outfile, generate_images = True):
+    def predict_landmarks(self, 
+                          model_path, outfile, generate_images = True):
         
-        """_summary_ Predict new landmarks based on a model
-
-        Returns:
-            _type_: _description_
-        """
+        """Predict new landmarks based on a model"""
 
         model_file = os.path.basename(model_path)
         model_name = model_file[:model_file.rindex('.')]
@@ -374,14 +363,11 @@ class Landmarks:
         landmarks_folder = os.path.join(Landmarks.work_dir, f'{model_name}_landmarks')
         
         check_make_dir(landmarks_folder)
-
         
         outpath = os.path.join(landmarks_folder, outfile)
 
 
         for img in self.img_list:
-
-            # image_name = img.split('-')[1]
    
             image_path = os.path.join(Landmarks.flip_dir, f'flip_{img}')
             
@@ -406,8 +392,8 @@ class Landmarks:
                     p.y = 0
                 lm_list.append([p.x, p.y])
 
-            # Sort landmarks 
-            lm_list.sort()
+            # # Sort landmarks 
+            # lm_list.sort()
 
             if generate_images:
                 plt.figure()
@@ -415,9 +401,11 @@ class Landmarks:
                 plt.xlim(0, width)
                 plt.imshow(image)
 
+                # Plot red dots
                 # for lm in lm_list:
                 #     plt.plot(lm[0], lm[1], '.', color='red')
                 
+                # Plot colored numbers
                 for i, lm in enumerate(lm_list):
                     plt.scatter(lm[0], lm[1], marker="$"+str(i)+"$")
                 

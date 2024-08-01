@@ -12,10 +12,6 @@ import utils
 def preprocessing(lmfile, image_dir):
     
     """Preprocessing steps for training 
-    
-    Parameters:
-        lmfile (str): tps, xml or txt file with annotated landmarks
-        image_dir (str): Directory that contains images
         
     Returns:
         train_xml (str): xml file for training
@@ -30,7 +26,15 @@ def preprocessing(lmfile, image_dir):
     return train_xml, test_xml
 
 
-def train(model_name, image_dir, train_xml, work_dir, model_version, params = False, save_params = False): # train_set is an object of Landmarks
+def train(
+    model_name, image_dir, train_xml, work_dir, model_version, 
+    params = False, save_params = False): 
+    
+    """Training shape predictor model
+    
+    Returns:
+        dat (str): shape predictor model
+    """
     
     procs = multiprocessing.cpu_count()
     procs = config.PROCS if config.PROCS > 0 else procs 
@@ -49,7 +53,6 @@ def train(model_name, image_dir, train_xml, work_dir, model_version, params = Fa
     # temp model
     temp = os.path.join(work_data, 'temp.dat')
     
-    
     if params:
         # Get parameters from file
         print(f"Using parameters from file {params}")
@@ -66,10 +69,7 @@ def train(model_name, image_dir, train_xml, work_dir, model_version, params = Fa
     # Train model
     train_model(dat, train_xml, best_params)
     
-    
-    
     return dat
-    
     
 
 def main():
