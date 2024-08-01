@@ -71,7 +71,6 @@ if mode == 'train':
     else:
         
         sys.stderr.write("\nERROR: No input file found. Unable to proceed in train mode\n")
-        sys.stderr.write("\nINSTRUCTION: Try -xml XML_FILE to continue in train mode or --file TPS_FILE to enter preprocessing mode with a tps file\n")
         parser.print_help()
         train_parser.print_help()
         sys.exit(2)
