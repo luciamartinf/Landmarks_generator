@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 
-from typing import Dict, List, Any
 import os
-from PIL import Image # type: ignore
-import numpy as np # numpy==1.26.4 because version 2 does not work with dlib
+import sys
 import dlib 
+import random
+import numpy as np # numpy==1.26.4 because version 2 does not work with dlib
 import matplotlib.pyplot as plt 
 import xml.etree.ElementTree as ET
-import sys
+from PIL import Image
+from typing import Dict, List, Any
+from utils import check_make_dir, start_xml_file, end_xml_file, append_to_xml_file, what_file_type
 
-from utils import check_make_dir, start_xml_file, end_xml_file, append_to_xml_file, what_file_type, which
-import random
 
 class Landmarks:
 

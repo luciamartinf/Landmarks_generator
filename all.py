@@ -1,44 +1,38 @@
 #!/usr/bin/env python3
 
-from Generate_model import  measure_model_error
-from utils import  what_file_type
-from Landmarks_module import Landmarks
-import os
-import multiprocessing
-import utils
-import generate_tps
-import config
-
-from train import train, preprocessing
-from predict import predict
 import arg_parse
 import random
 import sys
+import os
+import generate_tps
+import utils
+from Landmarks_module import Landmarks
+from Generate_model import  measure_model_error
+from train import train, preprocessing
+from predict import predict
+
 
 
 random.seed(5399) # Always same splits
-# With the same number of max_func_calls deberia de obtener el mismo resultado no? 
 
-#######################
-### PARSE ARGUMENTS ###
-#######################
-
+# Reading arguments
 
 parser, train_parser, predict_parser = arg_parse.get_parser()
 args = parser.parse_args()
-# args = arg_parse.parse_args()
-
 
 image_dir = os.path.abspath(args.image_dir)
 work_dir = os.path.abspath(args.work_dir)
 Landmarks.work_dir = work_dir
 
-
 model_name = args.model_name
+
 if args.model_version:
     model_version = int(args.model_version)
 else:
     model_version = 0
+
+
+# Reading mode 
 
 mode = args.mode
 
@@ -52,22 +46,22 @@ if not mode:
     sys.exit(2)
     
     
-    
+# Train mode    
+   
 if mode == 'train':
     
-    input_file = os.path.join(work_dir, args.file) # TODO: hacer esto en todos los files
+    input_file = args.file
     
-    ext = what_file_type(args.file)
+    ext = utils.what_file_type(input_file)
     
     if ext in ['.tps', '.txt']:
         
-        if Landmarks.check_forlm(args.file):
+        if Landmarks.check_forlm(input_file):
                 print(".TPS file with landmarks detected.")
                 
         else: 
             print("WARNING: TPS file detected without landmarks. Trying predicting mode...")
-            # If it doesn't work it will exit
-            dat = utils.check_predmodel(model_name, work_dir, model_version, parser) 
+            dat = utils.check_predmodel(model_name, work_dir, model_version, parser) # If it doesn't work it will exit
             mode = 'predict'
                 
     elif ext == '.xml':
@@ -90,25 +84,26 @@ if mode == 'train':
     else:
         params = False
     
-    train_xml, test_xml = preprocessing(os.path.abspath(input_file), image_dir)
-    dat = train(model_name, image_dir, train_xml, work_dir, model_version, params=params, save_params=args.save_params)
-        
+  
     try: 
-        train_xml, test_xml = preprocessing(os.path.abspath(input_file), image_dir)
+        
+        train_xml, test_xml = preprocessing(input_file, image_dir)
         dat = train(model_name, image_dir, train_xml, work_dir, model_version, params=params, save_params=args.save_params) 
+    
     except:
-        sys.stderr.write(f"\nERROR: Unable to train model with file {args.file}\n")
+        
+        sys.stderr.write(f"\nERROR: Unable to train model with file {input_file}\n")
         parser.print_help()
         train_parser.print_help()
         sys.exit(2)
     
     # Compute training and test MSE errors of the model
+    print("Calculating MSE error of the model")
     measure_model_error(dat, train_xml) # aqui usar train + val
     measure_model_error(dat, test_xml) # aqui usar solo test
     
-    # input_data.check_for_negatives(dat)
-
-
+    
+# Predict mode
 
 if mode == 'predict':
     
@@ -119,7 +114,7 @@ if mode == 'predict':
     
     if args.file:
         
-        if what_file_type(args.file) not in ['.txt', '.tps']:
+        if utils.what_file_type(args.file) not in ['.txt', '.tps']:
             
             if not args.scale:
                 sys.stderr.print("\nERROR: Invalid input file and no scale specified. Unable to proceed in predict mode\n")
@@ -136,11 +131,9 @@ if mode == 'predict':
             tpsfile = args.file
         
         else:
-            
             tpsfile = args.file 
     
-    elif args.scale:
-        # If not tpsfile Check that we can create a tps file
+    elif args.scale: # If not tpsfile check that we can create a tps file
         tpsfile = generate_tps.write_tpsfile(image_dir, 'input_images.tps', scale = args.scale)
     
     else:
@@ -148,14 +141,16 @@ if mode == 'predict':
         predict_parser.print_help()
         sys.exit(2)
     
-    
     if args.output:
         output = args.output
     else:
         output = f'{model_name}_landmarks.txt'
         
     ## Call predict functions
+    print("Predicting Landmarks...")
     predict(image_dir, tpsfile, dat, output, args.plot)
+
+print("Done!")
 
     
 
