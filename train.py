@@ -11,12 +11,24 @@ import utils
 
 def preprocessing(lmfile, image_dir):
     
+    """Preprocessing steps for training 
+    
+    Parameters:
+        lmfile (str): tps, xml or txt file with annotated landmarks
+        image_dir (str): Directory that contains images
+        
+    Returns:
+        train_xml (str): xml file for training
+        test_xml (str): xml file for testing
+    """
+    
     Landmarks.data_dir = os.path.abspath(image_dir)
     Landmarks.create_flipdir()
     input_data = Landmarks(lmfile)
     train_xml, test_xml = input_data.split_data()
     
     return train_xml, test_xml
+
 
 def train(model_name, image_dir, train_xml, work_dir, model_version, params = False, save_params = False): # train_set is an object of Landmarks
     

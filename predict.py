@@ -9,7 +9,7 @@ def predict(image_dir, file, dat, output, gen_images=False):
     
     """Predict Landmarks from tps unannotated file and images
 
-    Args:
+    Parameters:
         image_dir (Directory): Directory that contains images 
         file (File): tps unannotated file
         dat (File): Machine Learning model to predict landmarks
