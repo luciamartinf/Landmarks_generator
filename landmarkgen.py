@@ -7,7 +7,7 @@ import os
 import generate_tps
 import utils
 from Landmarks_module import Landmarks
-from shapepred_fun import  measure_model_error
+from shape_predictor import  measure_model_error
 from train import train, preprocessing
 from predict import predict
 
