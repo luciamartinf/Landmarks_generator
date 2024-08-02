@@ -24,7 +24,7 @@ def get_parser():
     
     add('--verbose', action='store_true', help='Enable verbose mode')
 
-    add('-img', '--image_dir', required=True, 
+    add('-i', '--image_dir', required=True, 
         help='Directory containing the images')
     
     add('-m', '--model_name', required=True,
@@ -44,10 +44,10 @@ def get_parser():
     train_parser.add_argument( '-f', '--file', required = True,
           help = 'Tps, txt or xml file with image scale and landmarks')
     
-    train_parser.add_argument('--params', 
+    train_parser.add_argument('--params', '-p',
                               help = 'Params for training model')
     
-    train_parser.add_argument('--save_params', '-s', action='store_true', 
+    train_parser.add_argument('--save_params', '-sp', action='store_true', 
                               help = "Save training params in a new file")
     
    
@@ -59,10 +59,10 @@ def get_parser():
     predict_parser.add_argument( '-f', '--file',
                                 help = 'Tps or txt file with image scale')
     
-    predict_parser.add_argument('-s', '--scale', 
+    predict_parser.add_argument('--scale', '-s',
                                 help = 'Scale of all the images, all images must have the same scale')
     
-    predict_parser.add_argument('--output', '-o',
+    predict_parser.add_argument('-o', '--output', 
                                 help = "Output tps file that contains landmarks")
     
     predict_parser.add_argument('--plot', action='store_true', 
@@ -86,7 +86,7 @@ def get_train_parser():
     
     add('--verbose', action='store_true', help='Enable verbose mode')
 
-    add('-img', '--image_dir', required=True, 
+    add('-i', '--image_dir', required=True, 
         help='Directory containing the images')
     
     add('-m', '--model_name', required=True,
@@ -101,9 +101,9 @@ def get_train_parser():
     add( '-f', '--file', required = True,
         help = 'Tps, txt or xml file with image scale and landmarks')
     
-    add('--params', help = 'Params for training model')
+    add('--params', '-p', help = 'Params for training model')
     
-    add('--save_params', '-s', action='store_true', 
+    add('--save_params', '-sp', action='store_true', 
         help = "Save training params in a new file")
     
     return parser
@@ -123,7 +123,7 @@ def get_predict_parser():
     
     add('--verbose', action='store_true', help='Enable verbose mode')
 
-    add('-img', '--image_dir', required=True, 
+    add('-i', '--image_dir', required=True, 
         help='Directory containing the images')
     
     add('-m', '--model_name', required=True,

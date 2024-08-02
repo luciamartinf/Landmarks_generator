@@ -332,7 +332,7 @@ class Landmarks:
         random.shuffle(self.img_list)
 
         train_size = int(len(self.img_list) * split_size[0])
-        print(f'train size is {train_size}')
+        print(f'Training with {train_size} images')
 
         # Add images to each list
         for i, img in enumerate(self.img_list):

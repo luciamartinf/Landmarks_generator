@@ -6,7 +6,6 @@ import generate_tps
 import utils
 import arg_parse
 from Landmarks_module import Landmarks
-from predict import predict
 
 def predict(image_dir, file, dat, output, gen_images=False):
     

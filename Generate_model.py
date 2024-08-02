@@ -6,6 +6,7 @@ import os
 from collections import OrderedDict 
 import sys
 import multiprocessing
+from Landmarks_module import Landmarks
 
 procs = multiprocessing.cpu_count()
 procs = config.PROCS if config.PROCS > 0 else procs 
