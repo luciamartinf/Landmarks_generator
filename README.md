@@ -1,9 +1,24 @@
-# Title
+# LandMarkgen
 
 ### Lucía Martín Fernández
 #
 
-Short Description
+Shape Predictor Model to extract coordinates of the most important landmarks needed for shape analysis of biological structures. 
+
+
+## Abstract
+
+Geometric morphometrics is a powerful approach used in biological studies to analyze and compare the shape and form of biological structures in the context of evolutionary biology and ecology. This procedure includes landmark identification and digitization that serve as
+reference points for further shape analysis. TpsDIG (Rohlf, F. J. 2006) is a software tool
+designed for digitizing landmarks directly from digital images and obtaining the coordinates.
+However, landmarks representing specific anatomical points are manually placed on the
+images using tpsDIG by clicking on the specific points.
+
+Biologists and entomologists typically need to perform this manual landmarking procedure
+on hundreds to thousands of photographs, which can be tedious, labor-intensive, error-
+prone, and time-consuming. To address this, our objective is to develop a shape predictor model
+that can extract the coordinates of the most important landmarks needed for shape
+analysis of biological structures. 
 
 
 ## Basic usage:
