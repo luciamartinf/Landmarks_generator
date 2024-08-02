@@ -127,14 +127,16 @@ def get_predict_parser():
     add('-i', '--image_dir', required=True, 
         help='Directory containing the images')
     
-    add( '-f', '--file',
-        help = 'Tps or txt file with image scale')
-    
     add('-m', '--model_name', required=True,
         help='Model name')
     
+    add( '-f', '--file',
+        help = 'Tps or txt file with image scale')
+    
     add('--model_version', '-mv', required=False, type=int,
         help='Model version')
+    
+
     
     add('--work_dir','-w', default='./', 
         help='Working directory')
