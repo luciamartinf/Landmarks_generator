@@ -5,10 +5,11 @@
 
 Shape Predictor Model to extract coordinates of the most important landmarks needed for shape analysis of biological structures. 
 
-
 ## Abstract
 
-Geometric morphometrics is a powerful approach used in biological studies to analyze and compare the shape and form of biological structures in the context of evolutionary biology and ecology. This procedure includes landmark identification and digitization that serve as
+Geometric morphometrics is a powerful approach used in biological studies to analyze 
+and compare the shape and form of biological structures in the context of evolutionary 
+biology and ecology. This procedure includes landmark identification and digitization that serve as
 reference points for further shape analysis. TpsDIG (Rohlf, F. J. 2006) is a software tool
 designed for digitizing landmarks directly from digital images and obtaining the coordinates.
 However, landmarks representing specific anatomical points are manually placed on the
@@ -21,7 +22,7 @@ that can extract the coordinates of the most important landmarks needed for shap
 analysis of biological structures. 
 
 
-## Basic usage:
+## Usage:
 
 ```
 ./emapper_profiler.py --input_dir data
@@ -139,3 +140,8 @@ Complete results generated for all dataset are included in the [results](results
 ## Software requirements
 
 * Python 3.7 (or greater)
+
+## References
+
+Rohlf, F. J. (2006). tpsDig, Digitize Landmarks and Outlines, Version 2.10. Stony Brook, NY: Department of
+Ecology and Evolution, State University of New York.
