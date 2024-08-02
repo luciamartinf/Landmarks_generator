@@ -7,7 +7,7 @@ import os
 import multiprocessing
 import arg_parse
 from Landmarks_module import Landmarks
-from Generate_model import find_best_params, train_model, measure_model_error
+from shape_predictor import find_best_params, train_model, measure_model_error
 
 
 def preprocessing(lmfile, image_dir):

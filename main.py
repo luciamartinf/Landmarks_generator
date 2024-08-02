@@ -1,118 +1,172 @@
 #!/usr/bin/env python3
 
 import arg_parse
-from Generate_model import find_best_params, train_model, measure_model_error
-from utils import check_dir, check_for_xml_files
-from Landmarks_module import Landmarks
-import os
-import multiprocessing
-
-import config
 import random
-
-random.seed(5399) # Always same splits 
-
-#######################
-### PARSE ARGUMENTS ###
-#######################
-
-# python main.py -i ~/Desktop/model_3004 -d ~/Desktop/model_3004/data_nocrop -m model_3004 --mode predict -f /Users/luciamf/Desktop/model_3004/Carabus_pronotum.TXT
-# python main.py -i ~/Desktop/model_3004 -d ~/Desktop/model_3004/data_nocrop -m model_3004 --mode train -f /Users/luciamf/Desktop/model_3004/Carabus_pronotumLANDMARKS.TXT
-
-
-args = arg_parse.parse_args()
+import sys
+import os
+import generate_tps
+import utils
+from Landmarks_module import Landmarks
+from shape_predictor import  measure_model_error
+from train import train, preprocessing
+from predict import predict
 
 
-work_dir = os.path.abspath(args.work_dir)
-    
 
-    
-model_name = args.model_name
-# check if dat file exists or if just model name
-dat = os.path.join(work_dir, f'{model_name}.dat')
-# model_version = arguments.model_version
+random.seed(5399) # Always same splits
+
+# Reading arguments
+
+parser, train_parser, predict_parser = arg_parse.get_parser()
+args = parser.parse_args()
 
 image_dir = os.path.abspath(args.image_dir)
-# else:
-#     image_dir = os.path.join(work_dir, 'data') # esto tambien puede ser un argumento
-# check_dir(image_dir)
+work_dir = os.path.abspath(args.work_dir)
+Landmarks.work_dir = work_dir
 
-landmarks_file = args.file
-lm_path = os.path.join(work_dir, landmarks_file)
+model_name = args.model_name
 
-
-
-##################################
-### PREPROCESSING FOR TRAINING ###
-##################################
+if args.model_version:
+    model_version = int(args.model_version)
+else:
+    model_version = 0
 
 
+# Reading mode 
 
-# Initialize class variables. Indicate directories we are going to work in
-Landmarks.data_dir = image_dir
-Landmarks.create_flipdir() # Only creates work_dir if it doesn't exist already
+mode = args.mode
 
-# Creates Landmarks object with input data
-input_data = Landmarks(lm_path)
-
-
-# -train landmarks.txt
-
-# Getting annotated file
-
-
-
-
-# FOR AVOIDING EXTRA PROCESSING
-# work_data = os.path.join(image_dir, 'work_data/')
-# work_data = Landmarls.flip_dir
-# xml_files = check_for_xml_files(work_data)
-
-# if len(xml_files) > 0 :
+if not mode:
+    sys.stderr.write("\nERROR: Please specify an executing mode\n")
+    parser.print_help()
+    print()
+    train_parser.print_help()
+    print()
+    predict_parser.print_help()
+    sys.exit(2)
     
-#     train_xml = [file for file in xml_files if 'train' in file]
-#     test_xml = [file for file in xml_files if 'test' in file]
     
-# else:
-#     train_xml, test_xml = input_data.split_data()
+# Train mode    
+   
+if mode == 'train':
+    
+    input_file = args.file
+    
+    ext = utils.what_file_type(input_file)
+    
+    if ext in ['.tps', '.txt']:
+        
+        if Landmarks.check_forlm(input_file):
+                print(".TPS file with landmarks detected.")
+                
+        else: 
+            print("WARNING: TPS file detected without landmarks. Trying predicting mode...")
+            dat = utils.check_predmodel(model_name, work_dir, model_version, parser) # If it doesn't work it will exit
+            mode = 'predict'
+                
+    elif ext == '.xml':
+        
+        print(".xml file detected")
+   
+    else:
+        
+        sys.stderr.write("\nERROR: No input file found. Unable to proceed in train mode\n")
+        parser.print_help()
+        train_parser.print_help()
+        sys.exit(2)
+    
+    print('Train mode activated')
+    
 
-train_xml, test_xml = input_data.split_data()
+    if args.params:
+        params = utils.read_list_from_file(args.params)
+    else:
+        params = False
+    
+  
+    try: 
+        
+        train_xml, test_xml = preprocessing(input_file, image_dir)
+        dat = train(model_name, image_dir, train_xml, work_dir, model_version, params=params, save_params=args.save_params) 
+    
+    except:
+        
+        sys.stderr.write(f"\nERROR: Unable to train model with file {input_file}\n")
+        parser.print_help()
+        train_parser.print_help()
+        sys.exit(2)
+    
+    # Compute training and test MSE errors of the model
+    print("Calculating MSE error of the model")
+    measure_model_error(dat, train_xml) # aqui usar train + val
+    measure_model_error(dat, test_xml) # aqui usar solo test
+    
+    
+# Predict mode
 
-train_set = Landmarks(train_xml)
+if mode == 'predict':
+    
+    print('Predict mode activated')
+    
+    # Check that the model exist
+    dat = utils.check_predmodel(model_name, work_dir, model_version, parser)
+    
+    if args.file:
+        
+        if utils.what_file_type(args.file) not in ['.txt', '.tps']:
+            
+            if not args.scale:
+                sys.stderr.print("\nERROR: Invalid input file and no scale specified. Unable to proceed in predict mode\n")
+                predict_parser.print_help()
+                sys.exit(2)
+            
+            else:
+                print("\nWARNING: Invalid input file, but scale was specified.")
+                print("Generating a new tps file with specified scale.")
+                tpsfile = generate_tps.write_tpsfile(image_dir, 'input_images.tps', scale=args.scale)
+        
+        elif Landmarks.check_forlm(args.file):
+            print("WARNING: This file already contains annotated landmarks")
+            tpsfile = args.file
+        
+        else:
+            tpsfile = args.file 
+    
+    elif args.scale: # If not tpsfile check that we can create a tps file
+        tpsfile = generate_tps.write_tpsfile(image_dir, 'input_images.tps', scale = args.scale)
+    
+    else:
+        sys.stderr.write("\nERROR: No input file and no scale specified. Unable to proceed in predict mode\n")
+        predict_parser.print_help()
+        sys.exit(2)
+    
+    if args.output:
+        output = args.output
+    else:
+        output = f'{model_name}_landmarks.txt'
+        
+    ## Call predict functions
+    print("Predicting Landmarks...")
+    predict(image_dir, tpsfile, dat, output, args.plot)
 
-# # test_set = Landmarks(test_xml) # Este no lo necesito
+print("Done!")
+
+    
+
+    
 
 
-#######################
-### MODEL GENERATOR ###
-#######################
-
-# Determine the number of processes / threads to use
-procs = multiprocessing.cpu_count()
-procs = config.PROCS if config.PROCS > 0 else procs 
-
-# # temp model
-# temp = os.path.join(work_dir, 'temp.dat')
-# # Find best parameters
-# # aqui usar train para entrenar y val para testear
-# best_params = find_best_params(train_set, temp)
-# # Train model
-
-# train_model(dat, train_xml, best_params)
+    
+   
+    
+    
 
 
-print(dat)
-# ##################
-# ### TEST MODEL ###
-# ##################
-# Compute training and test MSE errors of the model
-measure_model_error(dat, train_xml) # aqui usar train + val
-measure_model_error(dat, test_xml) # aqui usar solo test
-input_data.check_for_negatives(dat)
-
-###################
-##### PREDICT #####
-###################
 
 
-# input_data.predict_landmarks(dat)
+
+
+
+
+
+
