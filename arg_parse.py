@@ -89,17 +89,18 @@ def get_train_parser():
     add('-i', '--image_dir', required=True, 
         help='Directory containing the images')
     
+    add( '-f', '--file', required = True,
+        help = 'Tps, txt or xml file with image scale and landmarks')
+    
     add('-m', '--model_name', required=True,
         help='Model name')
+
     
     add('--model_version', '-mv', required=False, type=int,
         help='Model version')
     
     add('--work_dir','-w', default='./', 
         help='Working directory')
-    
-    add( '-f', '--file', required = True,
-        help = 'Tps, txt or xml file with image scale and landmarks')
     
     add('--params', '-p', help = 'Params for training model')
     
@@ -126,6 +127,9 @@ def get_predict_parser():
     add('-i', '--image_dir', required=True, 
         help='Directory containing the images')
     
+    add( '-f', '--file',
+        help = 'Tps or txt file with image scale')
+    
     add('-m', '--model_name', required=True,
         help='Model name')
     
@@ -135,8 +139,6 @@ def get_predict_parser():
     add('--work_dir','-w', default='./', 
         help='Working directory')
     
-    add( '-f', '--file',
-        help = 'Tps or txt file with image scale')
     
     add('-s', '--scale', 
         help = 'Scale of all the images, all images must have the same scale')
