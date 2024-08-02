@@ -22,124 +22,159 @@ that can extract the coordinates of the most important landmarks needed for shap
 analysis of biological structures. 
 
 
-## Usage:
+## Usage Examples:
+
+- Step 1. Train model from images
 
 ```
-./emapper_profiler.py --input_dir data
-```
-`data` is a directory 
-`file` is a file
-
-### Execution modes 
-
-* Execution of , for ; 
-
-```
-code
+./train.py -i example/data -m carabus -f example/Carabus_pronotum_train.txt -w example/ 
 ```
 
-* Execution of, for , and  settings .
+- Step 2. Predict other images with the model
 
 ```
-code
+./predict.py -i example/data -m carabus -f example/Carabus_pronotum_predict.txt -w example/ --plot
 ```
 
-* Execution of  .
+The [example](example) folder contains the files required and generated after executing the commands above. 
+
+
+## 1. Train model
+
+**Option 1**
+
+With `train.py`
 
 ```
-code
+usage: ./train.py -i DIR -m MODEL_NAME -f FILE [--model_version VERSION ] [--work_dir DIR ] [--params FILE] [--save_params]
 ```
 
-## Parameters main.py 
+**Option 2** (I will probably delete this)
 
-## General Options
+With main script `landmarkgen.py`
 
-* `--version`
+```
+Basic usage: ./landmarkgen.py train -i IMAGE_DIR -m MODEL_NAME -f FILE
+```
 
-     show version and exit.
+With optional arguments
+```
+usage: python3 landmarkgen.py train -i IMAGE_DIR -m MODEL_NAME -f FILE [--model_version MODEL_VERSION] [--work_dir WORK_DIR] [--params PARAMS] [--save_params]
+```
+
+### Parameters 
+
+* **`-i DIR`, `--image_dir DIR`,**
   
-* `--verbose`
+     Input directory containing the images for training. Required.
 
-     show version and exit.
+* **`-m MODEL_NAME`, `--model_name MODEL_NAME`**
+
+     Name of the model (without extension). Required
   
-* `--help` `-h`
+* **`-f FILE`, `--file FILE`**
 
-     show version and exit.
-
-## Input options 
-
-* `--inputdir DIR`,`-i DIR`
-
-     Input directory containing CoverM and eggNOG-mapper results. Required.
-
-* `--coverm_suffix SUFFIX`, `-c SUFFIX`
-
-     The suffix of your CoverM files. By default, _coverage_values
-
-* `--sample_file FILE`,`-s FILE`
-
-     Text file with a list of the samples that need to be processed. If not provided, the sample list will be generated given the input file. 
-
-* `--kegg_dict DIR`, `-k DIR`
-
-     Directory containing KEGG_pathway and KEGG_kos json dictionaries. This files are provided in this repository together with the source code.
+     .tps/.txt/.xml file with image names and their previously annotated landmarks
+   
+* `--model_version VERSION`, `-mv VERSION`
   
-## Output Options
+     Version of the model. If the version already exists, next available version will be generated.
 
-* `--outputdir DIR`,`-o DIR`
+* `--work_dir DIR`, `-w DIR`
 
-     Output directory to store the generated tsv files. By default, output directory is called results.
+     Define working directory. By default it takes the current directory.
 
-* `--unit [tpm, rpkm, tm]`, `-u [tpm, rpkm, tm]`
-  
-     Specify the output relative abundance normalization units. Options are `rpkm`, Reads per kilobase per million transcripts (RPKM), `tpm`, Transcripts per million (TPM),  and `tm`, trimmed mean. Default is `rpkm`)
+* `--params FILE`, `-p FILE
 
-* `--filter_euk`, `-e`
+     .txt file that contains already defined hyperparameters for training the model. If not defined, the program will look for the best hyperparameters in each case, but this will higly increase the training time. 
 
-     Remove eukaryotes
+* `--save_params`, `-sp`
 
-* `--filter_virus`, `-v`
-
-     Remove viruses
-
-## Options for Novel gene families mode
-
-* `--novel_fam`, `-f`
-
-     Include functional profiling for novel gene families
-
-* `--nf_dir DIR`
-
-     Input directory that contains the novel families annotations. By default considers a directory called novel_families inside the input directory
+     Save best found hyperparameters params in a new file for reuse when retraining the model. See `--params FILE`
 
 
-## Output files
+## 2. Predict Landmarks
 
-| **Files**                           | **Description**                                                                                                 |                                                   
-|:----------------------------------------|:----------------------------------------------------------------------------------------------------------------|
-|`ko_relabundance.tsv`                                |  Relative abundance per sample of KEGG orthologs acompanied by its description and symbol. Unmapped proportion of functions is included                      |                  
-|`og_relabundance.tsv`                                  | Relative abundance per sample of orthologous groups from the eggNOG database annotated at the kingdom taxonomic level acompanied by its description. Unmapped proportion of functions is included          |                                                               
-|`ko_totalabundance.tsv`                                | Abundance per sample of KEGG orthologs acompanied by its description and symbol                      |                  
-|`og_totalabundance.tsv`                                  | Abundance per sample of orthologous groups from the eggNOG database annotated at the kingdom taxonomic level acompanied by its description          |  
-|`pathway_coverage.tsv`                                  |  KEGG pathway's completness percentage per sample according to the annotated KEGG ortholog. Pathway's description is included.                      |     
-|                |         **if `--novel_fam` flag is on**                                                                                                 |      
-|`nf_relabundance.tsv`                                  |  Relative abundance per sample of novel gene families. Unmapped proportion of functions is included          |                                                       
-|`nf_totalabundance.tsv`                                  | Abundance per sample of novel gene families          |                                                               
+**Option 1**
 
-## Usage Example
+With `predict.py`
 
-The [data_resume](data_resume) folder contains an example files required for *emapper-profiler* execution. The [results_resume](results_resume) folder contains the outputs generated when executing *emapper-profiler* with the following command line:
+Using a .txt/.tps file as reference with *-f (see example file [Carabus_pronotum_pred.txt](example/Carabus_pronotum_pred.txt))*
 
 ```
-./emapper_profiler.py --inputdir data_resume --outputdir results_tpm --filer_euk --unit tpm --filter_virus --novel_fam
-
+usage: ./predict.py -i IMAGE_DIR -m MODEL_NAME [-f FILE] [--model_version MODEL_VERSION] [--work_dir WORK_DIR] [--output OUTPUT] [--plot]
 ```
 
-Complete results generated for all dataset are included in the [results](results) folder. 
+Defining the scale of all the images with *-s SCALE* the needed .txt/.tps file will be generated 
+```
+usage: ./predict.py -i IMAGE_DIR -m MODEL_NAME [-s SCALE] [--model_version MODEL_VERSION] [--work_dir WORK_DIR] [--output OUTPUT] [--plot]
+```
 
-## Software requirements
+**Option 2** (I will probably delete this)
 
-* Python 3.7 (or greater)
+With main script `landmarkgen.py`
+
+```
+Basic usage: ./landmarkgen.py predict -i IMAGE_DIR -m MODEL_NAME -f FILE
+```
+
+With optional arguments
+```
+usage: python3 landmarkgen.py predict -i IMAGE_DIR -m MODEL_NAME -f FILE [--model_version MODEL_VERSION] [--work_dir WORK_DIR] [--params PARAMS] [--save_params]
+```
+
+
+### Parameters 
+
+* **`-i DIR`, `--image_dir DIR`,**
+  
+     Input directory containing the images for predicting. Required.
+
+* **`-m MODEL_NAME`, `--model_name MODEL_NAME`**
+
+     Name of the model (without extension). Required
+  
+1. `-f FILE`, `--file FILE`
+
+     .tps/.txt file with image names, scales and ID but no landmarks annotated.
+
+2. `-s SCALE`, `--scale SCALE`
+
+     Scale of all the images, all images must have the same scale. A .tps/.txt file will be generated using this scale and the input images.
+
+* `--work_dir DIR`, `-w DIR`
+
+     Define working directory. By default it takes the current directory.
+   
+* `--model_version VERSION`, `-mv VERSION`
+  
+     Version of the model. If no version is specified, the program will look for *work_dir/model_name.dat* file.
+
+* --output OUTPUT, -o OUTPUT
+
+     Name of the output .tps/.txt file that will contain all predicted landmarks. By default it will take the model's name (*model_name_landmarks.txt*)
+  
+* --plot
+
+     Plot landmarks on images. (Original images will not be override, new images will be generated) 
+                                                           
+
+## Requirements
+
+Recommended Python modules versions:
+
+* python==3.9.6
+* dlib==19.24.4
+* numpy==1.26.4 (dlib does not support numpy==2)
+  ` python3 -m pip install numpy==1.26.4 `
+* matplotlib==3.9.1
+* pillow==10.4.0
+
+Other files: 
+
+* `Config.py`. Can be modified by the user.
+     *PROCS* : Number of threads/cores we'll be using when training our models. -1 will also all available cores of the machine
+     *MAX_FUNC_CALLS* : Maximum number of trials we'll be performing when tuning our shape predictor hyperparameters. Higher numbers will result in better predictions but will also higly increase training time.
 
 ## References
 
