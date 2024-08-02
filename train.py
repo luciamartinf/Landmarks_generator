@@ -7,7 +7,6 @@ import os
 import multiprocessing
 import arg_parse
 from Landmarks_module import Landmarks
-from train import train, preprocessing
 from Generate_model import find_best_params, train_model, measure_model_error
 
 
@@ -23,7 +22,7 @@ def preprocessing(lmfile, image_dir):
     Landmarks.data_dir = os.path.abspath(image_dir)
     Landmarks.create_flipdir()
     input_data = Landmarks(lmfile)
-    train_xml, test_xml = input_data.split_data()
+    train_xml, test_xml = input_data.split_data(split_size=[0.8,0.2])
     
     return train_xml, test_xml
 
@@ -50,7 +49,7 @@ def train(
     Landmarks.create_flipdir() # Only creates flip_dir if it doesn't exist 
     
     work_data = Landmarks.flip_dir
-    train_set = Landmarks(train_xml) # Check if i need something else here and if this works 
+    train_set = Landmarks(train_xml, img_list=[]) # Check if i need something else here and if this works 
     
     # temp model
     temp = os.path.join(work_data, 'temp.dat')
