@@ -4,4 +4,4 @@ import os
 PROCS = -1 
 
 # Maximum number of trials we'll be performing when tuning our shape predictor hyperparameters
-MAX_FUNC_CALLS = 50 
+MAX_FUNC_CALLS = 20 
