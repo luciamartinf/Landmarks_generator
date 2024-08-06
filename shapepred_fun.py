@@ -69,9 +69,9 @@ def find_best_params(
        ("tree_depth", (3, 8, True)),
         ("nu", (0.001, 0.2, False)),
         ("cascade_depth", (8, 18, True)),
-        ("feature_pool_size", (300, 1000, True)),
+        ("feature_pool_size", (200, 1000, True)),
         ("num_test_splits", (20, 300, True)),
-        ("oversampling_amount", (20, 50, True)), # In general we are working with small datasets. Maybe max to 50
+        ("oversampling_amount", (20, 100, True)), # In general we are working with small datasets. 
     ])    
 
     lower = [v[0] for (k, v) in params.items()]
