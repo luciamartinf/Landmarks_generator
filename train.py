@@ -22,9 +22,10 @@ def preprocessing(lmfile, image_dir):
     Landmarks.data_dir = os.path.abspath(image_dir)
     Landmarks.create_flipdir()
     input_data = Landmarks(lmfile)
+    full_xml = input_data.write_xml("all_data.xml", Landmarks.work_dir, 'all_data')
     train_xml, test_xml = input_data.split_data(split_size=[0.8,0.2])
     
-    return train_xml, test_xml
+    return train_xml, test_xml, full_xml
 
 
 def train(
@@ -63,7 +64,7 @@ def train(
         best_params = find_best_params(train_set, temp)
         
     if save_params:
-        params_file = f"params_{model_name}.txt"
+        params_file = os.join.path(Landmarks.work_dir, f"params_{model_name}.txt")
         utils.write_list_to_file(best_params, params_file)
         print(f"Saving best parameters to {params_file}")
     
@@ -123,7 +124,7 @@ def main():
   
     try: 
         
-        train_xml, test_xml = preprocessing(input_file, image_dir)
+        train_xml, test_xml, full_xml = preprocessing(input_file, image_dir)
         dat = train(model_name, image_dir, train_xml, work_dir, model_version, params=params, save_params=args.save_params) 
     
     except:
@@ -136,6 +137,8 @@ def main():
     print("Calculating MSE error of the model")
     measure_model_error(dat, train_xml) # aqui usar train + val
     measure_model_error(dat, test_xml) # aqui usar solo test
+    # This is just useful for me
+    measure_model_error(dat, full_xml) # aqui usar solo test
     
     print("Done!")
         
