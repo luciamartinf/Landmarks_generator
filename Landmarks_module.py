@@ -114,7 +114,7 @@ class Landmarks:
             self.img_list (List): List of flip_images (basename)
             Landmarks.nested_dict (Dict): Nested Dictionary with ID, SCALE and LM for every image (og_name)
         """
-
+        check = False # If n_lm != 12, we dont consider that image
         with open(self.txt_lmfile, 'r') as file:
       
             for line in file:
@@ -126,10 +126,11 @@ class Landmarks:
                     
                     if n_lm == 0:
                         print(f"WARNING: No landmarks annotated for this image")
+                        check = True
                         # TODO
                         # HACER ALGO AL RESPECTO
                         # Hacer un count y si mas de x imagenes o porcentaje de imagenes no estan anotadas terminar el script
-
+                    
                     # Read all the landmarks
                     else: 
                         i = 0
@@ -137,6 +138,11 @@ class Landmarks:
                             landmark_line = next(file).strip().split() 
                             lm_list.append([float(landmark_line[0]), float(landmark_line[1])])
                             i+=1
+                    
+                    if n_lm != 12: # TODO make generic, not 12
+                        check = True
+                    else: 
+                        check = False
 
                     # Process the next expected line, "IMAGE"
                     next_line = file.readline()
@@ -144,6 +150,8 @@ class Landmarks:
                     if next_line.startswith("IMAGE"):
                         image_name = str(next_line.strip().split('=')[1])
                         
+                        if check == True:
+                            print(f'Image {image_name} has only {n_lm} landmarks annotated')
                         try:
                             # we are flipping the image and saving it in the dictionary we are going to work with  
                             image, image_path = self.flip_image(image_name) 
@@ -151,10 +159,11 @@ class Landmarks:
                             print(f"Error flipping image: {e}")
                             continue # Discard this image
                         
-                        self.lm_dict[image] = lm_list
-                        self.img_list.append(image)
+                        if check == False:
+                            self.lm_dict[image] = lm_list
+                            self.img_list.append(image)
 
-                        Landmarks.nested_dict[image_name] = {"LM": lm_list}
+                            Landmarks.nested_dict[image_name] = {"LM": lm_list}
                                             
                     # Process the next expected line, "ID"
                     next_line = file.readline()
@@ -162,14 +171,17 @@ class Landmarks:
                     if next_line.startswith("ID"):
                         real_id = str(next_line.strip().split('=')[1])
                         img_id = Landmarks.check_id_img(real_id, image_name)
-                        Landmarks.nested_dict[image_name]["ID"] = img_id
+                        
+                        if check == False:
+                            Landmarks.nested_dict[image_name]["ID"] = img_id
                     
                     # Process the next expected line, "SCALE"
                     next_line = file.readline()
                     
                     if next_line.startswith("SCALE"):
                         scale = next_line.strip()
-                        Landmarks.nested_dict[image_name]["SCALE"] = scale
+                        if check == False:
+                            Landmarks.nested_dict[image_name]["SCALE"] = scale
 
         return self.lm_dict, self.img_list, Landmarks.nested_dict
 
@@ -313,7 +325,6 @@ class Landmarks:
         vertical.save(new_imgpath)
 
         return new_image, new_imgpath
-    
     
     def split_data(self, 
                    tag = ['train', 'test'], split_size = [0.7, 0.3]):

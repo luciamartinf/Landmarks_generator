@@ -122,7 +122,7 @@ def train_model(
 def measure_model_error(
     model, xml_annotations):
     
-    """Measure MSE of the model"""
+    """Measure MAE of the model"""
 
     error = dlib.test_shape_predictor(xml_annotations, model)
-    print("{} MSE of the model: {} is {}".format(xml_annotations, model, error))
+    print("{} MAE of the model: {} is {}".format(xml_annotations, model, error))
