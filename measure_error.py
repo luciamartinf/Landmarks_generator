@@ -30,7 +30,7 @@ def main():
                         help = '.xml or .txt file that contains real landmarks')
     
     parser.add_argument('-m', '--model', required=True,
-                        help = ".dat file used to predict landmarks")
+                        help = ".dat file path of the LandmarkGen model.")
     
     parser.add_argument('-o', '--output', 
                         help = "Output file that will contain predicted landmarks in .tps")

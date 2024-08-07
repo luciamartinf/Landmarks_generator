@@ -142,18 +142,13 @@ def check_trainmodel(model_name, work_dir, model_version):
         print(f"Proceeding with training. Generating {os.path.basename(file)} model. ")
     return file
 
-def check_predmodel(model_name, work_dir, model_version, parser):
+def check_predmodel(file, work_dir, parser):
     
     """
     Checks if a file exists for predicting
     """
 
     # Check if the file exists
-    if model_version != 0:
-        file = os.path.join(work_dir, f'{model_name}_{model_version}.dat')
-    else:
-        file = os.path.join(work_dir, f'{model_name}.dat')
-        
     if (os.path.isfile(file)) and (os.path.getsize(file) > 0):
         print("Proceeding with predicting Landmarks")
         return file

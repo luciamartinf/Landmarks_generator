@@ -87,25 +87,25 @@ def get_train_parser():
     add('--verbose', action='store_true', help='Enable verbose mode')
 
     add('-i', '--image_dir', required=True, 
-        help='Directory containing the images')
+        help='Input directory containing the images for training.')
     
     add( '-f', '--file', required = True,
-        help = 'Tps, txt or xml file with image scale and landmarks')
+        help = '.tps/.txt/.xml file with image names and their previously annotated landmarks.')
     
     add('-m', '--model_name', required=True,
-        help='Model name') 
+        help='Name of the model (without extension).') 
 
     
     add('--model_version', '-mv', required=False, type=int,
-        help='Model version')
+        help='Version of the model. If the version already exists, next available version will be generated.')
     
     add('--work_dir','-w', default='./', 
-        help='Working directory')
+        help='Define working directory. By default it takes the current directory.')
     
-    add('--params', '-p', help = 'Params for training model')
+    add('--params', '-p', help = ' .txt file that contains already defined hyperparameters for training the model.')
     
     add('--save_params', '-sp', action='store_true', 
-        help = "Save training params in a new file")
+        help = "Save best found hyperparameters params in a new .txt file")
     
     return parser
 
@@ -125,30 +125,24 @@ def get_predict_parser():
     add('--verbose', action='store_true', help='Enable verbose mode')
 
     add('-i', '--image_dir', required=True, 
-        help='Directory containing the images')
+        help='Input directory containing the images for predicting.')
     
-    add('-m', '--model_name', required=True,
-        help='Model name') # aqui a lo mejor es mejor directamente el fichero que contiene el modelo
+    add('-m', '--model', required=True,
+        help='.dat file path of the LandmarkGen model') 
     
     add( '-f', '--file',
-        help = 'Tps or txt file with image scale')
-    
-    add('--model_version', '-mv', required=False, type=int,
-        help='Model version')
-    
-
-    
-    add('--work_dir','-w', default='./', 
-        help='Working directory')
-    
+        help = '.tps/.txt file with image names, scales and ID but no landmarks annotated. Required if scale is not defined.')
     
     add('-s', '--scale', 
-        help = 'Scale of all the images, all images must have the same scale')
+        help = 'Scale of all the images, all images must have the same scale.')
+    
+    add('--work_dir','-w', default='./', 
+        help='Define working directory. By default it takes the current directory')
     
     add('--output', '-o',
-        help = "Output tps file that contains landmarks")
+        help = " Name of the output .tps/.txt file that will contain all predicted landmarks.")
     
     add('--plot', action='store_true', 
-        help = "Plot images with landmarks")
+        help = "Plot landmarks on images.")
     
     return parser
