@@ -34,15 +34,12 @@ def main():
     work_dir = os.path.abspath(args.work_dir)
     Landmarks.work_dir = work_dir
 
-    model_name = args.model_name
+    model_file = args.model
+    model_name = os.path.splitext(os.path.basename(model_file))[0]
 
-    if args.model_version:
-        model_version = int(args.model_version)
-    else:
-        model_version = 0
     
     # Check that the model exist
-    dat = utils.check_predmodel(model_name, work_dir, model_version, parser)
+    dat = utils.check_predmodel(model_file, work_dir, parser)
     
     if args.file:
         

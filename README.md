@@ -90,7 +90,7 @@ usage: python3 landmarkgen.py train -i IMAGE_DIR -m MODEL_NAME -f FILE [--model_
 
 * `--save_params`, `-sp`
 
-     Save best found hyperparameters params in a new file for reuse when retraining the model. See `--params FILE`
+     Save best found hyperparameters params in a new file to reuse them when retraining the model e.g. with more images. See `--params FILE`
 
 
 ## 2. Predict Landmarks
@@ -102,12 +102,12 @@ With `predict.py`
 Using a .txt/.tps file as reference with *-f (see example file [Carabus_pronotum_pred.txt](example/Carabus_pronotum_pred.txt))*
 
 ```
-usage: ./predict.py -i IMAGE_DIR -m MODEL_NAME [-f FILE] [--model_version MODEL_VERSION] [--work_dir WORK_DIR] [--output OUTPUT] [--plot]
+usage: ./predict.py -i IMAGE_DIR -m FILE [-f FILE] [--model_version MODEL_VERSION] [--work_dir WORK_DIR] [--output OUTPUT] [--plot]
 ```
 
 Defining the scale of all the images with *-s SCALE* the needed .txt/.tps file will be generated 
 ```
-usage: ./predict.py -i IMAGE_DIR -m MODEL_NAME [-s SCALE] [--model_version MODEL_VERSION] [--work_dir WORK_DIR] [--output OUTPUT] [--plot]
+usage: ./predict.py -i IMAGE_DIR -m FILE [-s SCALE] [--model_version MODEL_VERSION] [--work_dir WORK_DIR] [--output OUTPUT] [--plot]
 ```
 
 **Option 2** (I will probably delete this)
@@ -130,13 +130,13 @@ usage: python3 landmarkgen.py predict -i IMAGE_DIR -m MODEL_NAME -f FILE [--mode
   
      Input directory containing the images for predicting. Required.
 
-* **`-m MODEL_NAME`, `--model_name MODEL_NAME`**
+* **`-m FILE`, `--model_name FILE`**
 
-     Name of the model (without extension). Required
+     .dat file path of the LandmarkGen model. Required
   
 1. `-f FILE`, `--file FILE`
 
-     .tps/.txt file with image names, scales and ID but no landmarks annotated.
+     .tps/.txt file with image names, scales and ID but no landmarks annotated. Required if scale is not defined.
 
 2. `-s SCALE`, `--scale SCALE`
 
@@ -145,16 +145,12 @@ usage: python3 landmarkgen.py predict -i IMAGE_DIR -m MODEL_NAME -f FILE [--mode
 * `--work_dir DIR`, `-w DIR`
 
      Define working directory. By default it takes the current directory.
-   
-* `--model_version VERSION`, `-mv VERSION`
-  
-     Version of the model. If no version is specified, the program will look for *work_dir/model_name.dat* file.
 
-* --output OUTPUT, -o OUTPUT
+* `--output OUTPUT`, `-o OUTPUT`
 
-     Name of the output .tps/.txt file that will contain all predicted landmarks. By default it will take the model's name (*model_name_landmarks.txt*)
+     Name of the output .tps/.txt file that will contain all predicted landmarks. By default it will take the model's name (*{model_name}_landmarks.txt*)
   
-* --plot
+* `--plot`s
 
      Plot landmarks on images. (Original images will not be override, new images will be generated) 
                                                            
