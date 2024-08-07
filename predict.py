@@ -75,7 +75,7 @@ def main():
     else:
         output = f'{model_name}_landmarks.txt'
         
-    ## Call predict functions
+    ## Call predict function   
     print("Predicting Landmarks...")
     predict(image_dir, tpsfile, dat, output, args.plot)
 
