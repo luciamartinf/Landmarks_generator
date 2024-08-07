@@ -100,7 +100,7 @@ def main():
     if ext in ['.tps', '.txt']:
         
         if Landmarks.check_forlm(input_file):
-                print(".TPS file with landmarks detected.")
+                print(".tps/.txt file with landmarks detected.")
                 
         else: 
             sys.stderr.write("\nERROR: TPS file detected without landmarks. Unable to proceed with training\n")
