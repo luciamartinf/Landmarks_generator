@@ -7,9 +7,7 @@ from shapepred_fun import measure_model_error
 # TODO: complete this functions with notebook
 # Calculate mean relative error and other types, mean standard deviation ...
 
-# reorganize points so they all have same order, esto tambien en el predict script
 
-# transform xml in .tps and viceversa
 # generate .tps prediction from xml_file =  output, only if output flag is on 
 
 
