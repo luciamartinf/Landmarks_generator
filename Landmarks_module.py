@@ -270,7 +270,7 @@ class Landmarks:
     
     
     def write_xml(self, 
-                  file, folder, name):
+                  file, name):
 
         """Write xml file from image and landmarks dictionary"""
         
@@ -286,7 +286,7 @@ class Landmarks:
 
             for img in self.img_list:
                 
-                image_path = os.path.join(folder, img)
+                image_path = os.path.join(Landmarks.flip_dir, img)
                 im = Image.open(image_path)
                 width, height = im.size
                 
@@ -402,9 +402,6 @@ class Landmarks:
                     print(f"WARNING: Image {img} may be cropped and negative landmarks are being generated. Setting {p.y} coordinate to 0")
                     p.y = 0
                 lm_list.append([p.x, p.y])
-
-            # # Sort landmarks 
-            # lm_list.sort()
 
             if generate_images:
                 plt.figure()

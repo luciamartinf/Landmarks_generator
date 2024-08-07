@@ -93,7 +93,7 @@ def get_train_parser():
         help = 'Tps, txt or xml file with image scale and landmarks')
     
     add('-m', '--model_name', required=True,
-        help='Model name')
+        help='Model name') 
 
     
     add('--model_version', '-mv', required=False, type=int,
@@ -128,7 +128,7 @@ def get_predict_parser():
         help='Directory containing the images')
     
     add('-m', '--model_name', required=True,
-        help='Model name')
+        help='Model name') # aqui a lo mejor es mejor directamente el fichero que contiene el modelo
     
     add( '-f', '--file',
         help = 'Tps or txt file with image scale')

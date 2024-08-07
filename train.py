@@ -22,7 +22,8 @@ def preprocessing(lmfile, image_dir):
     Landmarks.data_dir = os.path.abspath(image_dir)
     Landmarks.create_flipdir()
     input_data = Landmarks(lmfile)
-    full_xml = input_data.write_xml("all_data.xml", Landmarks.work_dir, 'all_data')
+    full_xml_name = os.path.join(Landmarks.work_dir, "all_data.xml")
+    full_xml = input_data.write_xml(full_xml_name, 'all_data')
     train_xml, test_xml = input_data.split_data(split_size=[0.8,0.2])
     
     return train_xml, test_xml, full_xml
@@ -121,7 +122,7 @@ def main():
         params = utils.read_list_from_file(args.params)
     else:
         params = False
-  
+    
     try: 
         
         train_xml, test_xml, full_xml = preprocessing(input_file, image_dir)
@@ -134,7 +135,7 @@ def main():
         sys.exit(2)
     
     # Compute training and test MSE errors of the model
-    print("Calculating MSE error of the model")
+    print("Calculating Mean Absolute Error (MAE) of the model")
     measure_model_error(dat, train_xml) # aqui usar train + val
     measure_model_error(dat, test_xml) # aqui usar solo test
     # This is just useful for me
