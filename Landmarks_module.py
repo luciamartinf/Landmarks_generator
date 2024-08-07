@@ -364,7 +364,7 @@ class Landmarks:
     
 
     def predict_landmarks(self, 
-                          model_path, outfile, generate_images = True):
+                          model_path, outfile, generate_images=False):
         
         """Predict new landmarks based on a model"""
 
@@ -403,19 +403,22 @@ class Landmarks:
                     p.y = 0
                 lm_list.append([p.x, p.y])
 
-            if generate_images:
+            if generate_images != 'none':
                 plt.figure()
                 plt.ylim(0, height)
                 plt.xlim(0, width)
                 plt.imshow(image)
 
-                # Plot red dots
-                # for lm in lm_list:
-                #     plt.plot(lm[0], lm[1], '.', color='red')
-                
                 # Plot colored numbers
-                for i, lm in enumerate(lm_list):
-                    plt.scatter(lm[0], lm[1], marker="$"+str(i)+"$")
+                if generate_images == 'numbers':
+                    for i, lm in enumerate(lm_list):
+                        plt.scatter(lm[0], lm[1], marker="$"+str(i)+"$")
+                        
+                # Plot red dots
+                elif generate_images == 'dots':
+                    for lm in lm_list:
+                        plt.plot(lm[0], lm[1], '.', color='red')
+                
                 
                 lm_img_path = os.path.join(landmarks_folder, f'lm_{img}')
                 plt.savefig(lm_img_path)

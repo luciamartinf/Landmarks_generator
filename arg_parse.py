@@ -142,7 +142,10 @@ def get_predict_parser():
     add('--output', '-o',
         help = " Name of the output .tps/.txt file that will contain all predicted landmarks.")
     
-    add('--plot', action='store_true', 
-        help = "Plot landmarks on images.")
+    # add('--plot', action='store_true', 
+    #     help = "Plot landmarks on images.")
+    
+    add('--plot', type=str, choices = ['none', 'dots', 'numbers'], default='none',
+        help = "Plot landmarks on images with desired design. See README for full description of designs")
     
     return parser

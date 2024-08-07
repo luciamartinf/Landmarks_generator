@@ -150,9 +150,12 @@ usage: python3 landmarkgen.py predict -i IMAGE_DIR -m MODEL_NAME -f FILE [--mode
 
      Name of the output .tps/.txt file that will contain all predicted landmarks. By default it will take the model's name (*{model_name}_landmarks.txt*)
   
-* `--plot`s
+* `--plot [none, dots, numbers]`
 
-     Plot landmarks on images. (Original images will not be override, new images will be generated) 
+     Plot landmarks on images with desired design. Original images will not be override, new images will be generated. 
+     - Default is `none` and no images will be generated. 
+     - `Dots` will use red dots. Better aesthetics for publications
+     - `numbers` will use color numbers. Useful for checking order of the coordinates
                                                            
 
 ## Requirements
