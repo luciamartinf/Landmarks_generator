@@ -4,19 +4,7 @@ import os
 from PIL import Image
 import sys
 import numpy as np
-from scipy.optimize import linear_sum_assignment
 
-def determine_optimal_reordering(set1, set2):
-    
-    """Determine optimal reordering of set2 considering the order of set1"""
-    
-    # Calculate the pairwise distance matrix
-    distance_matrix = np.linalg.norm(set1[:, np.newaxis] - set2, axis=2)
-
-    # Use the Hungarian algorithm to find the optimal assignment
-    _, col_indices = linear_sum_assignment(distance_matrix)
-
-    return col_indices
 
 def check_make_dir(folder_path):
 
