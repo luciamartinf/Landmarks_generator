@@ -8,30 +8,26 @@ import numpy as np # numpy==1.26.4 because version 2 does not work with dlib
 import matplotlib.pyplot as plt 
 import xml.etree.ElementTree as ET
 from PIL import Image
-from typing import Dict, List, Any
-from utils import check_make_dir, start_xml_file, end_xml_file, append_to_xml_file, what_file_type
-import calc_errors
+from utils import check_make_dir, start_xml_file, end_xml_file, append_to_xml_file, what_file_type, determine_optimal_reordering
+import shapepred_fun
 
 class Landmarks:
     
     """A class use to process Landmarks"""
 
-    data_dir: str = None # Original input directory
-    flip_dir: str = None # directory with flip images and files that we are going to use
-    work_dir: str = None # Working directory
-    nested_dict: Dict[str, Dict[str, Any]] = {} 
+    data_dir = None # Original input directory
+    flip_dir = None # directory with flip images and files that we are going to use
+    work_dir = None # Working directory
+    nested_dict = {} 
 
     def __init__(self, 
-                 file: str, img_list: List = [], lm_dict: Dict = {}, nested_dict = {}) -> None:
+                file) -> None:
         
         """Constructs all necessary instance attributes"""
 
-        self.lm_dict: Dict[str, List] = lm_dict
-        self.img_list: List[List[float, float]] = img_list
-        
-        
-        if len(Landmarks.nested_dict) < 0:
-            Landmarks.nested_dict: Dict[str, Dict[str, Any]] = nested_dict # Image, landmarks and scale
+        # Initialize with an empty list or dictionary if no argument is provided
+        self.img_list = []
+        self.lm_dict = {}
         
         ext = what_file_type(file)
 
@@ -445,7 +441,8 @@ class Landmarks:
 
         optimal_order = []
         all_mre = []
-
+        all_mae = []
+        
         for img, real_lm in self.lm_dict.items():
             
             if not 'flip' in img:
@@ -479,16 +476,27 @@ class Landmarks:
             real_shape = np.array(real_lm)
             
             if len(optimal_order) == 0:
-                optimal_order = calc_errors.determine_optimal_reordering(np.array(real_shape), pred_shape)
+                optimal_order = determine_optimal_reordering(np.array(real_shape), pred_shape)
              
                 
             sort_pred_shape = pred_shape[optimal_order]
             
-            mre = calc_errors.calculate_mre(real_shape, sort_pred_shape)
-            
+            mre = shapepred_fun.measure_mre(real_shape, sort_pred_shape)
             all_mre.append(mre)
+            
+            mae = shapepred_fun.calculate_mae(real_shape, sort_pred_shape)
+            
+            all_mae.append(mae)
 
         all_mre_array = np.array(all_mre)
         mean_mre = all_mre_array.mean()
-            
-        return mean_mre
+        
+        print("{} MRE of the model: {} is {}".format(
+            os.path.basename(self.xmlfile), os.path.basename(model_path), mean_mre))
+        
+        all_mae_array = np.array(all_mae)
+        mean_mae = all_mae_array.mean()
+        
+        print("{} MAE of the model: {} is {}".format(
+            os.path.basename(self.xmlfile), os.path.basename(model_path), mean_mae))
+        

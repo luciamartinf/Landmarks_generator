@@ -7,7 +7,7 @@ import arg_parse
 import config
 import utils
 from Landmarks_module import Landmarks
-from shapepred_fun import find_best_params, train_model, measure_model_error
+from shapepred_fun import find_best_params, train_model, measure_mae
 
 
 def preprocessing(lmfile, image_dir):
@@ -51,16 +51,15 @@ def train(
     Landmarks.create_flipdir() # Only creates flip_dir if it doesn't exist 
     
     work_data = Landmarks.flip_dir
-    train_set = Landmarks(train_xml, img_list=[]) # Check if i need something else here and if this works 
-    
-    # temp model
-    temp = os.path.join(work_data, 'temp.dat')
     
     if params:
         # Get parameters from file
         print(f"Using parameters from file {params}")
         best_params = params
     else:
+        train_set = Landmarks(train_xml) # Check if i need something else here and if this works 
+        # temp model
+        temp = os.path.join(work_data, 'temp.dat')
         # Find best parameters
         best_params = find_best_params(train_set, temp)
         
@@ -123,6 +122,7 @@ def main():
     else:
         params = False
     
+    
     try: 
         
         train_xml, test_xml, full_xml = preprocessing(input_file, image_dir)
@@ -134,12 +134,24 @@ def main():
         parser.print_help()
         sys.exit(2)
     
-    # Compute training and test MSE errors of the model
-    print("Calculating Mean Absolute Error (MAE) of the model")
-    measure_model_error(dat, train_xml) # aqui usar train + val
-    measure_model_error(dat, test_xml) # aqui usar solo test
+    # Compute training and test errors of the model
+    
+    
+    print("Calculating Errors of the model")
+    
+    train_set = Landmarks(train_xml)
+    train_set.calculate_allmre(dat)
+    measure_mae(dat, train_xml) # aqui usar train + val
+    
+    test_set = Landmarks(test_xml)
+    test_set.calculate_allmre(dat)
+    measure_mae(dat, test_xml) # aqui usar solo test
     # This is just useful for me
-    measure_model_error(dat, full_xml) # aqui usar solo test
+    full_set = Landmarks(full_xml)
+    full_set.calculate_allmre(dat)
+    measure_mae(dat, full_xml) # aqui usar solo test
+    
+    
     
     print("Done!")
         

@@ -1,5 +1,3 @@
-import os
-
 # Number of threads/cores we'll be using when training our models. 
 PROCS = -1 
 
