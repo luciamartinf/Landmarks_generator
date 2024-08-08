@@ -1,10 +1,15 @@
-# !/usr/bin/python3
+#!/usr/bin/env python3
 
-import argparse
-from shapepred_fun import measure_model_error
+#### # !/usr/bin/python3
 
 import numpy as np
 from scipy.optimize import linear_sum_assignment
+import os
+import dlib
+
+import argparse
+import shapepred_fun 
+from Landmarks_module import Landmarks
 
 
 # TODO: complete this functions with notebook
@@ -14,14 +19,28 @@ from scipy.optimize import linear_sum_assignment
 # generate .tps prediction from xml_file =  output, only if output flag is on 
 
 
-def measure_mae(dat, xml_file):
+def measure_mae(
+    model, xml_annotations):
     
     """Calculates Mean Absolute Error (MAE)"""
     
-    print("Calculating MAE error of the model")
-    measure_model_error(dat, xml_file) # aqui usar train + val
+    error = dlib.test_shape_predictor(xml_annotations, model)
+    print("{} MAE of the model: {} is {}".format(
+        os.basename(xml_annotations), os.basename(model), error))
 
 
+def get_shapes(
+    dat, xml_file):
+   
+   set = Landmarks(xml_file) # img_list y lm_dict
+   
+   real_shapes = np.array((set.lm_dict).values())
+   
+   pred_shapes = set.predict_shapes(dat)
+   
+   return pred_shapes, real_shapes
+   
+    
 
 def calculate_mean_relative_error(real_coords, estimated_coords):
     
@@ -54,11 +73,11 @@ def calculate_mean_relative_error_for_shapes(real_shapes, estimated_shapes):
 
     for real_coords, estimated_coords in zip(real_shapes, estimated_shapes):
         # Calculate the optimal order for the estimated coordinates to match the real coordinates
-        distance_matrix = np.linalg.norm(real_coords[:, np.newaxis] - estimated_coords, axis=2)
-        _, col_indices = linear_sum_assignment(distance_matrix)
+        # distance_matrix = np.linalg.norm(real_coords[:, np.newaxis] - estimated_coords, axis=2)
+        # _, col_indices = linear_sum_assignment(distance_matrix)
         
-        # Reorganize the estimated coordinates
-        reorganized_estimated_coords = estimated_coords[col_indices]
+        # # Reorganize the estimated coordinates
+        # reorganized_estimated_coords = estimated_coords[col_indices]
         
         # Calculate MRE for the current pair of shapes
         mre = calculate_mean_relative_error(real_coords, reorganized_estimated_coords)
@@ -91,6 +110,13 @@ def main():
     xml = args.file
     dat = args.model
     
+    pred_shapes, real_shapes = get_shapes(dat, xml)
+    
+    mean_mre = calculate_mean_relative_error_for_shapes(pred_shapes, real_shapes)
+    
+    print("{} MRE of the model: {} is {}".format(
+        os.basename(xml), os.basename(dat), mean_mre))
+
     measure_mae(dat, xml)
 
 if __name__ == "__main__":

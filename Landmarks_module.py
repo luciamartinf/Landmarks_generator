@@ -10,7 +10,7 @@ import xml.etree.ElementTree as ET
 from PIL import Image
 from typing import Dict, List, Any
 from utils import check_make_dir, start_xml_file, end_xml_file, append_to_xml_file, what_file_type
-
+import measure_error
 
 class Landmarks:
     
@@ -436,3 +436,62 @@ class Landmarks:
                 f.write(f'SCALE={Landmarks.nested_dict[img]["SCALE"]}\n')
 
         return outpath
+
+
+def predict_shapes(self, 
+                    model_path):
+        
+        """Predict new landmarks based on a model"""
+
+        pred_shapes = []
+        model_file = os.path.basename(model_path)
+        model_name = model_file[:model_file.rindex('.')]
+        optimal_order = []
+
+        for img in self.img_list:
+   
+            image_path = os.path.join(Landmarks.flip_dir, f'flip_{img}')
+            
+            image = Image.open(image_path)
+            np_image = np.array(image)
+            width, height = image.size
+                
+            full_rect = dlib.rectangle(left=0, top=0, right=width, bottom=height)
+            predictor = dlib.shape_predictor(model_path)
+
+
+            shape = predictor(np_image, full_rect)
+            
+            lm_list = []
+            for i in range(shape.num_parts):
+                p = shape.part(i)
+                if float(p.x) < 0 :
+                    print(f"WARNING: Image {img} may be cropped and negative landmarks are being generated. Changing {p.x} coordinate to 0")
+                    p.x = 0
+                if float(p.y) < 0 :
+                    print(f"WARNING: Image {img} may be cropped and negative landmarks are being generated. Setting {p.y} coordinate to 0")
+                    p.y = 0
+                lm_list.append([p.x, p.y])
+            
+            if not optimal_order:
+                real_shape = np.array((set.lm_dict).values())[0]
+                optimal_order = determine_optimal_reordering(real_shape, lm_list)
+                
+            sorted_lm = lm_list[optimal_order]
+            pred_shapes.append(sorted_lm)
+        
+            
+        return np.array(pred_shapes)
+
+
+def determine_optimal_reordering(set1, set2):
+    
+    """Determine optimal reordering of set2 considering the order of set1"""
+    
+    # Calculate the pairwise distance matrix
+    distance_matrix = np.linalg.norm(set1[:, np.newaxis] - set2, axis=2)
+
+    # Use the Hungarian algorithm to find the optimal assignment
+    _, col_indices = linear_sum_assignment(distance_matrix)
+
+    return col_indices
