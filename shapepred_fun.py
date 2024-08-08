@@ -1,4 +1,4 @@
-# !/usr/bin/python3
+#!/usr/bin/env python3
 
 import dlib
 import config
@@ -6,7 +6,7 @@ import os
 from collections import OrderedDict 
 import sys
 import multiprocessing
-from Landmarks_module import Landmarks
+import numpy as np
 
 procs = multiprocessing.cpu_count()
 procs = config.PROCS if config.PROCS > 0 else procs 
@@ -119,10 +119,43 @@ def train_model(
     dlib.train_shape_predictor(xml, name, options)
 
   
-def measure_model_error(
+def measure_mae(
     model, xml_annotations):
     
     """Measure MAE of the model"""
 
     error = dlib.test_shape_predictor(xml_annotations, model)
     print("{} MAE of the model: {} is {}".format(os.path.basename(xml_annotations), os.path.basename(model), error))
+
+
+def measure_mre(real_coords, estimated_coords):
+        
+    """Calculate Mean Relative Error"""
+    
+    # Calculate Euclidean distances (errors) between corresponding points
+    errors = np.linalg.norm(real_coords - estimated_coords, axis=1)
+    
+    # Calculate magnitudes of the real coordinates
+    magnitudes = np.linalg.norm(real_coords, axis=1)
+    
+    # Avoid division by zero by setting small magnitudes to a small number
+    magnitudes[magnitudes == 0] = 1e-10
+    
+    # Calculate relative errors
+    relative_errors = errors / magnitudes
+    
+    # Calculate Mean Relative Error
+    mean_relative_error = np.mean(relative_errors)
+
+    return mean_relative_error
+
+def calculate_mae(real_coords, estimated_coords):
+        
+    """Calculate Mean Absolute Error manually"""
+    
+    # Calculate Euclidean distances (errors) between corresponding points
+    errors = np.linalg.norm(real_coords - estimated_coords, axis=1)
+    
+    mae = np.mean(errors)
+   
+    return mae

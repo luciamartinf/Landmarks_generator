@@ -6,6 +6,7 @@ import numpy as np
 import os
 import dlib
 
+import shapepred_fun
 import argparse
 from Landmarks_module import Landmarks
 
@@ -44,11 +45,8 @@ def main():
     
     set = Landmarks(xml) # img_list y lm_dict
     mean_mre = set.calculate_allmre(dat)
-    
-    print("{} MRE of the model: {} is {}".format(
-        os.path.basename(xml), os.path.basename(dat), mean_mre))
 
-    measure_mae(dat, xml)
+    shapepred_fun.measure_model_error(dat, xml)
 
 
 if __name__ == "__main__":
