@@ -10,14 +10,14 @@ import xml.etree.ElementTree as ET
 from PIL import Image
 from typing import Dict, List, Any
 from utils import check_make_dir, start_xml_file, end_xml_file, append_to_xml_file, what_file_type
-import measure_error
+import calc_errors
 
 class Landmarks:
     
     """A class use to process Landmarks"""
 
-    data_dir: str = None
-    flip_dir: str = None # directory with images and files that we are going to use
+    data_dir: str = None # Original input directory
+    flip_dir: str = None # directory with flip images and files that we are going to use
     work_dir: str = None # Working directory
     nested_dict: Dict[str, Dict[str, Any]] = {} 
 
@@ -438,19 +438,20 @@ class Landmarks:
         return outpath
 
 
-def predict_shapes(self, 
+    def calculate_allmre(self, 
                     model_path):
         
         """Predict new landmarks based on a model"""
 
-        pred_shapes = []
-        model_file = os.path.basename(model_path)
-        model_name = model_file[:model_file.rindex('.')]
         optimal_order = []
+        all_mre = []
 
-        for img in self.img_list:
-   
-            image_path = os.path.join(Landmarks.flip_dir, f'flip_{img}')
+        for img, real_lm in self.lm_dict.items():
+            
+            if not 'flip' in img:
+                img = f'flip_{img}'
+                
+            image_path = os.path.join(Landmarks.flip_dir, f'{img}')
             
             image = Image.open(image_path)
             np_image = np.array(image)
@@ -462,36 +463,32 @@ def predict_shapes(self,
 
             shape = predictor(np_image, full_rect)
             
-            lm_list = []
+            pred_lm = []
             for i in range(shape.num_parts):
                 p = shape.part(i)
-                if float(p.x) < 0 :
-                    print(f"WARNING: Image {img} may be cropped and negative landmarks are being generated. Changing {p.x} coordinate to 0")
-                    p.x = 0
-                if float(p.y) < 0 :
-                    print(f"WARNING: Image {img} may be cropped and negative landmarks are being generated. Setting {p.y} coordinate to 0")
-                    p.y = 0
-                lm_list.append([p.x, p.y])
+                # if float(p.x) < 0 :
+                #     print(f"WARNING: Image {img} may be cropped and negative landmarks are being generated. Changing {p.x} coordinate to 0")
+                #     p.x = 0
+                # if float(p.y) < 0 :
+                #     print(f"WARNING: Image {img} may be cropped and negative landmarks are being generated. Setting {p.y} coordinate to 0")
+                #     p.y = 0
+                pred_lm.append([p.x, p.y])
             
-            if not optimal_order:
-                real_shape = np.array((set.lm_dict).values())[0]
-                optimal_order = determine_optimal_reordering(real_shape, lm_list)
+            pred_shape = np.array(pred_lm)
+            
+            real_shape = np.array(real_lm)
+            
+            if len(optimal_order) == 0:
+                optimal_order = calc_errors.determine_optimal_reordering(np.array(real_shape), pred_shape)
+             
                 
-            sorted_lm = lm_list[optimal_order]
-            pred_shapes.append(sorted_lm)
-        
+            sort_pred_shape = pred_shape[optimal_order]
             
-        return np.array(pred_shapes)
+            mre = calc_errors.calculate_mre(real_shape, sort_pred_shape)
+            
+            all_mre.append(mre)
 
-
-def determine_optimal_reordering(set1, set2):
-    
-    """Determine optimal reordering of set2 considering the order of set1"""
-    
-    # Calculate the pairwise distance matrix
-    distance_matrix = np.linalg.norm(set1[:, np.newaxis] - set2, axis=2)
-
-    # Use the Hungarian algorithm to find the optimal assignment
-    _, col_indices = linear_sum_assignment(distance_matrix)
-
-    return col_indices
+        all_mre_array = np.array(all_mre)
+        mean_mre = all_mre_array.mean()
+            
+        return mean_mre

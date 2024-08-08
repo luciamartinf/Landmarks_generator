@@ -3,7 +3,8 @@
 import os
 from PIL import Image
 import sys
-# import xml.etree.ElementTree as ET
+import numpy as np
+
 
 
 def check_make_dir(folder_path):
@@ -30,7 +31,6 @@ def check_dir(folder_path):
         # Print error message
         print(f"ERROR: We could not find {folder_path}") # Make this error message better
         sys.exit()
-
 
 def what_file_type(file):
 
