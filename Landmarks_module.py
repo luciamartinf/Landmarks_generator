@@ -8,7 +8,8 @@ import numpy as np # numpy==1.26.4 because version 2 does not work with dlib
 import matplotlib.pyplot as plt 
 import xml.etree.ElementTree as ET
 from PIL import Image
-from utils import check_make_dir, start_xml_file, end_xml_file, append_to_xml_file, what_file_type, determine_optimal_reordering
+from utils import check_make_dir, start_xml_file, end_xml_file, append_to_xml_file, what_file_type
+import reorganize_coor
 import shapepred_fun
 
 class Landmarks:
@@ -476,7 +477,7 @@ class Landmarks:
             real_shape = np.array(real_lm)
             
             if len(optimal_order) == 0:
-                optimal_order = determine_optimal_reordering(np.array(real_shape), pred_shape)
+                optimal_order = reorganize_coor.calculate_optimal_order(np.array(real_shape), pred_shape)
              
                 
             sort_pred_shape = pred_shape[optimal_order]
