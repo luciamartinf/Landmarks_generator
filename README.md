@@ -22,18 +22,23 @@ that can extract the coordinates of the most important landmarks needed for shap
 analysis of biological structures. 
 
 
+
 ## Usage Examples:
 
-- Step 1. Train model from images
+- **Step 1.** Train model from images
+
+First we need to train a model with already annotated images. The following command will generate the shape predictor *carabus.dat*
 
 ```
 ./train.py -i example/data -m carabus -f example/Carabus_pronotum_train.txt -w example/ 
 ```
 
-- Step 2. Predict other images with the model
+- **Step 2.** Predict other images with the model
+
+Now, we can predict more Landmarks in different images using our *carabus.dat* model:
 
 ```
-./predict.py -i example/data -m carabus -f example/Carabus_pronotum_predict.txt -w example/ --plot
+./predict.py -i example/data -m example/carabus.dat -f example/Carabus_pronotum_predict.txt -w example/ --plot numbers
 ```
 
 The [example](example) folder contains the files required and generated after executing the commands above. 
@@ -74,7 +79,9 @@ usage: python3 landmarkgen.py train -i IMAGE_DIR -m MODEL_NAME -f FILE [--model_
   
 * **`-f FILE`, `--file FILE`**
 
-     .tps/.txt/.xml file with image names and their previously annotated landmarks
+     *.tps* / *.txt* / *.xml* file with image names and their previously annotated landmarks. Required
+
+#### Optional Parameters
    
 * `--model_version VERSION`, `-mv VERSION`
   
@@ -84,7 +91,7 @@ usage: python3 landmarkgen.py train -i IMAGE_DIR -m MODEL_NAME -f FILE [--model_
 
      Define working directory. By default it takes the current directory.
 
-* `--params FILE`, `-p FILE
+* `--params FILE`, `-p FILE`
 
      .txt file that contains already defined hyperparameters for training the model. If not defined, the program will look for the best hyperparameters in each case, but this will higly increase the training time. 
 
@@ -97,18 +104,19 @@ usage: python3 landmarkgen.py train -i IMAGE_DIR -m MODEL_NAME -f FILE [--model_
 
 **Option 1**
 
-With `predict.py`
+To predict new landmarks we can execute `predict.py` in two ways:
 
-Using a .txt/.tps file as reference with *-f (see example file [Carabus_pronotum_pred.txt](example/Carabus_pronotum_pred.txt))*
+- Using a *.txt / .tps* file as reference with *-f* (see example file [Carabus_pronotum_pred.txt](example/Carabus_pronotum_pred.txt))
 
-```
-usage: ./predict.py -i IMAGE_DIR -m FILE [-f FILE] [--model_version MODEL_VERSION] [--work_dir WORK_DIR] [--output OUTPUT] [--plot]
-```
+     ```
+     usage: ./predict.py -i IMAGE_DIR -m FILE [-f FILE] [--model_version MODEL_VERSION] [--work_dir WORK_DIR] [--output OUTPUT] [--plot [none, dots, numbers] ]
+     ```
 
-Defining the scale of all the images with *-s SCALE* the needed .txt/.tps file will be generated 
-```
-usage: ./predict.py -i IMAGE_DIR -m FILE [-s SCALE] [--model_version MODEL_VERSION] [--work_dir WORK_DIR] [--output OUTPUT] [--plot]
-```
+- Defining the scale of all the images with *-s SCALE* the needed *.txt / .tps*  file will be generated 
+
+     ```
+     usage: ./predict.py -i IMAGE_DIR -m FILE [-s SCALE] [--model_version MODEL_VERSION] [--work_dir WORK_DIR] [--output OUTPUT] [--plot]
+     ```
 
 **Option 2** (I will probably delete this)
 
@@ -142,6 +150,8 @@ usage: python3 landmarkgen.py predict -i IMAGE_DIR -m MODEL_NAME -f FILE [--mode
 
      Scale of all the images, all images must have the same scale. A .tps/.txt file will be generated using this scale and the input images.
 
+#### Optional Parameters
+
 * `--work_dir DIR`, `-w DIR`
 
      Define working directory. By default it takes the current directory.
@@ -172,8 +182,9 @@ Recommended Python modules versions:
 Other files: 
 
 * `Config.py`. Can be modified by the user.
-     *PROCS* : Number of threads/cores we'll be using when training our models. -1 will also all available cores of the machine
-     *MAX_FUNC_CALLS* : Maximum number of trials we'll be performing when tuning our shape predictor hyperparameters. Higher numbers will result in better predictions but will also higly increase training time.
+     - *PROCS* : Number of threads/cores we'll be using when training our models. -1 will also all available cores of the machine
+     
+     - *MAX_FUNC_CALLS* : Maximum number of trials we'll be performing when tuning our shape predictor hyperparameters. Higher numbers will result in better predictions but will also higly increase training time.
 
 ## References
 
