@@ -175,7 +175,11 @@ Recommended Python modules versions:
 * python==3.9.6
 * dlib==19.24.4
 * numpy==1.26.4 (dlib does not support numpy==2)
-  ` python3 -m pip install numpy==1.26.4 `
+
+```
+  python3 -m pip install numpy==1.26.4 
+````
+
 * matplotlib==3.9.1
 * pillow==10.4.0
 
@@ -183,7 +187,7 @@ Other files:
 
 * `Config.py`. Can be modified by the user.
      - *PROCS* : Number of threads/cores we'll be using when training our models. -1 will also all available cores of the machine
-     
+
      - *MAX_FUNC_CALLS* : Maximum number of trials we'll be performing when tuning our shape predictor hyperparameters. Higher numbers will result in better predictions but will also higly increase training time.
 
 ## References
