@@ -435,7 +435,7 @@ class Landmarks:
         return outpath
 
 
-    def calculate_allmre(self, 
+    def calculate_error(self, 
                     model_path):
         
         """Predict new landmarks based on a model"""
@@ -446,58 +446,58 @@ class Landmarks:
         
         for img, real_lm in self.lm_dict.items():
             
-            if not 'flip' in img:
-                img = f'flip_{img}'
-                
-            image_path = os.path.join(Landmarks.flip_dir, f'{img}')
-            
-            image = Image.open(image_path)
-            np_image = np.array(image)
-            width, height = image.size
-                
-            full_rect = dlib.rectangle(left=0, top=0, right=width, bottom=height)
-            predictor = dlib.shape_predictor(model_path)
-
-
-            shape = predictor(np_image, full_rect)
-            
-            pred_lm = []
-            for i in range(shape.num_parts):
-                p = shape.part(i)
-                # if float(p.x) < 0 :
-                #     print(f"WARNING: Image {img} may be cropped and negative landmarks are being generated. Changing {p.x} coordinate to 0")
-                #     p.x = 0
-                # if float(p.y) < 0 :
-                #     print(f"WARNING: Image {img} may be cropped and negative landmarks are being generated. Setting {p.y} coordinate to 0")
-                #     p.y = 0
-                pred_lm.append([p.x, p.y])
-            
-            pred_shape = np.array(pred_lm)
+            pred_array = self.predict_shape(model_path, img)
             
             real_shape = np.array(real_lm)
             
-            if len(optimal_order) == 0:
-                optimal_order = reorganize_coor.calculate_optimal_order(np.array(real_shape), pred_shape)
-             
-                
-            sort_pred_shape = pred_shape[optimal_order]
+            pred_shape, optimal_order = reorganize_coor.order_shape(real_shape, pred_array, optimal_order)
             
-            mre = shapepred_fun.measure_mre(real_shape, sort_pred_shape)
+            mre = shapepred_fun.measure_mre(real_shape, pred_shape)
             all_mre.append(mre)
             
-            mae = shapepred_fun.calculate_mae(real_shape, sort_pred_shape)
-            
+            mae = shapepred_fun.calculate_mae(real_shape, pred_shape)
             all_mae.append(mae)
 
         all_mre_array = np.array(all_mre)
         mean_mre = all_mre_array.mean()
-        
         print("{} MRE of the model: {} is {}".format(
             os.path.basename(self.xmlfile), os.path.basename(model_path), mean_mre))
         
         all_mae_array = np.array(all_mae)
         mean_mae = all_mae_array.mean()
-        
         print("{} MAE of the model: {} is {}".format(
             os.path.basename(self.xmlfile), os.path.basename(model_path), mean_mae))
+    
+        return all_mae_array, all_mre_array
         
+    def predict_shape(self, dat, img):
+        
+        if not 'flip' in img:
+            img = f'flip_{img}'
+        
+        image_path = os.path.join(Landmarks.flip_dir, f'{img}')
+        
+        image = Image.open(image_path)
+        np_image = np.array(image)
+        width, height = image.size
+            
+        full_rect = dlib.rectangle(left=0, top=0, right=width, bottom=height)
+        predictor = dlib.shape_predictor(dat)
+        
+        shape = predictor(np_image, full_rect)
+        
+        pred_lm = []
+        for i in range(shape.num_parts):
+            p = shape.part(i)
+            # if float(p.x) < 0 :
+            #     print(f"WARNING: Image {img} may be cropped and negative landmarks are being generated. Changing {p.x} coordinate to 0")
+            #     p.x = 0
+            # if float(p.y) < 0 :
+            #     print(f"WARNING: Image {img} may be cropped and negative landmarks are being generated. Setting {p.y} coordinate to 0")
+            #     p.y = 0
+            pred_lm.append([p.x, p.y])
+            
+        return np.array(pred_lm)
+        
+        
+   

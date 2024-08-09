@@ -21,7 +21,7 @@ from Landmarks_module import Landmarks
 def main():
     
     parser = argparse.ArgumentParser(prog = '', formatter_class=argparse.RawDescriptionHelpFormatter,
-                                     description= '')
+                                     description='Predict and measure the error of a model') # Elaborate this description
     
     parser.add_argument('-f', '--file', required=True, 
                         help = '.xml or .txt file that contains real landmarks')
@@ -44,9 +44,9 @@ def main():
     Landmarks.create_flipdir()
     
     set = Landmarks(xml) # img_list y lm_dict
-    mean_mre = set.calculate_allmre(dat)
+    mean_mre = set.calculate_error(dat)
 
-    shapepred_fun.measure_model_error(dat, xml)
+    shapepred_fun.measure_mae(dat, xml)
 
 
 if __name__ == "__main__":

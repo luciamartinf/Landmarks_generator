@@ -1,7 +1,17 @@
 import numpy as np
 from scipy.optimize import linear_sum_assignment
 
-
+def order_shape(real_shape, pred_shape, optimal_order):
+        
+        "Get real and predicted shape"
+        
+        if len(optimal_order) == 0:
+            optimal_order = calculate_optimal_order(np.array(real_shape), pred_shape)
+         
+        sorted_pred_shape = pred_shape[optimal_order]
+        
+        return sorted_pred_shape, optimal_order
+    
 def calculate_optimal_order(real_shape, measured_shape):
     
     """Calculate the optimal order of points in the measured shape to match the real shape."""

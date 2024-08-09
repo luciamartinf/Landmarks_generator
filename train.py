@@ -140,15 +140,15 @@ def main():
     print("Calculating Errors of the model")
     
     train_set = Landmarks(train_xml)
-    train_set.calculate_allmre(dat)
+    train_set.calculate_error(dat)
     measure_mae(dat, train_xml) # aqui usar train + val
     
     test_set = Landmarks(test_xml)
-    test_set.calculate_allmre(dat)
+    test_set.calculate_error(dat)
     measure_mae(dat, test_xml) # aqui usar solo test
     # This is just useful for me
     full_set = Landmarks(full_xml)
-    full_set.calculate_allmre(dat)
+    full_set.calculate_error(dat)
     measure_mae(dat, full_xml) # aqui usar solo test
     
     
