@@ -78,6 +78,9 @@ def main():
     ## Call predict function   
     print("Predicting Landmarks...")
     predict(image_dir, tpsfile, dat, output, args.plot)
+    
+    # Deleting flip_images from work_data path
+    utils.delete_files(Landmarks.flip_dir)
 
     print("Done!")
 
