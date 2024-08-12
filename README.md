@@ -144,7 +144,7 @@ Recommended Python modules versions:
 
 ```
   python3 -m pip install numpy==1.26.4 
-````
+```
 
 * matplotlib==3.9.1
 * pillow==10.4.0
@@ -154,9 +154,14 @@ Other files:
 * `Config.py`. Can be modified by the user.
      - *PROCS* : Number of threads/cores we'll be using when training our models. -1 will also all available cores of the machine
 
-     - *MAX_FUNC_CALLS* : Maximum number of trials we'll be performing when tuning our shape predictor hyperparameters. Higher numbers will result in better predictions but will also higly increase training time.
+     - *MAX_FUNC_CALLS* : Maximum number of trials we'll be performing when tuning our shape predictor hyperparameters. Higher numbers will result in better predictions but will also highly increase training time
 
-## References
+
+## References 
 
 Rohlf, F. J. (2006). tpsDig, Digitize Landmarks and Outlines, Version 2.10. Stony Brook, NY: Department of
 Ecology and Evolution, State University of New York.
+
+## Additional Notes
+
+The program regenerates edited pictures for training and predicting that are deleted at the end of the execution. 
