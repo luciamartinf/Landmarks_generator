@@ -19,7 +19,7 @@ def delete_files(directory, regex=['*.png', '*.jpeg', '*.jpg', '*.gif', '*.bmp',
         for file in files:
             try:
                 os.remove(file)
-                print(f"Deleted {file}")
+                # print(f"Deleted {file}")
             except Exception as e:
                 print(f"Error deleting {file}: {e}")
     

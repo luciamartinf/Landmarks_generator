@@ -36,7 +36,7 @@ First we need to train a model with already annotated images. The following comm
 Now, we can predict more Landmarks in different images using our *carabus.dat* model:
 
 ```
-./predict.py -i example/data -m example/carabus.dat -f example/Carabus_pronotum_predict.txt -w example/ --plot numbers
+./predict.py -i example/data -m example/carabus.dat -f example/Carabus_pronotum_pred.txt -w example/ --plot numbers
 ```
 
 The [example](example) folder contains the files required and generated after executing the commands above. 
