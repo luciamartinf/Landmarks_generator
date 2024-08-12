@@ -1,4 +1,4 @@
-# LandMarkgen
+# Landmark Generator
 
 ### Lucía Martín Fernández
 #
@@ -63,7 +63,7 @@ usage: ./train.py -i DIR -m MODEL_NAME -f FILE [--model_version VERSION ] [--wor
      *.tps* / *.txt* / *.xml* file with image names and their previously annotated landmarks. Required
 
 #### Optional Parameters
-   
+
 * `--model_version VERSION`, `-mv VERSION`
   
      Version of the model. If the version already exists, next available version will be generated.
@@ -140,7 +140,7 @@ Recommended Python modules versions:
 
 * python==3.9.6
 * dlib==19.24.4
-* numpy==1.26.4 (dlib does not support numpy==2)
+* numpy==1.26.4 (dlib does not support numpy v2)
 
 ```
   python3 -m pip install numpy==1.26.4 
