@@ -4,7 +4,25 @@ import os
 from PIL import Image
 import sys
 import numpy as np
+import glob
 
+def delete_files(directory, regex=['*.png', '*.jpeg', '*.jpg', '*.gif', '*.bmp', '*.tiff']):
+    
+    """Delete all files that matche a pattern in a directory"""
+
+    # Loop through each extension and delete the files
+    for pattern in regex:
+        # Use glob to find all files with the current extension
+        files = glob.glob(os.path.join(directory, pattern))
+        
+        # Delete each file found
+        for file in files:
+            try:
+                os.remove(file)
+                print(f"Deleted {file}")
+            except Exception as e:
+                print(f"Error deleting {file}: {e}")
+    
 
 def check_make_dir(folder_path):
 

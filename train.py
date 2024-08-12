@@ -134,24 +134,25 @@ def main():
         parser.print_help()
         sys.exit(2)
     
+    
     # Compute training and test errors of the model
-    
-    
     print("Calculating Errors of the model")
     
     train_set = Landmarks(train_xml)
     train_set.calculate_error(dat)
-    measure_mae(dat, train_xml) # aqui usar train + val
+    # measure_mae(dat, train_xml) 
     
     test_set = Landmarks(test_xml)
     test_set.calculate_error(dat)
-    measure_mae(dat, test_xml) # aqui usar solo test
+    # measure_mae(dat, test_xml) 
+    
     # This is just useful for me
-    full_set = Landmarks(full_xml)
-    full_set.calculate_error(dat)
-    measure_mae(dat, full_xml) # aqui usar solo test
+    # full_set = Landmarks(full_xml)
+    # full_set.calculate_error(dat)
+    # measure_mae(dat, full_xml) 
     
-    
+    # Deleting flip_images from work_data path
+    utils.delete_files(Landmarks.flip_dir)
     
     print("Done!")
         
