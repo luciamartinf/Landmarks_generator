@@ -21,8 +21,6 @@ prone, and time-consuming. To address this, our objective is to develop a shape 
 that can extract the coordinates of the most important landmarks needed for shape
 analysis of biological structures. 
 
-
-
 ## Usage Examples:
 
 - **Step 1.** Train model from images
@@ -46,25 +44,8 @@ The [example](example) folder contains the files required and generated after ex
 
 ## 1. Train model
 
-**Option 1**
-
-With `train.py`
-
 ```
 usage: ./train.py -i DIR -m MODEL_NAME -f FILE [--model_version VERSION ] [--work_dir DIR ] [--params FILE] [--save_params]
-```
-
-**Option 2** (I will probably delete this)
-
-With main script `landmarkgen.py`
-
-```
-Basic usage: ./landmarkgen.py train -i IMAGE_DIR -m MODEL_NAME -f FILE
-```
-
-With optional arguments
-```
-usage: python3 landmarkgen.py train -i IMAGE_DIR -m MODEL_NAME -f FILE [--model_version MODEL_VERSION] [--work_dir WORK_DIR] [--params PARAMS] [--save_params]
 ```
 
 ### Parameters 
@@ -102,8 +83,6 @@ usage: python3 landmarkgen.py train -i IMAGE_DIR -m MODEL_NAME -f FILE [--model_
 
 ## 2. Predict Landmarks
 
-**Option 1**
-
 To predict new landmarks we can execute `predict.py` in two ways:
 
 - Using a *.txt / .tps* file as reference with *-f* (see example file [Carabus_pronotum_pred.txt](example/Carabus_pronotum_pred.txt))
@@ -117,19 +96,6 @@ To predict new landmarks we can execute `predict.py` in two ways:
      ```
      usage: ./predict.py -i IMAGE_DIR -m FILE [-s SCALE] [--model_version MODEL_VERSION] [--work_dir WORK_DIR] [--output OUTPUT] [--plot]
      ```
-
-**Option 2** (I will probably delete this)
-
-With main script `landmarkgen.py`
-
-```
-Basic usage: ./landmarkgen.py predict -i IMAGE_DIR -m MODEL_NAME -f FILE
-```
-
-With optional arguments
-```
-usage: python3 landmarkgen.py predict -i IMAGE_DIR -m MODEL_NAME -f FILE [--model_version MODEL_VERSION] [--work_dir WORK_DIR] [--params PARAMS] [--save_params]
-```
 
 
 ### Parameters 
