@@ -19,7 +19,7 @@ def check_file(filepath):
         filename = f'{basename}_{version}.{ext}'
         filepath = os.path.join(path, filename)
     
-    print(f"Using {os.path.basename(filepath)} instead")
+    print(f"Using {os.path.basename(filepath)}")
     return filepath
 
     
