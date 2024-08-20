@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import xml.etree.ElementTree as ET
 from PIL import Image
 from utils import check_make_dir, start_xml_file, end_xml_file, append_to_xml_file, what_file_type
+import utils
 import reorganize_coor
 import shapepred_fun
 
@@ -176,7 +177,7 @@ class Landmarks:
                     next_line = file.readline()
                     
                     if next_line.startswith("SCALE"):
-                        scale = next_line.strip()
+                        scale = next_line.strip().split("=")[1]
                         if check == False:
                             Landmarks.nested_dict[image_name]["SCALE"] = scale
 
@@ -231,7 +232,7 @@ class Landmarks:
                     next_line = file.readline()
                     
                     if next_line.startswith("SCALE"):
-                        scale = next_line.strip()
+                        scale = next_line.strip().split("=")[1]
                         Landmarks.nested_dict[image_name]["SCALE"] = scale
 
 
@@ -373,6 +374,7 @@ class Landmarks:
         check_make_dir(landmarks_folder)
         
         outpath = os.path.join(landmarks_folder, outfile)
+        outpath = utils.check_file(outpath)
 
 
         for img in self.img_list:
@@ -426,7 +428,7 @@ class Landmarks:
                 f.write(f'LM={int(len(lm_list))}\n')
                 
                 for lm in lm_list:
-                    f.write(f'{lm[0]:.4f} {lm[1]:.4f}\n')
+                    f.write(f'{lm[0]:.5f} {lm[1]:.5f}\n')
                 
                 f.write(f'IMAGE={img}\n')
                 f.write(f'ID={Landmarks.nested_dict[img]["ID"]}\n')

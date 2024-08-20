@@ -6,6 +6,24 @@ import sys
 import numpy as np
 import glob
 
+def check_file(filepath):
+    
+    """Check if file does not exist already"""
+    
+    version = 0
+    path = os.path.dirname(filepath)
+    while os.path.isfile(filepath):
+        print(f"{os.path.basename(filepath)} already exists.")
+        version += 1
+        basename, ext = os.path.basename(filepath).split('.')
+        filename = f'{basename}_{version}.{ext}'
+        filepath = os.path.join(path, filename)
+    
+    print(f"Using {os.path.basename(filepath)} instead")
+    return filepath
+
+    
+    
 def delete_files(directory, regex=['*.png', '*.jpeg', '*.jpg', '*.gif', '*.bmp', '*.tiff']):
     
     """Delete all files that matche a pattern in a directory"""

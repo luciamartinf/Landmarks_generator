@@ -73,7 +73,8 @@ def main():
     if args.output:
         output = args.output
     else:
-        output = f'{model_name}_landmarks.txt'
+        output = f'{model_name}_landmarks.tps'
+        
         
     ## Call predict function   
     print("Predicting Landmarks...")
