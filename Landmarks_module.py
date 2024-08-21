@@ -515,4 +515,16 @@ class Landmarks:
             vertical = original.transpose(method=Image.FLIP_TOP_BOTTOM)
             
             self.plot_landmarks(vertical, img, lm_list, Landmarks.flip_dir, mode)
+    
+    
+    def del_items(self, mylist):
         
+        for img in mylist:
+            
+            try:
+                # self.img_list.remove(img)
+                del self.lm_dict[img]
+            except:
+                print(f'{img} was not found')
+        
+        return self.lm_dict
