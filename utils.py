@@ -199,9 +199,12 @@ def write_list_to_file(mylist, myfile):
             file.write(f"{item}\n")
 
 
-def read_list_from_file(myfile):
+def read_list_from_file(myfile, f = True):
     with open(myfile, 'r') as file:
         data = file.readlines()
-        data = [float(line.strip()) for line in data]
+        if f:
+            data = [float(line.strip()) for line in data]
+        else: 
+            data = [line.strip() for line in data]
         
     return data
