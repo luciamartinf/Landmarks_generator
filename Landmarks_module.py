@@ -10,7 +10,7 @@ import xml.etree.ElementTree as ET
 from PIL import Image
 from utils import check_make_dir, start_xml_file, end_xml_file, append_to_xml_file, what_file_type
 import utils
-import reorganize_coor
+import reorganize_fun
 import shapepred_fun
 
 class Landmarks:
@@ -20,10 +20,10 @@ class Landmarks:
     data_dir = None # Original input directory
     flip_dir = None # directory with flip images and files that we are going to use
     work_dir = None # Working directory
-    nested_dict = {} 
+    nested_dict = {} # Nested Dictionary with ID, SCALE and LM for every image (og_name)
 
     def __init__(self, 
-                file) -> None:
+                file, flip=True) -> None:
         
         """Constructs all necessary instance attributes"""
 
@@ -44,7 +44,7 @@ class Landmarks:
             if Landmarks.check_forlm(file):
             
                 self.txt_lmfile: str = file 
-                self.lm_dict, self.img_list, Landmarks.nested_dict = self.readtxt_lmfile()
+                self.lm_dict, self.img_list, Landmarks.nested_dict = self.readtxt_lmfile(flip=flip)
                 
             else: 
             
@@ -59,11 +59,11 @@ class Landmarks:
             
 
     @classmethod
-    def create_flipdir(cls):
+    def create_flipdir(cls, name='work_data'):
 
         """Initializes flip_dir attribute and creates the directory it if it does not exist"""
         
-        flip_dir = os.path.join(Landmarks.data_dir, 'work_data')
+        flip_dir = os.path.join(Landmarks.data_dir, name)
         check_make_dir(flip_dir)
         Landmarks.flip_dir = flip_dir
 
@@ -103,7 +103,7 @@ class Landmarks:
                         return True
  
         
-    def readtxt_lmfile(self):
+    def readtxt_lmfile(self, flip=True):
         
         """Parse tps or txt file that contains landmarks
         
@@ -123,7 +123,7 @@ class Landmarks:
                     n_lm = int(line.strip().split('=')[1])
                     
                     if n_lm == 0:
-                        print(f"WARNING: No landmarks annotated for this image")
+                        print(f"WARNING: No landmarks annotated for this image. Skipping...")
                         check = True
                         # TODO
                         # HACER ALGO AL RESPECTO
@@ -150,12 +150,16 @@ class Landmarks:
                         
                         if check == True:
                             print(f'Image {image_name} has only {n_lm} landmarks annotated')
-                        try:
-                            # we are flipping the image and saving it in the dictionary we are going to work with  
-                            image, image_path = self.flip_image(image_name) 
-                        except Exception as e:
-                            print(f"Error flipping image: {e}")
-                            continue # Discard this image
+                        
+                        if flip:
+                            try:
+                                # we are flipping the image and saving it in the dictionary we are going to work with  
+                                image, image_path = self.flip_image(image_name) 
+                            except Exception as e:
+                                print(f"Error flipping image: {e}")
+                                continue # Discard this image
+                        else:
+                            image = image_name
                         
                         if check == False:
                             self.lm_dict[image] = lm_list
@@ -307,7 +311,7 @@ class Landmarks:
 
 
     def flip_image(self, 
-                   img):
+                   img, save=True):
         
         """Flip images because landmarks' coordinates are flipped"""
 
@@ -320,7 +324,8 @@ class Landmarks:
         new_image = f'flip_{img}'
         new_imgpath = os.path.join(Landmarks.flip_dir, new_image)
 
-        vertical.save(new_imgpath)
+        if save:
+            vertical.save(new_imgpath)
 
         return new_image, new_imgpath
     
@@ -378,64 +383,19 @@ class Landmarks:
 
 
         for img in self.img_list:
-   
-            image_path = os.path.join(Landmarks.flip_dir, f'flip_{img}')
             
-            image = Image.open(image_path)
-            np_image = np.array(image)
-            width, height = image.size
-                
-            full_rect = dlib.rectangle(left=0, top=0, right=width, bottom=height)
-            predictor = dlib.shape_predictor(model_path)
-
-
-            shape = predictor(np_image, full_rect)
-            lm_list = []
-
-            for i in range(shape.num_parts):
-                p = shape.part(i)
-                if float(p.x) < 0 :
-                    print(f"WARNING: Image {img} may be cropped and negative landmarks are being generated. Changing {p.x} coordinate to 0")
-                    p.x = 0
-                if float(p.y) < 0 :
-                    print(f"WARNING: Image {img} may be cropped and negative landmarks are being generated. Setting {p.y} coordinate to 0")
-                    p.y = 0
-                lm_list.append([p.x, p.y])
-
+            lm_array, image = self.predict_shape(model_path, img)
+            
+            
+            lm_list = list(lm_array)
+            
             if generate_images != 'none':
-                plt.figure()
-                plt.ylim(0, height)
-                plt.xlim(0, width)
-                plt.imshow(image)
+                
+                self.plot_landmarks(image, img, lm_list, landmarks_folder, mode=generate_images)
 
-                # Plot colored numbers
-                if generate_images == 'numbers':
-                    for i, lm in enumerate(lm_list):
-                        plt.scatter(lm[0], lm[1], marker="$"+str(i)+"$")
-                        
-                # Plot red dots
-                elif generate_images == 'dots':
-                    for lm in lm_list:
-                        plt.plot(lm[0], lm[1], '.', color='red')
-                
-                
-                lm_img_path = os.path.join(landmarks_folder, f'lm_{img}')
-                plt.savefig(lm_img_path)
-                plt.close()
-
-            with open(outpath, 'a') as f:
-                
-                f.write(f'LM={int(len(lm_list))}\n')
-                
-                for lm in lm_list:
-                    f.write(f'{lm[0]:.5f} {lm[1]:.5f}\n')
-                
-                f.write(f'IMAGE={img}\n')
-                f.write(f'ID={Landmarks.nested_dict[img]["ID"]}\n')
-                f.write(f'SCALE={Landmarks.nested_dict[img]["SCALE"]}\n')
-
+            self.append_to_tps(img, lm_list, outpath)
+      
         return outpath
-
 
     def calculate_error(self, 
                     model_path):
@@ -452,7 +412,7 @@ class Landmarks:
             
             real_shape = np.array(real_lm)
             
-            pred_shape, optimal_order = reorganize_coor.order_shape(real_shape, pred_array, optimal_order)
+            pred_shape, optimal_order = reorganize_fun.order_shape(real_shape, pred_array, optimal_order)
             
             mre = shapepred_fun.measure_mre(real_shape, pred_shape)
             all_mre.append(mre)
@@ -474,6 +434,8 @@ class Landmarks:
         
     def predict_shape(self, dat, img):
         
+        """Predict shape from image using a dlib's shape predictor"""
+        
         if not 'flip' in img:
             img = f'flip_{img}'
         
@@ -491,15 +453,66 @@ class Landmarks:
         pred_lm = []
         for i in range(shape.num_parts):
             p = shape.part(i)
-            # if float(p.x) < 0 :
-            #     print(f"WARNING: Image {img} may be cropped and negative landmarks are being generated. Changing {p.x} coordinate to 0")
-            #     p.x = 0
-            # if float(p.y) < 0 :
-            #     print(f"WARNING: Image {img} may be cropped and negative landmarks are being generated. Setting {p.y} coordinate to 0")
-            #     p.y = 0
+            if float(p.x) < 0 :
+                print(f"WARNING: Image {img} may be cropped and negative landmarks are being generated. Changing {p.x} coordinate to 0")
+                p.x = 0
+            if float(p.y) < 0 :
+                print(f"WARNING: Image {img} may be cropped and negative landmarks are being generated. Setting {p.y} coordinate to 0")
+                p.y = 0
             pred_lm.append([p.x, p.y])
             
-        return np.array(pred_lm)
+        return np.array(pred_lm), image
         
+    def append_to_tps(self, img, lm_list, outpath):
         
-   
+        """Append image with landmarks to a .tps file"""
+        
+        with open(outpath, 'a') as f:
+                
+            f.write(f'LM={int(len(lm_list))}\n')
+                
+            for lm in lm_list:
+                f.write(f'{lm[0]:.5f} {lm[1]:.5f}\n')
+                
+            f.write(f'IMAGE={img}\n')
+            f.write(f'ID={Landmarks.nested_dict[img]["ID"]}\n')
+            f.write(f'SCALE={Landmarks.nested_dict[img]["SCALE"]}\n')
+
+    def plot_landmarks(self, 
+                       image, img_name, lm_list, folder, mode='dots'):
+        
+        """Plot landmarks in an image"""
+        
+        width, height = image.size
+        
+        plt.figure()
+        plt.ylim(0, height)
+        plt.xlim(0, width)
+        plt.imshow(image)
+
+        # Plot colored numbers
+        if mode == 'numbers':
+            for i, lm in enumerate(lm_list):
+                plt.scatter(lm[0], lm[1], marker="$"+str(i)+"$")
+                
+        # Plot red dots
+        elif mode == 'dots':
+            for lm in lm_list:
+                plt.plot(lm[0], lm[1], '.', color='red')
+        
+        lm_img_path = os.path.join(folder, f'{img_name}')
+        plt.savefig(lm_img_path)
+        plt.close()
+        
+    def generate_images(self, mode='dots'):
+        
+        for img, lm_list in self.lm_dict.items():
+            
+            
+            image_path = os.path.join(Landmarks.data_dir, f'{img}')
+        
+            original = Image.open(image_path)
+            vertical = original.transpose(method=Image.FLIP_TOP_BOTTOM)
+            
+            self.plot_landmarks(vertical, img, lm_list, Landmarks.flip_dir, mode)
+        
