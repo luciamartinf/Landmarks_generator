@@ -1,0 +1,313 @@
+id;IND_id;FC;Species;Location;Alt.;Alt. Zone;Mt.;Crete;Sex
+10;FC226IND10;226;Carabus banoni;Kournas Lake;30;400;;West;F
+11;FC226IND11;226;Carabus banoni;Kournas Lake;30;400;;West;F
+12;FC226IND12;226;Carabus banoni;Kournas Lake;30;400;;West;F
+13;FC226IND13;226;Carabus banoni;Kournas Lake;30;400;;West;F
+14;FC226IND14;226;Carabus banoni;Kournas Lake;30;400;;West;F
+15;FC226IND15;226;Carabus banoni;Kournas Lake;30;400;;West;F
+16;FC226IND16;226;Carabus banoni;Kournas Lake;30;400;;West;F
+17;FC226IND17;226;Carabus banoni;Kournas Lake;30;400;;West;F
+18;FC226IND18;226;Carabus banoni;Kournas Lake;30;400;;West;F
+1;FC226IND1;226;Carabus banoni;Kournas Lake;30;400;;West;M
+2;FC226IND2;226;Carabus banoni;Kournas Lake;30;400;;West;M
+3;FC226IND3;226;Carabus banoni;Kournas Lake;30;400;;West;M
+4;FC226IND4;226;Carabus banoni;Kournas Lake;30;400;;West;M
+5;FC226IND5;226;Carabus banoni;Kournas Lake;30;400;;West;M
+6;FC226IND6;226;Carabus banoni;Kournas Lake;30;400;;West;M
+7;FC226IND7;226;Carabus banoni;Kournas Lake;30;400;;West;M
+8;FC226IND8;226;Carabus banoni;Kournas Lake;30;400;;West;M
+9;FC226IND9;226;Carabus banoni;Kournas Lake;30;400;;West;M
+11;FC342IND11;342;Carabus banoni;Metochi, Vatisiana to Alyki, Gavdos;56;400;;Gavdos;F
+12;FC342IND12;342;Carabus banoni;Metochi, Vatisiana to Alyki, Gavdos;56;400;;Gavdos;F
+13;FC342IND13;342;Carabus banoni;Metochi, Vatisiana to Alyki, Gavdos;56;400;;Gavdos;F
+14;FC342IND14;342;Carabus banoni;Metochi, Vatisiana to Alyki, Gavdos;56;400;;Gavdos;F
+15;FC342IND15;342;Carabus banoni;Metochi, Vatisiana to Alyki, Gavdos;56;400;;Gavdos;F
+1;FC342IND1;342;Carabus banoni;Metochi, Vatisiana to Alyki, Gavdos;56;400;;Gavdos;M
+2;FC342IND2;342;Carabus banoni;Metochi, Vatisiana to Alyki, Gavdos;56;400;;Gavdos;M
+3;FC342IND3;342;Carabus banoni;Metochi, Vatisiana to Alyki, Gavdos;56;400;;Gavdos;M
+4;FC342IND4;342;Carabus banoni;Metochi, Vatisiana to Alyki, Gavdos;56;400;;Gavdos;M
+5;FC342IND5;342;Carabus banoni;Metochi, Vatisiana to Alyki, Gavdos;56;400;;Gavdos;M
+6;FC342IND6;342;Carabus banoni;Metochi, Vatisiana to Alyki, Gavdos;56;400;;Gavdos;M
+7;FC342IND7;342;Carabus banoni;Metochi, Vatisiana to Alyki, Gavdos;56;400;;Gavdos;M
+8;FC342IND8;342;Carabus banoni;Metochi, Vatisiana to Alyki, Gavdos;56;400;;Gavdos;M
+9;FC342IND9;342;Carabus banoni;Metochi, Vatisiana to Alyki, Gavdos;56;400;;Gavdos;M
+10;FC342IND10;342;Carabus banoni;Metochi, Vatisiana to Alyki, Gavdos;56;400;;Gavdos;M
+11;FC1046IND11;1046;Carabus banoni;Cha gorge;150;400;;East;F
+12;FC1046IND12;1046;Carabus banoni;Cha gorge;150;400;;East;F
+13;FC1046IND13;1046;Carabus banoni;Cha gorge;150;400;;East;F
+14;FC1046IND14;1046;Carabus banoni;Cha gorge;150;400;;East;F
+15;FC1046IND15;1046;Carabus banoni;Cha gorge;150;400;;East;F
+16;FC1046IND16;1046;Carabus banoni;Cha gorge;150;400;;East;F
+17;FC1046IND17;1046;Carabus banoni;Cha gorge;150;400;;East;F
+18;FC1046IND18;1046;Carabus banoni;Cha gorge;150;400;;East;F
+19;FC1046IND19;1046;Carabus banoni;Cha gorge;150;400;;East;F
+20;FC1046IND20;1046;Carabus banoni;Cha gorge;150;400;;East;F
+1;FC1046IND1;1046;Carabus banoni;Cha gorge;150;400;;East;M
+2;FC1046IND2;1046;Carabus banoni;Cha gorge;150;400;;East;M
+3;FC1046IND3;1046;Carabus banoni;Cha gorge;150;400;;East;M
+4;FC1046IND4;1046;Carabus banoni;Cha gorge;150;400;;East;M
+5;FC1046IND5;1046;Carabus banoni;Cha gorge;150;400;;East;M
+6;FC1046IND6;1046;Carabus banoni;Cha gorge;150;400;;East;M
+7;FC1046IND7;1046;Carabus banoni;Cha gorge;150;400;;East;M
+8;FC1046IND8;1046;Carabus banoni;Cha gorge;150;400;;East;M
+9;FC1046IND9;1046;Carabus banoni;Cha gorge;150;400;;East;M
+10;FC1046IND10;1046;Carabus banoni;Cha gorge;150;400;;East;M
+10;FC1103IND10;1103;Carabus banoni;Moni Toplou;170;400;;East;F
+11;FC1103IND11;1103;Carabus banoni;Moni Toplou;170;400;;East;F
+12;FC1103IND12;1103;Carabus banoni;Moni Toplou;170;400;;East;F
+13;FC1103IND13;1103;Carabus banoni;Moni Toplou;170;400;;East;F
+14;FC1103IND14;1103;Carabus banoni;Moni Toplou;170;400;;East;F
+15;FC1103IND15;1103;Carabus banoni;Moni Toplou;170;400;;East;F
+16;FC1103IND16;1103;Carabus banoni;Moni Toplou;170;400;;East;F
+17;FC1103IND17;1103;Carabus banoni;Moni Toplou;170;400;;East;F
+18;FC1103IND18;1103;Carabus banoni;Moni Toplou;170;400;;East;F
+1;FC1103IND1;1103;Carabus banoni;Moni Toplou;170;400;;East;M
+2;FC1103IND2;1103;Carabus banoni;Moni Toplou;170;400;;East;M
+3;FC1103IND3;1103;Carabus banoni;Moni Toplou;170;400;;East;M
+4;FC1103IND4;1103;Carabus banoni;Moni Toplou;170;400;;East;M
+5;FC1103IND5;1103;Carabus banoni;Moni Toplou;170;400;;East;M
+6;FC1103IND6;1103;Carabus banoni;Moni Toplou;170;400;;East;M
+7;FC1103IND7;1103;Carabus banoni;Moni Toplou;170;400;;East;M
+8;FC1103IND8;1103;Carabus banoni;Moni Toplou;170;400;;East;M
+9;FC1103IND9;1103;Carabus banoni;Moni Toplou;170;400;;East;M
+10;FC328IND10;328;Carabus banoni;Gramvousa;400;400;;West;F
+11;FC328IND11;328;Carabus banoni;Gramvousa;400;400;;West;F
+12;FC328IND12;328;Carabus banoni;Gramvousa;400;400;;West;F
+13;FC328IND13;328;Carabus banoni;Gramvousa;400;400;;West;F
+14;FC328IND14;328;Carabus banoni;Gramvousa;400;400;;West;F
+15;FC328IND15;328;Carabus banoni;Gramvousa;400;400;;West;F
+16;FC328IND16;328;Carabus banoni;Gramvousa;400;400;;West;F
+11;FC1045IND11;1045;Carabus banoni;Kroustas;400;400;;East;F
+12;FC1045IND12;1045;Carabus banoni;Kroustas;400;400;;East;F
+13;FC1045IND13;1045;Carabus banoni;Kroustas;400;400;;East;F
+14;FC1045IND14;1045;Carabus banoni;Kroustas;400;400;;East;F
+15;FC1045IND15;1045;Carabus banoni;Kroustas;400;400;;East;F
+16;FC1045IND16;1045;Carabus banoni;Kroustas;400;400;;East;F
+17;FC1045IND17;1045;Carabus banoni;Kroustas;400;400;;East;F
+18;FC1045IND18;1045;Carabus banoni;Kroustas;400;400;;East;F
+1;FC328IND1;328;Carabus banoni;Gramvousa;400;400;;West;M
+2;FC328IND2;328;Carabus banoni;Gramvousa;400;400;;West;M
+3;FC328IND3;328;Carabus banoni;Gramvousa;400;400;;West;M
+4;FC328IND4;328;Carabus banoni;Gramvousa;400;400;;West;M
+5;FC328IND5;328;Carabus banoni;Gramvousa;400;400;;West;M
+6;FC328IND6;328;Carabus banoni;Gramvousa;400;400;;West;M
+7;FC328IND7;328;Carabus banoni;Gramvousa;400;400;;West;M
+8;FC328IND8;328;Carabus banoni;Gramvousa;400;400;;West;M
+9;FC328IND9;328;Carabus banoni;Gramvousa;400;400;;West;M
+1;FC1045IND1;1045;Carabus banoni;Kroustas;400;400;;East;M
+2;FC1045IND2;1045;Carabus banoni;Kroustas;400;400;;East;M
+3;FC1045IND3;1045;Carabus banoni;Kroustas;400;400;;East;M
+4;FC1045IND4;1045;Carabus banoni;Kroustas;400;400;;East;M
+5;FC1045IND5;1045;Carabus banoni;Kroustas;400;400;;East;M
+6;FC1045IND6;1045;Carabus banoni;Kroustas;400;400;;East;M
+7;FC1045IND7;1045;Carabus banoni;Kroustas;400;400;;East;M
+8;FC1045IND8;1045;Carabus banoni;Kroustas;400;400;;East;M
+9;FC1045IND9;1045;Carabus banoni;Kroustas;400;400;;East;M
+10;FC1045IND10;1045;Carabus banoni;Kroustas;400;400;;East;M
+11;FC1063IND11;1063;Carabus banoni;Zaros;490;800;Psiloritis;Central;F
+12;FC1063IND12;1063;Carabus banoni;Zaros;490;800;Psiloritis;Central;F
+13;FC1063IND13;1063;Carabus banoni;Zaros;490;800;Psiloritis;Central;F
+14;FC1063IND14;1063;Carabus banoni;Zaros;490;800;Psiloritis;Central;F
+15;FC1063IND15;1063;Carabus banoni;Zaros;490;800;Psiloritis;Central;F
+16;FC1063IND16;1063;Carabus banoni;Zaros;490;800;Psiloritis;Central;F
+17;FC1063IND17;1063;Carabus banoni;Zaros;490;800;Psiloritis;Central;F
+1;FC1063IND1;1063;Carabus banoni;Zaros;490;800;Psiloritis;Central;M
+2;FC1063IND2;1063;Carabus banoni;Zaros;490;800;Psiloritis;Central;M
+3;FC1063IND3;1063;Carabus banoni;Zaros;490;800;Psiloritis;Central;M
+4;FC1063IND4;1063;Carabus banoni;Zaros;490;800;Psiloritis;Central;M
+5;FC1063IND5;1063;Carabus banoni;Zaros;490;800;Psiloritis;Central;M
+6;FC1063IND6;1063;Carabus banoni;Zaros;490;800;Psiloritis;Central;M
+7;FC1063IND7;1063;Carabus banoni;Zaros;490;800;Psiloritis;Central;M
+8;FC1063IND8;1063;Carabus banoni;Zaros;490;800;Psiloritis;Central;M
+9;FC1063IND9;1063;Carabus banoni;Zaros;490;800;Psiloritis;Central;M
+10;FC1063IND10;1063;Carabus banoni;Zaros;490;800;Psiloritis;Central;M
+9;FC357IND9;357;Carabus banoni;Koudoumas;600;800;Asterousia;South;F
+10;FC357IND10;357;Carabus banoni;Koudoumas;600;800;Asterousia;South;F
+11;FC357IND11;357;Carabus banoni;Koudoumas;600;800;Asterousia;South;F
+12;FC357IND12;357;Carabus banoni;Koudoumas;600;800;Asterousia;South;F
+13;FC357IND13;357;Carabus banoni;Koudoumas;600;800;Asterousia;South;F
+14;FC357IND14;357;Carabus banoni;Koudoumas;600;800;Asterousia;South;F
+15;FC357IND15;357;Carabus banoni;Koudoumas;600;800;Asterousia;South;F
+6;FC2289IND6;2289;Carabus banoni;Krapi;600;800;Lefka Ori;West;F
+7;FC2289IND7;2289;Carabus banoni;Krapi;600;800;Lefka Ori;West;F
+8;FC2289IND8;2289;Carabus banoni;Krapi;600;800;Lefka Ori;West;F
+9;FC2289IND9;2289;Carabus banoni;Krapi;600;800;Lefka Ori;West;F
+10;FC2289IND10;2289;Carabus banoni;Krapi;600;800;Lefka Ori;West;F
+1;FC357IND1;357;Carabus banoni;Koudoumas;600;800;Asterousia;South;M
+2;FC357IND2;357;Carabus banoni;Koudoumas;600;800;Asterousia;South;M
+3;FC357IND3;357;Carabus banoni;Koudoumas;600;800;Asterousia;South;M
+4;FC357IND4;357;Carabus banoni;Koudoumas;600;800;Asterousia;South;M
+5;FC357IND5;357;Carabus banoni;Koudoumas;600;800;Asterousia;South;M
+6;FC357IND6;357;Carabus banoni;Koudoumas;600;800;Asterousia;South;M
+7;FC357IND7;357;Carabus banoni;Koudoumas;600;800;Asterousia;South;M
+8;FC357IND8;357;Carabus banoni;Koudoumas;600;800;Asterousia;South;M
+1;FC2289IND1;2289;Carabus banoni;Krapi;600;800;Lefka Ori;West;M
+2;FC2289IND2;2289;Carabus banoni;Krapi;600;800;Lefka Ori;West;M
+3;FC2289IND3;2289;Carabus banoni;Krapi;600;800;Lefka Ori;West;M
+4;FC2289IND4;2289;Carabus banoni;Krapi;600;800;Lefka Ori;West;M
+5;FC2289IND5;2289;Carabus banoni;Krapi;600;800;Lefka Ori;West;M
+11;FC1058IND11;1058;Carabus banoni;Agios Mamas;676;800;Psiloritis;Central;F
+12;FC1058IND12;1058;Carabus banoni;Agios Mamas;676;800;Psiloritis;Central;F
+13;FC1058IND13;1058;Carabus banoni;Agios Mamas;676;800;Psiloritis;Central;F
+14;FC1058IND14;1058;Carabus banoni;Agios Mamas;676;800;Psiloritis;Central;F
+15;FC1058IND15;1058;Carabus banoni;Agios Mamas;676;800;Psiloritis;Central;F
+16;FC1058IND16;1058;Carabus banoni;Agios Mamas;676;800;Psiloritis;Central;F
+1;FC1058IND1;1058;Carabus banoni;Agios Mamas;676;800;Psiloritis;Central;M
+2;FC1058IND2;1058;Carabus banoni;Agios Mamas;676;800;Psiloritis;Central;M
+3;FC1058IND3;1058;Carabus banoni;Agios Mamas;676;800;Psiloritis;Central;M
+4;FC1058IND4;1058;Carabus banoni;Agios Mamas;676;800;Psiloritis;Central;M
+5;FC1058IND5;1058;Carabus banoni;Agios Mamas;676;800;Psiloritis;Central;M
+6;FC1058IND6;1058;Carabus banoni;Agios Mamas;676;800;Psiloritis;Central;M
+7;FC1058IND7;1058;Carabus banoni;Agios Mamas;676;800;Psiloritis;Central;M
+8;FC1058IND8;1058;Carabus banoni;Agios Mamas;676;800;Psiloritis;Central;M
+9;FC1058IND9;1058;Carabus banoni;Agios Mamas;676;800;Psiloritis;Central;M
+10;FC1058IND10;1058;Carabus banoni;Agios Mamas;676;800;Psiloritis;Central;M
+5;FC1809IND5;1809;Carabus banoni;Anopoli Sfakion;850;1200;Lefka Ori;West;F
+6;FC1809IND6;1809;Carabus banoni;Anopoli Sfakion;850;1200;Lefka Ori;West;F
+7;FC1809IND7;1809;Carabus banoni;Anopoli Sfakion;850;1200;Lefka Ori;West;F
+8;FC1809IND8;1809;Carabus banoni;Anopoli Sfakion;850;1200;Lefka Ori;West;F
+15;FC1808IND15;1808;Carabus banoni;Anopoli Sfakion;850;1200;Lefka Ori;West;F
+16;FC1808IND16;1808;Carabus banoni;Anopoli Sfakion;850;1200;Lefka Ori;West;F
+17;FC1808IND17;1808;Carabus banoni;Anopoli Sfakion;850;1200;Lefka Ori;West;F
+18;FC1808IND18;1808;Carabus banoni;Anopoli Sfakion;850;1200;Lefka Ori;West;F
+1;FC1809IND1;1809;Carabus banoni;Anopoli Sfakion;850;1200;Lefka Ori;West;M
+2;FC1809IND2;1809;Carabus banoni;Anopoli Sfakion;850;1200;Lefka Ori;West;M
+3;FC1809IND3;1809;Carabus banoni;Anopoli Sfakion;850;1200;Lefka Ori;West;M
+4;FC1809IND4;1809;Carabus banoni;Anopoli Sfakion;850;1200;Lefka Ori;West;M
+9;FC1809IND9;1809;Carabus banoni;Anopoli Sfakion;850;1200;Lefka Ori;West;M
+10;FC1808IND10;1808;Carabus banoni;Anopoli Sfakion;850;1200;Lefka Ori;West;M
+11;FC1808IND11;1808;Carabus banoni;Anopoli Sfakion;850;1200;Lefka Ori;West;M
+12;FC1808IND12;1808;Carabus banoni;Anopoli Sfakion;850;1200;Lefka Ori;West;M
+13;FC1808IND13;1808;Carabus banoni;Anopoli Sfakion;850;1200;Lefka Ori;West;M
+14;FC1808IND14;1808;Carabus banoni;Anopoli Sfakion;850;1200;Lefka Ori;West;M
+3;FC2290IND3;2290;Carabus banoni;Askyfou;856;1200;Lefka Ori;West;F
+4;FC2290IND4;2290;Carabus banoni;Askyfou;856;1200;Lefka Ori;West;F
+5;FC2290IND5;2290;Carabus banoni;Askyfou;856;1200;Lefka Ori;West;F
+9;FC2290IND9;2290;Carabus banoni;Askyfou;856;1200;Lefka Ori;West;F
+11;FC2290IND11;2290;Carabus banoni;Askyfou;856;1200;Lefka Ori;West;F
+16;FC2290IND16;2290;Carabus banoni;Askyfou;856;1200;Lefka Ori;West;F
+17;FC2290IND17;2290;Carabus banoni;Askyfou;856;1200;Lefka Ori;West;F
+18;FC2290IND18;2290;Carabus banoni;Askyfou;856;1200;Lefka Ori;West;F
+19;FC2290IND19;2290;Carabus banoni;Askyfou;856;1200;Lefka Ori;West;F
+20;FC2290IND20;2290;Carabus banoni;Askyfou;856;1200;Lefka Ori;West;F
+1;FC2290IND1;2290;Carabus banoni;Askyfou;856;1200;Lefka Ori;West;M
+2;FC2290IND2;2290;Carabus banoni;Askyfou;856;1200;Lefka Ori;West;M
+6;FC2290IND6;2290;Carabus banoni;Askyfou;856;1200;Lefka Ori;West;M
+7;FC2290IND7;2290;Carabus banoni;Askyfou;856;1200;Lefka Ori;West;M
+8;FC2290IND8;2290;Carabus banoni;Askyfou;856;1200;Lefka Ori;West;M
+10;FC2290IND10;2290;Carabus banoni;Askyfou;856;1200;Lefka Ori;West;M
+12;FC2290IND12;2290;Carabus banoni;Askyfou;856;1200;Lefka Ori;West;M
+13;FC2290IND13;2290;Carabus banoni;Askyfou;856;1200;Lefka Ori;West;M
+14;FC2290IND14;2290;Carabus banoni;Askyfou;856;1200;Lefka Ori;West;M
+15;FC2290IND15;2290;Carabus banoni;Askyfou;856;1200;Lefka Ori;West;M
+11;FC764IND11;764;Carabus banoni;Tigania;1083;1200;Psiloritis;Central;F
+12;FC764IND12;764;Carabus banoni;Tigania;1083;1200;Psiloritis;Central;F
+13;FC764IND13;764;Carabus banoni;Tigania;1083;1200;Psiloritis;Central;F
+14;FC764IND14;764;Carabus banoni;Tigania;1083;1200;Psiloritis;Central;F
+15;FC764IND15;764;Carabus banoni;Tigania;1083;1200;Psiloritis;Central;F
+16;FC764IND16;764;Carabus banoni;Tigania;1083;1200;Psiloritis;Central;F
+17;FC764IND17;764;Carabus banoni;Tigania;1083;1200;Psiloritis;Central;F
+18;FC764IND18;764;Carabus banoni;Tigania;1083;1200;Psiloritis;Central;F
+19;FC764IND19;764;Carabus banoni;Tigania;1083;1200;Psiloritis;Central;F
+20;FC764IND20;764;Carabus banoni;Tigania;1083;1200;Psiloritis;Central;F
+1;FC764IND1;764;Carabus banoni;Tigania;1083;1200;Psiloritis;Central;M
+2;FC764IND2;764;Carabus banoni;Tigania;1083;1200;Psiloritis;Central;M
+3;FC764IND3;764;Carabus banoni;Tigania;1083;1200;Psiloritis;Central;M
+4;FC764IND4;764;Carabus banoni;Tigania;1083;1200;Psiloritis;Central;M
+5;FC764IND5;764;Carabus banoni;Tigania;1083;1200;Psiloritis;Central;M
+6;FC764IND6;764;Carabus banoni;Tigania;1083;1200;Psiloritis;Central;M
+7;FC764IND7;764;Carabus banoni;Tigania;1083;1200;Psiloritis;Central;M
+8;FC764IND8;764;Carabus banoni;Tigania;1083;1200;Psiloritis;Central;M
+9;FC764IND9;764;Carabus banoni;Tigania;1083;1200;Psiloritis;Central;M
+10;FC764IND10;764;Carabus banoni;Tigania;1083;1200;Psiloritis;Central;M
+9;FC990IND9;990;Carabus banoni;Rouvas;1100;1200;Psiloritis;Central;F
+10;FC990IND10;990;Carabus banoni;Rouvas;1100;1200;Psiloritis;Central;F
+11;FC990IND11;990;Carabus banoni;Rouvas;1100;1200;Psiloritis;Central;F
+12;FC990IND12;990;Carabus banoni;Rouvas;1100;1200;Psiloritis;Central;F
+1;FC990IND1;990;Carabus banoni;Rouvas;1100;1200;Psiloritis;Central;M
+2;FC990IND2;990;Carabus banoni;Rouvas;1100;1200;Psiloritis;Central;M
+3;FC990IND3;990;Carabus banoni;Rouvas;1100;1200;Psiloritis;Central;M
+4;FC990IND4;990;Carabus banoni;Rouvas;1100;1200;Psiloritis;Central;M
+5;FC990IND5;990;Carabus banoni;Rouvas;1100;1200;Psiloritis;Central;M
+6;FC990IND6;990;Carabus banoni;Rouvas;1100;1200;Psiloritis;Central;M
+7;FC990IND7;990;Carabus banoni;Rouvas;1100;1200;Psiloritis;Central;M
+8;FC990IND8;990;Carabus banoni;Rouvas;1100;1200;Psiloritis;Central;M
+1;FC8480IND1;8480;Carabus banoni;Anopoli Sfakion;1307;1200;Lefka Ori;West;F
+2;FC8480IND2;8480;Carabus banoni;Anopoli Sfakion;1307;1200;Lefka Ori;West;F
+3;FC8480IND3;8480;Carabus banoni;Anopoli Sfakion;1307;1200;Lefka Ori;West;F
+4;FC8480IND4;8480;Carabus banoni;Anopoli Sfakion;1307;1200;Lefka Ori;West;F
+5;FC8480IND5;8480;Carabus banoni;Anopoli Sfakion;1307;1200;Lefka Ori;West;F
+6;FC8480IND6;8480;Carabus banoni;Anopoli Sfakion;1307;1200;Lefka Ori;West;F
+7;FC8480IND7;8480;Carabus banoni;Anopoli Sfakion;1307;1200;Lefka Ori;West;F
+8;FC8480IND8;8480;Carabus banoni;Anopoli Sfakion;1307;1200;Lefka Ori;West;M
+9;FC8480IND9;8480;Carabus banoni;Anopoli Sfakion;1307;1200;Lefka Ori;West;M
+10;FC8480IND10;8480;Carabus banoni;Anopoli Sfakion;1307;1200;Lefka Ori;West;M
+11;FC8480IND11;8480;Carabus banoni;Anopoli Sfakion;1307;1200;Lefka Ori;West;M
+11;FC682IND11;682;Carabus banoni;Omalos Viannou;1350;1200;Dikti;East;F
+12;FC682IND12;682;Carabus banoni;Omalos Viannou;1350;1200;Dikti;East;F
+13;FC682IND13;682;Carabus banoni;Omalos Viannou;1350;1200;Dikti;East;F
+14;FC682IND14;682;Carabus banoni;Omalos Viannou;1350;1200;Dikti;East;F
+15;FC682IND15;682;Carabus banoni;Omalos Viannou;1350;1200;Dikti;East;F
+16;FC682IND16;682;Carabus banoni;Omalos Viannou;1350;1200;Dikti;East;F
+17;FC682IND17;682;Carabus banoni;Omalos Viannou;1350;1200;Dikti;East;F
+18;FC682IND18;682;Carabus banoni;Omalos Viannou;1350;1200;Dikti;East;F
+19;FC682IND19;682;Carabus banoni;Omalos Viannou;1350;1200;Dikti;East;F
+1;FC682IND1;682;Carabus banoni;Omalos Viannou;1350;1200;Dikti;East;M
+2;FC682IND2;682;Carabus banoni;Omalos Viannou;1350;1200;Dikti;East;M
+3;FC682IND3;682;Carabus banoni;Omalos Viannou;1350;1200;Dikti;East;M
+4;FC682IND4;682;Carabus banoni;Omalos Viannou;1350;1200;Dikti;East;M
+5;FC682IND5;682;Carabus banoni;Omalos Viannou;1350;1200;Dikti;East;M
+6;FC682IND6;682;Carabus banoni;Omalos Viannou;1350;1200;Dikti;East;M
+7;FC682IND7;682;Carabus banoni;Omalos Viannou;1350;1200;Dikti;East;M
+8;FC682IND8;682;Carabus banoni;Omalos Viannou;1350;1200;Dikti;East;M
+9;FC682IND9;682;Carabus banoni;Omalos Viannou;1350;1200;Dikti;East;M
+10;FC682IND10;682;Carabus banoni;Omalos Viannou;1350;1200;Dikti;East;M
+11;FC1536IND11;1536;Carabus banoni;Limnakaro;1714;2000;Dikti;East;F
+12;FC1536IND12;1536;Carabus banoni;Limnakaro;1714;2000;Dikti;East;F
+13;FC1536IND13;1536;Carabus banoni;Limnakaro;1714;2000;Dikti;East;F
+14;FC1536IND14;1536;Carabus banoni;Limnakaro;1714;2000;Dikti;East;F
+15;FC1536IND15;1536;Carabus banoni;Limnakaro;1714;2000;Dikti;East;F
+16;FC1536IND16;1536;Carabus banoni;Limnakaro;1714;2000;Dikti;East;F
+17;FC1536IND17;1536;Carabus banoni;Limnakaro;1714;2000;Dikti;East;F
+18;FC1536IND18;1536;Carabus banoni;Limnakaro;1714;2000;Dikti;East;F
+19;FC1536IND19;1536;Carabus banoni;Limnakaro;1714;2000;Dikti;East;F
+20;FC1536IND20;1536;Carabus banoni;Limnakaro;1714;2000;Dikti;East;F
+1;FC1536IND1;1536;Carabus banoni;Limnakaro;1714;2000;Dikti;East;M
+2;FC1536IND2;1536;Carabus banoni;Limnakaro;1714;2000;Dikti;East;M
+3;FC1536IND3;1536;Carabus banoni;Limnakaro;1714;2000;Dikti;East;M
+4;FC1536IND4;1536;Carabus banoni;Limnakaro;1714;2000;Dikti;East;M
+5;FC1536IND5;1536;Carabus banoni;Limnakaro;1714;2000;Dikti;East;M
+6;FC1536IND6;1536;Carabus banoni;Limnakaro;1714;2000;Dikti;East;M
+7;FC1536IND7;1536;Carabus banoni;Limnakaro;1714;2000;Dikti;East;M
+8;FC1536IND8;1536;Carabus banoni;Limnakaro;1714;2000;Dikti;East;M
+9;FC1536IND9;1536;Carabus banoni;Limnakaro;1714;2000;Dikti;East;M
+10;FC1536IND10;1536;Carabus banoni;Limnakaro;1714;2000;Dikti;East;M
+11;FC11489IND11;11489;Carabus banoni;Melintaou peak;1816;2000;Lefka Ori;West;F
+12;FC11489IND12;11489;Carabus banoni;Melintaou peak;1816;2000;Lefka Ori;West;F
+13;FC11489IND13;11489;Carabus banoni;Melintaou peak;1816;2000;Lefka Ori;West;F
+14;FC11489IND14;11489;Carabus banoni;Melintaou peak;1816;2000;Lefka Ori;West;F
+15;FC11489IND15;11489;Carabus banoni;Melintaou peak;1816;2000;Lefka Ori;West;F
+1;FC11489IND1;11489;Carabus banoni;Melintaou peak;1816;2000;Lefka Ori;West;M
+2;FC11489IND2;11489;Carabus banoni;Melintaou peak;1816;2000;Lefka Ori;West;M
+3;FC11489IND3;11489;Carabus banoni;Melintaou peak;1816;2000;Lefka Ori;West;M
+4;FC11489IND4;11489;Carabus banoni;Melintaou peak;1816;2000;Lefka Ori;West;M
+5;FC11489IND5;11489;Carabus banoni;Melintaou peak;1816;2000;Lefka Ori;West;M
+6;FC11489IND6;11489;Carabus banoni;Melintaou peak;1816;2000;Lefka Ori;West;M
+7;FC11489IND7;11489;Carabus banoni;Melintaou peak;1816;2000;Lefka Ori;West;M
+8;FC11489IND8;11489;Carabus banoni;Melintaou peak;1816;2000;Lefka Ori;West;M
+9;FC11489IND9;11489;Carabus banoni;Melintaou peak;1816;2000;Lefka Ori;West;M
+10;FC11489IND10;11489;Carabus banoni;Melintaou peak;1816;2000;Lefka Ori;West;M
+6;FC1532IND6;1532;Carabus banoni;Lochria;1912;2000;Psiloritis;Central;F
+7;FC1532IND7;1532;Carabus banoni;Lochria;1912;2000;Psiloritis;Central;F
+11;FC1916IND11;1916;Carabus banoni;Lochria;1912;2000;Psiloritis;Central;F
+12;FC1916IND12;1916;Carabus banoni;Lochria;1912;2000;Psiloritis;Central;F
+13;FC1916IND13;1916;Carabus banoni;Lochria;1912;2000;Psiloritis;Central;F
+14;FC1916IND14;1916;Carabus banoni;Lochria;1912;2000;Psiloritis;Central;F
+1;FC1532IND1;1532;Carabus banoni;Lochria;1912;2000;Psiloritis;Central;M
+2;FC1532IND2;1532;Carabus banoni;Lochria;1912;2000;Psiloritis;Central;M
+3;FC1532IND3;1532;Carabus banoni;Lochria;1912;2000;Psiloritis;Central;M
+4;FC1532IND4;1532;Carabus banoni;Lochria;1912;2000;Psiloritis;Central;M
+5;FC1532IND5;1532;Carabus banoni;Lochria;1912;2000;Psiloritis;Central;M
+8;FC1916IND8;1916;Carabus banoni;Lochria;1912;2000;Psiloritis;Central;M
+9;FC1916IND9;1916;Carabus banoni;Lochria;1912;2000;Psiloritis;Central;M
+10;FC1916IND10;1916;Carabus banoni;Lochria;1912;2000;Psiloritis;Central;M

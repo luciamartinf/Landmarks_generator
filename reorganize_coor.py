@@ -1,78 +1,66 @@
+#!/usr/bin/env python3
+
 import numpy as np
 import argparse
 from scipy.optimize import linear_sum_assignment
+from Landmarks_module import Landmarks
+import os
+import reorganize_fun
 
-def calculate_optimal_order(real_shape, measured_shape):
-    
-    """Calculate the optimal order of points in the measured shape to match the real shape."""
-    
-    # Calculate the pairwise distance matrix
-    distance_matrix = np.linalg.norm(real_shape[:, np.newaxis] - measured_shape, axis=2)
+# No funciona porque estoy reorganizando algunas que no hacen falta y la lio mas
 
-    # Use the Hungarian algorithm to find the optimal assignment
-    _, col_indices = linear_sum_assignment(distance_matrix)
-
-    return col_indices
-
-
-def reorganize_points(measured_shape, optimal_order):
-    
-    """Reorganize the points in the measured shape according to the optimal order."""
-    
-    return measured_shape[optimal_order]
-
-
-def order_shape(real_shape, pred_shape, optimal_order):
-        
-        "Get real and predicted shape"
-        
-        if len(optimal_order) == 0:
-            optimal_order = calculate_optimal_order(np.array(real_shape), pred_shape)
-            
-        sorted_pred_shape = reorganize_points(pred_shape, optimal_order)
-        
-        return sorted_pred_shape, optimal_order
-    
-
-def reorganize_all(real_shapes, measured_shapes):
-    
-    """Reorganize all points in a set of shapes"""
-    
-    optimal_order = calculate_optimal_order(real_shapes[0], measured_shapes[0])
-    
-    sorted_shapes = []
-    for shape in measured_shapes:
-        points = reorganize_points(shape, optimal_order)
-        sorted_shapes.append(points)
-        
-    return sorted_shapes
-
-  
 def main():
     
     parser = argparse.ArgumentParser(prog = '', formatter_class=argparse.RawDescriptionHelpFormatter,
                                      description='Predict and measure the error of a model') # Elaborate this description
     
     parser.add_argument('-f', '--file', required=True, 
-                        help = '.xml or .txt file that contains real landmarks')
-    
-    parser.add_argument('-i', '--image_dir', required = True,
-                        help = 'Input directory containing the images')
-    
-    parser.add_argument('-m', '--model', required=True,
-                        help = ".dat file path of the LandmarkGen model.")
+                        help = '.xml or .txt file that contain landmarks')
     
     parser.add_argument('-o', '--output', 
-                        help = "Output file that will contain predicted landmarks in .tps")
+                        help = "Output file that will contain the reorganized landmarks in .tps")
     
+    args = parser.parse_args()
+    
+    filepath = os.path.abspath(args.file)
+    
+    folder = os.path.dirname(filepath)
+    basename = os.path.basename(filepath)
+    
+    if args.output:
+        outfile = os.path.abspath(args.output)
+    else:
+        outfile = f'sorted_{basename}'
+        
+    outpath = os.path.join(folder,outfile)
+    
+    landmarks = Landmarks(filepath, flip=False)
+    
+    landmarks_dict = Landmarks.nested_dict
+    images = landmarks.img_list
+    
+    first_image = images[0]
+    ref_shape = landmarks_dict[first_image]['LM']
+    
+    for img in images[1:]:
+        input_shape = np.array(landmarks_dict[img]['LM'])
+        
+        lm_list, _ = reorganize_fun.order_shape(ref_shape, input_shape, [])
+        
+        if not np.array_equal(lm_list, input_shape):
+            print(f"Reorganizing landmarks for image {img}") 
+        
+        landmarks.append_to_tps(img, lm_list, outpath) 
+     
+
     # reorganize points so they all have same order, esto tambien en el predict script dentro de predict_landmarks en Landmarks_module
     # Esto igual no tiene sentido porque tendria que ordenarlo en funcion de la misma imagen anotada manualmente entonces no tengo una referencia y no puedo ordenarlo
     # Pero para eso tendria que meter como argumento en ese script tambien el train.txt
 
     # transform xml in .tps and viceversa
     
+    # Puedo coger un archivo ya anotado y reorganizar todas las landmarks con el orden de la primera imagen 
     
-    print("reorganize")
     
     
     
