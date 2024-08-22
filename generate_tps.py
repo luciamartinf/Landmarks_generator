@@ -29,18 +29,19 @@ def main():
 
     add = parser.add_argument
 
-    add('-i','--image_dir', required=True, help='Directory containing images')
+    add('-i','--image_dir', required=True, help=' Directory with target images. Allowed image extensions are: .jpg, .jpeg, .png or .bmp')
     add('--scale', required=True, help='Scale of all the images, all images must have the same scale')
     add('-o', '--output',  help="Name of the output file. Recommended extensions are .tps or .txt")
 
     args = parser.parse_args()
 
     folder = os.path.abspath(args.image_dir)
+    folder_name = os.path.basename(folder)
     scale = args.scale
     if args.output:
         output = args.output
     else:
-        output = 'InputImagesFile.txt'
+        output = f'{folder_name}.tps'
     
     write_tpsfile(folder, output, scale)
         
