@@ -8,7 +8,7 @@ import utils
 def main():
     
     parser = argparse.ArgumentParser(prog = '', formatter_class=argparse.RawDescriptionHelpFormatter,
-                                     description='Predict and measure the error of a model') # Elaborate this description
+                                     description='Plot landmarks') # Elaborate this description
     
     parser.add_argument('-f', '--file', required=True, 
                         help = '.xml or .txt file that contains landmarks')
