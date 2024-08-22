@@ -2,7 +2,7 @@
 
 import os
 import sys
-import generate_tps
+import generate_tps as generate_tps
 import utils
 import arg_parse
 from Landmarks_module import Landmarks
