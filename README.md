@@ -3,7 +3,7 @@
 ### Lucía Martín Fernández
 #
 
-Shape Predictor Model to extract coordinates of the most important landmarks needed for shape analysis of biological structures. 
+Shape Predictor Modeling algorithm to extract coordinates of fixed landmarks needed for shape analysis of biological structures. 
 
 ## Abstract
 
@@ -13,12 +13,12 @@ biology and ecology. This procedure includes landmark identification and digitiz
 reference points for further shape analysis. TpsDIG (Rohlf, F. J. 2006) is a software tool
 designed for digitizing landmarks directly from digital images and obtaining the coordinates.
 However, landmarks representing specific anatomical points are manually placed on the
-images using tpsDIG by clicking on the specific points.
+images using tpsDIG or other tools by clicking on the specific points.
 
 Biologists and entomologists typically need to perform this manual landmarking procedure
 on hundreds to thousands of photographs, which can be tedious, labor-intensive, error-
-prone, and time-consuming. To address this, our objective is to develop a shape predictor model
-that can extract the coordinates of the most important landmarks needed for shape
+prone, and time-consuming. To address this, our objective is to develop a shape predictor algorithm to yield species specific models
+capable of extracting the coordinates of the fixed landmarks needed for shape
 analysis of biological structures. 
 
 ## Usage Examples:
@@ -130,9 +130,80 @@ To predict new landmarks we can execute `predict.py` in two ways:
 
      Plot landmarks on images with desired design. Original images will not be override, new images will be generated. 
      - Default is `none` and no images will be generated. 
-     - `Dots` will use red dots. Better aesthetics for publications
+     - `dots` will use red dots. Better aesthetics for publications
      - `numbers` will use color numbers. Useful for checking order of the coordinates
                                                            
+## Other scripts
+
+We also developed a series of scripts useful throughout the whole shape analysis. 
+
+### `generate_tps.py`
+
+Generates a landmarks-empty _.tps_ file with all the images in a directory. This is, a .tps file with LM=0 and ID, IMAGE and SCALE features. 
+
+```
+LM=0
+IMAGE=Fc1045ind1.jpg
+ID=FC1045IND1
+SCALE=0.000394
+```
+
+This is script is useful to manually generate a blank _.tps_ file that serves as input for the `predict.py` program. However, this step is not necessary as `predict.py` can also generate a _.tps_ file when this is not specified as input (`--file`) but scale (`--scale`) is. 
+
+**Arguments:**
+
+* `-i DIR`, `--image_dir DIR`
+
+     Directory with target images. Allowed image extensions are _.jpg, .jpeg, .png_ or _.bmp_
+      Required. 
+
+
+* `-s SCALE`, `--scale SCALE`
+
+     Scale of all the images, all images must have the same scale.
+  Required. 
+
+* `-o FILE`, `--output FILE`
+
+      Name of the output file. Recommended extensions are _.tps_ or _.txt_. Default is {image_dir}.tps
+
+
+### `plot_landmarks.py`
+
+Plot landmarks on images with desired design. Original images will not be override, new images will be generated and stored in a new directory. 
+
+* `-i DIR`, `--image_dir DIR`,
+  
+     Input directory containing the reference images. Required.
+
+* `-f FILE`, `--file FILE`
+
+     .tps/.txt file with annotated landmarks. Required
+
+* `--output OUTPUT`, `-o OUTPUT`
+
+     Name of the output .tps/.txt file that will contain all predicted landmarks. By default it will take the model's name (*{model_name}_landmarks.txt*)
+  
+* `-d [dots, numbers]`, `--design [dots, numbers]`
+
+     
+     - Default is `none` and no images will be generated. 
+     - `dots` will use red dots. Better aesthetics for publications
+     - `numbers` will use color numbers. Useful for checking order of the coordinates
+    
+
+### `delete_specimens.py`
+
+### `measure_error.py`
+
+### _trial phase_`reorganize_coor.py`
+
+
+
+
+
+
+
 
 ## Requirements
 
