@@ -9,6 +9,7 @@ import dlib
 import shapepred_fun
 import argparse
 from Landmarks_module import Landmarks
+import utils
 
 
 # TODO: complete this functions with notebook
@@ -47,6 +48,9 @@ def main():
     mean_mre = set.calculate_error(dat)
 
     shapepred_fun.measure_mae(dat, xml)
+    
+    # Deleting flip_images from work_data path
+    utils.delete_files(Landmarks.flip_dir)
 
 
 if __name__ == "__main__":
