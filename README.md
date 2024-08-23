@@ -172,6 +172,8 @@ This is script is useful to manually generate a blank _.tps_ file that serves as
 
 Plot landmarks on images with desired design. Original images will not be override, new images will be generated and stored in a new directory. 
 
+**Arguments:**
+
 * `-i DIR`, `--image_dir DIR`,
   
      Input directory containing the reference images. Required.
@@ -182,19 +184,54 @@ Plot landmarks on images with desired design. Original images will not be overri
 
 * `--output OUTPUT`, `-o OUTPUT`
 
-     Name of the output .tps/.txt file that will contain all predicted landmarks. By default it will take the model's name (*{model_name}_landmarks.txt*)
+     Name of the output directory that will contain the new annotated images. By default it will take the input directory name (*annotated_{image_dir}*)
   
 * `-d [dots, numbers]`, `--design [dots, numbers]`
-
-     
-     - Default is `none` and no images will be generated. 
-     - `dots` will use red dots. Better aesthetics for publications
+      Choose design to plot the coordinates: 
+     - `dots` will use red dots. Better aesthetics for publications. Default
      - `numbers` will use color numbers. Useful for checking order of the coordinates
-    
 
 ### `delete_specimens.py`
 
+Sometimes we need to remove some specimens from the tps file. Maybe because the automatically annotated landmarks are not accurate or because we don't want to consider this specimens for further analysis. This script will help you create a new _.tps_ file without the specified individuals. 
+
+**Arguments:**
+
+* `-i FILE`, `--input FILE`
+
+     Reference _.tps_/_.txt_ file. Required
+
+* `-l FILE`, `--list FILE`
+
+     _.txt_ file that contains list of speciments to delete. Each item should be in a separate line. Required
+
+* `-o OUTPUT`, `--output OUTPUT`
+
+      Name of the output _.tps_ file. Recommended extensions are _.tps_ or _.txt_. Default is _clean_{input}.tps_
+
+
 ### `measure_error.py`
+
+Predict test landmarks using the model and evaluate its performance by calculating the error. The measured error is included on the standard output.
+
+**Arguments:**
+
+* `-f FILE`, `--file FILE`
+
+     Reference _.tps_/_.xml_ file that contains landmarks. Required
+
+* `-i DIR`, `--image_dir DIR`
+
+      Input directory containing the reference images. Required
+
+* `-m FILE`, `--model_name FILE`
+
+     _.dat_ file path of the  model. Required
+  
+* `-o OUTPUT`, `--output OUTPUT`
+
+     Name of the output .tps/.txt file that will contain all predicted landmarks. By default it will take the model's name (*{model_name}_landmarks.txt*)
+
 
 ### _trial phase_`reorganize_coor.py`
 
