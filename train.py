@@ -151,8 +151,10 @@ def main():
     # full_set.calculate_error(dat)
     # measure_mae(dat, full_xml) 
     
+    # Deleting flip_images from work_data path
+    utils.delete_files(Landmarks.flip_dir)
     # Deleting work_data directory
-    Landmarks.del_flipdir()
+    # Landmarks.del_flipdir()
     
     print("Done!")
         
