@@ -4,6 +4,7 @@ import os
 import sys
 import dlib 
 import random
+import shutil
 import numpy as np # numpy==1.26.4 because version 2 does not work with dlib
 import matplotlib.pyplot as plt 
 import xml.etree.ElementTree as ET
@@ -67,7 +68,24 @@ class Landmarks:
         check_make_dir(flip_dir)
         Landmarks.flip_dir = flip_dir
 
+    @classmethod
+    def del_flipdir(cls):
+        
+        """Delete Landmarks.flip_dir"""
+        
+        dir_path = Landmarks.flip_dir
+        
+        try:
+            if os.path.exists(dir_path):
+                shutil.rmtree(dir_path)
+                print(f"Directory '{dir_path}' and all its contents have been deleted.")
+            else:
+                print(f"Directory '{dir_path}' does not exist.")
+                
+        except Exception as e:
+            print(f"Error: {e}")
 
+    
     @staticmethod
     def check_id_img(
         real_id, img_name):
@@ -528,3 +546,5 @@ class Landmarks:
                 print(f'{img} was not found')
         
         return self.lm_dict
+    
+   
