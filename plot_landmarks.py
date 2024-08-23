@@ -8,10 +8,10 @@ import utils
 def main():
     
     parser = argparse.ArgumentParser(prog = '', formatter_class=argparse.RawDescriptionHelpFormatter,
-                                     description='Plot landmarks') # Elaborate this description
+                                     description='Plot landmarks on images with desired design. Original images will not be override, new images will be generated and stored in a new directory. ') # Elaborate this description
     
     parser.add_argument('-f', '--file', required=True, 
-                        help = '.xml or .txt file that contains landmarks')
+                        help = '.xml or .txt file with annotated landmarks.')
     
     parser.add_argument('-i', '--image_dir', required=True, 
                         help='Input directory containing the reference images.')
@@ -20,7 +20,7 @@ def main():
                         help = "Output folder that will contain the new annotated images")
     
     parser.add_argument('-d', '--design', choices=['dots', 'numbers'], default='dots', 
-                        help = 'Choice design of points. Default is dots')
+                        help = 'Choose design to plot the coordinates. Default is dots')
     
     args = parser.parse_args()
     
