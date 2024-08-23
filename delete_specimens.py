@@ -8,20 +8,20 @@ from Landmarks_module import Landmarks
 def main():
     
     parser = argparse.ArgumentParser(prog = '', formatter_class=argparse.RawDescriptionHelpFormatter,
-                                     description='Predict and measure the error of a model') # Elaborate this description
+                                     description='Delete specimens from .tps file') # Elaborate this description
     
-    parser.add_argument('-f', '--file', required=True, 
-                        help = '.xml or .txt file that contain landmarks')
+    parser.add_argument('-i', '--input', required=True, 
+                        help = 'Reference .tps file')
     
     parser.add_argument('-l', '--list', required=True,
-                        help = ".txt file that contains list of speciments to delete")
+                        help = ".txt file that contains list of specimens to delete")
     
     parser.add_argument('-o', '--output', 
-                        help = "Output file that will contain the reorganized landmarks in .tps")
+                        help = "Name of the output .tps file")
     
     args = parser.parse_args()
     
-    filepath = os.path.abspath(args.file)
+    filepath = os.path.abspath(args.input)
     
     folder = os.path.dirname(filepath)
     basename = os.path.basename(filepath)
