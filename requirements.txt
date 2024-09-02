@@ -1,0 +1,5 @@
+python>=3.9.6
+dlib==19.24.4
+numpy==1.26.4 # (dlib does not support numpy v2)
+matplotlib>=3.9.1
+pillow>=10.4.0
