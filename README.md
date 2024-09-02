@@ -23,27 +23,28 @@ analysis of biological structures.
 
 
 
-## Usage:
+## Usage example:
 
 This is a Machine Learning based tool. Machine learning relies on two steps: training a model and predicting with that model. 
 
 The [example](example) folder contains the files required and generated for each step. 
 
 
-**Step 1.** Train model from images
+### 1. Train model from images
 
 First we need to train a model with images that already have annotated landmarks. 
 
 - _.tps_ file with manually annotated landmarks. See example file [Carabus_pronotum_train.txt](example/Carabus_pronotum_train.txt).
 - Folder with the images referenced in the _.tps_ file. See example [data](example/data) folder 
 
-The following command will generate a shape predictor model ([carabus.dat](example/carabus.dat)) that can be used to annotate more images as explained in the next step.
+The following command will generate a shape predictor model ([carabus.dat](example/carabus.dat)) that can be used to annotate more images.
 
 ```
 ./train.py -i example/data -m carabus -f example/Carabus_pronotum_train.txt -w example/ 
 ```
 
-- **Step 2.** Predict other images with the model
+
+### 2. Predict landmarks in other images with the model
 
 Now, we can predict more Landmarks in different images using our *carabus.dat* model:
 
