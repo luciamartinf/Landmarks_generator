@@ -26,7 +26,7 @@ With this model, we can then extract fixed landmarks coordinates in a standardiz
 ## Requirements: 
 
 - Python 3.9+
-- Required Python packages listed in [requirements.txt](requirements.txt).
+- Required Python packages are listed in [requirements.txt](requirements.txt).
 
 ## Installation: 
 
@@ -50,37 +50,39 @@ python3 -m pip install -r requirements.txt
 
 ## Usage :
 
-This is a Machine Learning based tool. Machine learning relies on two steps: training a model and predicting with that model. 
+There are two main scripts that perform two different steps: 
 
-The [example](example) folder contains the files required and generated in each step. 
+- `train.py` is used for training a model with annotated images
+- `predict.py` is used for extracting landmarks on new images.  
 
 
-### 1. Train model from images
+_The [example](example) directory contains some the files required and generated after running the examples commands._
 
-First we need to train a model with images that already have annotated landmarks. To do this, we need: 
 
-- A _.tps_ file with manually annotated landmarks. See example file [Carabus_pronotum_train.txt](example/Carabus_pronotum_train.txt).
-- A folder with the images referenced in the _.tps_ file. See example [data](example/data) folder.
+### 1. Training the Model
 
-The following command will generate a shape predictor model ([carabus.dat](example/carabus.dat)) that can be used to annotate more images.
-This is a 
+To train a model we need some images that already have annotated landmarks. `train.py` will use as inputs:  
+
+- A '_.tps_' file with manually annotated landmarks (see [Carabus_pronotum_train.txt](example/Carabus_pronotum_train.txt) as example)
+- A directory containing the images referenced in the '_.tps_' file (see example [data](example/data) for an example dataset).
+
+**Example command**
+
+The following command will generate a shape predictor model ([carabus.dat](example/carabus.dat)) that can be used to extract fixed landmarks on other _Carabus jasndo_ images.
 
 ```
 ./train.py -i example/data -m carabus -f example/Carabus_pronotum_train.txt -w example/ 
 ```
 
-
+**Command Explanation**
 
 ```
 usage: ./train.py -i DIR -m MODEL_NAME -f FILE [--model_version VERSION ] [--work_dir DIR ] [--params FILE] [--save_params]
 ```
 
-
-### Parameters 
-
 * **`-i DIR`, `--image_dir DIR`,**
   
-     Input directory containing the images for training. Required.
+     Input directory containing the images for training. (Required)
 
 * **`-m MODEL_NAME`, `--model_name MODEL_NAME`**
 
@@ -90,7 +92,7 @@ usage: ./train.py -i DIR -m MODEL_NAME -f FILE [--model_version VERSION ] [--wor
 
      *.tps* / *.txt* / *.xml* file with image names and their previously annotated landmarks. Required
 
-#### Optional Parameters
+**Optional Parameters**
 
 * `--model_version VERSION`, `-mv VERSION`
   
