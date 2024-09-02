@@ -28,6 +28,9 @@ With this model, we can then extract fixed landmarks coordinates in a standardiz
 - Python 3.9+
 - Required Python packages are listed in [requirements.txt](requirements.txt).
 
+¿Describe all Python packages here?
+
+
 ## Installation: 
 
 1. Clone this repository to your local machine:
@@ -46,6 +49,10 @@ or
 ```
 python3 -m pip install -r requirements.txt
 ```
+or 
+```
+conda install --file requirements.txt
+```
 
 
 ## Usage :
@@ -61,14 +68,13 @@ _The [example](example) directory contains some the files required and generated
 
 ### 1. Training the Model
 
-To train a model we need some images that already have annotated landmarks. `train.py` will use as inputs:  
+To train a model we need some images that already have annotated landmarks. For basic usage of `train.py` we need:  
 
-- A '_.tps_' file with manually annotated landmarks (see [Carabus_pronotum_train.txt](example/Carabus_pronotum_train.txt) as example)
-- A directory containing the images referenced in the '_.tps_' file (see example [data](example/data) for an example dataset).
+- A '_.tps_' file with manually annotated landmarks (`-f` option, see [Carabus_pronotum_train.txt](example/Carabus_pronotum_train.txt) as example)
+- A directory containing the images referenced in the '_.tps_' file (`-i` option, see example [data](example/data) for an example dataset).
+- A name for the model (`-m` option)
 
-**Example command**
-
-The following command will generate a shape predictor model ([carabus.dat](example/carabus.dat)) that can be used to extract fixed landmarks on other _Carabus jasndo_ images.
+Therefore, the following command will generate a shape predictor model ([carabus.dat](example/carabus.dat)) that can be used to extract fixed landmarks on other _Carabus jasndo_ images.
 
 ```
 ./train.py -i example/data -m carabus -f example/Carabus_pronotum_train.txt -w example/ 
@@ -80,17 +86,14 @@ The following command will generate a shape predictor model ([carabus.dat](examp
 usage: ./train.py -i DIR -m MODEL_NAME -f FILE [--model_version VERSION ] [--work_dir DIR ] [--params FILE] [--save_params]
 ```
 
-* **`-i DIR`, `--image_dir DIR`,**
-  
-     Input directory containing the images for training. (Required)
+* **`-f FILE`, `--file FILE`** : Path to the *[.tps / .txt](example/Carabus_pronotum_train.txt)* or *[.xml](example/all_data.xml)* file with annotated landmarks. Required
+
+* **`-i DIR`, `--image_dir DIR`** :  Input directory containing the training images. Required
 
 * **`-m MODEL_NAME`, `--model_name MODEL_NAME`**
 
      Name of the model (without extension). Required
   
-* **`-f FILE`, `--file FILE`**
-
-     *.tps* / *.txt* / *.xml* file with image names and their previously annotated landmarks. Required
 
 **Optional Parameters**
 
