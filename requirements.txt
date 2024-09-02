@@ -1,4 +1,3 @@
-
 dlib==19.24.4
 numpy==1.26.4 # (dlib does not support numpy v2)
 matplotlib>=3.9.1
