@@ -4,7 +4,7 @@
 #
 
 Landmark Generator is a machine learning-based tool designed to automate the extraction of fixed landmark coordinates for the shape analysis of biological structures. 
-This tool is particularly usefull in the field of geometric morphometrics, where manual landmarking can be a tedious task. 
+This tool is particularly useful in the field of geometric morphometrics, where manual landmarking can be a tedious task. 
 
 ## Abstract
 
@@ -23,8 +23,32 @@ With this model, we can then extract fixed landmarks coordinates in a standardiz
 
 ...
 
+## Requirements: 
 
-## Usage example:
+- Python 3.9+
+- Required Python packages listed in [requirements.txt](requirements.txt).
+
+## Installation: 
+
+1. Clone this repository to your local machine:
+
+```
+git clone https://github.com/luciamartinf/Landmarks_generator.git
+cd landmark-generator
+```
+
+2. Install the required dependencies:
+
+```
+pip install -r requirements.txt
+```
+or 
+```
+python3 -m pip install -r requirements.txt
+```
+
+
+## Usage :
 
 This is a Machine Learning based tool. Machine learning relies on two steps: training a model and predicting with that model. 
 
