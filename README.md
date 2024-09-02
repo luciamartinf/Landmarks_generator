@@ -3,62 +3,54 @@
 ### Lucía Martín Fernández
 #
 
-Shape Predictor Modeling algorithm to extract coordinates of fixed landmarks needed for shape analysis of biological structures. 
+Landmark Generator is a machine learning-based tool designed to automate the extraction of fixed landmark coordinates for the shape analysis of biological structures. 
+This tool is particularly usefull in the field of geometric morphometrics, where manual landmarking can be a tedious task. 
 
 ## Abstract
 
-Geometric morphometrics is a powerful approach used in biological studies to analyze 
-and compare the shape and form of biological structures in the context of evolutionary 
-biology and ecology. This procedure includes landmark identification and digitization that serve as
-reference points for further shape analysis. TpsDIG (Rohlf, F. J. 2006) is a software tool
-designed for digitizing landmarks directly from digital images and obtaining the coordinates.
-However, landmarks representing specific anatomical points are manually placed on the
-images using tpsDIG or other tools by clicking on the specific points.
+Geometric morphometrics is a powerful approach used in biological studies to analyze and compare the shape and form of biological structures in the context of evolutionary 
+biology and ecology. 
+This procedure includes landmark identification and digitization that serve as reference points for further shape analysis. 
+TpsDIG (Rohlf, F. J. 2006) is a software tool designed for digitizing landmarks directly from digital images and obtaining the coordinates.
+However, landmarks representing specific anatomical points are manually placed on the images using tpsDIG or other tools by clicking on the specific points.
 
-Biologists typically need to perform this manual landmarking procedure
-on hundreds to thousands of photographs, which can be tedious, labor-intensive, error-prone,
-and time-consuming. To address this, our objective is to develop a shape predictor algorithm to yield species specific models
-capable of extracting the coordinates of the fixed landmarks needed for shape
-analysis of biological structures. 
+Biologists typically need to perform this manual landmarking procedure on hundreds to thousands of photographs, which can be labor-intensive, error-prone, and time-consuming.
 
+To address this, we developed a landmark generator program, a machine learning-based tool capable of generating a shape predictor model. 
+With this model, we can then extract fixed landmarks coordinates in a standardized output format (.tps) for subsequent shape analysis of biological structures. 
+
+## Table of Contents
+
+...
 
 
 ## Usage example:
 
 This is a Machine Learning based tool. Machine learning relies on two steps: training a model and predicting with that model. 
 
-The [example](example) folder contains the files required and generated for each step. 
+The [example](example) folder contains the files required and generated in each step. 
 
 
 ### 1. Train model from images
 
-First we need to train a model with images that already have annotated landmarks. 
+First we need to train a model with images that already have annotated landmarks. To do this, we need: 
 
-- _.tps_ file with manually annotated landmarks. See example file [Carabus_pronotum_train.txt](example/Carabus_pronotum_train.txt).
-- Folder with the images referenced in the _.tps_ file. See example [data](example/data) folder 
+- A _.tps_ file with manually annotated landmarks. See example file [Carabus_pronotum_train.txt](example/Carabus_pronotum_train.txt).
+- A folder with the images referenced in the _.tps_ file. See example [data](example/data) folder.
 
 The following command will generate a shape predictor model ([carabus.dat](example/carabus.dat)) that can be used to annotate more images.
+This is a 
 
 ```
 ./train.py -i example/data -m carabus -f example/Carabus_pronotum_train.txt -w example/ 
 ```
 
 
-### 2. Predict landmarks in other images with the model
-
-Now, we can predict more Landmarks in different images using our *carabus.dat* model:
-
-```
-./predict.py -i example/data -m example/carabus.dat -f example/Carabus_pronotum_pred.txt -w example/ --plot numbers
-```
-
-
-
-## 1. Train model
 
 ```
 usage: ./train.py -i DIR -m MODEL_NAME -f FILE [--model_version VERSION ] [--work_dir DIR ] [--params FILE] [--save_params]
 ```
+
 
 ### Parameters 
 
@@ -91,6 +83,21 @@ usage: ./train.py -i DIR -m MODEL_NAME -f FILE [--model_version VERSION ] [--wor
 * `--save_params`, `-sp`
 
      Save best found hyperparameters params in a new file to reuse them when retraining the model e.g. with more images. See `--params FILE`
+
+
+### 2. Predict landmarks in other images with the model
+
+Now, we can predict more Landmarks in different images using our *carabus.dat* model:
+
+```
+./predict.py -i example/data -m example/carabus.dat -f example/Carabus_pronotum_pred.txt -w example/ --plot numbers
+```
+
+
+
+## 1. Train model
+
+
 
 
 ## 2. Predict Landmarks
@@ -245,9 +252,7 @@ Predict test landmarks using the model and evaluate its performance by calculati
      Name of the output .tps/.txt file that will contain all predicted landmarks. By default it will take the model's name (*{model_name}_landmarks.txt*)
 
 
-### _trial phase_`reorganize_coor.py`
-
-
+### *trial phase*`reorganize_coor.py`
 
 
 
@@ -256,7 +261,7 @@ Predict test landmarks using the model and evaluate its performance by calculati
 
 ## Requirements
 
-Recommended Python modules versions:
+**Python modules:**
 
 * python==3.9.6
 * dlib==19.24.4
@@ -269,7 +274,7 @@ Recommended Python modules versions:
 * matplotlib==3.9.1
 * pillow==10.4.0
 
-Other files: 
+**Other files:** 
 
 * `Config.py`. Can be modified by the user.
      - *PROCS* : Number of threads/cores we'll be using when training our models. -1 will also all available cores of the machine
