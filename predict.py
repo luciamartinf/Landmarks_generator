@@ -30,8 +30,8 @@ def main():
     parser = arg_parse.get_predict_parser()
     args = parser.parse_args()
 
-    image_dir = os.path.abspath(args.image_dir)
-    work_dir = os.path.abspath(args.work_dir)
+    image_dir = os.path.abspath(args.input_dir)
+    work_dir = os.path.abspath(args.output_dir)
     Landmarks.work_dir = work_dir
 
     model_file = args.model
@@ -41,9 +41,9 @@ def main():
     # Check that the model exist
     dat = utils.check_predmodel(model_file, work_dir, parser)
     
-    if args.file:
+    if args.input_file:
         
-        if utils.what_file_type(args.file) not in ['.txt', '.tps']:
+        if utils.what_file_type(args.input_file) not in ['.txt', '.tps']:
             
             if not args.scale:
                 sys.stderr.print("\nERROR: Invalid input file and no scale specified. Unable to proceed with prediction\n")
@@ -55,12 +55,12 @@ def main():
                 print("Generating a new tps file with specified scale.")
                 tpsfile = generate_tps.write_tpsfile(image_dir, 'input_images.tps', scale=args.scale)
         
-        elif Landmarks.check_forlm(args.file):
+        elif Landmarks.check_forlm(args.input_file):
             print("WARNING: This file already contains annotated landmarks")
-            tpsfile = args.file
+            tpsfile = args.input_file
         
         else:
-            tpsfile = args.file 
+            tpsfile = args.input_file 
     
     elif args.scale: # If not tpsfile check that we can create a tps file
         tpsfile = generate_tps.write_tpsfile(image_dir, 'input_images.tps', scale = args.scale)
@@ -70,8 +70,8 @@ def main():
         parser.print_help()
         sys.exit(2)
     
-    if args.output:
-        output = args.output
+    if args.output_file:
+        output = args.output_file
     else:
         output = f'{model_name}_landmarks.tps'
         
