@@ -53,7 +53,7 @@ def main():
             else:
                 print("\nWARNING: Invalid input file, but scale was specified.")
                 print("Generating a new tps file with specified scale.")
-                tpsfile = generate_tps.write_tpsfile(image_dir, 'input_images.tps', scale=args.scale)
+                tpsfile = generate_tps.write_tpsfile(image_dir, f'input_{image_dir}.tps', scale=args.scale)
         
         elif Landmarks.check_forlm(args.input_file):
             print("WARNING: This file already contains annotated landmarks")

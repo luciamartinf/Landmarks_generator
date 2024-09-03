@@ -84,12 +84,6 @@ Therefore, the following command will generate a shape predictor model ([carabus
 ./train.py --input_file example/Carabus_pronotum_train.txt --input_dir example/data --model carabus --output_dir example/ 
 ```
 
-**Command Explanation**
-
-```
-usage: ./train.py -i DIR -m MODEL_BASENAME -f FILE [--model_version VERSION ] [--output_dir DIR ] [--params FILE] [--save_params]
-```
-
 **Input parameters**
 
 * **`-f FILE`, `--input_file FILE`**
@@ -102,7 +96,8 @@ usage: ./train.py -i DIR -m MODEL_BASENAME -f FILE [--model_version VERSION ] [-
 
 * `--params FILE`
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Path to a [_.txt_ file](example/params_carabus.txt) containing predefined hyperparameters for training the model. If not specified, the script will optimize hyperparameters automatically (this can be time-consuming)
+     &nbsp;&nbsp;&nbsp;&nbsp; Path to a _.txt_ file containing predefined hyperparameters for training the model (e.g., [params_carabus.txt](example/params_carabus.txt)). 
+     &nbsp;&nbsp;&nbsp;&nbsp; If not specified, the script will optimize hyperparameters automatically. Take into consideration that this can be time-consuming. 
 
 
 **Output parameters**
@@ -118,11 +113,18 @@ usage: ./train.py -i DIR -m MODEL_BASENAME -f FILE [--model_version VERSION ] [-
 
 * `--ouput_dir DIR`
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Specifies where output files should be written. Default is current working directory.
+     &nbsp;&nbsp;&nbsp;&nbsp; Specifies where output files will be written. Default is current working directory.
 
 * `--save_params`
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Save best found hyperparameters params in a new file [params_{model_name}.txt](example/params_carabus.txt) for future use e.g., when retraining a model with more images.
+     &nbsp;&nbsp;&nbsp;&nbsp; Save best found hyperparameters params in a new '[params_{model_name}.txt](example/params_carabus.txt)' file for future use e.g., when retraining a model with more images.
+
+**Configuration file** 
+
+`Config.py`. Can be modified by the user.
+     - *PROCS* : Number of threads/cores we'll be using when training our models. -1 will also all available cores of the machine
+
+     - *MAX_FUNC_CALLS* : Maximum number of trials we'll be performing when tuning our shape predictor hyperparameters. Higher numbers will result in better predictions but will also highly increase training time
 
 
 ## 2. Predict landmarks
@@ -135,92 +137,85 @@ Once we have a trained model, we can use it to extract fixed landmarks on new im
 
 Additionally, `predict.py` also takes as input one of the followings options: 
 
-1. If all images are in the same scale, you can specify it with the `--scale` option and a _.tps_ blank file will be automatically generated. 
+1. If all images are in the same scale, the user can use the `--scale` option and a landmarks-empty _.tps_ file will be automatically generated. 
 
 ```
 ./predict.py --input_dir example/data --model example/carabus.dat --SCALE 0.000394 --output_dir example/
 ```
 
-2. Otherwise, you should generate a [blank _.tps_ file](example/Carabus_pronotum_pred.txt) manually using TpsDIG and use the `-f, --input_file` option. _ask Danae and Giannis how to do this with TpsDIG_
+2. Otherwise, a landmarks-empty _.tps_ file (e.g., [Carabus_pronotum_pred.txt](example/Carabus_pronotum_pred.txt)) should be generated manually using TpsDIG. The user can then specify  the input with the `-f, --input_file` option. _ask Danae and Giannis how to do this with TpsDIG_
 
 ```
 ./predict.py --input_dir example/data --model example/carabus.dat --input_file example/Carabus_pronotum_pred.txt --output_dir example/ 
 ```
-
-**Command explanation**
-
-Therefore, we can define two usages of `predict.py`
-
-1. Defining a uniform scale for all images with `-s, --scale SCALE_FLOAT`
-
-     ```
-     usage: ./predict.py -i IMAGE_DIR -m FILE -s SCALE_FLOAT [--model_version MODEL_VERSION] [--output_dir OUTPUT_DIR] [--output OUTPUT] [--plot [none, dots, numbers]]
-     ```
-
-2. Using a *.txt / .tps* file as reference (option `-f, --input_file,` [Carabus_pronotum_pred.txt](example/Carabus_pronotum_pred.txt))
-
-     ```
-     usage: ./predict.py -i IMAGE_DIR -m FILE -f FILE [--model_version MODEL_VERSION] [--output_dir OUTPUT_DIR] [--output OUTPUT] [--plot [none, dots, numbers]]
-     ```
 
 
 **Input parameters**
 
 * **`-i DIR`, `--input_dir DIR`,**
   
-     &nbsp;&nbsp;&nbsp;&nbsp; Input directory containing the images for predicting. Required.
+     &nbsp;&nbsp;&nbsp;&nbsp; Input directory containing the target images. Required.
 
 * **`-m FILE`, `--model FILE`**
 
-     &nbsp;&nbsp;&nbsp;&nbsp; .dat file path of the LandmarkGen model. Required
+     &nbsp;&nbsp;&nbsp;&nbsp; Path to the trained model; e.g., a _.dat_ file like [carabus.dat](example/carabus.dat). Required
 
-Input options:
-  
-1. `-f FILE`, `--input_file FILE`
+Moreover, depending on the input data, the user needs to choose one of the following input options:
 
-     &nbsp;&nbsp;&nbsp;&nbsp; .tps/.txt file with image names, scales and ID but no landmarks annotated. Required if scale is not defined.
+1. **`-s, --scale SCALE_FLOAT`**
 
-2. `-s, --scale SCALE`
+     &nbsp;&nbsp;&nbsp;&nbsp; Specify an uniform scale for all images in the input directory. When using this option, all images must have the same scale.
+     
+     &nbsp;&nbsp;&nbsp;&nbsp; The script will automatically generate a landmarks-empty *.tps* file: 'input_{input_dir}.tps'
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Scale of all the images, all images must have the same scale. A .tps/.txt file will be generated using this scale and the input images.
+
+2. **`-f FILE`, `--input_file FILE`**
+
+     &nbsp;&nbsp;&nbsp;&nbsp; Provide a reference _.tps_ file (e.g.,  [Carabus_pronotum_pred.txt](example/Carabus_pronotum_pred.txt)). 
+     &nbsp;&nbsp;&nbsp;&nbsp; This option is required when the images in the input directory don't have the same scale.
+
 
 **Output parameters**
 
 * `--output_dir DIR`
 
-    &nbsp;&nbsp;&nbsp;&nbsp;  Define working directory. By default it takes the current directory.
+    &nbsp;&nbsp;&nbsp;&nbsp; Specifies where output files will be written. Default is current working directory.
 
 * `--output_file OUTPUT`
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Name of the output .tps/.txt file that will contain all predicted landmarks. By default it will take the model's name (*{model_name}_landmarks.txt*)
+     &nbsp;&nbsp;&nbsp;&nbsp; Name of the output _.tps_ file that will contain all predicted landmarks. 
+     &nbsp;&nbsp;&nbsp;&nbsp; By default it will use the input_directory name '{model_basename}_landmarks.tps' (e.g., [carabus_landmarks.tps](example/carabus_landmarks/carabus_landmarks.tps).
   
 * `--plot [none, dots, numbers]`
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Plot landmarks on images with desired design. Original images will not be override, new images will be generated. 
-     - Default is `none` and no images will be generated. 
-     - `dots` will use red dots. Better aesthetics for publications
-     - `numbers` will use color numbers. Useful for checking order of the coordinates
+     &nbsp;&nbsp;&nbsp;&nbsp; Option to visualize landmarks on images. Original images will not be override as new images will be generated. The user can choose between the following `--plot` options:
+     - `none`: No visualization (default).
+     - `dots`: Red dots for aesthetic visualization. 
+     - `numbers`: Colored numbers for verification of landmark's order. 
                                                            
 ## Other scripts
 
 We also developed a series of scripts useful throughout the whole shape analysis. 
 
-### `generate_tps.py`
+**`generate_tps.py`**
 
-Generates a landmarks-empty _.tps_ file with all the images in a directory. This is, a .tps file with LM=0 and ID, IMAGE and SCALE features. 
+Generates a landmarks-empty _.tps_ file with all the images in a directory. This is a _.tps_ file with LM=0 and ID, IMAGE and SCALE features:
 
 ```
 LM=0
 IMAGE=Fc1045ind1.jpg
 ID=FC1045IND1
 SCALE=0.000394
+...
 ```
 
-This is script is useful to manually generate a blank _.tps_ file that serves as input for the `predict.py` program. However, this step is not necessary as `predict.py` can also generate a _.tps_ file when this is not specified as input (`--file`) but scale (`--scale`) is. 
+This script is useful to manually generate a landmarks-empty _.tps_ file that serves as input for the `predict.py` program. However, this step is not necessary as `predict.py` can also generate a _.tps_ file with the `--scale` option. 
+
+It requires that all images have the same scale. 
 
 **Arguments:**
 
-* `-i DIR`, `--image_dir DIR`
+* `-i DIR`, `--input_dir DIR`
 
      Directory with target images. Allowed image extensions are _.jpg, .jpeg, .png_ or _.bmp_
       Required. 
@@ -322,13 +317,6 @@ Predict test landmarks using the model and evaluate its performance by calculati
 
 * matplotlib==3.9.1
 * pillow==10.4.0
-
-**Other files:** 
-
-* `Config.py`. Can be modified by the user.
-     - *PROCS* : Number of threads/cores we'll be using when training our models. -1 will also all available cores of the machine
-
-     - *MAX_FUNC_CALLS* : Maximum number of trials we'll be performing when tuning our shape predictor hyperparameters. Higher numbers will result in better predictions but will also highly increase training time
 
 
 ## References 
