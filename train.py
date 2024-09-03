@@ -81,18 +81,18 @@ def main():
     # Reading arguments
     args = parser.parse_args()
 
-    image_dir = os.path.abspath(args.image_dir)
-    work_dir = os.path.abspath(args.work_dir)
+    image_dir = os.path.abspath(args.input_dir)
+    work_dir = os.path.abspath(args.output_dir)
     Landmarks.work_dir = work_dir
 
-    model_name = args.model_name
+    model_name = args.model
 
     if args.model_version:
         model_version = int(args.model_version)
     else:
         model_version = 0
     
-    input_file = args.file
+    input_file = args.input_file
     
     ext = utils.what_file_type(input_file)
     

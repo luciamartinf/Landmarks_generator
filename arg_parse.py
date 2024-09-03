@@ -14,26 +14,25 @@ def get_train_parser():
     add('--version', action='version', version='%(prog)s 0.0.1')
     
     add('--verbose', action='store_true', help='Enable verbose mode')
+    
+    add( '-f', '--input_file', required = True,
+        help = '.tps/.txt/.xml file with image names and their previously annotated landmarks.')
 
-    add('-i', '--image_dir', required=True, 
+    add('-i', '--input_dir', required=True, 
         help='Input directory containing the images for training.')
     
-    add( '-f', '--file', required = True,
-        help = '.tps/.txt/.xml file with image names and their previously annotated landmarks.')
-    
-    add('-m', '--model_name', required=True,
+    add('-m', '--model', required=True,
         help='Name of the model (without extension).') 
 
-    
-    add('--model_version', '-mv', required=False, type=int,
+    add('--model_version', required=False, type=int,
         help='Version of the model. If the version already exists, next available version will be generated.')
     
-    add('--work_dir','-w', default='./', 
+    add('--output_dir', default='./', 
         help='Define working directory. By default it takes the current directory.')
     
-    add('--params', '-p', help = ' .txt file that contains already defined hyperparameters for training the model.')
+    add('--params', help = ' .txt file that contains already defined hyperparameters for training the model.')
     
-    add('--save_params', '-sp', action='store_true', 
+    add('--save_params', action='store_true', 
         help = "Save best found hyperparameters params in a new .txt file")
     
     return parser
@@ -52,22 +51,22 @@ def get_predict_parser():
     
     add('--verbose', action='store_true', help='Enable verbose mode')
 
-    add('-i', '--image_dir', required=True, 
+    add('-i', '--input_dir', required=True, 
         help='Input directory containing the images for predicting.')
     
     add('-m', '--model', required=True,
         help='.dat file path of the LandmarkGen model') 
     
-    add( '-f', '--file',
+    add( '-f', '--input_file',
         help = '.tps/.txt file with image names, scales and ID but no landmarks annotated. Required if scale is not defined.')
     
     add('-s', '--scale', 
         help = 'Scale of all the images, all images must have the same scale.')
     
-    add('--work_dir','-w', default='./', 
+    add('--output_dir', default='./', 
         help='Define working directory. By default it takes the current directory')
     
-    add('--output', '-o',
+    add('--output_file',
         help = " Name of the output .tps/.txt file that will contain all predicted landmarks.")
     
     # add('--plot', action='store_true', 
