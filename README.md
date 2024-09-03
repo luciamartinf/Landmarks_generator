@@ -64,125 +64,139 @@ There are two main scripts that perform two different steps:
 
 
 _The [example](example) directory contains some the files required and generated after running the examples commands._
+_To run the example commands `cd example`_
 
 
-### 1. Training the Model
+
+## 1. Training the Model
 
 To train a model we need some images that already have annotated landmarks. For basic usage of `train.py` we need:  
 
-- A '_.tps_' file with manually annotated landmarks (`-f` option, see [Carabus_pronotum_train.txt](example/Carabus_pronotum_train.txt) as example)
-- A directory containing the images referenced in the '_.tps_' file (`-i` option, see example [data](example/data) for an example dataset).
-- A name for the model (`-m` option)
+- A '_.tps_' file with manually annotated landmarks (`-f, --input_file` option; e.g., [Carabus_pronotum_train.txt](example/Carabus_pronotum_train.txt))
+- A directory containing the images referenced in the '_.tps_' file (`-i, --input_dir` option; e.g., [data](example/data))
+- A name for the model (`-m, --model` option)
+
+Additionally, we can specify the output directory (`--output_dir` option).
 
 Therefore, the following command will generate a shape predictor model ([carabus.dat](example/carabus.dat)) that can be used to extract fixed landmarks on other _Carabus jasndo_ images.
 
 ```
-./train.py -i example/data -m carabus -f example/Carabus_pronotum_train.txt -w example/ 
+./train.py --input_file example/Carabus_pronotum_train.txt --input_dir example/data --model carabus --output_dir example/ 
 ```
 
 **Command Explanation**
 
 ```
-usage: ./train.py -i DIR -m MODEL_NAME -f FILE [--model_version VERSION ] [--work_dir DIR ] [--params FILE] [--save_params]
+usage: ./train.py -i DIR -m MODEL_BASENAME -f FILE [--model_version VERSION ] [--output_dir DIR ] [--params FILE] [--save_params]
 ```
 
-**Input options**
+**Input parameters**
 
-* **`-f FILE`, `--file FILE`**
+* **`-f FILE`, `--input_file FILE`**
 
     &nbsp;&nbsp;&nbsp;&nbsp; Path to the input *[.tps / .txt](example/Carabus_pronotum_train.txt)* or *[.xml](example/all_data.xml)* file with annotated landmarks. Required
 
-* **`-i DIR`, `--image_dir DIR`**
+* **`-i DIR`, `--input_dir DIR`**
 
     &nbsp;&nbsp;&nbsp;&nbsp; Path to the input directory containing the training images. Required
 
-* `--params FILE`, `-p FILE`
+* `--params FILE`
 
-     Path to a [.txt file](example/params_carabus.txt) containing predefined hyperparameters for training the model. If not specified, the script will optimize hyperparameters automatically (this can be time-consuming)
+     &nbsp;&nbsp;&nbsp;&nbsp; Path to a [_.txt_ file](example/params_carabus.txt) containing predefined hyperparameters for training the model. If not specified, the script will optimize hyperparameters automatically (this can be time-consuming)
 
 
-**Output options**
+**Output parameters**
 
-* **`-m MODEL_NAME`, `--model_name MODEL_NAME`**
+
+* **`-m MODEL_BASENAME`, `--model MODEL_BASENAME`**
 
     &nbsp;&nbsp;&nbsp;&nbsp; Basename for output model file (without extension). Required
 
-* `--model_version VERSION`, `-mv VERSION`
+* `--model_version MODEL_VERSION`
   
-     Specifies the version of the model. If not provided, the next available version will be used.
+     &nbsp;&nbsp;&nbsp;&nbsp; Specifies the version of the model. If not provided, the next available version will be used.
 
-* `--work_dir DIR`, `-w DIR`
+* `--ouput_dir DIR`
 
-     Specifies where output files should be written. Default is current working directory.
+     &nbsp;&nbsp;&nbsp;&nbsp; Specifies where output files should be written. Default is current working directory.
 
-* `--save_params`, `-sp`
+* `--save_params`
 
-     Save best found hyperparameters params in a new file to reuse them when retraining the model e.g. with more images. See `--params FILE`
+     &nbsp;&nbsp;&nbsp;&nbsp; Save best found hyperparameters params in a new file [params_{model_name}.txt](example/params_carabus.txt) for future use e.g., when retraining a model with more images.
 
 
-### 2. Predict landmarks in other images with the model
+## 2. Predict landmarks
 
-Now, we can predict more Landmarks in different images using our *carabus.dat* model:
+Once we have a trained model, we can use it to extract fixed landmarks on new images that depict the same biological structure. For basic usage, we need: 
+
+-  A model file (`-m, --model` option; e.g., [carabus.dat](example/carabus.dat))
+
+-  A directory containing the target images (`-i, --input_dir` option; e.g., [data](example/data))
+
+Additionally, `predict.py` also takes as input one of the followings options: 
+
+1. If all images are in the same scale, you can specify it with the `--scale` option and a _.tps_ blank file will be automatically generated. 
 
 ```
-./predict.py -i example/data -m example/carabus.dat -f example/Carabus_pronotum_pred.txt -w example/ --plot numbers
+./predict.py --input_dir example/data --model example/carabus.dat --SCALE 0.000394 --output_dir example/
 ```
 
+2. Otherwise, you should generate a [blank _.tps_ file](example/Carabus_pronotum_pred.txt) manually using TpsDIG and use the `-f, --input_file` option. _ask Danae and Giannis how to do this with TpsDIG_
 
+```
+./predict.py --input_dir example/data --model example/carabus.dat --input_file example/Carabus_pronotum_pred.txt --output_dir example/ 
+```
 
-## 1. Train model
+**Command explanation**
 
+Therefore, we can define two usages of `predict.py`
 
-
-
-## 2. Predict Landmarks
-
-To predict new landmarks we can execute `predict.py` in two ways:
-
-- Using a *.txt / .tps* file as reference with *-f* (see example file [Carabus_pronotum_pred.txt](example/Carabus_pronotum_pred.txt))
-
-     ```
-     usage: ./predict.py -i IMAGE_DIR -m FILE [-f FILE] [--model_version MODEL_VERSION] [--work_dir WORK_DIR] [--output OUTPUT] [--plot [none, dots, numbers] ]
-     ```
-
-- Defining the scale of all the images with *-s SCALE* the needed *.txt / .tps*  file will be generated 
+1. Defining a uniform scale for all images with `-s, --scale SCALE_FLOAT`
 
      ```
-     usage: ./predict.py -i IMAGE_DIR -m FILE [-s SCALE] [--model_version MODEL_VERSION] [--work_dir WORK_DIR] [--output OUTPUT] [--plot]
+     usage: ./predict.py -i IMAGE_DIR -m FILE -s SCALE_FLOAT [--model_version MODEL_VERSION] [--output_dir OUTPUT_DIR] [--output OUTPUT] [--plot [none, dots, numbers]]
+     ```
+
+2. Using a *.txt / .tps* file as reference (option `-f, --input_file,` [Carabus_pronotum_pred.txt](example/Carabus_pronotum_pred.txt))
+
+     ```
+     usage: ./predict.py -i IMAGE_DIR -m FILE -f FILE [--model_version MODEL_VERSION] [--output_dir OUTPUT_DIR] [--output OUTPUT] [--plot [none, dots, numbers]]
      ```
 
 
-### Parameters 
+**Input parameters**
 
-* **`-i DIR`, `--image_dir DIR`,**
+* **`-i DIR`, `--input_dir DIR`,**
   
-     Input directory containing the images for predicting. Required.
+     &nbsp;&nbsp;&nbsp;&nbsp; Input directory containing the images for predicting. Required.
 
-* **`-m FILE`, `--model_name FILE`**
+* **`-m FILE`, `--model FILE`**
 
-     .dat file path of the LandmarkGen model. Required
+     &nbsp;&nbsp;&nbsp;&nbsp; .dat file path of the LandmarkGen model. Required
+
+Input options:
   
-1. `-f FILE`, `--file FILE`
+1. `-f FILE`, `--input_file FILE`
 
-     .tps/.txt file with image names, scales and ID but no landmarks annotated. Required if scale is not defined.
+     &nbsp;&nbsp;&nbsp;&nbsp; .tps/.txt file with image names, scales and ID but no landmarks annotated. Required if scale is not defined.
 
-2. `-s SCALE`, `--scale SCALE`
+2. `-s, --scale SCALE`
 
-     Scale of all the images, all images must have the same scale. A .tps/.txt file will be generated using this scale and the input images.
+     &nbsp;&nbsp;&nbsp;&nbsp; Scale of all the images, all images must have the same scale. A .tps/.txt file will be generated using this scale and the input images.
 
-#### Optional Parameters
+**Output parameters**
 
-* `--work_dir DIR`, `-w DIR`
+* `--output_dir DIR`
 
-     Define working directory. By default it takes the current directory.
+    &nbsp;&nbsp;&nbsp;&nbsp;  Define working directory. By default it takes the current directory.
 
-* `--output OUTPUT`, `-o OUTPUT`
+* `--output_file OUTPUT`
 
-     Name of the output .tps/.txt file that will contain all predicted landmarks. By default it will take the model's name (*{model_name}_landmarks.txt*)
+     &nbsp;&nbsp;&nbsp;&nbsp; Name of the output .tps/.txt file that will contain all predicted landmarks. By default it will take the model's name (*{model_name}_landmarks.txt*)
   
 * `--plot [none, dots, numbers]`
 
-     Plot landmarks on images with desired design. Original images will not be override, new images will be generated. 
+     &nbsp;&nbsp;&nbsp;&nbsp; Plot landmarks on images with desired design. Original images will not be override, new images will be generated. 
      - Default is `none` and no images will be generated. 
      - `dots` will use red dots. Better aesthetics for publications
      - `numbers` will use color numbers. Useful for checking order of the coordinates
