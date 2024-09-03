@@ -86,13 +86,14 @@ Therefore, the following command will generate a shape predictor model ([carabus
 usage: ./train.py -i DIR -m MODEL_NAME -f FILE [--model_version VERSION ] [--work_dir DIR ] [--params FILE] [--save_params]
 ```
 
-* **`-f FILE`, `--file FILE`** : Path to the *[.tps / .txt](example/Carabus_pronotum_train.txt)* or *[.xml](example/all_data.xml)* file with annotated landmarks. Required
+* **`-f FILE`, `--file FILE`**
+          Path to the *[.tps / .txt](example/Carabus_pronotum_train.txt)* or *[.xml](example/all_data.xml)* file with annotated landmarks. Required
 
-* **`-i DIR`, `--image_dir DIR`** :  Input directory containing the training images. Required
+* **`-i DIR`, `--image_dir DIR`**
+          Input directory containing the training images. Required
 
 * **`-m MODEL_NAME`, `--model_name MODEL_NAME`**
-
-     Name of the model (without extension). Required
+          Name of the model (without extension). Required
   
 
 **Optional Parameters**
