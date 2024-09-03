@@ -86,32 +86,34 @@ Therefore, the following command will generate a shape predictor model ([carabus
 usage: ./train.py -i DIR -m MODEL_NAME -f FILE [--model_version VERSION ] [--work_dir DIR ] [--params FILE] [--save_params]
 ```
 
+**Input options**
+
 * **`-f FILE`, `--file FILE`**
 
-    &nbsp;&nbsp;&nbsp;&nbsp; Path to the *[.tps / .txt](example/Carabus_pronotum_train.txt)* or *[.xml](example/all_data.xml)* file with annotated landmarks. Required
+    &nbsp;&nbsp;&nbsp;&nbsp; Path to the input *[.tps / .txt](example/Carabus_pronotum_train.txt)* or *[.xml](example/all_data.xml)* file with annotated landmarks. Required
 
 * **`-i DIR`, `--image_dir DIR`**
 
-    &nbsp;&nbsp;&nbsp;&nbsp; Input directory containing the training images. Required
-
-* **`-m MODEL_NAME`, `--model_name MODEL_NAME`**
-
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Name of the model (without extension). Required
-  
-
-**Optional Parameters**
-
-* `--model_version VERSION`, `-mv VERSION`
-  
-     Version of the model. If the version already exists, next available version will be generated.
-
-* `--work_dir DIR`, `-w DIR`
-
-     Define working directory. By default it takes the current directory.
+    &nbsp;&nbsp;&nbsp;&nbsp; Path to the input directory containing the training images. Required
 
 * `--params FILE`, `-p FILE`
 
-     .txt file that contains already defined hyperparameters for training the model. If not defined, the program will look for the best hyperparameters in each case, but this will higly increase the training time. 
+     Path to a [.txt file](example/params_carabus.txt) containing predefined hyperparameters for training the model. If not specified, the script will optimize hyperparameters automatically (this can be time-consuming)
+
+
+**Output options**
+
+* **`-m MODEL_NAME`, `--model_name MODEL_NAME`**
+
+    &nbsp;&nbsp;&nbsp;&nbsp; Basename for output model file (without extension). Required
+
+* `--model_version VERSION`, `-mv VERSION`
+  
+     Specifies the version of the model. If not provided, the next available version will be used.
+
+* `--work_dir DIR`, `-w DIR`
+
+     Specifies where output files should be written. Default is current working directory.
 
 * `--save_params`, `-sp`
 
