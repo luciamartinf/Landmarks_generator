@@ -507,16 +507,24 @@ class Landmarks:
         plt.ylim(0, height)
         plt.xlim(0, width)
         plt.imshow(image)
+        
+        add = 0.025*width
 
         # Plot colored numbers
         if mode == 'numbers':
             for i, lm in enumerate(lm_list):
-                plt.scatter(lm[0], lm[1], marker="$"+str(i)+"$")
+                plt.scatter(lm[0], lm[1], marker="$"+str(i+1)+"$")
                 
         # Plot red dots
         elif mode == 'dots':
             for lm in lm_list:
                 plt.plot(lm[0], lm[1], '.', color='red')
+        
+        elif mode == 'combo':
+            for i, lm in enumerate(lm_list):
+                plt.plot(lm[0], lm[1], '.', color='red')
+                plt.scatter(lm[0]+add, lm[1], marker="$"+str(i+1)+"$")
+                
         
         lm_img_path = os.path.join(folder, f'{img_name}')
         plt.savefig(lm_img_path)

@@ -9,7 +9,7 @@ def write_tpsfile(folder, output, scale):
     Write TPS like file to serve as input for predicting landmarks
     """
 
-    image_extensions = ['.jpg', '.jpeg', '.png', '.bmp'] 
+    image_extensions = ['.jpg', '.jpeg', '.png', '.bmp', '.tiff'] 
 
     with open(output, 'w') as f:
         for file in os.listdir(folder):
@@ -26,25 +26,25 @@ def write_tpsfile(folder, output, scale):
                 
 def main():
     
-    # Arguments = directory with images, scale
-    # Hacer un main porque puede ser util llamarlo tambien desde el otro main
-
-    # 1. Read images in directory. Extensions jpg, png...
-    # 2. For each image create an entry in the file
-    # LM=0
-    # IMAGE=Fc1045ind1.jpg
-    # ID=FC1045IND1
-    # SCALE=0.000394
-    # LM=0
+    """
+    This script generates a landmarks-empty .tps file with all the images in a directory. 
+    This is a .tps file with LM=0 and ID, IMAGE and SCALE features
+    """
     
     
-    parser = argparse.ArgumentParser(prog = '', formatter_class=argparse.RawDescriptionHelpFormatter, description= '')
+    parser = argparse.ArgumentParser(prog = '', formatter_class=argparse.RawDescriptionHelpFormatter, 
+                                     description= 'This script generates a landmarks-empty .tps file with all the images in a directory.')
 
     add = parser.add_argument
 
-    add('-i','--input_dir', required=True, help='Directory with target images. Valid image extensions are: .jpg, .jpeg, .png or .bmp')
-    add('--scale', required=True, help='Scale of all the images, all images must have the same scale')
-    add('-o', '--output',  help="Name of the output file. Recommended extensions are .tps or .txt")
+    add('-i','--input_dir', required=True, 
+        help='Path to the input directory containing the target images')
+    
+    add('--scale', required=True, 
+        help='Specify the scale of the images in the input directory. All images must have the same scale.')
+    
+    add('-o', '--output',  
+        help= 'Name of the output .tps file.')
 
     args = parser.parse_args()
 

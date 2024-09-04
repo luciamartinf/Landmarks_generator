@@ -7,8 +7,13 @@ import utils
 
 def main():
     
+    """
+    Script to visualize landmarks on images. 
+    Original images will not be override as new images will be generated. 
+    """
+    
     parser = argparse.ArgumentParser(prog = '', formatter_class=argparse.RawDescriptionHelpFormatter,
-                                     description='Plot landmarks on images with desired design. Original images will not be override, new images will be generated and stored in a new directory. ') # Elaborate this description
+                                     description='Script to visualize landmarks on images. Original images will not be override as new images will be generated. ') # Elaborate this description
     
     parser.add_argument('-f', '--input_file', required=True, 
                         help = '.xml or .txt file with annotated landmarks.')
@@ -19,7 +24,7 @@ def main():
     parser.add_argument('-o', '--output', 
                         help = "Output folder that will contain the new annotated images")
     
-    parser.add_argument('--design', choices=['dots', 'numbers'], default='dots', 
+    parser.add_argument('--design', choices=['dots', 'numbers', 'combo'], default='dots', 
                         help = 'Choose design to plot the coordinates. Default is dots')
     
     args = parser.parse_args()
