@@ -10,10 +10,10 @@ def main():
     parser = argparse.ArgumentParser(prog = '', formatter_class=argparse.RawDescriptionHelpFormatter,
                                      description='Delete specimens from .tps file') # Elaborate this description
     
-    parser.add_argument('-i', '--input', required=True, 
+    parser.add_argument('-f', '--input_file', required=True, 
                         help = 'Reference .tps file')
     
-    parser.add_argument('-l', '--list', required=True,
+    parser.add_argument('-l', '--input_list', required=True,
                         help = ".txt file that contains list of specimens to delete")
     
     parser.add_argument('-o', '--output', 
@@ -21,7 +21,7 @@ def main():
     
     args = parser.parse_args()
     
-    filepath = os.path.abspath(args.input)
+    filepath = os.path.abspath(args.input_file)
     
     folder = os.path.dirname(filepath)
     basename = os.path.basename(filepath)
@@ -33,7 +33,7 @@ def main():
         
     outpath = os.path.join(folder,outfile)
 
-    list_file = os.path.abspath(args.list)
+    list_file = os.path.abspath(args.input_list)
     
     del_list = utils.read_list_from_file(list_file, f=False)
     

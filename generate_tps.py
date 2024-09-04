@@ -25,17 +25,30 @@ def write_tpsfile(folder, output, scale):
     
                 
 def main():
+    
+    # Arguments = directory with images, scale
+    # Hacer un main porque puede ser util llamarlo tambien desde el otro main
+
+    # 1. Read images in directory. Extensions jpg, png...
+    # 2. For each image create an entry in the file
+    # LM=0
+    # IMAGE=Fc1045ind1.jpg
+    # ID=FC1045IND1
+    # SCALE=0.000394
+    # LM=0
+    
+    
     parser = argparse.ArgumentParser(prog = '', formatter_class=argparse.RawDescriptionHelpFormatter, description= '')
 
     add = parser.add_argument
 
-    add('-i','--image_dir', required=True, help=' Directory with target images. Allowed image extensions are: .jpg, .jpeg, .png or .bmp')
+    add('-i','--input_dir', required=True, help='Directory with target images. Valid image extensions are: .jpg, .jpeg, .png or .bmp')
     add('--scale', required=True, help='Scale of all the images, all images must have the same scale')
     add('-o', '--output',  help="Name of the output file. Recommended extensions are .tps or .txt")
 
     args = parser.parse_args()
 
-    folder = os.path.abspath(args.image_dir)
+    folder = os.path.abspath(args.input_dir)
     folder_name = os.path.basename(folder)
     scale = args.scale
     if args.output:
@@ -52,13 +65,3 @@ if __name__ == "__main__":
     
 
 
-# Arguments = directory with images, scale
-# Hacer un main porque puede ser util llamarlo tambien desde el otro main
-
-# 1. Read images in directory. Extensions jpg, png...
-# 2. For each image create an entry in the file
-# LM=0
-# IMAGE=Fc1045ind1.jpg
-# ID=FC1045IND1
-# SCALE=0.000394
-# LM=0
