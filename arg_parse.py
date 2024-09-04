@@ -7,7 +7,7 @@ def get_train_parser():
     """Parser for train"""
     
     parser = argparse.ArgumentParser(prog = '', formatter_class=argparse.RawDescriptionHelpFormatter,
-                                     description= '')
+                                     description= 'Train a model with landmark-annotated images')
     
     add = parser.add_argument
     
@@ -16,24 +16,24 @@ def get_train_parser():
     add('--verbose', action='store_true', help='Enable verbose mode')
     
     add( '-f', '--input_file', required = True,
-        help = '.tps/.txt/.xml file with image names and their previously annotated landmarks.')
+        help = 'Path to the input .tps or .xml file with annotated landmarks')
 
     add('-i', '--input_dir', required=True, 
-        help='Input directory containing the images for training.')
+        help='Path to the input directory containing the training images')
     
     add('-m', '--model', required=True,
-        help='Name of the model (without extension).') 
+        help='Basename for output model file (without extension)') 
 
     add('--model_version', required=False, type=int,
-        help='Version of the model. If the version already exists, next available version will be generated.')
+        help='Define version of the model manually')
     
     add('--output_dir', default='./', 
-        help='Define working directory. By default it takes the current directory.')
+        help='Specify where output files will be written')
     
-    add('--params', help = ' .txt file that contains already defined hyperparameters for training the model.')
+    add('--params', help = 'Path to a .txt file containing predefined hyperparameters for training the model')
     
     add('--save_params', action='store_true', 
-        help = "Save best found hyperparameters params in a new .txt file")
+        help = "Save optimized hyperparameters in a new .txt file")
     
     return parser
 
@@ -43,7 +43,7 @@ def get_predict_parser():
     """"Parser for prediction"""
     
     parser = argparse.ArgumentParser(prog = '', formatter_class=argparse.RawDescriptionHelpFormatter,
-                                     description= '')
+                                     description= 'Extract fixed landmarks from images using a trained model')
     
     add = parser.add_argument
     
@@ -52,19 +52,19 @@ def get_predict_parser():
     add('--verbose', action='store_true', help='Enable verbose mode')
 
     add('-i', '--input_dir', required=True, 
-        help='Input directory containing the images for predicting.')
+        help='Input directory containing the target images')
     
     add('-m', '--model', required=True,
-        help='.dat file path of the LandmarkGen model') 
-    
-    add( '-f', '--input_file',
-        help = '.tps/.txt file with image names, scales and ID but no landmarks annotated. Required if scale is not defined.')
+        help='Path to the trained model') 
     
     add('-s', '--scale', 
-        help = 'Scale of all the images, all images must have the same scale.')
+        help = 'Specify an uniform scale for all images in the input directory. All images must have the same scale')
+    
+    add( '-f', '--input_file',
+        help = 'Provide a reference landmarks-empty .tps file.')
     
     add('--output_dir', default='./', 
-        help='Define working directory. By default it takes the current directory')
+        help='Specify where output files will be written')
     
     add('--output_file',
         help = " Name of the output .tps/.txt file that will contain all predicted landmarks.")
@@ -72,7 +72,7 @@ def get_predict_parser():
     # add('--plot', action='store_true', 
     #     help = "Plot landmarks on images.")
     
-    add('--plot', type=str, choices = ['none', 'dots', 'numbers'], default='none',
-        help = "Plot landmarks on images with desired design. See README for full description of designs")
+    add('--plot', type=str, choices = ['none', 'dots', 'numbers', 'combo'], default='none',
+        help = "Option to visualize landmarks on images. See README for full description of designs")
     
     return parser

@@ -21,17 +21,23 @@ import utils
 
 def main():
     
+    """
+    This script is used to evaluate the performance of a trained model. 
+    It takes as input a manually generated .tps file and generates landmarks with the trained model. 
+    It then compares the manual and the automatic landmarks to calculate the mean relative error (MRE) and the mean absolute error (MAE) that are included on the standard output.
+    """
+    
     parser = argparse.ArgumentParser(prog = '', formatter_class=argparse.RawDescriptionHelpFormatter,
-                                     description='Predict test landmarks using the model and evaluate its performance by calculating the error.') 
+                                     description= 'Evaluate the performance of a trained model') 
     
     parser.add_argument('-f', '--input_file', required=True, 
-                        help = 'Reference _.tps_/_.xml_ file that contains landmarks')
+                        help = 'Path to the input .tps file containing manually annotated landmarks.')
     
     parser.add_argument('-i', '--input_dir', required = True,
-                        help = 'Input directory containing the images')
+                        help = 'Path to the input directory containing the reference images. ')
     
     parser.add_argument('-m', '--model', required=True,
-                        help = ".dat file path of the model.")
+                        help = "Path to the target trained model")
     
     # TODO generate .tps prediction from xml_file =  output, only if output flag is on 
         

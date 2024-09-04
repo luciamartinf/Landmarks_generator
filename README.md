@@ -81,7 +81,7 @@ _To run the example commands `cd example`_
 To train a model we need some images that already have annotated landmarks. For basic usage of `train.py` we need:  
 
 - A '_.tps_' file with manually annotated landmarks (`-f, --input_file` option; e.g., [Carabus_pronotum_train.txt](example/Carabus_pronotum_train.txt))
-- A directory containing the images referenced in the '_.tps_' file (`-i, --input_dir` option; e.g., [data](example/data)). Allowed image file extensions are _.jpg, .jpeg, .png_ or _.bmp_.
+- A directory containing the images referenced in the '_.tps_' file (`-i, --input_dir` option; e.g., [data](example/data)). Allowed image file formats are _.jpg, .jpeg, .png, .tiff_ or _.bmp_.
 - A name for the model (`-m, --model` option)
 
 Additionally, we can specify the output directory (`--output_dir` option).
@@ -100,7 +100,7 @@ Therefore, the following command will generate a shape predictor model ([carabus
 
 * **`-i DIR`, `--input_dir DIR`**
 
-    &nbsp;&nbsp;&nbsp;&nbsp; Path to the input directory containing the training images. Allowed image file extensions are _.jpg, .jpeg, .png_ or _.bmp_. Required
+    &nbsp;&nbsp;&nbsp;&nbsp; Path to the input directory containing the training images. Allowed image file formats are _.jpg, .jpeg, .png, .tiff_ or _.bmp_. Required
 
 * `--params FILE`
 
@@ -117,7 +117,7 @@ Therefore, the following command will generate a shape predictor model ([carabus
 
 * `--model_version MODEL_VERSION`
   
-     &nbsp;&nbsp;&nbsp;&nbsp; Specifies the version of the model. If not provided, the next available version will be used.
+     &nbsp;&nbsp;&nbsp;&nbsp; Define version of the model manually. If not provided, the next available version will be used.
 
 * `--ouput_dir DIR`
 
@@ -125,7 +125,7 @@ Therefore, the following command will generate a shape predictor model ([carabus
 
 * `--save_params`
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Save best found hyperparameters params in a new '[params_{model_name}.txt](example/params_carabus.txt)' file for future use e.g., when retraining a model with more images.
+     &nbsp;&nbsp;&nbsp;&nbsp; Save optimized hyperparameters in a new '[params_{model_name}.txt](example/params_carabus.txt)' file for future use e.g., when retraining a model with more images.
 
 **Configuration file** 
 
@@ -162,7 +162,7 @@ Additionally, `predict.py` also takes as input one of the followings options:
 
 * **`-i DIR`, `--input_dir DIR`,**
   
-     &nbsp;&nbsp;&nbsp;&nbsp; Input directory containing the target images. Allowed image file extensions are _.jpg, .jpeg, .png_ or _.bmp_. Required.
+     &nbsp;&nbsp;&nbsp;&nbsp; Input directory containing the target images. Allowed image file formats are _.jpg, .jpeg, .png, .tiff_ or _.bmp_. Required.
 
 * **`-m FILE`, `--model FILE`**
 
@@ -179,7 +179,7 @@ Moreover, depending on the input data, the user needs to choose one of the follo
 
 2. **`-f FILE`, `--input_file FILE`**
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Provide a reference _.tps_ file (e.g.,  [Carabus_pronotum_pred.txt](example/Carabus_pronotum_pred.txt)). 
+     &nbsp;&nbsp;&nbsp;&nbsp; Provide a reference landmarks-empty _.tps_ file (e.g.,  [Carabus_pronotum_pred.txt](example/Carabus_pronotum_pred.txt)). 
      &nbsp;&nbsp;&nbsp;&nbsp; This option is required when the images in the input directory don't have the same scale.
 
 
@@ -200,6 +200,7 @@ Moreover, depending on the input data, the user needs to choose one of the follo
      - `none`: No visualization (default).
      - `dots`: Red dots for aesthetic visualization. 
      - `numbers`: Colored numbers for verification of landmark's order. 
+     - `combo`: Red dots + colored numbers. 
                                                            
 ## Other scripts
 
@@ -228,7 +229,7 @@ All images must have been taken with the same scale.
 
 * `-i DIR`, `--input_dir DIR`
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Path to the input directory containing the target images. Allowed image file extensions are _.jpg, .jpeg, .png_ or _.bmp_. Required. 
+     &nbsp;&nbsp;&nbsp;&nbsp; Path to the input directory containing the target images. Allowed image file formats are _.jpg, .jpeg, .png, .tiff_ or _.bmp_. Required. 
 
 
 * `-s SCALE`, `--scale SCALE_FLOAT`
@@ -237,7 +238,7 @@ All images must have been taken with the same scale.
 
 * `-o OUTPUT`, `--output OUTPUT`
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Name of the output _.tps_ file. Recommended file extensions are _.tps_ or _.txt_. 
+     &nbsp;&nbsp;&nbsp;&nbsp; Name of the output _.tps_ file. Recommended file formats are _.tps_ or _.txt_. 
      &nbsp;&nbsp;&nbsp;&nbsp; By default it will use the input directory name as '{input_dir}.tps' 
 
 
@@ -246,6 +247,7 @@ All images must have been taken with the same scale.
 Script to visualize landmarks on images. Original images will not be override as new images will be generated. The user can choose between the following `--design` options:
 - `dots`: Red dots for aesthetic visualization. 
 - `numbers`: Colored numbers for verification of landmark's order. 
+- `combo`: Red dots + colored numbers. 
 
 
 **Usage**
@@ -261,7 +263,7 @@ Script to visualize landmarks on images. Original images will not be override as
 
 * `-i DIR`, `--input_dir DIR`
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Path to the input directory containing the target images. Allowed image file extensions are _.jpg, .jpeg, .png_ or _.bmp_. Required. 
+     &nbsp;&nbsp;&nbsp;&nbsp; Path to the input directory containing the target images. Allowed image file formats are _.jpg, .jpeg, .png, .tiff_ or _.bmp_. Required. 
 
 * `-o OUTPUT, --output OUTPUT`, 
 
@@ -319,14 +321,14 @@ This script is used to evaluate the performance of a trained model. It takes as 
 
 * `-i DIR`, `--input_dir DIR`
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Path to the input directory containing the reference images. Allowed image file extensions are _.jpg, .jpeg, .png_ or _.bmp_. Required. 
+     &nbsp;&nbsp;&nbsp;&nbsp; Path to the input directory containing the reference images. Allowed image file formats are _.jpg, .jpeg, .png, .tiff_ or _.bmp_. Required. 
 
 * `-m FILE`, `--model FILE`
 
      &nbsp;&nbsp;&nbsp;&nbsp; Path to the trained model, a _.dat_ file like [carabus.dat](example/carabus.dat). Required.
 
 
-#### *trial phase*`reorganize_coor.py`
+#### *trial phase* o m`reorganize_coor.py`
 
 
 
