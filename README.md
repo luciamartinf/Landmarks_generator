@@ -73,12 +73,12 @@ _To run the example commands `cd example`_
 To train a model we need some images that already have annotated landmarks. For basic usage of `train.py` we need:  
 
 - A '_.tps_' file with manually annotated landmarks (`-f, --input_file` option; e.g., [Carabus_pronotum_train.txt](example/Carabus_pronotum_train.txt))
-- A directory containing the images referenced in the '_.tps_' file (`-i, --input_dir` option; e.g., [data](example/data))
+- A directory containing the images referenced in the '_.tps_' file (`-i, --input_dir` option; e.g., [data](example/data)). Allowed image file extensions are _.jpg, .jpeg, .png_ or _.bmp_.
 - A name for the model (`-m, --model` option)
 
 Additionally, we can specify the output directory (`--output_dir` option).
 
-Therefore, the following command will generate a shape predictor model ([carabus.dat](example/carabus.dat)) that can be used to extract fixed landmarks on other _Carabus jasndo_ images.
+Therefore, the following command will generate a shape predictor model ([carabus.dat](example/carabus.dat)) that can be used to extract the fixed landmarks from other _Carabus banonii_ images.
 
 ```
 ./train.py --input_file example/Carabus_pronotum_train.txt --input_dir example/data --model carabus --output_dir example/ 
@@ -184,7 +184,7 @@ Moreover, depending on the input data, the user needs to choose one of the follo
 * `--output_file OUTPUT`
 
      &nbsp;&nbsp;&nbsp;&nbsp; Name of the output _.tps_ file that will contain all predicted landmarks. 
-     &nbsp;&nbsp;&nbsp;&nbsp; By default it will use the input_directory name '{model_basename}_landmarks.tps' (e.g., [carabus_landmarks.tps](example/carabus_landmarks/carabus_landmarks.tps).
+     &nbsp;&nbsp;&nbsp;&nbsp; By default it will use the model name as '{model_basename}_landmarks.tps' (e.g., [carabus_landmarks.tps](example/carabus_landmarks/carabus_landmarks.tps).
   
 * `--plot [none, dots, numbers]`
 
@@ -197,9 +197,9 @@ Moreover, depending on the input data, the user needs to choose one of the follo
 
 We also developed a series of scripts useful throughout the whole shape analysis. 
 
-**`generate_tps.py`**
+#### **`generate_tps.py`**
 
-Generates a landmarks-empty _.tps_ file with all the images in a directory. This is a _.tps_ file with LM=0 and ID, IMAGE and SCALE features:
+This script generates a landmarks-empty _.tps_ file with all the images in a directory. This is a _.tps_ file with LM=0 and ID, IMAGE and SCALE features that looks as:
 
 ```
 LM=0
@@ -208,69 +208,89 @@ ID=FC1045IND1
 SCALE=0.000394
 ...
 ```
+This script is useful to manually generate a landmarks-empty _.tps_ file that serves as input for the `predict.py` script. However, this step is not necessary as `predict.py` can also generate a _.tps_ file with the `--scale` option. 
 
-This script is useful to manually generate a landmarks-empty _.tps_ file that serves as input for the `predict.py` program. However, this step is not necessary as `predict.py` can also generate a _.tps_ file with the `--scale` option. 
-
-It requires that all images have the same scale. 
+**Usage**
+```
+./generate_tps.py -i INPUT_DIR --scale SCALE_FLOAT [-o OUTPUT]
+```
+All images must have been taken with the same scale. 
 
 **Arguments:**
 
 * `-i DIR`, `--input_dir DIR`
 
-     Directory with target images. Allowed image extensions are _.jpg, .jpeg, .png_ or _.bmp_
-      Required. 
+     &nbsp;&nbsp;&nbsp;&nbsp; Path to the input directory containing the target images. Allowed image file extensions are _.jpg, .jpeg, .png_ or _.bmp_. Required. 
 
 
-* `-s SCALE`, `--scale SCALE`
+* `-s SCALE`, `--scale SCALE_FLOAT`
 
-     Scale of all the images, all images must have the same scale.
-  Required. 
-
-* `-o FILE`, `--output FILE`
-
-      Name of the output file. Recommended extensions are _.tps_ or _.txt_. Default is {image_dir}.tps
-
-
-### `plot_landmarks.py`
-
-Plot landmarks on images with desired design. Original images will not be override, new images will be generated and stored in a new directory. 
-
-**Arguments:**
-
-* `-i DIR`, `--image_dir DIR`,
-  
-     Input directory containing the reference images. Required.
-
-* `-f FILE`, `--file FILE`
-
-     .tps/.txt file with annotated landmarks. Required
-
-* `--output OUTPUT`, `-o OUTPUT`
-
-     Name of the output directory that will contain the new annotated images. By default it will take the input directory name (*annotated_{image_dir}*)
-  
-* `-d [dots, numbers]`, `--design [dots, numbers]`
-      Choose design to plot the coordinates: 
-     - `dots` will use red dots. Better aesthetics for publications. Default
-     - `numbers` will use color numbers. Useful for checking order of the coordinates
-
-### `delete_specimens.py`
-
-Sometimes we need to remove some specimens from the tps file. Maybe because the automatically annotated landmarks are not accurate or because we don't want to consider this specimens for further analysis. This script will help you create a new _.tps_ file without the specified individuals. 
-
-**Arguments:**
-
-* `-i FILE`, `--input FILE`
-
-     Reference _.tps_/_.txt_ file. Required
-
-* `-l FILE`, `--list FILE`
-
-     _.txt_ file that contains list of speciments to delete. Each item should be in a separate line. Required
+     &nbsp;&nbsp;&nbsp;&nbsp; Specify the scale of the images in the input directory. All images must have the same scale. Required. 
 
 * `-o OUTPUT`, `--output OUTPUT`
 
-      Name of the output _.tps_ file. Recommended extensions are _.tps_ or _.txt_. Default is _clean_{input}.tps_
+     &nbsp;&nbsp;&nbsp;&nbsp; Name of the output _.tps_ file. Recommended file extensions are _.tps_ or _.txt_. 
+     &nbsp;&nbsp;&nbsp;&nbsp; By default it will use the input directory name as '{input_dir}.tps' 
+
+
+#### `plot_landmarks.py`
+
+Script to visualize landmarks on images. Original images will not be override as new images will be generated. The user can choose between the following `--design` options:
+- `dots`: Red dots for aesthetic visualization. 
+- `numbers`: Colored numbers for verification of landmark's order. 
+
+
+**Usage**
+```
+./plot_landmarks.py -f FILE -i INPUT_DIR [-o OUTPUT] [--design {dots,numbers}]
+```
+
+**Arguments:**
+
+* `-f FILE`, `--input_file FILE`
+
+     &nbsp;&nbsp;&nbsp;&nbsp; Path to the input *.tps* file with annotated landmarks. Required
+
+* `-i DIR`, `--input_dir DIR`
+
+     &nbsp;&nbsp;&nbsp;&nbsp; Path to the input directory containing the target images. Allowed image file extensions are _.jpg, .jpeg, .png_ or _.bmp_. Required. 
+
+* `-o OUTPUT, --output OUTPUT`, 
+
+     &nbsp;&nbsp;&nbsp;&nbsp; Name of the output directory that will contain the new annotated images. 
+     &nbsp;&nbsp;&nbsp;&nbsp; By default it will take the input directory name as '*annotated_{image_dir}*'
+  
+* `--design [dots, numbers]`
+     
+     &nbsp;&nbsp;&nbsp;&nbsp; Option to choose how to visualize landmarks. Available designs are: 
+     - `dots`: Red dots for aesthetic visualization. 
+     - `numbers`: Colored numbers for verification of landmark's order. 
+
+#### `delete_specimens.py`
+
+Sometimes we need to remove some specimens entry from a *.tps* file. Maybe because the automatically annotated landmarks are not accurate or because we don't want to consider these specimens for further analysis. This script will help the user to create a new _.tps_ file without the specified individuals. To do this, the user needs to create a _.txt_ file containing a line-separated list of the images to delete (e.g., [del_list.txt](example/del_list.txt)). 
+
+**Usage**
+
+````
+./delete_specimens.py -f INPUT_FILE -l FILE_LIST [-o OUTPUT]
+````
+
+
+**Arguments:**
+
+* `-f FILE`, `--input_file FILE`
+
+     &nbsp;&nbsp;&nbsp;&nbsp; Path to the reference _.tps_ file. Required
+
+* `-l FILE`, `--input_list FILE`
+
+     &nbsp;&nbsp;&nbsp;&nbsp; Path to a _.txt_ file containing a line-separated list of the images to remove from the _.tps_ file. Required
+
+* `-o OUTPUT`, `--output OUTPUT`
+
+     &nbsp;&nbsp;&nbsp;&nbsp; Name of the output _.tps_ file. Recommended extensions are _.tps_ or _.txt_. 
+     &nbsp;&nbsp;&nbsp;&nbsp; By default it will take the input file name as '*clean_{input_filename}.tps*'
 
 
 ### `measure_error.py`
