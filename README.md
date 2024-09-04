@@ -26,33 +26,41 @@ With this model, we can then extract fixed landmarks coordinates in a standardiz
 ## Requirements: 
 
 - Python 3.9+
-- Required Python packages are listed in [requirements.txt](requirements.txt).
 
-¿Describe all Python packages here?
+**Python modules:**
+
+Required Python packages are also listed in [requirements.txt](requirements.txt).
+
+* dlib==19.24.4
+     - CMake is necessary to install dlib. *link to install cmake*  (directly from cmake.org, the binary version for windows) 
+* numpy==1.26.4 (dlib does not support numpy v2)
+* matplotlib==3.9.1
+* pillow==10.4.0
+
 
 
 ## Installation: 
 
 1. Clone this repository to your local machine:
 
-```
-git clone https://github.com/luciamartinf/Landmarks_generator.git
-cd landmark-generator
-```
+     ```
+     git clone https://github.com/luciamartinf/Landmarks_generator.git
+     cd landmark-generator
+     ```
 
 2. Install the required dependencies:
 
-```
-pip install -r requirements.txt
-```
-or 
-```
-python3 -m pip install -r requirements.txt
-```
-or 
-```
-conda install --file requirements.txt
-```
+     ```
+     pip install -r requirements.txt
+     ```
+     or 
+     ```
+     python3 -m pip install -r requirements.txt
+     ```
+     or 
+     ```
+     conda install --file requirements.txt
+     ```
 
 
 ## Usage :
@@ -92,7 +100,7 @@ Therefore, the following command will generate a shape predictor model ([carabus
 
 * **`-i DIR`, `--input_dir DIR`**
 
-    &nbsp;&nbsp;&nbsp;&nbsp; Path to the input directory containing the training images. Required
+    &nbsp;&nbsp;&nbsp;&nbsp; Path to the input directory containing the training images. Allowed image file extensions are _.jpg, .jpeg, .png_ or _.bmp_. Required
 
 * `--params FILE`
 
@@ -154,7 +162,7 @@ Additionally, `predict.py` also takes as input one of the followings options:
 
 * **`-i DIR`, `--input_dir DIR`,**
   
-     &nbsp;&nbsp;&nbsp;&nbsp; Input directory containing the target images. Required.
+     &nbsp;&nbsp;&nbsp;&nbsp; Input directory containing the target images. Allowed image file extensions are _.jpg, .jpeg, .png_ or _.bmp_. Required.
 
 * **`-m FILE`, `--model FILE`**
 
@@ -293,50 +301,33 @@ Sometimes we need to remove some specimens entry from a *.tps* file. Maybe becau
      &nbsp;&nbsp;&nbsp;&nbsp; By default it will take the input file name as '*clean_{input_filename}.tps*'
 
 
-### `measure_error.py`
+#### `measure_error.py`
 
-Predict test landmarks using the model and evaluate its performance by calculating the error. The measured error is included on the standard output.
+This script is used to evaluate the performance of a trained model. It takes as input a manually generated _.tps_ file and generates landmarks with the trained model. It then compares the manual and the automatic landmarks to calculate the mean relative error (MRE) and the mean absolute error (MAE) that are included on the standard output. 
+
+**Usage**
+
+```
+./measure_error.py -f INPUT_FILE -i INPUT_DIR -m MODEL 
+```
 
 **Arguments:**
 
-* `-f FILE`, `--file FILE`
+* `-f FILE`, `--input_file FILE`
 
-     Reference _.tps_/_.xml_ file that contains landmarks. Required
+     &nbsp;&nbsp;&nbsp;&nbsp; Path to the input _.tps_ file containing manually annotated landmarks. Required. 
 
-* `-i DIR`, `--image_dir DIR`
+* `-i DIR`, `--input_dir DIR`
 
-      Input directory containing the reference images. Required
+     &nbsp;&nbsp;&nbsp;&nbsp; Path to the input directory containing the reference images. Allowed image file extensions are _.jpg, .jpeg, .png_ or _.bmp_. Required. 
 
-* `-m FILE`, `--model_name FILE`
+* `-m FILE`, `--model FILE`
 
-     _.dat_ file path of the  model. Required
-  
-* `-o OUTPUT`, `--output OUTPUT`
-
-     Name of the output .tps/.txt file that will contain all predicted landmarks. By default it will take the model's name (*{model_name}_landmarks.txt*)
+     &nbsp;&nbsp;&nbsp;&nbsp; Path to the trained model, a _.dat_ file like [carabus.dat](example/carabus.dat). Required.
 
 
 ### *trial phase*`reorganize_coor.py`
 
-
-
-
-
-
-## Requirements
-
-**Python modules:**
-
-* python==3.9.6
-* dlib==19.24.4
-* numpy==1.26.4 (dlib does not support numpy v2)
-
-```
-  python3 -m pip install numpy==1.26.4 
-```
-
-* matplotlib==3.9.1
-* pillow==10.4.0
 
 
 ## References 
