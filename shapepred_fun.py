@@ -9,7 +9,7 @@ import multiprocessing
 import numpy as np
 
 procs = multiprocessing.cpu_count()
-procs = config.PROCS if config.PROCS > 0 else procs 
+procs = config.PROCS if config.PROCS > 0 else (procs-1) 
 
 def test_shape_predictor_params(
         treeDepth, nu, cascadeDepth, featurePoolSize, numTestSplits, oversamplingAmount,

@@ -36,26 +36,25 @@ Required Python packages are also listed in [requirements.txt](requirements.txt)
 * numpy==1.26.4 (dlib does not support numpy v2)
 * matplotlib==3.9.1
 * pillow==10.4.0
+* scipy>=1.13.1
 
 
 
 ## Installation: 
 
-1. Clone this repository to your local machine:
+1. Install CMake, Python and Git. 
+
+2. Clone this repository to your local machine:
 
      ```
      git clone https://github.com/luciamartinf/Landmarks_generator.git
      cd landmark-generator
      ```
 
-2. Install the required dependencies:
+3. Install the required dependencies:
 
      ```
      pip install -r requirements.txt
-     ```
-     or 
-     ```
-     python3 -m pip install -r requirements.txt
      ```
      or 
      ```
@@ -89,7 +88,7 @@ Additionally, we can specify the output directory (`--output_dir` option).
 Therefore, the following command will generate a shape predictor model ([carabus.dat](example/carabus.dat)) that can be used to extract the fixed landmarks from other _Carabus banonii_ images.
 
 ```
-./train.py --input_file example/Carabus_pronotum_train.txt --input_dir example/data --model carabus --output_dir example/ 
+python train.py --input_file example/Carabus_pronotum_train.txt --input_dir example/data --model carabus --output_dir example/ 
 ```
 
 **Input parameters**
@@ -130,7 +129,8 @@ Therefore, the following command will generate a shape predictor model ([carabus
 **Configuration file** 
 
 `Config.py`. Can be modified by the user.
-     - *PROCS* : Number of threads/cores we'll be using when training our models. -1 will also all available cores of the machine
+
+     - *PROCS* : Number of threads/cores we'll be using when training our models. -1 will also all available cores of the machine minus 1
 
      - *MAX_FUNC_CALLS* : Maximum number of trials we'll be performing when tuning our shape predictor hyperparameters. Higher numbers will result in better predictions but will also highly increase training time
 
@@ -148,13 +148,13 @@ Additionally, `predict.py` also takes as input one of the followings options:
 1. If all images are in the same scale, the user can use the `--scale` option and a landmarks-empty _.tps_ file will be automatically generated. 
 
 ```
-./predict.py --input_dir example/data --model example/carabus.dat --SCALE 0.000394 --output_dir example/
+python predict.py --input_dir example/data --model example/carabus.dat --scale 0.000394 --output_dir example/
 ```
 
 2. Otherwise, a landmarks-empty _.tps_ file (e.g., [Carabus_pronotum_pred.txt](example/Carabus_pronotum_pred.txt)) should be generated manually using TpsDIG. The user can then specify  the input with the `-f, --input_file` option. _ask Danae and Giannis how to do this with TpsDIG_
 
 ```
-./predict.py --input_dir example/data --model example/carabus.dat --input_file example/Carabus_pronotum_pred.txt --output_dir example/ 
+python predict.py --input_dir example/data --model example/carabus.dat --input_file example/Carabus_pronotum_pred.txt --output_dir example/ 
 ```
 
 
@@ -206,6 +206,34 @@ Moreover, depending on the input data, the user needs to choose one of the follo
 
 We also developed a series of scripts useful throughout the whole shape analysis. 
 
+#### `delete_specimens.py`
+
+Sometimes we need to remove some specimens entry from a *.tps* file. Maybe because the automatically annotated landmarks are not accurate or because we don't want to consider these specimens for further analysis. This script will help the user to create a new _.tps_ file without the specified individuals. To do this, the user needs to create a _.txt_ file containing a line-separated list of the images to delete (e.g., [del_list.txt](example/del_list.txt)). 
+
+**Usage**
+
+````
+python delete_specimens.py -f INPUT_FILE -l FILE_LIST [-o OUTPUT]
+````
+
+
+**Arguments:**
+
+* `-f FILE`, `--input_file FILE`
+
+     &nbsp;&nbsp;&nbsp;&nbsp; Path to the reference _.tps_ file. Required
+
+* `-l FILE`, `--input_list FILE`
+
+     &nbsp;&nbsp;&nbsp;&nbsp; Path to a _.txt_ file containing a line-separated list of the images to remove from the _.tps_ file. Required
+
+* `-o OUTPUT`, `--output OUTPUT`
+
+     &nbsp;&nbsp;&nbsp;&nbsp; Name of the output _.tps_ file. Recommended extensions are _.tps_ or _.txt_. 
+     &nbsp;&nbsp;&nbsp;&nbsp; By default it will take the input file name as '*clean_{input_filename}.tps*'
+
+
+
 #### **`generate_tps.py`**
 
 This script generates a landmarks-empty _.tps_ file with all the images in a directory. This is a _.tps_ file with LM=0 and ID, IMAGE and SCALE features that looks as:
@@ -221,7 +249,7 @@ This script is useful to manually generate a landmarks-empty _.tps_ file that se
 
 **Usage**
 ```
-./generate_tps.py -i INPUT_DIR --scale SCALE_FLOAT [-o OUTPUT]
+python generate_tps.py -i INPUT_DIR --scale SCALE_FLOAT [-o OUTPUT]
 ```
 All images must have been taken with the same scale. 
 
@@ -252,7 +280,7 @@ Script to visualize landmarks on images. Original images will not be override as
 
 **Usage**
 ```
-./plot_landmarks.py -f FILE -i INPUT_DIR [-o OUTPUT] [--design {dots,numbers}]
+python plot_landmarks.py -f FILE -i INPUT_DIR [-o OUTPUT] [--design {dots,numbers}]
 ```
 
 **Arguments:**
@@ -276,32 +304,6 @@ Script to visualize landmarks on images. Original images will not be override as
      - `dots`: Red dots for aesthetic visualization. 
      - `numbers`: Colored numbers for verification of landmark's order. 
 
-#### `delete_specimens.py`
-
-Sometimes we need to remove some specimens entry from a *.tps* file. Maybe because the automatically annotated landmarks are not accurate or because we don't want to consider these specimens for further analysis. This script will help the user to create a new _.tps_ file without the specified individuals. To do this, the user needs to create a _.txt_ file containing a line-separated list of the images to delete (e.g., [del_list.txt](example/del_list.txt)). 
-
-**Usage**
-
-````
-./delete_specimens.py -f INPUT_FILE -l FILE_LIST [-o OUTPUT]
-````
-
-
-**Arguments:**
-
-* `-f FILE`, `--input_file FILE`
-
-     &nbsp;&nbsp;&nbsp;&nbsp; Path to the reference _.tps_ file. Required
-
-* `-l FILE`, `--input_list FILE`
-
-     &nbsp;&nbsp;&nbsp;&nbsp; Path to a _.txt_ file containing a line-separated list of the images to remove from the _.tps_ file. Required
-
-* `-o OUTPUT`, `--output OUTPUT`
-
-     &nbsp;&nbsp;&nbsp;&nbsp; Name of the output _.tps_ file. Recommended extensions are _.tps_ or _.txt_. 
-     &nbsp;&nbsp;&nbsp;&nbsp; By default it will take the input file name as '*clean_{input_filename}.tps*'
-
 
 #### `measure_error.py`
 
@@ -310,7 +312,7 @@ This script is used to evaluate the performance of a trained model. It takes as 
 **Usage**
 
 ```
-./measure_error.py -f INPUT_FILE -i INPUT_DIR -m MODEL 
+python measure_error.py -f INPUT_FILE -i INPUT_DIR -m MODEL 
 ```
 
 **Arguments:**
