@@ -31,7 +31,7 @@ def main():
                                      description= 'Evaluate the performance of a trained model') 
     
     parser.add_argument('-f', '--input_file', required=True, 
-                        help = 'Path to the input .tps file containing manually annotated landmarks.')
+                        help = 'Path to the input .xml file containing manually annotated landmarks.')
     
     parser.add_argument('-i', '--input_dir', required = True,
                         help = 'Path to the input directory containing the reference images. ')
@@ -55,7 +55,7 @@ def main():
     
     set = Landmarks(xml) # img_list y lm_dict
     
-    mean_mre = set.calculate_error(dat)
+    mean_mre = set.calculate_error(dat, xml)
 
     shapepred_fun.measure_mae(dat, xml)
     

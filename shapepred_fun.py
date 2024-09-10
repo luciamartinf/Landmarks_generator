@@ -67,7 +67,7 @@ def find_best_params(
     # Define hyperparameters range
     params = OrderedDict([
        ("tree_depth", (3, 8, True)),
-        ("nu", (0.001, 0.2, False)),
+        ("nu", (0.001, 0.4, False)),
         ("cascade_depth", (8, 18, True)),
         ("feature_pool_size", (200, 1000, True)),
         ("num_test_splits", (20, 300, True)),
