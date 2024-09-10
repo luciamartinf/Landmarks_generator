@@ -26,10 +26,13 @@ def reorganize_points(measured_shape, optimal_order):
 
 def order_shape(real_shape, pred_shape, optimal_order):
         
+        real_shape = np.array(real_shape)
+        pred_shape = np.array(pred_shape)
+
         "Get real and predicted shape"
         
         if len(optimal_order) == 0:
-            optimal_order = calculate_optimal_order(np.array(real_shape), pred_shape)
+            optimal_order = calculate_optimal_order(real_shape, pred_shape)
             
         sorted_pred_shape = reorganize_points(pred_shape, optimal_order)
         

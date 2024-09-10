@@ -416,7 +416,7 @@ class Landmarks:
         return outpath
 
     def calculate_error(self, 
-                    model_path):
+                    model_path, file):
         
         """Predict new landmarks based on a model"""
 
@@ -426,7 +426,8 @@ class Landmarks:
         
         for img, real_lm in self.lm_dict.items():
             
-            pred_array = self.predict_shape(model_path, img)
+            pred_array, image = self.predict_shape(model_path, img)
+            
             
             real_shape = np.array(real_lm)
             
@@ -441,12 +442,12 @@ class Landmarks:
         all_mre_array = np.array(all_mre)
         mean_mre = all_mre_array.mean()
         print("{} MRE of the model: {} is {}".format(
-            os.path.basename(self.xmlfile), os.path.basename(model_path), mean_mre))
+            os.path.basename(file), os.path.basename(model_path), mean_mre))
         
         all_mae_array = np.array(all_mae)
         mean_mae = all_mae_array.mean()
         print("{} MAE of the model: {} is {}".format(
-            os.path.basename(self.xmlfile), os.path.basename(model_path), mean_mae))
+            os.path.basename(file), os.path.basename(model_path), mean_mae))
     
         return all_mae_array, all_mre_array
         

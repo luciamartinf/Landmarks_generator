@@ -314,12 +314,16 @@ This script is used to evaluate the performance of a trained model. It takes as 
 ```
 python measure_error.py -f INPUT_FILE -i INPUT_DIR -m MODEL 
 ```
+**Example**
+```
+python measure_error.py -f example/all_data.xml -i example/data -m example/carabus.dat 
+```
 
 **Arguments:**
 
 * `-f FILE`, `--input_file FILE`
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Path to the input _.tps_ file containing manually annotated landmarks. Required. 
+     &nbsp;&nbsp;&nbsp;&nbsp; Path to the input _.xml_ file containing manually annotated landmarks. Required. 
 
 * `-i DIR`, `--input_dir DIR`
 

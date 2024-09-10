@@ -24,7 +24,7 @@ def preprocessing(lmfile, image_dir):
     input_data = Landmarks(lmfile)
     full_xml_name = os.path.join(Landmarks.work_dir, "all_data.xml")
     full_xml = input_data.write_xml(full_xml_name, 'all_data')
-    train_xml, test_xml = input_data.split_data(split_size=[0.5,0.5])
+    train_xml, test_xml = input_data.split_data(split_size=[0.2,0.8])
     
     return train_xml, test_xml, full_xml
 
@@ -139,11 +139,11 @@ def main():
     print("Calculating Errors of the model")
     
     train_set = Landmarks(train_xml)
-    train_set.calculate_error(dat)
+    train_set.calculate_error(dat, train_xml)
     # measure_mae(dat, train_xml) 
     
     test_set = Landmarks(test_xml)
-    test_set.calculate_error(dat)
+    test_set.calculate_error(dat, test_xml)
     # measure_mae(dat, test_xml) 
     
     # This is just useful for me
