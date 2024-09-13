@@ -7,9 +7,17 @@ from collections import OrderedDict
 import sys
 import multiprocessing
 import numpy as np
+import time
+import csv
 
 procs = multiprocessing.cpu_count()
 procs = config.PROCS if config.PROCS > 0 else (procs-1) 
+
+
+def start_eval_file(eval_file):
+    with open(eval_file, 'w', newline='') as file:
+        writer = csv.writer(file, delimiter='\t')
+        writer.writerow(["cpu","Training_size", "Testing_size", "Tree_depth", "nu", "cascade_depth", "feature_pool_size", "num_test_splits", "oversampling_amount", "training_time", "training_error", "testing_error", "model_size"])
 
 def test_shape_predictor_params(
         treeDepth, nu, cascadeDepth, featurePoolSize, numTestSplits, oversamplingAmount,
@@ -24,6 +32,7 @@ def test_shape_predictor_params(
     
     # Create a new val-train split
     train_xml, val_xml = train_set.split_data(tag = ['trn_val', 'validation'])
+    
 
     # Define options that we are going to tune
     options = dlib.shape_predictor_training_options()
@@ -56,7 +65,72 @@ def test_shape_predictor_params(
     sys.stdout.flush()
     
 	# return the error on the testing set
+    return testingError    
+    
+def eval_model(
+        treeDepth, nu, cascadeDepth, featurePoolSize, numTestSplits, oversamplingAmount,
+        train_set, temp_dat):
+    
+    """Test parameters with a new split of the data and save results to a file
+    
+    Reference: 
+        https://pyimagesearch.com/2020/01/13/optimizing-dlib-shape-predictor-accuracy-with-find_min_global/
+    """
+    
+    eval_file = 'eval.tsv'
+    split_per = [0.6, 0.4]
+    
+    # Create a new val-train split
+    train_xml, val_xml = train_set.split_data(tag = ['trn_val', 'validation'], split_size=split_per)
+    
+    
+    total_size = len(train_set.img_list)
+    training_size = round(split_per[0]*total_size)
+    testing_size = round(split_per[1]*total_size)
+
+    # Define options that we are going to tune
+    options = dlib.shape_predictor_training_options()
+    options.tree_depth = int(treeDepth)
+    options.nu = nu
+    options.cascade_depth = int(cascadeDepth)
+    options.feature_pool_size = int(featurePoolSize)
+    options.num_test_splits = int(numTestSplits)
+    options.oversampling_amount = int(oversamplingAmount)
+
+	# tell dlib to be verbose when training and utilize our supplied number of threads when training
+    options.be_verbose = True	
+    options.num_threads = procs
+    
+    # display the current set of options to our terminal
+    print("[INFO] starting training with another split...")
+    print(options)
+    sys.stdout.flush()
+
+    start_time = time.time()
+	# train the model using the current set of hyperparameters
+    dlib.train_shape_predictor(train_xml, temp_dat, options)
+    end_time = time.time()
+    training_time = end_time - start_time
+    
+    model_size = os.path.getsize(temp_dat) / 1024
+    
+
+	# take the newly trained shape predictor model and evaluate it on both our training and validating sets
+    trainingError = dlib.test_shape_predictor(train_xml, temp_dat)
+    testingError = dlib.test_shape_predictor(val_xml, temp_dat)
+    
+	# display the training and validation errors for the current trial
+    print("[INFO] Train error (MSE): {}".format(trainingError))
+    print("[INFO] Validation error (MSE): {}".format(testingError))
+    sys.stdout.flush()
+    
+    with open(eval_file, 'a', newline='') as file:
+        writer = csv.writer(file, delimiter='\t')
+        writer.writerow([procs, training_size, testing_size, treeDepth, nu, cascadeDepth, featurePoolSize, numTestSplits, oversamplingAmount, training_time, trainingError, testingError, model_size])
+    
+	# return the error on the testing set
     return testingError
+
 
 
 def find_best_params(
@@ -67,7 +141,7 @@ def find_best_params(
     # Define hyperparameters range
     params = OrderedDict([
        ("tree_depth", (3, 8, True)),
-        ("nu", (0.001, 0.4, False)),
+        ("nu", (0.001, 0.2, False)),
         ("cascade_depth", (8, 18, True)),
         ("feature_pool_size", (200, 1000, True)),
         ("num_test_splits", (20, 300, True)),
@@ -79,19 +153,23 @@ def find_best_params(
     isint = [v[2] for (k, v) in params.items()]
 
     fixed_args = (train_set, temp_dat)
-    test_shape_predictor_params_with_fixed_args = lambda *params: test_shape_predictor_params(*params, *fixed_args)
-
+    #test_shape_predictor_params_with_fixed_args = lambda *params: test_shape_predictor_params(*params, *fixed_args)
+    test_shape_predictor_params_with_fixed_args = lambda *params: eval_model(*params, *fixed_args)
+    
+    start_eval_file("eval.tsv")
     # utilize dlib to optimize our shape predictor hyperparameters
     (bestParams, bestLoss) = dlib.find_min_global(
         test_shape_predictor_params_with_fixed_args,
         bound1=lower,
         bound2=upper,
         is_integer_variable=isint,
-        num_function_calls=config.MAX_FUNC_CALLS)
+        num_function_calls=config.MAX_FUNC_CALLS,
+        solver_epsilon=5
+        )
     
     # display the optimal hyperparameters so we can reuse them in our training script
     print("[INFO] optimal parameters: {}".format(bestParams))
-    print("[INFO] optimal error: {}".format(bestLoss))
+    print("[INFO] optimal error: {}".format(bestLoss)) # bestLoss is just lower testing_error
 
     # delete the temporary model file
     os.remove(temp_dat)
@@ -119,13 +197,13 @@ def train_model(
     dlib.train_shape_predictor(xml, name, options)
 
   
-def measure_mae(
+def measure_mse(
     model, xml_annotations):
     
-    """Measure MAE of the model"""
+    """Measure MSE (mean square error)  of the model"""
 
     error = dlib.test_shape_predictor(xml_annotations, model)
-    print("{} MAE of the model: {} is {}".format(os.path.basename(xml_annotations), os.path.basename(model), error))
+    print("{} MSE of the model: {} is {}".format(os.path.basename(xml_annotations), os.path.basename(model), error))
 
 
 def measure_mre(real_coords, estimated_coords):
