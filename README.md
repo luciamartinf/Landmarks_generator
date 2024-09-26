@@ -17,7 +17,7 @@ However, landmarks representing specific anatomical points are manually placed o
 Biologists typically need to perform this manual landmarking procedure on hundreds to thousands of photographs, which can be labor-intensive, error-prone, and time-consuming.
 
 To address this, we developed a landmark generator program, a machine learning-based tool capable of generating a shape predictor model. 
-With this model, we can then extract fixed landmarks coordinates in a standardized output format (.tps) for subsequent shape analysis of biological structures. 
+With this model, we can then extract fixed landmarks coordinates in a standardized output format (*.tps) for subsequent shape analysis of biological structures. 
 
 ## Table of Contents
 
@@ -79,8 +79,8 @@ _To run the example commands `cd example`_
 
 To train a model we need some images that already have annotated landmarks. For basic usage of `train.py` we need:  
 
-- A '_.tps_' file with manually annotated landmarks (`-f, --input_file` option; e.g., [Carabus_pronotum_train.txt](example/Carabus_pronotum_train.txt))
-- A directory containing the images referenced in the '_.tps_' file (`-i, --input_dir` option; e.g., [data](example/data)). Allowed image file formats are _.jpg, .jpeg, .png, .tiff_ or _.bmp_.
+- A '_*.tps_' file with manually annotated landmarks (`-f, --input_file` option; e.g., [Carabus_pronotum_train.txt](example/Carabus_pronotum_train.txt))
+- A directory containing the images referenced in the '_*.tps_' file (`-i, --input_dir` option; e.g., [data](example/data)). Allowed image file formats are _.jpg, .jpeg, .png, .tiff_ or _.bmp_.
 - A name for the model (`-m, --model` option)
 
 Additionally, we can specify the output directory (`--output_dir` option).
@@ -145,13 +145,13 @@ Once we have a trained model, we can use it to extract fixed landmarks on new im
 
 Additionally, `predict.py` also takes as input one of the followings options: 
 
-1. If all images are in the same scale, the user can use the `--scale` option and a landmarks-empty _.tps_ file will be automatically generated. 
+1. If all images are in the same scale, the user can use the `--scale` option and a landmarks-empty _*.tps_ file will be automatically generated. 
 
 ```
 python predict.py --input_dir example/data --model example/carabus.dat --scale 0.000394 --output_dir example/
 ```
 
-2. Otherwise, a landmarks-empty _.tps_ file (e.g., [Carabus_pronotum_pred.txt](example/Carabus_pronotum_pred.txt)) should be generated manually using TpsDIG. The user can then specify  the input with the `-f, --input_file` option. _ask Danae and Giannis how to do this with TpsDIG_
+2. Otherwise, a landmarks-empty _*.tps*_ file (e.g., [Carabus_pronotum_pred.txt](example/Carabus_pronotum_pred.txt)) should be generated manually using TpsDIG. The user can then specify  the input with the `-f, --input_file` option. _ask Danae and Giannis how to do this with TpsDIG_
 
 ```
 python predict.py --input_dir example/data --model example/carabus.dat --input_file example/Carabus_pronotum_pred.txt --output_dir example/ 
@@ -179,7 +179,7 @@ Moreover, depending on the input data, the user needs to choose one of the follo
 
 2. **`-f FILE`, `--input_file FILE`**
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Provide a reference landmarks-empty _.tps_ file (e.g.,  [Carabus_pronotum_pred.txt](example/Carabus_pronotum_pred.txt)). 
+     &nbsp;&nbsp;&nbsp;&nbsp; Provide a reference landmarks-empty _*.tps_ file (e.g.,  [Carabus_pronotum_pred.txt](example/Carabus_pronotum_pred.txt)). 
      &nbsp;&nbsp;&nbsp;&nbsp; This option is required when the images in the input directory don't have the same scale.
 
 
@@ -191,7 +191,7 @@ Moreover, depending on the input data, the user needs to choose one of the follo
 
 * `--output_file OUTPUT`
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Name of the output _.tps_ file that will contain all predicted landmarks. 
+     &nbsp;&nbsp;&nbsp;&nbsp; Name of the output _*.tps_ file that will contain all predicted landmarks. 
      &nbsp;&nbsp;&nbsp;&nbsp; By default it will use the model name as '{model_basename}_landmarks.tps' (e.g., [carabus_landmarks.tps](example/carabus_landmarks/carabus_landmarks.tps).
   
 * `--plot [none, dots, numbers]`
@@ -208,7 +208,7 @@ We also developed a series of scripts useful throughout the whole shape analysis
 
 #### `delete_specimens.py`
 
-Sometimes we need to remove some specimens entry from a *.tps* file. Maybe because the automatically annotated landmarks are not accurate or because we don't want to consider these specimens for further analysis. This script will help the user to create a new _.tps_ file without the specified individuals. To do this, the user needs to create a _.txt_ file containing a line-separated list of the images to delete (e.g., [del_list.txt](example/del_list.txt)). 
+Sometimes we need to remove some specimens entry from a **.tps* file. Maybe because the automatically annotated landmarks are not accurate or because we don't want to consider these specimens for further analysis. This script will help the user to create a new _*.tps_ file without the specified individuals. To do this, the user needs to create a _.txt_ file containing a line-separated list of the images to delete (e.g., [del_list.txt](example/del_list.txt)). 
 
 **Usage**
 
@@ -221,22 +221,22 @@ python delete_specimens.py -f INPUT_FILE -l FILE_LIST [-o OUTPUT]
 
 * `-f FILE`, `--input_file FILE`
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Path to the reference _.tps_ file. Required
+     &nbsp;&nbsp;&nbsp;&nbsp; Path to the reference _*.tps_ file. Required
 
 * `-l FILE`, `--input_list FILE`
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Path to a _.txt_ file containing a line-separated list of the images to remove from the _.tps_ file. Required
+     &nbsp;&nbsp;&nbsp;&nbsp; Path to a _.txt_ file containing a line-separated list of the images to remove from the _*.tps_ file. Required
 
 * `-o OUTPUT`, `--output OUTPUT`
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Name of the output _.tps_ file. Recommended extensions are _.tps_ or _.txt_. 
+     &nbsp;&nbsp;&nbsp;&nbsp; Name of the output _*.tps_ file. Recommended extensions are _*.tps_ or _.txt_. 
      &nbsp;&nbsp;&nbsp;&nbsp; By default it will take the input file name as '*clean_{input_filename}.tps*'
 
 
 
 #### **`generate_tps.py`**
 
-This script generates a landmarks-empty _.tps_ file with all the images in a directory. This is a _.tps_ file with LM=0 and ID, IMAGE and SCALE features that looks as:
+This script generates a landmarks-empty _*.tps_ file with all the images in a directory. This is a _*.tps_ file with LM=0 and ID, IMAGE and SCALE features that looks as:
 
 ```
 LM=0
@@ -245,13 +245,13 @@ ID=FC1045IND1
 SCALE=0.000394
 ...
 ```
-This script is useful to manually generate a landmarks-empty _.tps_ file that serves as input for the `predict.py` script. However, this step is not necessary as `predict.py` can also generate a _.tps_ file with the `--scale` option. 
+This script is useful to manually generate a landmarks-empty _*.tps_ file that serves as input for the `predict.py` script. However, this step is not necessary as `predict.py` can also generate a _*.tps_ file with the `--scale` option. 
 
 **Usage**
 ```
 python generate_tps.py -i INPUT_DIR --scale SCALE_FLOAT [-o OUTPUT]
 ```
-All images must have been taken with the same scale. 
+All images must have been taken with the same scale. If scale is not provided as an argument, the program will use scale=1, so no scaling will be applied in the downstream analysis. 
 
 **Arguments:**
 
@@ -262,11 +262,11 @@ All images must have been taken with the same scale.
 
 * `-s SCALE`, `--scale SCALE_FLOAT`
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Specify the scale of the images in the input directory. All images must have the same scale. Required. 
+     &nbsp;&nbsp;&nbsp;&nbsp; Specify the scale of the images in the input directory. All images must have the same scale. 
 
 * `-o OUTPUT`, `--output OUTPUT`
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Name of the output _.tps_ file. Recommended file formats are _.tps_ or _.txt_. 
+     &nbsp;&nbsp;&nbsp;&nbsp; Name of the output _*.tps_ file. Recommended file formats are _*.tps_ or _.txt_. 
      &nbsp;&nbsp;&nbsp;&nbsp; By default it will use the input directory name as '{input_dir}.tps' 
 
 
@@ -287,7 +287,7 @@ python plot_landmarks.py -f FILE -i INPUT_DIR [-o OUTPUT] [--design {dots,number
 
 * `-f FILE`, `--input_file FILE`
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Path to the input *.tps* file with annotated landmarks. Required
+     &nbsp;&nbsp;&nbsp;&nbsp; Path to the input **.tps* file with annotated landmarks. Required
 
 * `-i DIR`, `--input_dir DIR`
 
@@ -307,7 +307,7 @@ python plot_landmarks.py -f FILE -i INPUT_DIR [-o OUTPUT] [--design {dots,number
 
 #### `measure_error.py`
 
-This script is used to evaluate the performance of a trained model. It takes as input a manually generated _.tps_ file and generates landmarks with the trained model. It then compares the manual and the automatic landmarks to calculate the mean relative error (MRE) and the mean absolute error (MAE) that are included on the standard output. 
+This script is used to evaluate the performance of a trained model. It takes as input a manually generated _*.tps_ file and generates landmarks with the trained model. It then compares the manual and the automatic landmarks to calculate the mean relative error (MRE) and the mean absolute error (MAE) that are included on the standard output. 
 
 **Usage**
 
@@ -346,3 +346,14 @@ Ecology and Evolution, State University of New York.
 ## Additional Notes
 
 The program regenerates edited pictures for training and predicting that are deleted at the end of the execution. 
+
+## *.tps file
+
+Tps files are test files in of the standard formats for geometric morphometrics (see Rohlf 2010). This program supports two-dimensional landmarks coordinates designated by the identifier "LM=". 
+
+This program reads 'LM=', 'IMAGE=', 'ID=' and 'SCALE=' fields, all other information that can be contained in tps files (comments, variables, radii, etc.) is ignored.
+
+
+Landmarks coordinates are multiplied by their scale factor if this is provided for all specimens. If one or more specimens are missing the scale factor, landmarks are treated in their original units. 
+
+_If no scale is provided, we can leave the scale space empty in the file and give an appropiate warning message_

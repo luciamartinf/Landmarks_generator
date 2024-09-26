@@ -46,6 +46,8 @@ def main():
         if utils.what_file_type(args.input_file) not in ['.txt', '.tps']:
             
             if not args.scale:
+                # print("\nWARNING: No input file nor scale was specified, assuming SCALE=1")
+                # tpsfile = generate_tps.write_tpsfile(image_dir, f'input_{image_dir}.tps', scale=1)
                 sys.stderr.print("\nERROR: Invalid input file and no scale specified. Unable to proceed with prediction\n")
                 parser.print_help()
                 sys.exit(2)

@@ -7,7 +7,7 @@ import arg_parse
 import config
 import utils
 from Landmarks_module import Landmarks
-from shapepred_fun import find_best_params, train_model, measure_mae
+from shapepred_fun import find_best_params, train_model, measure_mse
 
 
 def preprocessing(lmfile, image_dir):
@@ -24,7 +24,7 @@ def preprocessing(lmfile, image_dir):
     input_data = Landmarks(lmfile)
     full_xml_name = os.path.join(Landmarks.work_dir, "all_data.xml")
     full_xml = input_data.write_xml(full_xml_name, 'all_data')
-    train_xml, test_xml = input_data.split_data(split_size=[0.2,0.8])
+    train_xml, test_xml = input_data.split_data(split_size=[0.8,0.2])
     
     return train_xml, test_xml, full_xml
 
@@ -140,16 +140,16 @@ def main():
     
     train_set = Landmarks(train_xml)
     train_set.calculate_error(dat, train_xml)
-    # measure_mae(dat, train_xml) 
+    measure_mse(dat, train_xml) 
     
     test_set = Landmarks(test_xml)
     test_set.calculate_error(dat, test_xml)
-    # measure_mae(dat, test_xml) 
+    # measure_mse(dat, test_xml) 
     
     # This is just useful for me
     # full_set = Landmarks(full_xml)
     # full_set.calculate_error(dat)
-    # measure_mae(dat, full_xml) 
+    # measure_mse(dat, full_xml) 
     
     # Deleting flip_images from work_data path
     utils.delete_files(Landmarks.flip_dir)

@@ -17,7 +17,7 @@ procs = config.PROCS if config.PROCS > 0 else (procs-1)
 def start_eval_file(eval_file):
     with open(eval_file, 'w', newline='') as file:
         writer = csv.writer(file, delimiter='\t')
-        writer.writerow(["cpu","Training_size", "Testing_size", "Tree_depth", "nu", "cascade_depth", "feature_pool_size", "num_test_splits", "oversampling_amount", "training_time", "training_error", "testing_error", "model_size"])
+        writer.writerow(["cpu","Training_size", "Testing_size", "Tree_depth", "cascade_depth", "nu", "feature_pool_size", "num_test_splits", "oversampling_amount", "training_time", "training_error", "testing_error", "model_size"])
 
 def test_shape_predictor_params(
         treeDepth, nu, cascadeDepth, featurePoolSize, numTestSplits, oversamplingAmount,
@@ -77,7 +77,7 @@ def eval_model(
         https://pyimagesearch.com/2020/01/13/optimizing-dlib-shape-predictor-accuracy-with-find_min_global/
     """
     
-    eval_file = 'eval.tsv'
+    eval_file = 'eval_3.tsv'
     split_per = [0.6, 0.4]
     
     # Create a new val-train split
@@ -126,7 +126,7 @@ def eval_model(
     
     with open(eval_file, 'a', newline='') as file:
         writer = csv.writer(file, delimiter='\t')
-        writer.writerow([procs, training_size, testing_size, treeDepth, nu, cascadeDepth, featurePoolSize, numTestSplits, oversamplingAmount, training_time, trainingError, testingError, model_size])
+        writer.writerow([procs, training_size, testing_size, treeDepth, cascadeDepth, nu, featurePoolSize, numTestSplits, oversamplingAmount, training_time, trainingError, testingError, model_size])
     
 	# return the error on the testing set
     return testingError
@@ -156,7 +156,7 @@ def find_best_params(
     #test_shape_predictor_params_with_fixed_args = lambda *params: test_shape_predictor_params(*params, *fixed_args)
     test_shape_predictor_params_with_fixed_args = lambda *params: eval_model(*params, *fixed_args)
     
-    start_eval_file("eval.tsv")
+    start_eval_file("eval_3.tsv")
     # utilize dlib to optimize our shape predictor hyperparameters
     (bestParams, bestLoss) = dlib.find_min_global(
         test_shape_predictor_params_with_fixed_args,
@@ -164,7 +164,7 @@ def find_best_params(
         bound2=upper,
         is_integer_variable=isint,
         num_function_calls=config.MAX_FUNC_CALLS,
-        solver_epsilon=5
+        solver_epsilon=37.0
         )
     
     # display the optimal hyperparameters so we can reuse them in our training script

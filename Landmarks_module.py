@@ -159,49 +159,47 @@ class Landmarks:
                         check = True
                     else: 
                         check = False
-
-                    # Process the next expected line, "IMAGE"
-                    next_line = file.readline()
                     
-                    if next_line.startswith("IMAGE"):
-                        image_name = str(next_line.strip().split('=')[1])
+                elif line.startswith("IMAGE"):
+                    image_name = str(line.strip().split('=')[1])
                         
-                        if check == True:
-                            print(f'Image {image_name} has only {n_lm} landmarks annotated')
+                    if check == True:
+                        print(f'Image {image_name} has only {n_lm} landmarks annotated')
                         
-                        if flip:
-                            try:
-                                # we are flipping the image and saving it in the dictionary we are going to work with  
-                                image, image_path = self.flip_image(image_name) 
-                            except Exception as e:
-                                print(f"Error flipping image: {e}")
-                                continue # Discard this image
-                        else:
-                            image = image_name
+                    if flip:
+                        try:
+                            # we are flipping the image and saving it in the dictionary we are going to work with  
+                            image, image_path = self.flip_image(image_name) 
+                        except Exception as e:
+                            print(f"Error flipping image: {e}")
+                            continue # Discard this image
+                    else:
+                        image = image_name
                         
-                        if check == False:
-                            self.lm_dict[image] = lm_list
-                            self.img_list.append(image)
-
-                            Landmarks.nested_dict[image_name] = {"LM": lm_list}
-                                            
-                    # Process the next expected line, "ID"
-                    next_line = file.readline()
+                    if check == False:
+                        self.lm_dict[image] = lm_list
+                        self.img_list.append(image)
+                        Landmarks.nested_dict[image_name] = {"LM": lm_list}
                     
-                    if next_line.startswith("ID"):
-                        real_id = str(next_line.strip().split('=')[1])
-                        img_id = Landmarks.check_id_img(real_id, image_name)
+                elif line.startswith("ID"):
+                    real_id = str(line.strip().split('=')[1])
+                    img_id = Landmarks.check_id_img(real_id, image_name)
                         
-                        if check == False:
-                            Landmarks.nested_dict[image_name]["ID"] = img_id
-                    
-                    # Process the next expected line, "SCALE"
-                    next_line = file.readline()
-                    
-                    if next_line.startswith("SCALE"):
-                        scale = next_line.strip().split("=")[1]
-                        if check == False:
-                            Landmarks.nested_dict[image_name]["SCALE"] = scale
+                    if check == False:
+                        Landmarks.nested_dict[image_name]["ID"] = img_id
+    
+                # Process the next expected line, "SCALE"
+        
+                elif line.startswith("SCALE"):
+                    scale = line.strip().split("=")[1]
+                    if check == False:
+                        Landmarks.nested_dict[image_name]["SCALE"] = scale
+                
+                else: 
+                    print(f"Ignoring {line}")
+                    continue
+                
+                
 
         return self.lm_dict, self.img_list, Landmarks.nested_dict
 
@@ -242,21 +240,20 @@ class Landmarks:
                         Landmarks.nested_dict[image_name] = {}
                         Landmarks.nested_dict[image_name]["LM"] = []
 
-                    # Process the next expected line, "ID"
-                    next_line = file.readline()
+              
                     
-                    if next_line.startswith("ID"):
-                        real_id = str(next_line.strip().split('=')[1])
-                        img_id = Landmarks.check_id_img(real_id, image_name)
-                        Landmarks.nested_dict[image_name]["ID"] = img_id
-                    
-                    # Process the next expected line, "SCALE"
-                    next_line = file.readline()
-                    
-                    if next_line.startswith("SCALE"):
-                        scale = next_line.strip().split("=")[1]
-                        Landmarks.nested_dict[image_name]["SCALE"] = scale
-
+                elif next_line.startswith("ID"):
+                    real_id = str(next_line.strip().split('=')[1])
+                    img_id = Landmarks.check_id_img(real_id, image_name)
+                    Landmarks.nested_dict[image_name]["ID"] = img_id
+                      
+                elif next_line.startswith("SCALE"):
+                    scale = next_line.strip().split("=")[1]
+                    Landmarks.nested_dict[image_name]["SCALE"] = scale
+                
+                else: 
+                    print(f"Ignoring {line}")
+                    continue
 
         return self.img_list, Landmarks.nested_dict
     

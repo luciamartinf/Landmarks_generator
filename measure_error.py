@@ -57,7 +57,7 @@ def main():
     
     mean_mre = set.calculate_error(dat, xml)
 
-    shapepred_fun.measure_mae(dat, xml)
+    shapepred_fun.measure_mse(dat, xml)
     
     # Deleting flip_images from work_data path
     utils.delete_files(Landmarks.flip_dir)
