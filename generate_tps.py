@@ -40,11 +40,7 @@ def main():
     add('-i','--input_dir', required=True, 
         help='Path to the input directory containing the target images')
     
-<<<<<<< HEAD
     add('--scale', # required=True, 
-=======
-    add('--scale', required=True, 
->>>>>>> 20d9534cc12ad19cc9008c4bb6b0c80f5626634d
         help='Specify the scale of the images in the input directory. All images must have the same scale.')
     
     add('-o', '--output',  
@@ -54,7 +50,6 @@ def main():
 
     folder = os.path.abspath(args.input_dir)
     folder_name = os.path.basename(folder)
-<<<<<<< HEAD
     
     if args.scale: 
         scale = args.scale
@@ -62,9 +57,6 @@ def main():
         print("\nWARNING: No input scale was specified, assuming SCALE=1")
         scale=1
     
-=======
-    scale = args.scale
->>>>>>> 20d9534cc12ad19cc9008c4bb6b0c80f5626634d
     if args.output:
         output = args.output
     else:
