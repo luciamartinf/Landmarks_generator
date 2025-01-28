@@ -152,7 +152,7 @@ def main():
     # measure_mse(dat, full_xml) 
     
     # Deleting flip_images from work_data path
-    utils.delete_files(Landmarks.flip_dir)
+    # utils.delete_files(Landmarks.flip_dir)
     # Deleting work_data directory
     # Landmarks.del_flipdir()
     

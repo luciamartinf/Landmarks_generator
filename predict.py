@@ -37,7 +37,6 @@ def main():
     model_file = args.model
     model_name = os.path.splitext(os.path.basename(model_file))[0]
 
-    
     # Check that the model exist
     dat = utils.check_predmodel(model_file, work_dir, parser)
     
@@ -45,17 +44,18 @@ def main():
         
         if utils.what_file_type(args.input_file) not in ['.txt', '.tps']:
             
+            
             if not args.scale:
                 # print("\nWARNING: No input file nor scale was specified, assuming SCALE=1")
-                # tpsfile = generate_tps.write_tpsfile(image_dir, f'input_{image_dir}.tps', scale=1)
-                sys.stderr.print("\nERROR: Invalid input file and no scale specified. Unable to proceed with prediction\n")
-                parser.print_help()
-                sys.exit(2)
+                sys.stderr.write("\WARNING: Invalid input file and no scale was specified. Continuing without scale\n")
+                tpsfile = generate_tps.write_tpsfile(image_dir, f'input_{os.path.basename(image_dir)}.tps', scale=False)
+                # parser.print_help()
+                # sys.exit(2)
             
             else:
                 print("\nWARNING: Invalid input file, but scale was specified.")
                 print("Generating a new tps file with specified scale.")
-                tpsfile = generate_tps.write_tpsfile(image_dir, f'input_{image_dir}.tps', scale=args.scale)
+                tpsfile = generate_tps.write_tpsfile(image_dir, f'input_{os.path.basename(image_dir)}.tps', scale=args.scale)
         
         elif Landmarks.check_forlm(args.input_file):
             print("WARNING: This file already contains annotated landmarks")
@@ -65,12 +65,14 @@ def main():
             tpsfile = args.input_file 
     
     elif args.scale: # If not tpsfile check that we can create a tps file
-        tpsfile = generate_tps.write_tpsfile(image_dir, 'input_images.tps', scale = args.scale)
+        tpsfile = generate_tps.write_tpsfile(image_dir, f'input_{os.path.basename(image_dir)}.tps', scale = args.scale)
     
     else:
-        sys.stderr.write("\nERROR: No input file and no scale specified. Unable to proceed with prediction\n")
-        parser.print_help()
-        sys.exit(2)
+        sys.stderr.write("\WARNING: Invalid input file and no scale was specified. Continuing without scale\n")
+        tpsfile = generate_tps.write_tpsfile(image_dir, f'input_{os.path.basename(image_dir)}.tps', scale=False)
+        # sys.stderr.write("\nERROR: No input file and no scale specified. Unable to proceed with prediction\n")
+        # parser.print_help()
+        # sys.exit(2)
     
     if args.output_file:
         output = args.output_file
