@@ -380,6 +380,44 @@ class Landmarks:
 
         return train_xml, test_xml
     
+    def fold_data(self, 
+                train_index, test_index, tag = ['train', 'test']):
+
+        """Splits data in two sets given indexes"""
+
+        train_list = []
+        test_list = []
+
+        train_xml = os.path.join(Landmarks.flip_dir, f'{tag[0]}.xml')
+        test_xml = os.path.join(Landmarks.flip_dir, f'{tag[-1]}.xml')
+
+        start_xml_file(train_xml, tag[0])
+        start_xml_file(test_xml, tag[-1])
+
+        random.shuffle(self.img_list)
+
+        # train_size = int(len(self.img_list) * split_size[0])
+        # print(f'Training with {train_size} images')
+
+        # Add images to each list
+        for i, img in enumerate(self.img_list):
+            if i in train_index:
+                file = train_xml
+                train_list.append(img)
+            elif i in test_index:
+                file = test_xml
+                test_list.append(img)
+            # else:
+            #     print("error")
+            
+            # append image to corresponding xml file
+            append_to_xml_file(file, img, self.lm_dict, Landmarks.flip_dir)
+
+        end_xml_file(train_xml)
+        end_xml_file(test_xml)
+
+        return train_xml, test_xml
+    
 
     def predict_landmarks(self, 
                           model_path, outfile, generate_images=False):
