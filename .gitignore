@@ -1,0 +1,5 @@
+**/*.jpg
+**/*.xml
+**/*.dat
+**/.DS_Store
+.DS_Store
