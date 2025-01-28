@@ -34,7 +34,6 @@ def eval_model(
     eval_file = 'Evaluation.tsv'
     # split_per = [0.6, 0.4]
     kf = KFold(n_splits=5)
-    total_size = len(train_set.img_list)
     
     training_error = []
     validating_error = []
