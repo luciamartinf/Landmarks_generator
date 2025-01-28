@@ -29,6 +29,7 @@ def test_shape_predictor_params(
         https://pyimagesearch.com/2020/01/13/optimizing-dlib-shape-predictor-accuracy-with-find_min_global/
     """
     
+    
     # Create a new val-train split
     train_xml, val_xml = train_set.split_data(tag = ['trn_val', 'validation'])
     
@@ -139,7 +140,7 @@ def find_best_params(
 
     # Define hyperparameters range
     params = OrderedDict([
-        ("tree_depth", (3, 8, True)),
+       ("tree_depth", (3, 8, True)),
         ("nu", (0.001, 0.2, False)),
         ("cascade_depth", (8, 18, True)),
         ("feature_pool_size", (200, 1000, True)),
