@@ -11,7 +11,7 @@ def write_tpsfile(folder, output, scale):
 
     image_extensions = ['.jpg', '.jpeg', '.png', '.bmp', '.tiff'] 
 
-    with open(output, 'w') as f:
+    with open(output, 'a') as f:
         for file in os.listdir(folder):
             basename = os.path.basename(file)
             if os.path.splitext(basename)[-1] in image_extensions:
@@ -19,7 +19,8 @@ def write_tpsfile(folder, output, scale):
                 f.write(f'LM=0\n')
                 f.write(f'IMAGE={basename}\n')
                 f.write(f'ID={image_id}\n')
-                f.write(f'SCALE={scale}\n')
+                if scale:
+                    f.write(f'SCALE={scale}\n')
 
     return output
     
@@ -54,8 +55,8 @@ def main():
     if args.scale: 
         scale = args.scale
     else: 
-        print("\nWARNING: No input scale was specified, assuming SCALE=1")
-        scale=1
+        print("\nWARNING: No input scale was specified")
+        scale=False
     
     if args.output:
         output = args.output

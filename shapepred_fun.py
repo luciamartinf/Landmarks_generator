@@ -232,7 +232,7 @@ def calculate_mae(real_coords, estimated_coords):
     """Calculate Mean Absolute Error manually"""
     
     # Calculate Euclidean distances (errors) between corresponding points
-    errors = np.linalg.norm(real_coords - estimated_coords, axis=1)
+    errors = np.linalg.norm(float(real_coords) - float(estimated_coords), axis=1)
     
     mae = np.mean(errors)
    

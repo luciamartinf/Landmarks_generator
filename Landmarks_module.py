@@ -155,16 +155,16 @@ class Landmarks:
                             lm_list.append([float(landmark_line[0]), float(landmark_line[1])])
                             i+=1
                     
-                    if n_lm != 12: # TODO make generic, not 12
-                        check = True
-                    else: 
-                        check = False
+                    # if n_lm != 12: # TODO make generic, not 12
+                    #     check = True
+                    # else: 
+                    #     check = False
                     
                 elif line.startswith("IMAGE"):
                     image_name = str(line.strip().split('=')[1])
                         
-                    if check == True:
-                        print(f'Image {image_name} has only {n_lm} landmarks annotated')
+                    # if check == True:
+                    #     print(f'Image {image_name} has only {n_lm} landmarks annotated')
                         
                     if flip:
                         try:
@@ -225,30 +225,26 @@ class Landmarks:
                         print(f"WARNING: There are some Landmarks already annotated for this image")
                         # TODO HACER ALGO AL RESPECTO
 
-                    # Process the next expected line, "IMAGE"
-                    next_line = file.readline()
                     
-                    if next_line.startswith("IMAGE"):
-                        image_name = str(next_line.strip().split('=')[1])
+                elif line.startswith("IMAGE"):
+                    image_name = str(line.strip().split('=')[1])
                         
-                        try:
-                            image, image_path = self.flip_image(image_name) # we are flipping the image and saving it in the dictionary we are going to work with  
-                        except:
-                            break
+                    try:
+                        image, image_path = self.flip_image(image_name) # we are flipping the image and saving it in the dictionary we are going to work with  
+                    except:
+                        break
                         
-                        self.img_list.append(image_name)
-                        Landmarks.nested_dict[image_name] = {}
-                        Landmarks.nested_dict[image_name]["LM"] = []
-
-              
+                    self.img_list.append(image_name)
+                    Landmarks.nested_dict[image_name] = {}
+                    Landmarks.nested_dict[image_name]["LM"] = []
                     
-                elif next_line.startswith("ID"):
-                    real_id = str(next_line.strip().split('=')[1])
+                elif line.startswith("ID"):
+                    real_id = str(line.strip().split('=')[1])
                     img_id = Landmarks.check_id_img(real_id, image_name)
                     Landmarks.nested_dict[image_name]["ID"] = img_id
                       
-                elif next_line.startswith("SCALE"):
-                    scale = next_line.strip().split("=")[1]
+                elif line.startswith("SCALE"):
+                    scale = line.strip().split("=")[1]
                     Landmarks.nested_dict[image_name]["SCALE"] = scale
                 
                 else: 
@@ -492,7 +488,9 @@ class Landmarks:
                 
             f.write(f'IMAGE={img}\n')
             f.write(f'ID={Landmarks.nested_dict[img]["ID"]}\n')
-            f.write(f'SCALE={Landmarks.nested_dict[img]["SCALE"]}\n')
+            if "SCALE" in Landmarks.nested_dict[img].keys():
+                f.write(f'SCALE={Landmarks.nested_dict[img]["SCALE"]}\n')
+                
 
     def plot_landmarks(self, 
                        image, img_name, lm_list, folder, mode='dots'):
