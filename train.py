@@ -25,7 +25,7 @@ def preprocessing(lmfile, image_dir):
     input_data = Landmarks(lmfile)
     full_xml_name = os.path.join(Landmarks.work_dir, "all_data.xml")
     full_xml = input_data.write_xml(full_xml_name, 'all_data')
-    train_xml, test_xml = input_data.split_data(split_size=[0.7,0.3])
+    train_xml, test_xml = input_data.split_data(split_size=[0.8,0.2])
     
     return train_xml, test_xml, full_xml
 
@@ -153,7 +153,7 @@ def main():
     # measure_mse(dat, full_xml) 
     
     # Deleting flip_images from work_data path
-    utils.delete_files(Landmarks.flip_dir)
+    # utils.delete_files(Landmarks.flip_dir)
     # Deleting work_data directory
     # Landmarks.del_flipdir()
     

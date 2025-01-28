@@ -155,16 +155,16 @@ class Landmarks:
                             lm_list.append([float(landmark_line[0]), float(landmark_line[1])])
                             i+=1
                     
-                    if n_lm != 12: # TODO make generic, not 12
-                        check = True
-                    else: 
-                        check = False
+                    # if n_lm != 12: # TODO make generic, not 12
+                    #     check = True
+                    # else: 
+                    #     check = False
                     
                 elif line.startswith("IMAGE"):
                     image_name = str(line.strip().split('=')[1])
                         
-                    if check == True:
-                        print(f'Image {image_name} has only {n_lm} landmarks annotated')
+                    # if check == True:
+                    #     print(f'Image {image_name} has only {n_lm} landmarks annotated')
                         
                     if flip:
                         try:
@@ -225,30 +225,26 @@ class Landmarks:
                         print(f"WARNING: There are some Landmarks already annotated for this image")
                         # TODO HACER ALGO AL RESPECTO
 
-                    # Process the next expected line, "IMAGE"
-                    next_line = file.readline()
                     
-                    if next_line.startswith("IMAGE"):
-                        image_name = str(next_line.strip().split('=')[1])
+                elif line.startswith("IMAGE"):
+                    image_name = str(line.strip().split('=')[1])
                         
-                        try:
-                            image, image_path = self.flip_image(image_name) # we are flipping the image and saving it in the dictionary we are going to work with  
-                        except:
-                            break
+                    try:
+                        image, image_path = self.flip_image(image_name) # we are flipping the image and saving it in the dictionary we are going to work with  
+                    except:
+                        break
                         
-                        self.img_list.append(image_name)
-                        Landmarks.nested_dict[image_name] = {}
-                        Landmarks.nested_dict[image_name]["LM"] = []
-
-              
+                    self.img_list.append(image_name)
+                    Landmarks.nested_dict[image_name] = {}
+                    Landmarks.nested_dict[image_name]["LM"] = []
                     
-                elif next_line.startswith("ID"):
-                    real_id = str(next_line.strip().split('=')[1])
+                elif line.startswith("ID"):
+                    real_id = str(line.strip().split('=')[1])
                     img_id = Landmarks.check_id_img(real_id, image_name)
                     Landmarks.nested_dict[image_name]["ID"] = img_id
                       
-                elif next_line.startswith("SCALE"):
-                    scale = next_line.strip().split("=")[1]
+                elif line.startswith("SCALE"):
+                    scale = line.strip().split("=")[1]
                     Landmarks.nested_dict[image_name]["SCALE"] = scale
                 
                 else: 
@@ -380,44 +376,6 @@ class Landmarks:
 
         return train_xml, test_xml
     
-    def fold_data(self, 
-                train_index, test_index, tag = ['train', 'test']):
-
-        """Splits data in two sets given indexes"""
-
-        train_list = []
-        test_list = []
-
-        train_xml = os.path.join(Landmarks.flip_dir, f'{tag[0]}.xml')
-        test_xml = os.path.join(Landmarks.flip_dir, f'{tag[-1]}.xml')
-
-        start_xml_file(train_xml, tag[0])
-        start_xml_file(test_xml, tag[-1])
-
-        random.shuffle(self.img_list)
-
-        # train_size = int(len(self.img_list) * split_size[0])
-        # print(f'Training with {train_size} images')
-
-        # Add images to each list
-        for i, img in enumerate(self.img_list):
-            if i in train_index:
-                file = train_xml
-                train_list.append(img)
-            elif i in test_index:
-                file = test_xml
-                test_list.append(img)
-            # else:
-            #     print("error")
-            
-            # append image to corresponding xml file
-            append_to_xml_file(file, img, self.lm_dict, Landmarks.flip_dir)
-
-        end_xml_file(train_xml)
-        end_xml_file(test_xml)
-
-        return train_xml, test_xml
-    
 
     def predict_landmarks(self, 
                           model_path, outfile, generate_images=False):
@@ -530,7 +488,9 @@ class Landmarks:
                 
             f.write(f'IMAGE={img}\n')
             f.write(f'ID={Landmarks.nested_dict[img]["ID"]}\n')
-            f.write(f'SCALE={Landmarks.nested_dict[img]["SCALE"]}\n')
+            if "SCALE" in Landmarks.nested_dict[img].keys():
+                f.write(f'SCALE={Landmarks.nested_dict[img]["SCALE"]}\n')
+                
 
     def plot_landmarks(self, 
                        image, img_name, lm_list, folder, mode='dots'):
