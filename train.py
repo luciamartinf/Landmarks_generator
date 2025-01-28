@@ -7,7 +7,6 @@ import arg_parse
 import config
 import utils
 from Landmarks_module import Landmarks
-# from shapepred_fun import find_best_params, train_model, measure_mse
 from cv import find_best_params, train_model, measure_mse
 
 
