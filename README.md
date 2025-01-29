@@ -37,6 +37,7 @@ Required Python packages are also listed in [requirements.txt](requirements.txt)
 * matplotlib==3.9.1
 * pillow==10.4.0
 * scipy>=1.13.1
+* scikit-learn>=1.6.1
 
 
 
@@ -48,7 +49,7 @@ Required Python packages are also listed in [requirements.txt](requirements.txt)
 
      ```
      git clone https://github.com/luciamartinf/Landmarks_generator.git
-     cd landmark-generator
+     cd Landmarks-generator/
      ```
 
 3. Install the required dependencies:
@@ -58,6 +59,9 @@ Required Python packages are also listed in [requirements.txt](requirements.txt)
      ```
      or 
      ```
+     conda create -n dlib python=3.9.6
+     conda activate dlib
+     conda config --append channels conda-forge
      conda install --file requirements.txt
      ```
 

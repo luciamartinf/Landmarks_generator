@@ -1,4 +1,4 @@
-**/*.jpg
+# **/*.jpg
 **/*.xml
 **/*.dat
 **/.DS_Store

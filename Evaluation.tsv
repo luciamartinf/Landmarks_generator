@@ -1,3 +1,1 @@
-cpu	Training_size	Testing_size	Tree_depth	cascade_depth	nu	feature_pool_size	num_test_splits	oversampling_amount	training_time	training_error	testing_error	model_size
-10	192	63	6.0	13.0	0.155	400.0	125.0	60.0	120.18670511245728	0.0023973785631180916	81.27571885721531	59182.73828125
-10	192	63	4.0	9.0	0.23116859094840572	313.0	117.0	31.0	31.257740020751953	1.047404898383141	75.48849718720146	11001.4580078125
+cpu	Fold	Training_size	Testing_size	Tree_depth	cascade_depth	nu	feature_pool_size	num_test_splits	oversampling_amount	landmark_relative_padding_mode	training_time	training_error	testing_error	model_size
