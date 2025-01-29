@@ -4,3 +4,4 @@ numpy==1.26.4 #dlib does not support numpy 2
 matplotlib>=3.9.1
 pillow>=10.4.0
 scipy>=1.13.1
+scikit-learn>=1.6.1
