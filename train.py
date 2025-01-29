@@ -123,17 +123,19 @@ def main():
     else:
         params = False
     
+    train_xml, test_xml, full_xml = preprocessing(input_file, image_dir)
+    dat = train(model_name, image_dir, train_xml, work_dir, model_version, params=params, save_params=args.save_params) 
     
-    try: 
+    # try: 
         
-        train_xml, test_xml, full_xml = preprocessing(input_file, image_dir)
-        dat = train(model_name, image_dir, train_xml, work_dir, model_version, params=params, save_params=args.save_params) 
+    #     train_xml, test_xml, full_xml = preprocessing(input_file, image_dir)
+    #     dat = train(model_name, image_dir, train_xml, work_dir, model_version, params=params, save_params=args.save_params) 
     
-    except:
+    # except:
         
-        sys.stderr.write(f"\nERROR: Unable to train model with file {input_file}\n")
-        parser.print_help()
-        sys.exit(2)
+    #     sys.stderr.write(f"\nERROR: Unable to train model with file {input_file}\n")
+    #     parser.print_help()
+    #     sys.exit(2)
     
     
     # Compute training and test errors of the model
