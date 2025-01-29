@@ -19,7 +19,7 @@ k = config.KFOLDS
 def start_eval_file(eval_file):
     with open(eval_file, 'w', newline='') as file:
         writer = csv.writer(file, delimiter='\t')
-        writer.writerow(["cpu","Training_size", "Testing_size", "Tree_depth", "cascade_depth", "nu", "feature_pool_size", "num_test_splits", "oversampling_amount", "training_time", "training_error", "testing_error", "model_size"])
+        writer.writerow(["cpu","Fold","Training_size", "Testing_size", "Tree_depth", "cascade_depth", "nu", "feature_pool_size", "num_test_splits", "oversampling_amount", "landmark_relative_padding_mode", "training_time", "training_error", "testing_error", "model_size"])
 
 
 def eval_model(
@@ -43,7 +43,7 @@ def eval_model(
     
     
     for i, (train_index, test_index) in enumerate(kf.split(train_list)):
-        print(f"Fold {i}:")
+        # print(f"Fold {i}:")
         
         training_size = len(train_index)
         testing_size = len(test_index)
@@ -83,19 +83,28 @@ def eval_model(
       
         training_error.append(dlib.test_shape_predictor(train_xml, temp_dat))
         validating_error.append(dlib.test_shape_predictor(val_xml, temp_dat))
-        trainingError = np.mean(training_error)
-        validatingError = np.mean(validating_error)
+        
+        # display the training and validation errors for the current trial
+        print("[INFO] Train error of all the folds (MSE): {}".format(training_error[-1]))
+        print("[INFO] Validation error of all the folds (MSE): {}".format(validating_error[-1]))
+        sys.stdout.flush()
+        with open(eval_file, 'a', newline='') as file:
+            writer = csv.writer(file, delimiter='\t')
+            writer.writerow([procs, f"{i}/{k}", training_size, testing_size, treeDepth, cascadeDepth, nu, featurePoolSize, numTestSplits, oversamplingAmount, landmark_relative_padding_mode, training_time, training_error[-1], validating_error[-1], model_size])
+        
     
+    trainingError = np.mean(training_error)
+    validatingError = np.mean(validating_error)
     print(options)
     sys.stdout.flush()
 	# display the training and validation errors for the current trial
-    print("[INFO] Train error (MSE): {}".format(np.mean(trainingError)))
-    print("[INFO] Validation error (MSE): {}".format(np.mean(validatingError)))
+    print("[INFO] Train error of all the folds (MSE): {}".format(np.mean(trainingError)))
+    print("[INFO] Validation error of all the folds (MSE): {}".format(np.mean(validatingError)))
     sys.stdout.flush()
     
     with open(eval_file, 'a', newline='') as file:
         writer = csv.writer(file, delimiter='\t')
-        writer.writerow([procs, training_size, testing_size, treeDepth, cascadeDepth, nu, featurePoolSize, numTestSplits, oversamplingAmount, training_time, trainingError, validatingError, model_size])
+        writer.writerow([procs, "mean", training_size, testing_size, treeDepth, cascadeDepth, nu, featurePoolSize, numTestSplits, oversamplingAmount, landmark_relative_padding_mode, training_time, training_error[-1], validating_error[-1], model_size])
     
 	# return the error on the testing set
     return validatingError
