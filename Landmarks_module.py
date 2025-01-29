@@ -12,7 +12,7 @@ from PIL import Image
 from utils import check_make_dir, start_xml_file, end_xml_file, append_to_xml_file, what_file_type
 import utils
 import reorganize_fun
-import shapepred_fun
+import cv
 
 class Landmarks:
     
@@ -376,6 +376,41 @@ class Landmarks:
 
         return train_xml, test_xml
     
+    def fold_data(self, train_index, test_index,
+                   tag = ['train', 'test']):
+
+        """Splits data in two folds"""
+
+        train_list = []
+        test_list = []
+
+        train_xml = os.path.join(Landmarks.flip_dir, f'{tag[0]}.xml')
+        test_xml = os.path.join(Landmarks.flip_dir, f'{tag[-1]}.xml')
+
+        start_xml_file(train_xml, tag[0])
+        start_xml_file(test_xml, tag[-1])
+
+
+        train_size = len(train_index)
+        print(f'Training with {train_size} images')
+
+        # Add images to each list
+        for i, img in enumerate(self.img_list):
+            if i in train_index:
+                file = train_xml
+                train_list.append(img)
+            elif i in test_index:
+                file = test_xml
+                test_list.append(img)
+            
+            # append image to corresponding xml file
+            append_to_xml_file(file, img, self.lm_dict, Landmarks.flip_dir)
+
+        end_xml_file(train_xml)
+        end_xml_file(test_xml)
+
+        return train_xml, test_xml
+    
 
     def predict_landmarks(self, 
                           model_path, outfile, generate_images=False):
@@ -426,10 +461,10 @@ class Landmarks:
             
             pred_shape, optimal_order = reorganize_fun.order_shape(real_shape, pred_array, optimal_order)
             
-            mre = shapepred_fun.measure_mre(real_shape, pred_shape)
+            mre = cv.measure_mre(real_shape, pred_shape)
             all_mre.append(mre)
             
-            mae = shapepred_fun.calculate_mae(real_shape, pred_shape)
+            mae = cv.calculate_mae(real_shape, pred_shape)
             all_mae.append(mae)
 
         all_mre_array = np.array(all_mre)

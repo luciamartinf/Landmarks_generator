@@ -13,6 +13,7 @@ from sklearn.model_selection import KFold
 
 procs = multiprocessing.cpu_count()
 procs = config.PROCS if config.PROCS > 0 else (procs-1) 
+k = config.KFOLDS
 
 
 def start_eval_file(eval_file):
@@ -22,7 +23,7 @@ def start_eval_file(eval_file):
 
 
 def eval_model(
-        treeDepth, nu, cascadeDepth, featurePoolSize, numTestSplits, oversamplingAmount,
+        treeDepth, nu, cascadeDepth, featurePoolSize, numTestSplits, oversamplingAmount, landmark_relative_padding_mode,
         train_set, temp_dat):
     
     """Test parameters with a new split of the data and save results to a file
@@ -32,12 +33,16 @@ def eval_model(
     """
     
     eval_file = 'Evaluation.tsv'
-    # split_per = [0.6, 0.4]
-    kf = KFold(n_splits=5)
+    
+    kf = KFold(n_splits=k)
     
     training_error = []
     validating_error = []
-    for i, (train_index, test_index) in enumerate(kf.split(train_set)):
+    
+    train_list = train_set.img_list
+    
+    
+    for i, (train_index, test_index) in enumerate(kf.split(train_list)):
         print(f"Fold {i}:")
         
         training_size = len(train_index)
@@ -55,15 +60,16 @@ def eval_model(
         options.feature_pool_size = int(featurePoolSize)
         options.num_test_splits = int(numTestSplits)
         options.oversampling_amount = int(oversamplingAmount)
+        options.landmark_relative_padding_mode = int(landmark_relative_padding_mode)
 
         # tell dlib to be verbose when training and utilize our supplied number of threads when training
         options.be_verbose = True	
         options.num_threads = procs
         
         # display the current set of options to our terminal
-        print("[INFO] starting training with another split...")
-        print(options)
-        sys.stdout.flush()
+        # print("[INFO] starting training with another split...")
+        # print(options)
+        # sys.stdout.flush()
 
         start_time = time.time()
         # train the model using the current set of hyperparameters
@@ -80,6 +86,8 @@ def eval_model(
         trainingError = np.mean(training_error)
         validatingError = np.mean(validating_error)
     
+    print(options)
+    sys.stdout.flush()
 	# display the training and validation errors for the current trial
     print("[INFO] Train error (MSE): {}".format(np.mean(trainingError)))
     print("[INFO] Validation error (MSE): {}".format(np.mean(validatingError)))
@@ -102,11 +110,12 @@ def find_best_params(
     # Define hyperparameters range
     params = OrderedDict([
         ("tree_depth", (3, 8, True)),
-        ("nu", (0.001, 0.2, False)),
+        ("nu", (0.01, 0.3, False)),
         ("cascade_depth", (8, 18, True)),
-        ("feature_pool_size", (200, 1000, True)),
-        ("num_test_splits", (20, 300, True)),
+        ("feature_pool_size", (200, 600, True)),
+        ("num_test_splits", (50, 200, True)),
         ("oversampling_amount", (20, 100, True)), # In general we are working with small datasets. 
+        ("landmark_relative_padding_mode", (0,1, True))
     ])    
 
     lower = [v[0] for (k, v) in params.items()]
@@ -114,10 +123,10 @@ def find_best_params(
     isint = [v[2] for (k, v) in params.items()]
 
     fixed_args = (train_set, temp_dat)
-    #test_shape_predictor_params_with_fixed_args = lambda *params: test_shape_predictor_params(*params, *fixed_args)
+
     test_shape_predictor_params_with_fixed_args = lambda *params: eval_model(*params, *fixed_args)
     
-    start_eval_file("eval_3.tsv")
+    start_eval_file("Evaluation.tsv")
     # utilize dlib to optimize our shape predictor hyperparameters
     (bestParams, bestLoss) = dlib.find_min_global(
         test_shape_predictor_params_with_fixed_args,
@@ -150,6 +159,7 @@ def train_model(
     options.feature_pool_size = int(params_list[3])
     options.num_test_splits = int(params_list[4])
     options.oversampling_amount = int(params_list[5])
+    options.landmark_relative_padding_mode = int(params_list[6])
 
     options.be_verbose = True  
     options.num_threads = procs 
