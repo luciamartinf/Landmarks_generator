@@ -72,7 +72,7 @@ def train(
     # Train model
     train_model(dat, train_xml, best_params)
     
-    return dat
+    return dat, best_params
     
 
 def main():
@@ -124,12 +124,18 @@ def main():
         params = False
     
     train_xml, test_xml, full_xml = preprocessing(input_file, image_dir)
-    dat = train(model_name, image_dir, train_xml, work_dir, model_version, params=params, save_params=args.save_params) 
+    
+    # Train model to get performance
+    oos_dat, best_params = train('oos_temp', image_dir, train_xml, work_dir, model_version, params=params, save_params=False) 
+    
+    
+    # Train final model with all data
+    final_dat, final_params = train(model_name, image_dir, full_xml, work_dir, model_version, params=best_params, save_params=args.save_params)
     
     # try: 
         
     #     train_xml, test_xml, full_xml = preprocessing(input_file, image_dir)
-    #     dat = train(model_name, image_dir, train_xml, work_dir, model_version, params=params, save_params=args.save_params) 
+    #     oos_dat = train(model_name, image_dir, train_xml, work_dir, model_version, params=params, save_params=args.save_params) 
     
     # except:
         
@@ -142,22 +148,26 @@ def main():
     print("Calculating Errors of the model")
     
     train_set = Landmarks(train_xml)
-    train_set.calculate_error(dat, train_xml)
-    measure_mse(dat, train_xml) 
+    train_set.calculate_error(oos_dat, train_xml)
+    measure_mse(oos_dat, train_xml) 
     
     test_set = Landmarks(test_xml)
-    test_set.calculate_error(dat, test_xml)
-    # measure_mse(dat, test_xml) 
+    test_set.calculate_error(oos_dat, test_xml)
+    # measure_mse(oos_dat, test_xml) 
     
     # This is just useful for me
     # full_set = Landmarks(full_xml)
-    # full_set.calculate_error(dat)
-    # measure_mse(dat, full_xml) 
+    # full_set.calculate_error(oos_dat)
+    # measure_mse(oos_dat, full_xml) 
+    
+    
     
     # Deleting flip_images from work_data path
-    # utils.delete_files(Landmarks.flip_dir)
+    utils.delete_files(Landmarks.flip_dir)
     # Deleting work_data directory
-    # Landmarks.del_flipdir()
+    Landmarks.del_flipdir()
+    # Delete oos_model
+    os.remove(oos_dat)
     
     print("Done!")
         
