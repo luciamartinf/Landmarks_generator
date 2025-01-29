@@ -70,8 +70,8 @@ There are two main scripts that perform two different steps:
 - `predict.py` is used for extracting landmarks on new images.  
 
 
-_The [example](example) directory contains some the files required and generated after running the examples commands._
-_To run the example commands `cd example`_
+_The [example_carabus](example_carabus) directory contains some the files required and generated after running the example_carabuss commands._
+_To run the example_carabus commands `cd example_carabus`_
 
 
 
@@ -79,23 +79,23 @@ _To run the example commands `cd example`_
 
 To train a model we need some images that already have annotated landmarks. For basic usage of `train.py` we need:  
 
-- A '_*.tps_' file with manually annotated landmarks (`-f, --input_file` option; e.g., [Carabus_pronotum_train.txt](example/Carabus_pronotum_train.txt))
-- A directory containing the images referenced in the '_*.tps_' file (`-i, --input_dir` option; e.g., [data](example/data)). Allowed image file formats are _.jpg, .jpeg, .png, .tiff_ or _.bmp_.
+- A '_*.tps_' file with manually annotated landmarks (`-f, --input_file` option; e.g., [Carabus_pronotum_train.txt](example_carabus/Carabus_pronotum_train.txt))
+- A directory containing the images referenced in the '_*.tps_' file (`-i, --input_dir` option; e.g., [images](example_carabus/images)). Allowed image file formats are _.jpg, .jpeg, .png, .tiff_ or _.bmp_.
 - A name for the model (`-m, --model` option)
 
 Additionally, we can specify the output directory (`--output_dir` option).
 
-Therefore, the following command will generate a shape predictor model ([carabus.dat](example/carabus.dat)) that can be used to extract the fixed landmarks from other _Carabus banonii_ images.
+Therefore, the following command will generate a shape predictor model ([carabus.dat](example_carabus/carabus.dat)) that can be used to extract the fixed landmarks from other _Carabus banonii_ images.
 
 ```
-python train.py --input_file example/Carabus_pronotum_train.txt --input_dir example/data --model carabus --output_dir example/ 
+python train.py --input_file example_carabus/Carabus_pronotum_train.txt --input_dir example_carabus/images --model carabus --output_dir example_carabus/ 
 ```
 
 **Input parameters**
 
 * **`-f FILE`, `--input_file FILE`**
 
-    &nbsp;&nbsp;&nbsp;&nbsp; Path to the input *[.tps / .txt](example/Carabus_pronotum_train.txt)* or *[.xml](example/all_data.xml)* file with annotated landmarks. Required
+    &nbsp;&nbsp;&nbsp;&nbsp; Path to the input *[.tps / .txt](example_carabus/Carabus_pronotum_train.txt)* or *[.xml](example_carabus/all_data.xml)* file with annotated landmarks. Required
 
 * **`-i DIR`, `--input_dir DIR`**
 
@@ -103,7 +103,7 @@ python train.py --input_file example/Carabus_pronotum_train.txt --input_dir exam
 
 * `--params FILE`
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Path to a _.txt_ file containing predefined hyperparameters for training the model (e.g., [params_carabus.txt](example/params_carabus.txt)). 
+     &nbsp;&nbsp;&nbsp;&nbsp; Path to a _.txt_ file containing predefined hyperparameters for training the model (e.g., [params_carabus.txt](example_carabus/params_carabus.txt)). 
      &nbsp;&nbsp;&nbsp;&nbsp; If not specified, the script will optimize hyperparameters automatically. Take into consideration that this can be time-consuming. 
 
 
@@ -124,7 +124,7 @@ python train.py --input_file example/Carabus_pronotum_train.txt --input_dir exam
 
 * `--save_params`
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Save optimized hyperparameters in a new '[params_{model_name}.txt](example/params_carabus.txt)' file for future use e.g., when retraining a model with more images.
+     &nbsp;&nbsp;&nbsp;&nbsp; Save optimized hyperparameters in a new '[params_{model_name}.txt](example_carabus/params_carabus.txt)' file for future use e.g., when retraining a model with more images.
 
 **Configuration file** 
 
@@ -139,22 +139,22 @@ python train.py --input_file example/Carabus_pronotum_train.txt --input_dir exam
 
 Once we have a trained model, we can use it to extract fixed landmarks on new images that depict the same biological structure. For basic usage, we need: 
 
--  A model file (`-m, --model` option; e.g., [carabus.dat](example/carabus.dat))
+-  A model file (`-m, --model` option; e.g., [carabus.dat](example_carabus/carabus.dat))
 
--  A directory containing the target images (`-i, --input_dir` option; e.g., [data](example/data))
+-  A directory containing the target images (`-i, --input_dir` option; e.g., [images](example_carabus/images))
 
 Additionally, `predict.py` also takes as input one of the followings options: 
 
 1. If all images are in the same scale, the user can use the `--scale` option and a landmarks-empty _*.tps_ file will be automatically generated. 
 
 ```
-python predict.py --input_dir example/data --model example/carabus.dat --scale 0.000394 --output_dir example/
+python predict.py --input_dir example_carabus/images --model example_carabus/carabus.dat --scale 0.000394 --output_dir example_carabus/
 ```
 
-2. Otherwise, a landmarks-empty _*.tps*_ file (e.g., [Carabus_pronotum_pred.txt](example/Carabus_pronotum_pred.txt)) should be generated manually using TpsDIG. The user can then specify  the input with the `-f, --input_file` option. _ask Danae and Giannis how to do this with TpsDIG_
+2. Otherwise, a landmarks-empty _*.tps*_ file (e.g., [Carabus_pronotum_pred.txt](example_carabus/Carabus_pronotum_pred.txt)) should be generated manually using TpsDIG. The user can then specify  the input with the `-f, --input_file` option. _ask Danae and Giannis how to do this with TpsDIG_
 
 ```
-python predict.py --input_dir example/data --model example/carabus.dat --input_file example/Carabus_pronotum_pred.txt --output_dir example/ 
+python predict.py --input_dir example_carabus/images --model example_carabus/carabus.dat --input_file example_carabus/Carabus_pronotum_pred.txt --output_dir example_carabus/ 
 ```
 
 
@@ -166,7 +166,7 @@ python predict.py --input_dir example/data --model example/carabus.dat --input_f
 
 * **`-m FILE`, `--model FILE`**
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Path to the trained model; e.g., a _.dat_ file like [carabus.dat](example/carabus.dat). Required
+     &nbsp;&nbsp;&nbsp;&nbsp; Path to the trained model; e.g., a _.dat_ file like [carabus.dat](example_carabus/carabus.dat). Required
 
 Moreover, depending on the input data, the user needs to choose one of the following input options:
 
@@ -179,7 +179,7 @@ Moreover, depending on the input data, the user needs to choose one of the follo
 
 2. **`-f FILE`, `--input_file FILE`**
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Provide a reference landmarks-empty _*.tps_ file (e.g.,  [Carabus_pronotum_pred.txt](example/Carabus_pronotum_pred.txt)). 
+     &nbsp;&nbsp;&nbsp;&nbsp; Provide a reference landmarks-empty _*.tps_ file (e.g.,  [Carabus_pronotum_pred.txt](example_carabus/Carabus_pronotum_pred.txt)). 
      &nbsp;&nbsp;&nbsp;&nbsp; This option is required when the images in the input directory don't have the same scale.
 
 
@@ -192,7 +192,7 @@ Moreover, depending on the input data, the user needs to choose one of the follo
 * `--output_file OUTPUT`
 
      &nbsp;&nbsp;&nbsp;&nbsp; Name of the output _*.tps_ file that will contain all predicted landmarks. 
-     &nbsp;&nbsp;&nbsp;&nbsp; By default it will use the model name as '{model_basename}_landmarks.tps' (e.g., [carabus_landmarks.tps](example/carabus_landmarks/carabus_landmarks.tps).
+     &nbsp;&nbsp;&nbsp;&nbsp; By default it will use the model name as '{model_basename}_landmarks.tps' (e.g., [carabus_landmarks.tps](example_carabus/carabus_landmarks/carabus_landmarks.tps).
   
 * `--plot [none, dots, numbers]`
 
@@ -208,7 +208,7 @@ We also developed a series of scripts useful throughout the whole shape analysis
 
 #### `delete_specimens.py`
 
-Sometimes we need to remove some specimens entry from a **.tps* file. Maybe because the automatically annotated landmarks are not accurate or because we don't want to consider these specimens for further analysis. This script will help the user to create a new _*.tps_ file without the specified individuals. To do this, the user needs to create a _.txt_ file containing a line-separated list of the images to delete (e.g., [del_list.txt](example/del_list.txt)). 
+Sometimes we need to remove some specimens entry from a **.tps* file. Maybe because the automatically annotated landmarks are not accurate or because we don't want to consider these specimens for further analysis. This script will help the user to create a new _*.tps_ file without the specified individuals. To do this, the user needs to create a _.txt_ file containing a line-separated list of the images to delete (e.g., [del_list.txt](example_carabus/del_list.txt)). 
 
 **Usage**
 
@@ -314,9 +314,9 @@ This script is used to evaluate the performance of a trained model. It takes as 
 ```
 python measure_error.py -f INPUT_FILE -i INPUT_DIR -m MODEL 
 ```
-**Example**
+**example_carabus**
 ```
-python measure_error.py -f example/all_data.xml -i example/data -m example/carabus.dat 
+python measure_error.py -f example_carabus/all_data.xml -i example_carabus/images -m example_carabus/carabus.dat 
 ```
 
 **Arguments:**
@@ -331,7 +331,7 @@ python measure_error.py -f example/all_data.xml -i example/data -m example/carab
 
 * `-m FILE`, `--model FILE`
 
-     &nbsp;&nbsp;&nbsp;&nbsp; Path to the trained model, a _.dat_ file like [carabus.dat](example/carabus.dat). Required.
+     &nbsp;&nbsp;&nbsp;&nbsp; Path to the trained model, a _.dat_ file like [carabus.dat](example_carabus/carabus.dat). Required.
 
 
 #### *trial phase* o m`reorganize_coor.py`
