@@ -11,7 +11,7 @@ This tool is particularly useful in the field of geometric morphometrics, where 
 Geometric morphometrics is a powerful approach used in biological studies to analyze and compare the shape and form of biological structures in the context of evolutionary 
 biology and ecology. 
 This procedure includes landmark identification and digitization that serve as reference points for further shape analysis. 
-TpsDIG (Rohlf, F. J. 2006) is a software tool designed for digitizing landmarks directly from digital images and obtaining the coordinates.
+TpsDIG is a software tool designed for digitizing landmarks directly from digital images and obtaining the coordinates.
 However, landmarks representing specific anatomical points are manually placed on the images using tpsDIG or other tools by clicking on the specific points.
 
 Biologists typically need to perform this manual landmarking procedure on hundreds to thousands of photographs, which can be labor-intensive, error-prone, and time-consuming.
@@ -236,7 +236,7 @@ python delete_specimens.py -f INPUT_FILE -l FILE_LIST [-o OUTPUT]
 
 
 
-#### **`generate_tps.py`**
+#### `generate_tps.py`
 
 This script generates a landmarks-empty _*.tps_ file with all the images in a directory. This is a _*.tps_ file with LM=0 and ID, IMAGE and SCALE features that looks as:
 
@@ -335,15 +335,6 @@ python measure_error.py -f example_carabus/all_data.xml -i example_carabus/image
 
      &nbsp;&nbsp;&nbsp;&nbsp; Path to the trained model, a _.dat_ file like [carabus.dat](example_carabus/carabus.dat). Required.
 
-
-#### *trial phase* o m`reorganize_coor.py`
-
-
-
-## References 
-
-Rohlf, F. J. (2006). tpsDig, Digitize Landmarks and Outlines, Version 2.10. Stony Brook, NY: Department of
-Ecology and Evolution, State University of New York.
 
 ## Additional Notes
 
