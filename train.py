@@ -8,7 +8,7 @@ import config
 import utils
 from Landmarks_module import Landmarks
 from cv import find_best_params, train_model, measure_mse
-
+import time
 
 
 def preprocessing(lmfile, image_dir):
@@ -77,6 +77,8 @@ def train(
 
 def main():
     
+    start_time = time.time()
+    
     parser = arg_parse.get_train_parser()
     
     # Reading arguments
@@ -132,6 +134,8 @@ def main():
     # Train final model with all data
     final_dat, final_params = train(model_name, image_dir, full_xml, work_dir, model_version, params=best_params, save_params=args.save_params)
     
+    model_size = os.path.getsize(final_dat) / 1024
+    
     # try: 
         
     #     train_xml, test_xml, full_xml = preprocessing(input_file, image_dir)
@@ -168,8 +172,12 @@ def main():
     Landmarks.del_flipdir()
     # Delete oos_model
     os.remove(oos_dat)
-    
+    end_time = time.time()
     print("Done!")
+    
+    total_time = end_time - start_time
+    print(f"Total time: {total_time}")
+    print(f"Final model size: {model_size}GB")
         
 if __name__ == "__main__":
     main()  
