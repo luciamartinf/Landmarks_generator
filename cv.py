@@ -98,13 +98,13 @@ def eval_model(
     print(options)
     sys.stdout.flush()
 	# display the training and validation errors for the current trial
-    print("[INFO] Train error of all the folds (MSE): {}".format(np.mean(trainingError)))
-    print("[INFO] Validation error of all the folds (MSE): {}".format(np.mean(validatingError)))
+    print("[INFO] Train error of all the folds (MSE): {}".format(trainingError))
+    print("[INFO] Validation error of all the folds (MSE): {}".format(validatingError))
     sys.stdout.flush()
     
     with open(eval_file, 'a', newline='') as file:
         writer = csv.writer(file, delimiter='\t')
-        writer.writerow([procs, "mean", training_size, testing_size, treeDepth, cascadeDepth, nu, featurePoolSize, numTestSplits, oversamplingAmount, landmark_relative_padding_mode, training_time, training_error[-1], validating_error[-1], model_size])
+        writer.writerow([procs, "mean", training_size, testing_size, treeDepth, cascadeDepth, nu, featurePoolSize, numTestSplits, oversamplingAmount, landmark_relative_padding_mode, training_time, trainingError, validatingError, model_size])
     
 	# return the error on the testing set
     return validatingError
