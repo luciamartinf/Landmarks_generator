@@ -74,10 +74,6 @@ There are two main scripts that perform two different steps:
 - `predict.py` is used for extracting landmarks on new images.  
 
 
-_The [example_carabus](example_carabus) directory contains some the files required and generated after running the example_carabuss commands._
-_To run the example_carabus commands `cd example_carabus`_
-
-
 
 ## 1. Training the Model
 
@@ -134,9 +130,11 @@ python train.py --input_file example_carabus/Carabus_pronotum_train.txt --input_
 
 `Config.py`. Can be modified by the user.
 
-     - *PROCS* : Number of threads/cores we'll be using when training our models. -1 will also all available cores of the machine minus 1
+     - *PROCS* : Number of threads we'll be using when training our models. -1 will also all available cores of the machine minus 1
 
-     - *MAX_FUNC_CALLS* : Maximum number of trials we'll be performing when tuning our shape predictor hyperparameters. Higher numbers will result in better predictions but will also highly increase training time
+     - *MAX_FUNC_CALLS* : Maximum number of trials we'll be performing when tuning our shape predictor hyper-parameters. Higher numbers will result in better predictions but will also highly increase training time
+
+     - *KFOLDS: Number of folds of the training set on each of the tuning calls. 
 
 
 ## 2. Predict landmarks
