@@ -1,0 +1,1715 @@
+Training with cascade depth: 13
+Training with tree depth: 6
+Training with 500 trees per cascade level.
+Training with nu: 0.155
+Training with random seed: 
+Training with oversampling amount: 60
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 400
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 125 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+.tps/.txt file with landmarks detected.
+Training with 255 images
+Proceeding with training. Generating oos_temp.dat model. 
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 0.0008726003490401396
+[INFO] Validation error of all the folds (MSE): 78.67252341380204
+Training with cascade depth: 13
+Training with tree depth: 6
+Training with 500 trees per cascade level.
+Training with nu: 0.155
+Training with random seed: 
+Training with oversampling amount: 60
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 400
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 125 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 0.0013089005235602095
+[INFO] Validation error of all the folds (MSE): 92.13637407464644
+Training with cascade depth: 13
+Training with tree depth: 6
+Training with 500 trees per cascade level.
+Training with nu: 0.155
+Training with random seed: 
+Training with oversampling amount: 60
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 400
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 125 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 0.002181500872600349
+[INFO] Validation error of all the folds (MSE): 68.78918661693488
+Training with cascade depth: 13
+Training with tree depth: 6
+Training with 500 trees per cascade level.
+Training with nu: 0.155
+Training with random seed: 
+Training with oversampling amount: 60
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 400
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 125 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 192 images
+[INFO] Train error of all the folds (MSE): 0.004774305555555556
+[INFO] Validation error of all the folds (MSE): 78.31426844639722
+shape_predictor_training_options(be_verbose=1, cascade_depth=13, tree_depth=6, num_trees_per_cascade_level=500, nu=0.155, oversampling_amount=60, oversampling_translation_jitter=0, feature_pool_size=400, lambda_param=0.1, num_test_splits=125, feature_pool_region_padding=0, random_seed=, num_threads=36, landmark_relative_padding_mode=1)
+[INFO] Train error of all the folds (MSE): 0.0022843268251890635
+[INFO] Validation error of all the folds (MSE): 79.47808813794515
+Training with cascade depth: 9
+Training with tree depth: 4
+Training with 500 trees per cascade level.
+Training with nu: 0.231169
+Training with random seed: 
+Training with oversampling amount: 31
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 313
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 117 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 1.0638949172377061
+[INFO] Validation error of all the folds (MSE): 75.40956810910068
+Training with cascade depth: 9
+Training with tree depth: 4
+Training with 500 trees per cascade level.
+Training with nu: 0.231169
+Training with random seed: 
+Training with oversampling amount: 31
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 313
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 117 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 1.0198103998953325
+[INFO] Validation error of all the folds (MSE): 80.92843633857395
+Training with cascade depth: 9
+Training with tree depth: 4
+Training with 500 trees per cascade level.
+Training with nu: 0.231169
+Training with random seed: 
+Training with oversampling amount: 31
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 313
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 117 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 1.0708423981431605
+[INFO] Validation error of all the folds (MSE): 72.90856582077873
+Training with cascade depth: 9
+Training with tree depth: 4
+Training with 500 trees per cascade level.
+Training with nu: 0.231169
+Training with random seed: 
+Training with oversampling amount: 31
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 313
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 117 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 192 images
+[INFO] Train error of all the folds (MSE): 1.0982299016443424
+[INFO] Validation error of all the folds (MSE): 73.47021388738386
+shape_predictor_training_options(be_verbose=1, cascade_depth=9, tree_depth=4, num_trees_per_cascade_level=500, nu=0.231169, oversampling_amount=31, oversampling_translation_jitter=0, feature_pool_size=313, lambda_param=0.1, num_test_splits=117, feature_pool_region_padding=0, random_seed=, num_threads=36, landmark_relative_padding_mode=1)
+[INFO] Train error of all the folds (MSE): 1.0631944042301353
+[INFO] Validation error of all the folds (MSE): 75.6791960389593
+Training with cascade depth: 16
+Training with tree depth: 6
+Training with 500 trees per cascade level.
+Training with nu: 0.166107
+Training with random seed: 
+Training with oversampling amount: 47
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 574
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 154 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 0.0
+[INFO] Validation error of all the folds (MSE): 88.53287558709746
+Training with cascade depth: 16
+Training with tree depth: 6
+Training with 500 trees per cascade level.
+Training with nu: 0.166107
+Training with random seed: 
+Training with oversampling amount: 47
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 574
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 154 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 0.0
+[INFO] Validation error of all the folds (MSE): 100.47296128185015
+Training with cascade depth: 16
+Training with tree depth: 6
+Training with 500 trees per cascade level.
+Training with nu: 0.166107
+Training with random seed: 
+Training with oversampling amount: 47
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 574
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 154 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 0.0
+[INFO] Validation error of all the folds (MSE): 87.91082684381077
+Training with cascade depth: 16
+Training with tree depth: 6
+Training with 500 trees per cascade level.
+Training with nu: 0.166107
+Training with random seed: 
+Training with oversampling amount: 47
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 574
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 154 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 192 images
+[INFO] Train error of all the folds (MSE): 0.0
+[INFO] Validation error of all the folds (MSE): 79.67427193437477
+shape_predictor_training_options(be_verbose=1, cascade_depth=16, tree_depth=6, num_trees_per_cascade_level=500, nu=0.166107, oversampling_amount=47, oversampling_translation_jitter=0, feature_pool_size=574, lambda_param=0.1, num_test_splits=154, feature_pool_region_padding=0, random_seed=, num_threads=36, landmark_relative_padding_mode=1)
+[INFO] Train error of all the folds (MSE): 0.0
+[INFO] Validation error of all the folds (MSE): 89.14773391178328
+Training with cascade depth: 14
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0895845
+Training with random seed: 
+Training with oversampling amount: 83
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 299
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 7.1608553409746
+[INFO] Validation error of all the folds (MSE): 41.1719562680452
+Training with cascade depth: 14
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0895845
+Training with random seed: 
+Training with oversampling amount: 83
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 299
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 6.595545045917632
+[INFO] Validation error of all the folds (MSE): 47.70201094267566
+Training with cascade depth: 14
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0895845
+Training with random seed: 
+Training with oversampling amount: 83
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 299
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 7.141507430514581
+[INFO] Validation error of all the folds (MSE): 39.08120691004152
+Training with cascade depth: 14
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0895845
+Training with random seed: 
+Training with oversampling amount: 83
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 299
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 192 images
+[INFO] Train error of all the folds (MSE): 7.158118888966562
+[INFO] Validation error of all the folds (MSE): 38.38470277375227
+shape_predictor_training_options(be_verbose=1, cascade_depth=14, tree_depth=3, num_trees_per_cascade_level=500, nu=0.0895845, oversampling_amount=83, oversampling_translation_jitter=0, feature_pool_size=299, lambda_param=0.1, num_test_splits=75, feature_pool_region_padding=0, random_seed=, num_threads=36, landmark_relative_padding_mode=1)
+[INFO] Train error of all the folds (MSE): 7.014006676593343
+[INFO] Validation error of all the folds (MSE): 41.58496922362866
+Training with cascade depth: 12
+Training with tree depth: 6
+Training with 500 trees per cascade level.
+Training with nu: 0.277658
+Training with random seed: 
+Training with oversampling amount: 42
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 0
+Training with feature pool size: 393
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 136 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 0.0
+[INFO] Validation error of all the folds (MSE): 124.98354180724827
+Training with cascade depth: 12
+Training with tree depth: 6
+Training with 500 trees per cascade level.
+Training with nu: 0.277658
+Training with random seed: 
+Training with oversampling amount: 42
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 0
+Training with feature pool size: 393
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 136 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 0.0
+[INFO] Validation error of all the folds (MSE): 132.76957646945633
+Training with cascade depth: 12
+Training with tree depth: 6
+Training with 500 trees per cascade level.
+Training with nu: 0.277658
+Training with random seed: 
+Training with oversampling amount: 42
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 0
+Training with feature pool size: 393
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 136 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 0.0
+[INFO] Validation error of all the folds (MSE): 128.58294335234498
+Training with cascade depth: 12
+Training with tree depth: 6
+Training with 500 trees per cascade level.
+Training with nu: 0.277658
+Training with random seed: 
+Training with oversampling amount: 42
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 0
+Training with feature pool size: 393
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 136 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 192 images
+[INFO] Train error of all the folds (MSE): 0.0
+[INFO] Validation error of all the folds (MSE): 108.77595453763391
+shape_predictor_training_options(be_verbose=1, cascade_depth=12, tree_depth=6, num_trees_per_cascade_level=500, nu=0.277658, oversampling_amount=42, oversampling_translation_jitter=0, feature_pool_size=393, lambda_param=0.1, num_test_splits=136, feature_pool_region_padding=0, random_seed=, num_threads=36, landmark_relative_padding_mode=0)
+[INFO] Train error of all the folds (MSE): 0.0
+[INFO] Validation error of all the folds (MSE): 123.77800404167087
+Training with cascade depth: 9
+Training with tree depth: 6
+Training with 500 trees per cascade level.
+Training with nu: 0.121508
+Training with random seed: 
+Training with oversampling amount: 31
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 308
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 58 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 0.034212135062117406
+[INFO] Validation error of all the folds (MSE): 94.04885464804634
+Training with cascade depth: 9
+Training with tree depth: 6
+Training with 500 trees per cascade level.
+Training with nu: 0.121508
+Training with random seed: 
+Training with oversampling amount: 31
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 308
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 58 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 0.030721733665956846
+[INFO] Validation error of all the folds (MSE): 97.7717023444557
+Training with cascade depth: 9
+Training with tree depth: 6
+Training with 500 trees per cascade level.
+Training with nu: 0.121508
+Training with random seed: 
+Training with oversampling amount: 31
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 308
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 58 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 0.029412833142396635
+[INFO] Validation error of all the folds (MSE): 85.25973509053999
+Training with cascade depth: 9
+Training with tree depth: 6
+Training with 500 trees per cascade level.
+Training with nu: 0.121508
+Training with random seed: 
+Training with oversampling amount: 31
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 308
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 58 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 192 images
+[INFO] Train error of all the folds (MSE): 0.023871527777777776
+[INFO] Validation error of all the folds (MSE): 78.93578254092067
+shape_predictor_training_options(be_verbose=1, cascade_depth=9, tree_depth=6, num_trees_per_cascade_level=500, nu=0.121508, oversampling_amount=31, oversampling_translation_jitter=0, feature_pool_size=308, lambda_param=0.1, num_test_splits=58, feature_pool_region_padding=0, random_seed=, num_threads=36, landmark_relative_padding_mode=1)
+[INFO] Train error of all the folds (MSE): 0.029554557412062164
+[INFO] Validation error of all the folds (MSE): 89.00401865599068
+Training with cascade depth: 16
+Training with tree depth: 6
+Training with 500 trees per cascade level.
+Training with nu: 0.04658
+Training with random seed: 
+Training with oversampling amount: 82
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 245
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 109 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 1.3645613377659123
+[INFO] Validation error of all the folds (MSE): 59.695905711968464
+Training with cascade depth: 16
+Training with tree depth: 6
+Training with 500 trees per cascade level.
+Training with nu: 0.04658
+Training with random seed: 
+Training with oversampling amount: 82
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 245
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 109 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 1.346454145734394
+[INFO] Validation error of all the folds (MSE): 61.078591894059805
+Training with cascade depth: 16
+Training with tree depth: 6
+Training with 500 trees per cascade level.
+Training with nu: 0.04658
+Training with random seed: 
+Training with oversampling amount: 82
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 245
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 109 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 1.3946013577772298
+[INFO] Validation error of all the folds (MSE): 43.64632058576498
+Training with cascade depth: 16
+Training with tree depth: 6
+Training with 500 trees per cascade level.
+Training with nu: 0.04658
+Training with random seed: 
+Training with oversampling amount: 82
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 245
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 109 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 192 images
+[INFO] Train error of all the folds (MSE): 1.4338926972183004
+[INFO] Validation error of all the folds (MSE): 46.71093252248184
+shape_predictor_training_options(be_verbose=1, cascade_depth=16, tree_depth=6, num_trees_per_cascade_level=500, nu=0.04658, oversampling_amount=82, oversampling_translation_jitter=0, feature_pool_size=245, lambda_param=0.1, num_test_splits=109, feature_pool_region_padding=0, random_seed=, num_threads=36, landmark_relative_padding_mode=1)
+[INFO] Train error of all the folds (MSE): 1.384877384623959
+[INFO] Validation error of all the folds (MSE): 52.78293767856877
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.029755
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 8.958021988253103
+[INFO] Validation error of all the folds (MSE): 36.77106075664187
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.029755
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 7.881964414778771
+[INFO] Validation error of all the folds (MSE): 48.39047826506576
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.029755
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 8.772174829315036
+[INFO] Validation error of all the folds (MSE): 39.654652074809924
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.029755
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 192 images
+[INFO] Train error of all the folds (MSE): 8.900396451538308
+[INFO] Validation error of all the folds (MSE): 38.08972069135775
+shape_predictor_training_options(be_verbose=1, cascade_depth=16, tree_depth=3, num_trees_per_cascade_level=500, nu=0.029755, oversampling_amount=88, oversampling_translation_jitter=0, feature_pool_size=475, lambda_param=0.1, num_test_splits=75, feature_pool_region_padding=0, random_seed=, num_threads=36, landmark_relative_padding_mode=1)
+[INFO] Train error of all the folds (MSE): 8.628139420971303
+[INFO] Validation error of all the folds (MSE): 40.72647794696882
+Training with cascade depth: 9
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0165416
+Training with random seed: 
+Training with oversampling amount: 71
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 269
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 198 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 24.334318791813352
+[INFO] Validation error of all the folds (MSE): 45.46043617688192
+Training with cascade depth: 9
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0165416
+Training with random seed: 
+Training with oversampling amount: 71
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 269
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 198 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 22.724909433180954
+[INFO] Validation error of all the folds (MSE): 46.24796833784324
+Training with cascade depth: 9
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0165416
+Training with random seed: 
+Training with oversampling amount: 71
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 269
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 198 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 25.214087190720925
+[INFO] Validation error of all the folds (MSE): 41.79774121163762
+Training with cascade depth: 9
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0165416
+Training with random seed: 
+Training with oversampling amount: 71
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 269
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 198 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 192 images
+[INFO] Train error of all the folds (MSE): 24.969281986631184
+[INFO] Validation error of all the folds (MSE): 46.05717300446114
+shape_predictor_training_options(be_verbose=1, cascade_depth=9, tree_depth=3, num_trees_per_cascade_level=500, nu=0.0165416, oversampling_amount=71, oversampling_translation_jitter=0, feature_pool_size=269, lambda_param=0.1, num_test_splits=198, feature_pool_region_padding=0, random_seed=, num_threads=36, landmark_relative_padding_mode=1)
+[INFO] Train error of all the folds (MSE): 24.310649350586605
+[INFO] Validation error of all the folds (MSE): 44.89082968270598
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.01
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 21.779848859696276
+[INFO] Validation error of all the folds (MSE): 39.93274472839881
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.01
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 19.889413279170874
+[INFO] Validation error of all the folds (MSE): 49.044605974038454
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.01
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 22.06426031093009
+[INFO] Validation error of all the folds (MSE): 41.09283594744844
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.01
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 192 images
+[INFO] Train error of all the folds (MSE): 21.846895196231685
+[INFO] Validation error of all the folds (MSE): 42.21732115219452
+shape_predictor_training_options(be_verbose=1, cascade_depth=16, tree_depth=3, num_trees_per_cascade_level=500, nu=0.01, oversampling_amount=88, oversampling_translation_jitter=0, feature_pool_size=475, lambda_param=0.1, num_test_splits=75, feature_pool_region_padding=0, random_seed=, num_threads=36, landmark_relative_padding_mode=1)
+[INFO] Train error of all the folds (MSE): 21.395104411507234
+[INFO] Validation error of all the folds (MSE): 43.07187695052006
+Training with cascade depth: 9
+Training with tree depth: 5
+Training with 500 trees per cascade level.
+Training with nu: 0.0528993
+Training with random seed: 
+Training with oversampling amount: 89
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 543
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 54 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 4.863979549455196
+[INFO] Validation error of all the folds (MSE): 43.973041860014746
+Training with cascade depth: 9
+Training with tree depth: 5
+Training with 500 trees per cascade level.
+Training with nu: 0.0528993
+Training with random seed: 
+Training with oversampling amount: 89
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 543
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 54 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 4.777190115990645
+[INFO] Validation error of all the folds (MSE): 53.645351982780085
+Training with cascade depth: 9
+Training with tree depth: 5
+Training with 500 trees per cascade level.
+Training with nu: 0.0528993
+Training with random seed: 
+Training with oversampling amount: 89
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 543
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 54 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 5.08388671211032
+[INFO] Validation error of all the folds (MSE): 38.28936595762475
+Training with cascade depth: 9
+Training with tree depth: 5
+Training with 500 trees per cascade level.
+Training with nu: 0.0528993
+Training with random seed: 
+Training with oversampling amount: 89
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 543
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 54 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 192 images
+[INFO] Train error of all the folds (MSE): 5.043312346089038
+[INFO] Validation error of all the folds (MSE): 42.04326603658728
+shape_predictor_training_options(be_verbose=1, cascade_depth=9, tree_depth=5, num_trees_per_cascade_level=500, nu=0.0528993, oversampling_amount=89, oversampling_translation_jitter=0, feature_pool_size=543, lambda_param=0.1, num_test_splits=54, feature_pool_region_padding=0, random_seed=, num_threads=36, landmark_relative_padding_mode=1)
+[INFO] Train error of all the folds (MSE): 4.9420921809113
+[INFO] Validation error of all the folds (MSE): 44.48775645925171
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0289324
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 9.274397151733856
+[INFO] Validation error of all the folds (MSE): 37.32138394020278
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0289324
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 8.216429562619334
+[INFO] Validation error of all the folds (MSE): 49.19714215903415
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0289324
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 9.01376289601912
+[INFO] Validation error of all the folds (MSE): 39.291970903631444
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0289324
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 192 images
+[INFO] Train error of all the folds (MSE): 8.918477957046814
+[INFO] Validation error of all the folds (MSE): 37.9839563903122
+shape_predictor_training_options(be_verbose=1, cascade_depth=16, tree_depth=3, num_trees_per_cascade_level=500, nu=0.0289324, oversampling_amount=88, oversampling_translation_jitter=0, feature_pool_size=475, lambda_param=0.1, num_test_splits=75, feature_pool_region_padding=0, random_seed=, num_threads=36, landmark_relative_padding_mode=1)
+[INFO] Train error of all the folds (MSE): 8.855766891854781
+[INFO] Validation error of all the folds (MSE): 40.94861334829514
+Training with cascade depth: 12
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0157379
+Training with random seed: 
+Training with oversampling amount: 98
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 295
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 68 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 21.357061417999322
+[INFO] Validation error of all the folds (MSE): 41.54379959725596
+Training with cascade depth: 12
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0157379
+Training with random seed: 
+Training with oversampling amount: 98
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 295
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 68 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 20.01018375609603
+[INFO] Validation error of all the folds (MSE): 49.78504335196698
+Training with cascade depth: 12
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0157379
+Training with random seed: 
+Training with oversampling amount: 98
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 295
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 68 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 21.92991674939217
+[INFO] Validation error of all the folds (MSE): 42.06221938559879
+Training with cascade depth: 12
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0157379
+Training with random seed: 
+Training with oversampling amount: 98
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 295
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 68 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 192 images
+[INFO] Train error of all the folds (MSE): 21.789281596848475
+[INFO] Validation error of all the folds (MSE): 41.39837642387437
+shape_predictor_training_options(be_verbose=1, cascade_depth=12, tree_depth=3, num_trees_per_cascade_level=500, nu=0.0157379, oversampling_amount=98, oversampling_translation_jitter=0, feature_pool_size=295, lambda_param=0.1, num_test_splits=68, feature_pool_region_padding=0, random_seed=, num_threads=36, landmark_relative_padding_mode=1)
+[INFO] Train error of all the folds (MSE): 21.271610880083998
+[INFO] Validation error of all the folds (MSE): 43.69735968967402
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0886318
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 5.435429651036745
+[INFO] Validation error of all the folds (MSE): 43.22638424278393
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0886318
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 5.1092268816477455
+[INFO] Validation error of all the folds (MSE): 46.90702005865183
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0886318
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 5.530900856098273
+[INFO] Validation error of all the folds (MSE): 36.90490848131783
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0886318
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 192 images
+[INFO] Train error of all the folds (MSE): 5.3146294521753035
+[INFO] Validation error of all the folds (MSE): 36.84132845409271
+shape_predictor_training_options(be_verbose=1, cascade_depth=16, tree_depth=3, num_trees_per_cascade_level=500, nu=0.0886318, oversampling_amount=88, oversampling_translation_jitter=0, feature_pool_size=475, lambda_param=0.1, num_test_splits=75, feature_pool_region_padding=0, random_seed=, num_threads=36, landmark_relative_padding_mode=1)
+[INFO] Train error of all the folds (MSE): 5.347546710239516
+[INFO] Validation error of all the folds (MSE): 40.96991030921158
+Training with cascade depth: 9
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0178742
+Training with random seed: 
+Training with oversampling amount: 95
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 296
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 184 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 22.776172404591584
+[INFO] Validation error of all the folds (MSE): 40.654285243356426
+Training with cascade depth: 9
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0178742
+Training with random seed: 
+Training with oversampling amount: 95
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 296
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 184 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 21.779496675126403
+[INFO] Validation error of all the folds (MSE): 50.37655144930927
+Training with cascade depth: 9
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0178742
+Training with random seed: 
+Training with oversampling amount: 95
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 296
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 184 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 23.63274616460913
+[INFO] Validation error of all the folds (MSE): 40.17466771065586
+Training with cascade depth: 9
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0178742
+Training with random seed: 
+Training with oversampling amount: 95
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 296
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 184 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 192 images
+[INFO] Train error of all the folds (MSE): 23.293618220651002
+[INFO] Validation error of all the folds (MSE): 40.58465376188986
+shape_predictor_training_options(be_verbose=1, cascade_depth=9, tree_depth=3, num_trees_per_cascade_level=500, nu=0.0178742, oversampling_amount=95, oversampling_translation_jitter=0, feature_pool_size=296, lambda_param=0.1, num_test_splits=184, feature_pool_region_padding=0, random_seed=, num_threads=36, landmark_relative_padding_mode=1)
+[INFO] Train error of all the folds (MSE): 22.87050836624453
+[INFO] Validation error of all the folds (MSE): 42.94753954130285
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0591934
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 6.482873583805138
+[INFO] Validation error of all the folds (MSE): 39.64916885806681
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0591934
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 5.756486418387381
+[INFO] Validation error of all the folds (MSE): 44.853368280602744
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0591934
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 6.3939729098430185
+[INFO] Validation error of all the folds (MSE): 39.64240429764734
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0591934
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 192 images
+[INFO] Train error of all the folds (MSE): 6.329169279462308
+[INFO] Validation error of all the folds (MSE): 36.380193296126485
+shape_predictor_training_options(be_verbose=1, cascade_depth=16, tree_depth=3, num_trees_per_cascade_level=500, nu=0.0591934, oversampling_amount=88, oversampling_translation_jitter=0, feature_pool_size=475, lambda_param=0.1, num_test_splits=75, feature_pool_region_padding=0, random_seed=, num_threads=36, landmark_relative_padding_mode=1)
+[INFO] Train error of all the folds (MSE): 6.240625547874462
+[INFO] Validation error of all the folds (MSE): 40.131283683110844
+Training with cascade depth: 13
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0479807
+Training with random seed: 
+Training with oversampling amount: 99
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 500
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 90 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 8.28726361894081
+[INFO] Validation error of all the folds (MSE): 42.49727375147598
+Training with cascade depth: 13
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0479807
+Training with random seed: 
+Training with oversampling amount: 99
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 500
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 90 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 7.126256748724492
+[INFO] Validation error of all the folds (MSE): 47.3224768730093
+Training with cascade depth: 13
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0479807
+Training with random seed: 
+Training with oversampling amount: 99
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 500
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 90 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 8.45894838889059
+[INFO] Validation error of all the folds (MSE): 39.115866164978435
+Training with cascade depth: 13
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0479807
+Training with random seed: 
+Training with oversampling amount: 99
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 500
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 90 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 192 images
+[INFO] Train error of all the folds (MSE): 8.374108151096339
+[INFO] Validation error of all the folds (MSE): 38.46371312193544
+shape_predictor_training_options(be_verbose=1, cascade_depth=13, tree_depth=3, num_trees_per_cascade_level=500, nu=0.0479807, oversampling_amount=99, oversampling_translation_jitter=0, feature_pool_size=500, lambda_param=0.1, num_test_splits=90, feature_pool_region_padding=0, random_seed=, num_threads=36, landmark_relative_padding_mode=1)
+[INFO] Train error of all the folds (MSE): 8.061644226913058
+[INFO] Validation error of all the folds (MSE): 41.84983247784979
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0566944
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 6.570345847927308
+[INFO] Validation error of all the folds (MSE): 38.99086991612686
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0566944
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 5.921722485316386
+[INFO] Validation error of all the folds (MSE): 46.31107288635652
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0566944
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 6.376522622871503
+[INFO] Validation error of all the folds (MSE): 40.081200142086225
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0566944
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 192 images
+[INFO] Train error of all the folds (MSE): 6.507920280160935
+[INFO] Validation error of all the folds (MSE): 36.79655809001361
+shape_predictor_training_options(be_verbose=1, cascade_depth=16, tree_depth=3, num_trees_per_cascade_level=500, nu=0.0566944, oversampling_amount=88, oversampling_translation_jitter=0, feature_pool_size=475, lambda_param=0.1, num_test_splits=75, feature_pool_region_padding=0, random_seed=, num_threads=36, landmark_relative_padding_mode=1)
+[INFO] Train error of all the folds (MSE): 6.344127809069033
+[INFO] Validation error of all the folds (MSE): 40.544925258645804
+Training with cascade depth: 9
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0277916
+Training with random seed: 
+Training with oversampling amount: 89
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 207
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 196 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 20.224174648746896
+[INFO] Validation error of all the folds (MSE): 46.56327526772632
+Training with cascade depth: 9
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0277916
+Training with random seed: 
+Training with oversampling amount: 89
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 207
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 196 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 18.38636135566026
+[INFO] Validation error of all the folds (MSE): 46.442335703753024
+Training with cascade depth: 9
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0277916
+Training with random seed: 
+Training with oversampling amount: 89
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 207
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 196 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 20.597564467720527
+[INFO] Validation error of all the folds (MSE): 41.707659017236836
+Training with cascade depth: 9
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.0277916
+Training with random seed: 
+Training with oversampling amount: 89
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 207
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 196 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 192 images
+[INFO] Train error of all the folds (MSE): 20.441334241283435
+[INFO] Validation error of all the folds (MSE): 41.56095949114558
+shape_predictor_training_options(be_verbose=1, cascade_depth=9, tree_depth=3, num_trees_per_cascade_level=500, nu=0.0277916, oversampling_amount=89, oversampling_translation_jitter=0, feature_pool_size=207, lambda_param=0.1, num_test_splits=196, feature_pool_region_padding=0, random_seed=, num_threads=36, landmark_relative_padding_mode=1)
+[INFO] Train error of all the folds (MSE): 19.91235867835278
+[INFO] Validation error of all the folds (MSE): 44.06855736996544
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.066553
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 6.292554414243899
+[INFO] Validation error of all the folds (MSE): 39.35838050680879
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.066553
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 5.513569415519268
+[INFO] Validation error of all the folds (MSE): 43.030735473716504
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.066553
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 191 images
+[INFO] Train error of all the folds (MSE): 6.0341605196885615
+[INFO] Validation error of all the folds (MSE): 39.02040842496202
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.066553
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data/temp.dat
+Training with 192 images
+[INFO] Train error of all the folds (MSE): 6.0161067863726565
+[INFO] Validation error of all the folds (MSE): 36.69766759045751
+shape_predictor_training_options(be_verbose=1, cascade_depth=16, tree_depth=3, num_trees_per_cascade_level=500, nu=0.066553, oversampling_amount=88, oversampling_translation_jitter=0, feature_pool_size=475, lambda_param=0.1, num_test_splits=75, feature_pool_region_padding=0, random_seed=, num_threads=36, landmark_relative_padding_mode=1)
+[INFO] Train error of all the folds (MSE): 5.964097783956096
+[INFO] Validation error of all the folds (MSE): 39.52679799898621
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.066553
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/oos_temp.dat
+Training with cascade depth: 16
+Training with tree depth: 3
+Training with 500 trees per cascade level.
+Training with nu: 0.066553
+Training with random seed: 
+Training with oversampling amount: 88
+Training with oversampling translation jitter: 0
+Training with landmark_relative_padding_mode: 1
+Training with feature pool size: 475
+Training with feature pool region padding: 0
+Training with 36 threads.
+Training with lambda_param: 0.1
+Training with 75 split tests.
+Fitting trees...
+
+Training complete
+Training complete, saved predictor to file /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/carabus.dat
+[INFO] optimal parameters: [3.0, 0.06655300164773854, 16.0, 475.0, 75.0, 88.0, 1.0]
+[INFO] optimal error: 39.52679799898621
+Training final model /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/oos_temp.dat
+Proceeding with training. Generating carabus.dat model. 
+Using parameters from file [3.0, 0.06655300164773854, 16.0, 475.0, 75.0, 88.0, 1.0]
+Training final model /hits/fast/cme/luciamf/Landmarks_generator/example_carabus/carabus.dat
+Calculating Errors of the model
+WARNING: Image flip_Fc1046ind18.jpg may be cropped and negative landmarks are being generated. Setting -4 coordinate to 0
+WARNING: Image flip_Fc328ind14.jpg may be cropped and negative landmarks are being generated. Setting -4 coordinate to 0
+train.xml MRE of the model: oos_temp.dat is 0.005332465135436485
+train.xml MAE of the model: oos_temp.dat is 9.003260928372233
+train.xml MSE of the model: oos_temp.dat is 7.052134419466066
+test.xml MRE of the model: oos_temp.dat is 0.021656634371599093
+test.xml MAE of the model: oos_temp.dat is 38.177007574273816
+Directory '/hits/fast/cme/luciamf/Landmarks_generator/example_carabus/images/work_data' and all its contents have been deleted.
+Done!
+Total time: 17037.3223631382
+Final model size: 9974.3291015625GB
