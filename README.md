@@ -19,20 +19,16 @@ Biologists typically need to perform this manual landmarking procedure on hundre
 To address this, we developed a landmark generator program, a machine learning-based tool capable of generating a shape predictor model. 
 With this model, we can then extract fixed landmarks coordinates in a standardized output format (*.tps) for subsequent shape analysis of biological structures. 
 
-## Table of Contents
-
-...
 
 ## Requirements: 
 
-- Python 3.9+
+- Python 3.9+ and CMake 
 
 **Python modules:**
 
 Required Python packages are also listed in [requirements.txt](requirements.txt).
 
 * dlib==19.24.4
-     - CMake is necessary to install dlib. *link to install cmake*  (directly from cmake.org, the binary version for windows) 
 * numpy==1.26.4 (dlib does not support numpy v2)
 * matplotlib==3.9.1
 * pillow==10.4.0

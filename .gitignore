@@ -1,5 +1,5 @@
 # **/*.jpg
 **/*.xml
-**/*.dat
+# **/*.dat
 **/.DS_Store
 .DS_Store
