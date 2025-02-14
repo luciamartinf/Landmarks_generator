@@ -118,12 +118,12 @@ def find_best_params(
 
     # Define hyperparameters range
     params = OrderedDict([
-        ("tree_depth", (3, 8, True)),
+        ("tree_depth", (2, 8, True)),
         ("nu", (0.01, 0.3, False)),
-        ("cascade_depth", (8, 18, True)),
+        ("cascade_depth", (8, 20, True)),
         ("feature_pool_size", (200, 600, True)),
-        ("num_test_splits", (50, 200, True)),
-        ("oversampling_amount", (20, 100, True)), # In general we are working with small datasets. 
+        ("num_test_splits", (50, 300, True)),
+        ("oversampling_amount", (20, 120, True)), # In general we are working with small datasets. 
         ("landmark_relative_padding_mode", (0,1, True))
     ])    
 
