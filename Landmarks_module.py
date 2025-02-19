@@ -492,7 +492,7 @@ class Landmarks:
         
         all_mae_array = np.array(all_mae)
         mean_mae = all_mae_array.mean()
-        print("{} manual MAE of the model: {} is {}".format(
+        print("{} manual MSE of the model: {} is {}".format(
             os.path.basename(file), os.path.basename(model_path), mean_mae))
         
         all_rmsenorm_array = np.array(all_rmsenorm)
@@ -502,7 +502,7 @@ class Landmarks:
         
         all_convex_array = np.array(all_convex)
         mean_convex = all_convex_array.mean()
-        print("{} MRE of the model: {} is {}".format(
+        print("{} CONVEX of the model: {} is {}".format(
             os.path.basename(file), os.path.basename(model_path), mean_convex))
     
         return errors_dict
