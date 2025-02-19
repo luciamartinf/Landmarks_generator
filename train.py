@@ -161,7 +161,7 @@ def main():
     errors_dict = test_set.calculate_error(oos_dat, test_xml)
     
     utils.write_json(errors_dict, f'errors_{model_name}.json')
-    # measure_mse(oos_dat, test_xml) 
+    measure_mse(oos_dat, test_xml) 
     
     # This is just useful for me
     # full_set = Landmarks(full_xml)

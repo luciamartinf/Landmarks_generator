@@ -242,6 +242,8 @@ def calculate_rmsenorm(real_coords, estimated_coords):
     
     normalized_rmse = rmse / av_centroid
     
+    return normalized_rmse
+    
     
 def convex_hull(real_coords, estimated_coords):
 
@@ -257,7 +259,9 @@ def convex_hull(real_coords, estimated_coords):
     area = hull.volume  # For 2D, volume is the area
 
     # Normalize RMSE
-    normalized_rmse = rmse / np.sqrt(area)
+    convex = rmse / np.sqrt(area)
+    
+    return convex
     
     
 # def procrustes_error(real_coords, estimated_coords):
