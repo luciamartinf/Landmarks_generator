@@ -6,7 +6,7 @@ import numpy as np
 import os
 import dlib
 
-import shapepred_fun
+import cv
 import argparse
 from Landmarks_module import Landmarks
 import utils
@@ -14,9 +14,6 @@ import utils
 
 # TODO: complete this functions with notebook
 # Calculate mean relative error and other types, mean standard deviation ...
-
-
-
 
 
 def main():

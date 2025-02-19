@@ -24,15 +24,16 @@ def start_eval_file(eval_file):
 
 def eval_model(
         treeDepth, nu, cascadeDepth, featurePoolSize, numTestSplits, oversamplingAmount, landmark_relative_padding_mode,
-        train_set, temp_dat):
+        train_set, temp_dat, model_name):
     
     """Test parameters with a new split of the data and save results to a file
     
     Reference: 
         https://pyimagesearch.com/2020/01/13/optimizing-dlib-shape-predictor-accuracy-with-find_min_global/
     """
+
     
-    eval_file = 'Evaluation.tsv'
+    eval_file = os.path.join(train_set.work_dir, f"Evaluation_{model_name}.tsv")
     
     kf = KFold(n_splits=k)
     
@@ -112,7 +113,7 @@ def eval_model(
 
 
 def find_best_params(
-    train_set, temp_dat):
+    train_set, temp_dat, model_name):
     
     """Find best hyperparameters for the shape predictor"""
 
@@ -131,11 +132,12 @@ def find_best_params(
     upper = [v[1] for (k, v) in params.items()]
     isint = [v[2] for (k, v) in params.items()]
 
-    fixed_args = (train_set, temp_dat)
+    fixed_args = (train_set, temp_dat, model_name)
 
     test_shape_predictor_params_with_fixed_args = lambda *params: eval_model(*params, *fixed_args)
     
-    start_eval_file("Evaluation.tsv")
+    evaluation_file = os.path.join(train_set.work_dir, f"Evaluation_{model_name}.tsv")
+    start_eval_file(evaluation_file)
     # utilize dlib to optimize our shape predictor hyperparameters
     (bestParams, bestLoss) = dlib.find_min_global(
         test_shape_predictor_params_with_fixed_args,
@@ -217,3 +219,54 @@ def calculate_mae(real_coords, estimated_coords):
     mae = np.mean(errors)
    
     return mae
+
+def calculate_rmsenorm(real_coords, estimated_coords):
+    
+    """Calculate RMSE normalized by the average distance to the centroid of the real coords."""
+    
+    
+    # 1. Calculate the centroid
+    centroid = np.mean(real_coords, axis=0)
+
+    # 2. Calculate distances to the centroid
+    distances_centroid = np.linalg.norm(real_coords - centroid, axis=1)
+
+    # 3. Calculate the average distance
+    av_centroid = np.mean(distances_centroid)
+    max_centroid = np.max(distances_centroid)
+    
+    
+    errors = np.linalg.norm(real_coords - estimated_coords, axis=1)
+    
+    rmse = np.sqrt(np.mean(errors ** 2))
+    
+    normalized_rmse = rmse / av_centroid
+    
+    
+def convex_hull(real_coords, estimated_coords):
+
+    from scipy.spatial import ConvexHull
+    
+    errors = np.linalg.norm(real_coords - estimated_coords, axis=1)
+    
+    rmse = np.sqrt(np.mean(errors ** 2))
+    
+
+    # Convex hull area
+    hull = ConvexHull(real_coords)
+    area = hull.volume  # For 2D, volume is the area
+
+    # Normalize RMSE
+    normalized_rmse = rmse / np.sqrt(area)
+    
+    
+# def procrustes_error(real_coords, estimated_coords):
+#     from scipy.spatial import procrustes
+
+#     # Perform Procrustes analysis
+#     _, real_aligned, estimated_aligned = procrustes(real_coords, estimated_coords)
+
+#     # Calculate RMSE on aligned shapes
+#     aligned_errors = np.linalg.norm(real_aligned - estimated_aligned, axis=1)
+#     procrustes_rmse = np.sqrt(np.mean(aligned_errors ** 2))
+    

@@ -288,7 +288,7 @@ class Landmarks:
         """Write xml file from image and landmarks dictionary"""
         
         self.xmlfile = file
-
+        
         with open(self.xmlfile, 'w') as f:
             
             f.write(f"<?xml version='1.0' encoding='ISO-8859-1'?>\n")
@@ -451,8 +451,14 @@ class Landmarks:
         optimal_order = []
         all_mre = []
         all_mae = []
+        all_rmsenorm = []
+        all_convex = []
+        
+        errors_dict = {}
         
         for img, real_lm in self.lm_dict.items():
+            
+            errors_dict[img] = {}
             
             pred_array, image = self.predict_shape(model_path, img)
             
@@ -462,11 +468,23 @@ class Landmarks:
             pred_shape, optimal_order = reorganize_fun.order_shape(real_shape, pred_array, optimal_order)
             
             mre = cv.measure_mre(real_shape, pred_shape)
-            all_mre.append(mre)
             
+            errors_dict[img]['mre'] = mre
+            all_mre.append(mre)
+           
             mae = cv.calculate_mae(real_shape, pred_shape)
+            errors_dict[img]['mae'] = mae
             all_mae.append(mae)
-
+          
+            rmsenorm = cv.calculate_rmsenorm(real_shape, pred_shape)
+            errors_dict[img]['rmse_norm'] = rmsenorm
+            all_rmsenorm.append(rmsenorm)
+            
+            convex = cv.convex_hull(real_shape, pred_shape)
+            errors_dict[img]['convex'] = convex
+            all_convex.append(convex)
+            
+            
         all_mre_array = np.array(all_mre)
         mean_mre = all_mre_array.mean()
         print("{} MRE of the model: {} is {}".format(
@@ -474,10 +492,20 @@ class Landmarks:
         
         all_mae_array = np.array(all_mae)
         mean_mae = all_mae_array.mean()
-        print("{} MAE of the model: {} is {}".format(
+        print("{} manual MAE of the model: {} is {}".format(
             os.path.basename(file), os.path.basename(model_path), mean_mae))
+        
+        all_rmsenorm_array = np.array(all_rmsenorm)
+        mean_rmse = all_rmsenorm_array.mean()
+        print("{} RMSE normalized of the model: {} is {}".format(
+            os.path.basename(file), os.path.basename(model_path), mean_rmse))
+        
+        all_convex_array = np.array(all_convex)
+        mean_convex = all_convex_array.mean()
+        print("{} MRE of the model: {} is {}".format(
+            os.path.basename(file), os.path.basename(model_path), mean_convex))
     
-        return all_mae_array, all_mre_array
+        return errors_dict
         
     def predict_shape(self, dat, img):
         

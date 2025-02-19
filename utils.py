@@ -5,6 +5,7 @@ from PIL import Image
 import sys
 import numpy as np
 import glob
+import json
 
 def check_file(filepath):
     
@@ -208,3 +209,10 @@ def read_list_from_file(myfile, f = True):
             data = [line.strip() for line in data]
         
     return data
+
+def write_json(data, filename):
+    
+    """Write a Python dictionary to a JSON file."""
+    
+    with open(filename, 'w') as file:
+        json.dump(data, file, indent=4)

@@ -11,7 +11,7 @@ from cv import find_best_params, train_model, measure_mse
 import time
 
 
-def preprocessing(lmfile, image_dir, split_size=[0.75,0.25]):
+def preprocessing(lmfile, image_dir, split_size=[0.75, 0.25]):
     
     """Preprocessing steps for training 
         
@@ -62,7 +62,7 @@ def train(
         # temp model
         temp = os.path.join(work_data, 'temp.dat')
         # Find best parameters
-        best_params = find_best_params(train_set, temp)
+        best_params = find_best_params(train_set, temp, model_name)
         
     if save_params:
         params_file = os.join.path(Landmarks.work_dir, f"params_{model_name}.txt")
@@ -77,7 +77,7 @@ def train(
 
 def main():
     
-    start_time = time.time()
+    
     
     parser = arg_parse.get_train_parser()
     
@@ -87,7 +87,9 @@ def main():
     image_dir = os.path.abspath(args.input_dir)
     work_dir = os.path.abspath(args.output_dir)
     
+    
     utils.check_make_dir(work_dir)
+    
     Landmarks.work_dir = work_dir
 
     model_name = args.model
@@ -127,61 +129,78 @@ def main():
     else:
         params = False
     
-    train_xml, test_xml, full_xml = preprocessing(input_file, image_dir, split_size=[0.75, 0.25])
+    train_sizes = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
     
-    # Train model to get performance
-    oos_dat, best_params = train('oos_temp', image_dir, train_xml, work_dir, model_version, params=params, save_params=False) 
-    
-    
-    # Train final model with all data
-    final_dat, final_params = train(model_name, image_dir, full_xml, work_dir, model_version, params=best_params, save_params=args.save_params)
-    
-    model_size = os.path.getsize(final_dat) / 1024
-    
-    # try: 
+    for i, train_s in enumerate(train_sizes):
         
-    #     train_xml, test_xml, full_xml = preprocessing(input_file, image_dir)
-    #     oos_dat = train(model_name, image_dir, train_xml, work_dir, model_version, params=params, save_params=args.save_params) 
-    
-    # except:
+        start_time = time.time()
         
-    #     sys.stderr.write(f"\nERROR: Unable to train model with file {input_file}\n")
-    #     parser.print_help()
-    #     sys.exit(2)
-    
-    
-    # Compute training and test errors of the model
-    print("Calculating Errors of the model")
-    
-    train_set = Landmarks(train_xml)
-    train_set.calculate_error(oos_dat, train_xml)
-    measure_mse(oos_dat, train_xml) 
-    
-    test_set = Landmarks(test_xml)
-    errors_dict = test_set.calculate_error(oos_dat, test_xml)
-    
-    utils.write_json(errors_dict, f'errors_{model_name}.json')
-    # measure_mse(oos_dat, test_xml) 
-    
-    # This is just useful for me
-    # full_set = Landmarks(full_xml)
-    # full_set.calculate_error(oos_dat)
-    # measure_mse(oos_dat, full_xml) 
-    
-    
-    
-    # Deleting flip_images from work_data path
+        test_s = 1-train_s
+        
+        train_xml, test_xml, full_xml = preprocessing(input_file, image_dir, split_size=[train_s, test_s])
+        
+        model_nm = f'{model_name}_{i}'
+        # Train model to get performance
+        oos_dat, best_params = train(model_nm, image_dir, train_xml, work_dir, model_version, params=params, save_params=False) 
+        
+        
+        # # Train final model with all data
+        # final_dat, final_params = train(model_name, image_dir, full_xml, work_dir, model_version, params=best_params, save_params=args.save_params)
+        
+        model_size = os.path.getsize(oos_dat) / 1024
+        
+        # try: 
+            
+        #     train_xml, test_xml, full_xml = preprocessing(input_file, image_dir)
+        #     oos_dat = train(model_name, image_dir, train_xml, work_dir, model_version, params=params, save_params=args.save_params) 
+        
+        # except:
+            
+        #     sys.stderr.write(f"\nERROR: Unable to train model with file {input_file}\n")
+        #     parser.print_help()
+        #     sys.exit(2)
+        
+        
+        # Compute training and test errors of the model
+        print("Calculating Errors of the model")
+        
+        train_set = Landmarks(train_xml)
+        train_set.calculate_error(oos_dat, train_xml)
+        train_errors_dict = test_set.calculate_error(oos_dat, test_xml)
+        
+        utils.write_json(train_errors_dict, f'train_errors_{model_nm}.json')
+        # measure_mse(oos_dat, train_xml) 
+        
+        test_set = Landmarks(test_xml)
+        errors_dict = test_set.calculate_error(oos_dat, test_xml)
+        
+        utils.write_json(errors_dict, f'errors_{model_nm}.json')
+        # measure_mse(oos_dat, test_xml) 
+        
+        # This is just useful for me
+        # full_set = Landmarks(full_xml)
+        # full_set.calculate_error(oos_dat)
+        # measure_mse(oos_dat, full_xml) 
+        
+        print(f"Final model size: {model_size}GB")
+        
+        end_time = time.time()
+        
+        total_time = end_time - start_time
+        print(f"Total time: {total_time}")
+        
+        # Deleting flip_images from work_data path
     utils.delete_files(Landmarks.flip_dir)
-    # Deleting work_data directory
+        # Deleting work_data directory
     Landmarks.del_flipdir()
-    # Delete oos_model
+        # Delete oos_model
     os.remove(oos_dat)
-    end_time = time.time()
+        # end_time = time.time()
     print("Done!")
-    
-    total_time = end_time - start_time
-    print(f"Total time: {total_time}")
-    print(f"Final model size: {model_size}GB")
+        
+        # total_time = end_time - start_time
+        # print(f"Total time: {total_time}")
+        
         
 if __name__ == "__main__":
     main()  
