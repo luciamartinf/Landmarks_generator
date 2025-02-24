@@ -136,9 +136,11 @@ def main():
     
     img_list = input_data.img_list
     
-    sizes = int(len(img_list) * percentages)
     
-    for i, sample_size in enumerate(sizes):
+    
+    for i, per in enumerate(percentages):
+        
+        sample_size = int(len(img_list) * per)
         
         start_time = time.time()
         
