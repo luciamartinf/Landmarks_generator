@@ -9,9 +9,11 @@ import utils
 from Landmarks_module import Landmarks
 from cv import find_best_params, train_model, measure_mse
 import time
+import random
+import copy
 
 
-def preprocessing(lmfile, image_dir, split_size=[0.75, 0.25]):
+def preprocessing(lmfile, image_dir):
     
     """Preprocessing steps for training 
         
@@ -25,9 +27,8 @@ def preprocessing(lmfile, image_dir, split_size=[0.75, 0.25]):
     input_data = Landmarks(lmfile)
     full_xml_name = os.path.join(Landmarks.work_dir, "all_data.xml")
     full_xml = input_data.write_xml(full_xml_name, 'all_data')
-    train_xml, test_xml = input_data.split_data(split_size=split_size)
     
-    return train_xml, test_xml, full_xml
+    return full_xml, input_data
 
 
 def train(
@@ -129,19 +130,29 @@ def main():
     else:
         params = False
     
-    train_sizes = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+    percentages = [0.1, 0.25, 0.5, 0.75, 1]
     
-    for i, train_s in enumerate(train_sizes):
+    full_xml, input_data = preprocessing(input_file, image_dir)
+    
+    img_list = input_data.img_list
+    
+    sizes = int(len(img_list) * percentages)
+    
+    for i, sample_size in enumerate(sizes):
         
         start_time = time.time()
         
-        test_s = 1-train_s
+        subsample = copy.copy(input_data)
         
-        train_xml, test_xml, full_xml = preprocessing(input_file, image_dir, split_size=[train_s, test_s])
         
-        model_nm = f'{model_name}_{i}'
+        subsample.img_list = random.sample(img_list, sample_size)
+        
+        
+        train_xml, test_xml = subsample.split_data(split_size=[0.75, 0.25])
+        
+        model_nm = f'{model_name}_{len(subsample.img_list)}'
         # Train model to get performance
-        oos_dat, best_params = train(model_nm, image_dir, train_xml, work_dir, model_version, params=params, save_params=False) 
+        oos_dat, best_params = train(model_nm, image_dir, train_xml, work_dir, model_version, params=params, save_params=args.save_params) 
         
         
         # # Train final model with all data
