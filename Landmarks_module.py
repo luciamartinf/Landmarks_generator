@@ -286,8 +286,11 @@ class Landmarks:
                   file, name):
 
         """Write xml file from image and landmarks dictionary"""
-        
-        self.xmlfile = file
+
+        if not self.xmlfile:
+            self.xmlfile = file
+        else:
+            return self.xmlfile
 
         with open(self.xmlfile, 'w') as f:
             
